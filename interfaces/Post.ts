@@ -6,4 +6,8 @@ export default interface Post {
   featuredImage: {
     node: MediaItem
   }
+  post: {
+    publishedDate: string
+    previewVideo: string
+  }
 }

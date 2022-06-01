@@ -18,29 +18,29 @@ const renderLayout = (layout: any, prefix: string) => {
 
   switch (extractedLayout) {
     case 'Hero':
-      return <HeroModule {...layout.hero} />
+      return <HeroModule {...layout} />
     case 'SliderWithMedia':
-      return <SliderWithMediaModule {...layout.sliderWithMedia} />
+      return <SliderWithMediaModule {...layout} />
     case 'TextVideoCombination':
-      return <TextVideoCombinationModule {...layout.textVideoCombination} />
+      return <TextVideoCombinationModule {...layout} />
     case 'TextWithFullscreenVideo':
       return (
-        <TextWithFullscreenVideoModule {...layout.textWithFullscreenVideo} />
+        <TextWithFullscreenVideoModule {...layout} />
       )
     case 'BigImageCarousel':
-      return <BigImageCarouselModule {...layout.bigImageCarousel} />
+      return <BigImageCarouselModule {...layout} />
     case 'HeadlineSeparator':
-      return <HeadlineSeparatorModule {...layout.headlineSeparator} />
+      return <HeadlineSeparatorModule {...layout} />
     case 'BigQuote':
-      return <BigQuoteModule {...layout.bigQuote} />
+      return <BigQuoteModule {...layout} />
     case 'MediaWithCopyAndLink':
-      return <MediaWithCopyAndLinkModule {...layout.mediaWithCopyAndLink} />
+      return <MediaWithCopyAndLinkModule {...layout} />
     case 'FeaturedInsights':
-      return <FeaturedInsightsModule {...layout.featuredInsights} />
+      return <FeaturedInsightsModule {...layout} />
     case 'CountingNumbers':
-      return <CountingNumbersModule {...layout.countingNumbers} />
+      return <CountingNumbersModule {...layout} />
     case 'SideBySideMedia':
-      return <SideBySideMediaModule {...layout.sidebySideMedia} />
+      return <SideBySideMediaModule {...layout} />
     default:
       return null
   }

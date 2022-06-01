@@ -14,6 +14,10 @@ const FeaturedInsightsFragment = (t: string) => `
                 ...Image
               }
             }
+            post {
+              publishedDate
+              previewVideo
+            }
           }
         }
       }
