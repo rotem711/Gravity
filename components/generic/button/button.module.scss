@@ -1,0 +1,27 @@
+@import './../../../styles/typography';
+
+.root {
+  padding: 1.2rem 3rem;
+  border-radius: 10rem;
+  transition: 400ms ease;
+  border: 1px solid theme('colors.black');
+  @extend .typo-captions-and-buttons;
+
+  &.dark {
+    background: theme('colors.black');
+    color: theme('colors.white');
+
+    &:hover {
+      background: transparent;
+      color: theme('colors.black');
+    }
+  }
+  &.light {
+    background: transparent;
+    &:hover {
+      background: theme('colors.black');
+      color: theme('colors.white');
+      border: 1px solid theme('colors.black');
+    }
+  }
+}

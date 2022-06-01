@@ -1,9 +1,72 @@
-/*
-
-.typo-hero {
-  font-size: 5rem;
-  line-height: 6rem;
-  font-weight: 700;
+.typo-subhead {
+  font-family: 'Modern Gothic Trial';
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: 0.03em;
+  font-weight: 400;
 }
 
-*/
+.typo-headlines {
+  font-family: 'Modern Gothic Trial';
+  font-size: 4rem;
+  line-height: 4.4rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+
+  @screen md {
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
+
+  @screen xl {
+    font-size: 5.2rem;
+    line-height: 5.7rem;
+  }
+}
+
+.typo-body {
+  font-family: 'Modern Gothic Trial';
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+}
+
+.typo-captions-and-buttons {
+  font-family: 'Test Söhne Mono';
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+}
+
+.typo-big-quotes {
+  font-family: 'Modern Gothic Trial';
+  font-size: 4.7rem;
+  line-height: 5.4rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  @screen md {
+    font-size: 5.5rem;
+    line-height: 6.3rem;
+  }
+  @screen xl {
+    font-size: 7.5rem;
+    line-height: 8.6rem;
+  }
+}
+
+.typo-cta-text {
+  font-family: 'Modern Gothic Trial';
+  font-size: 6.5rem;
+  line-height: 7.2rem;
+  font-weight: 300;
+  @screen md {
+    font-size: 10rem;
+    line-height: 11.5rem;
+  }
+  @screen xl {
+    font-size: 15rem;
+    line-height: 17.3rem;
+  }
+}

@@ -3,9 +3,8 @@ to: components/modules/<%= h.inflection.camelize(name) %>/<%= h.inflection.camel
 ---
 
 .root {
-  // add your styles here
-  padding: 10rem 0rem;
-  background: orange;
-  opacity: .5;
+  position: relative;
+  margin: 10rem 0rem;
+
   border-bottom: 1px solid black;
 }

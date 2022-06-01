@@ -9,9 +9,11 @@ const <%= h.inflection.camelize(name) %>Module:FunctionComponent<I<%= h.inflecti
   console.log(props)
   return (
     <div
-      className={`${styles.root} container`}
+      className={`${styles.root}`}
     >
-      <%= h.inflection.humanize(name) %> Module
+      <div className="container">
+        <%= h.inflection.humanize(name) %> Module
+      </div>
     </div>
   )
 }

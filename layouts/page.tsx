@@ -20,7 +20,7 @@ const Page = ({ page }: { page: PageInterface }) => {
         <main>
           {true && process.env.NODE_ENV === 'development' && (
             <div className="devGrid w-full container">
-              <div className="grid grid-cols-4 md:grid-cols-12 gap-x-16 h-full">
+              <div className="default-grid h-full">
                 {Array(12)
                   .fill({})
                   .map(() => (

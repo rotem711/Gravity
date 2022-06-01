@@ -1,10 +1,18 @@
 import React, { FunctionComponent } from 'react'
+import Button from 'components/generic/button/button'
 import styles from './Hero.module.scss'
 import IHero from './Hero.interface'
 
 const HeroModule: FunctionComponent<IHero> = (props) => {
-  console.log(props)
-  return <div className={`${styles.root} container`}>Hero Module</div>
+  const { hero } = props
+  console.log(hero)
+  return (
+    <div className={`${styles.root}`}>
+      <div className="container">
+        <Button variant="dark" link={hero.link} />
+      </div>
+    </div>
+  )
 }
 
 export default HeroModule

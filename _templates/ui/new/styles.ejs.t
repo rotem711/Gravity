@@ -3,5 +3,5 @@ to: components/ui/<%= h.inflection.camelize(name) %>/<%= h.inflection.camelize(n
 ---
 
 .root {
-  // add your styles here
+  position: relative;
 }
