@@ -1,0 +1,51 @@
+{
+  "name": "webstack-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "TAILWIND_MODE=watch next dev",
+    "build": "TAILWIND_MODE=build next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "lint": "eslint components/**/*.tsx components/**/*.ts pages/**/*.tsx utils/**/*.ts",
+    "typecheck": "tsc",
+    "hygen": "hygen",
+    "prepare": "husky install",
+    "make:block": "hygen block new",
+    "autogen:blocks": "node utils/createBlocks.js"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.5.10",
+    "@tailwindcss/jit": "^0.1.18",
+    "autoprefixer": "^10.4.4",
+    "graphql": "^16.3.0",
+    "install": "^0.13.0",
+    "next": "12.1.0",
+    "normalize.css": "^8.0.1",
+    "npm": "^8.5.5",
+    "postcss": "^8.4.12",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.49.9",
+    "tailwindcss": "^3.0.23"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
+    "@types/react": "^17.0.42",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^12.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "hygen": "^6.2.0",
+    "plop": "^3.0.5",
+    "typescript": "^4.6.2"
+  }
+}
