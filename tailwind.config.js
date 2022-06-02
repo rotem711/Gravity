@@ -1,7 +1,7 @@
 const generateSpacings = (interval = 5, max = 300) => {
   const array = {}
   for (let x = 0; x <= max; x += interval) {
-    array[x] = `${interval / 10}rem`
+    array[x] = `${x / 10}rem`
   }
   return array
 }
