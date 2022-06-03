@@ -58,6 +58,9 @@ export const getWpStaticProps = async (
   return {
     props: {
       page: res.entry,
+      footer: res.footer.footer,
+      header: res.header.header,
+      platformNavigation: res.platformNavigation.platformNavigation,
     },
     revalidate: undefined,
   }

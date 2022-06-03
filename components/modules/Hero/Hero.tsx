@@ -6,7 +6,6 @@ import IHero from './Hero.interface'
 
 const HeroModule: FunctionComponent<IHero> = (props) => {
   const { hero } = props
-  
   return (
     <div className={`${styles.root}`}>
       <div className="container pt-180 pb-110">
@@ -16,15 +15,15 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
         <ul className={`${styles.logos} default-grid`}>
           {hero.logos.map((item) => (
             <li className="col-span-2" key={item.id}>
-                <span className={`${styles.iconContainer} `}>
-                  <Image
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='left center'
-                    src={item.logo.sourceUrl}
-                    alt={item.logo.altText}
-                  />
-                </span>
+              <span className={`${styles.iconContainer} `}>
+                <Image
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="left center"
+                  src={item.logo.sourceUrl}
+                  alt={item.logo.altText}
+                />
+              </span>
             </li>
           ))}
         </ul>
