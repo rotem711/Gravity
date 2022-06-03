@@ -8,7 +8,9 @@ const TextVideoCombinationModule:FunctionComponent<ITextVideoCombination> = (pro
     <div
       className={`${styles.root} container`}
     >
-      Textvideocombination Module
+      ------------------------------------------------
+      NOTE !!!! default: image on the right and content on the left !!!!!
+      ------------------------------------------------
     </div>
   )
 }

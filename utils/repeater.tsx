@@ -11,6 +11,9 @@ import MediaWithCopyAndLinkModule from 'components/modules/MediaWithCopyAndLink/
 import FeaturedInsightsModule from 'components/modules/FeaturedInsights/FeaturedInsights'
 import CountingNumbersModule from 'components/modules/CountingNumbers/CountingNumbers'
 import SideBySideMediaModule from 'components/modules/SideBySideMedia/SideBySideMedia'
+import HeroV2Module from 'components/modules/HeroV2/HeroV2'
+import PlatformNavigationModule from 'components/modules/PlatformNavigation/PlatformNavigation'
+import BigHeadlineModule from 'components/modules/BigHeadline/BigHeadline'
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -24,9 +27,7 @@ const renderLayout = (layout: any, prefix: string) => {
     case 'TextVideoCombination':
       return <TextVideoCombinationModule {...layout} />
     case 'TextWithFullscreenVideo':
-      return (
-        <TextWithFullscreenVideoModule {...layout} />
-      )
+      return <TextWithFullscreenVideoModule {...layout} />
     case 'BigImageCarousel':
       return <BigImageCarouselModule {...layout} />
     case 'HeadlineSeparator':
@@ -41,6 +42,12 @@ const renderLayout = (layout: any, prefix: string) => {
       return <CountingNumbersModule {...layout} />
     case 'SideBySideMedia':
       return <SideBySideMediaModule {...layout} />
+    case 'HeroV2':
+      return <HeroV2Module {...layout} />
+    case 'PlatformNavigation':
+      return <PlatformNavigationModule {...layout} />
+    case 'BigHeadline':
+      return <BigHeadlineModule {...layout} />
     default:
       return null
   }
