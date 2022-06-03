@@ -1,3 +1,4 @@
+import Image from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface ITextVideoCombination {
@@ -8,5 +9,7 @@ export default interface ITextVideoCombination {
     copy: string
     link: Link
     vimeoVideoUrl: string
+    image: Image
+    flipHorizontally: boolean
   }
 }

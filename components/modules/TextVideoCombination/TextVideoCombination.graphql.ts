@@ -1,3 +1,5 @@
+import { ImageComponent } from 'queries/fragments/Image'
+
 const TextVideoCombinationFragment = (t: string) => `
   fragment TextVideoCombination on ${t}_TextVideoCombination {
     fieldGroupName
@@ -9,6 +11,8 @@ const TextVideoCombinationFragment = (t: string) => `
         ...Link
       }
       vimeoVideoUrl
+      ${ImageComponent()}
+      flipHorizontally
     }
   }
 `

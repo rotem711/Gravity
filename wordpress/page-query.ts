@@ -1,10 +1,13 @@
+import BigHeadlineFragment from 'components/modules/BigHeadline/BigHeadline.graphql'
 import BigImageCarouselFragment from 'components/modules/BigImageCarousel/BigImageCarousel.graphql'
 import BigQuoteFragment from 'components/modules/BigQuote/BigQuote.graphql'
 import CountingNumbersFragment from 'components/modules/CountingNumbers/CountingNumbers.graphql'
 import FeaturedInsightsFragment from 'components/modules/FeaturedInsights/FeaturedInsights.graphql'
 import HeadlineSeparatorFragment from 'components/modules/HeadlineSeparator/HeadlineSeparator.graphql'
 import HeroFragment from 'components/modules/Hero/Hero.graphql'
+import HeroV2Fragment from 'components/modules/HeroV2/HeroV2.graphql'
 import MediaWithCopyAndLinkFragment from 'components/modules/MediaWithCopyAndLink/MediaWithCopyAndLink.graphql'
+import PlatformNavigationFragment from 'components/modules/PlatformNavigation/PlatformNavigation.graphql'
 import SideBySideMediaFragment from 'components/modules/SideBySideMedia/SideBySideMedia.graphql'
 import SliderWithMediaFragment from 'components/modules/SliderWithMedia/SliderWithMedia.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
@@ -28,6 +31,10 @@ export default `
   ${FeaturedInsightsFragment(TEMPLATE_PREFIX)}
   ${CountingNumbersFragment(TEMPLATE_PREFIX)}
   ${SideBySideMediaFragment(TEMPLATE_PREFIX)}
+  ${HeroV2Fragment(TEMPLATE_PREFIX)}
+  ${PlatformNavigationFragment(TEMPLATE_PREFIX)}
+  ${BigHeadlineFragment(TEMPLATE_PREFIX)}
+
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
       id
@@ -73,6 +80,16 @@ export default `
               ...on DefaultTemplate_Pagebuilder_PageBuilder_SideBySideMedia {
                 ...SideBySideMedia
               }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_HeroV2 {
+                ...HeroV2
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_PlatformNavigation {
+                ...PlatformNavigation
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_BigHeadline {
+                ...BigHeadline
+              }
+
             }
           }
         }
