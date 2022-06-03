@@ -5,5 +5,6 @@ export default interface IHeadlineSeparator {
   headlineSeparator: {
     headline: string
     link: Link
+    backgroundColor: string
   }
 }

@@ -3,9 +3,14 @@ const BigQuoteFragment = (t: string) => `
     fieldGroupName
     bigQuote {
       leftHeadline
-      quote
-      subline
       backgroundColor
+      quotes {
+        quote
+        subline
+        logo {
+          ...Image
+        }
+      }
     }
   }
 `
