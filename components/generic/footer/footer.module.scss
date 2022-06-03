@@ -3,3 +3,17 @@
 .root {
   position: relative;
 }
+
+.logo {
+  display: block;
+  width: 63px;
+  height: 51px;
+}
+
+.contact {
+  p {
+    &:not(:last-child) {
+      &::after { content: "\A "; display: block; white-space: pre; }
+    }
+  }
+}
