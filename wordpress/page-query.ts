@@ -3,6 +3,7 @@ import BigImageCarouselFragment from 'components/modules/BigImageCarousel/BigIma
 import BigQuoteFragment from 'components/modules/BigQuote/BigQuote.graphql'
 import CountingNumbersFragment from 'components/modules/CountingNumbers/CountingNumbers.graphql'
 import FeaturedInsightsFragment from 'components/modules/FeaturedInsights/FeaturedInsights.graphql'
+import FullscreenLinkWithMediaFragment from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia.graphql'
 import HeadlineSeparatorFragment from 'components/modules/HeadlineSeparator/HeadlineSeparator.graphql'
 import HeroFragment from 'components/modules/Hero/Hero.graphql'
 import HeroV2Fragment from 'components/modules/HeroV2/HeroV2.graphql'
@@ -10,6 +11,7 @@ import MediaWithCopyAndLinkFragment from 'components/modules/MediaWithCopyAndLin
 import PlatformNavigationFragment from 'components/modules/PlatformNavigation/PlatformNavigation.graphql'
 import SideBySideMediaFragment from 'components/modules/SideBySideMedia/SideBySideMedia.graphql'
 import SliderWithMediaFragment from 'components/modules/SliderWithMedia/SliderWithMedia.graphql'
+import TabNavigationContentFragment from 'components/modules/TabNavigationContent/TabNavigationContent.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
 import Image from 'queries/fragments/Image'
@@ -34,6 +36,8 @@ export default `
   ${HeroV2Fragment(TEMPLATE_PREFIX)}
   ${PlatformNavigationFragment(TEMPLATE_PREFIX)}
   ${BigHeadlineFragment(TEMPLATE_PREFIX)}
+  ${FullscreenLinkWithMediaFragment(TEMPLATE_PREFIX)}
+  ${TabNavigationContentFragment(TEMPLATE_PREFIX)}
 
   query page($uri: String) {
     entry: pageBy(uri: $uri) {
@@ -89,7 +93,12 @@ export default `
               ...on DefaultTemplate_Pagebuilder_PageBuilder_BigHeadline {
                 ...BigHeadline
               }
-
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_FullscreenLinkWithMedia {
+                ...FullscreenLinkWithMedia
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_TabNavigationContent {
+                ...TabNavigationContent
+              }
             }
           }
         }
