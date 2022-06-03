@@ -8,6 +8,7 @@ const BigQuoteModule:FunctionComponent<IBigQuote> = (props) => {
   return (
     <div
       className={`${styles.root}`}
+      style={{backgroundColor: bigQuote.backgroundColor}}
     >
       <div className="container pt-25 pb-155 xl:pt-35 xl:pb-230">
         <div className="xl:default-grid">
