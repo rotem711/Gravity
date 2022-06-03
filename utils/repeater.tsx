@@ -14,6 +14,8 @@ import SideBySideMediaModule from 'components/modules/SideBySideMedia/SideBySide
 import HeroV2Module from 'components/modules/HeroV2/HeroV2'
 import PlatformNavigationModule from 'components/modules/PlatformNavigation/PlatformNavigation'
 import BigHeadlineModule from 'components/modules/BigHeadline/BigHeadline'
+import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
+import TabNavigationContentModule from 'components/modules/TabNavigationContent/TabNavigationContent'
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -48,6 +50,11 @@ const renderLayout = (layout: any, prefix: string) => {
       return <PlatformNavigationModule {...layout} />
     case 'BigHeadline':
       return <BigHeadlineModule {...layout} />
+    case 'FullscreenLinkWithMedia':
+      return <FullscreenLinkWithMediaModule {...layout} />
+    case 'TabNavigationContent':
+      return <TabNavigationContentModule {...layout} />
+
     default:
       return null
   }
