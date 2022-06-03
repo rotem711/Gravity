@@ -12,10 +12,10 @@ import FeaturedInsightsModule from 'components/modules/FeaturedInsights/Featured
 import CountingNumbersModule from 'components/modules/CountingNumbers/CountingNumbers'
 import SideBySideMediaModule from 'components/modules/SideBySideMedia/SideBySideMedia'
 import HeroV2Module from 'components/modules/HeroV2/HeroV2'
-import PlatformNavigationModule from 'components/modules/PlatformNavigation/PlatformNavigation'
 import BigHeadlineModule from 'components/modules/BigHeadline/BigHeadline'
 import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
 import TabNavigationContentModule from 'components/modules/TabNavigationContent/TabNavigationContent'
+import PlatformNavigation from 'components/generic/platformNavigation/platformNavigation'
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -47,7 +47,7 @@ const renderLayout = (layout: any, prefix: string) => {
     case 'HeroV2':
       return <HeroV2Module {...layout} />
     case 'PlatformNavigation':
-      return <PlatformNavigationModule {...layout} />
+      return <PlatformNavigation />
     case 'BigHeadline':
       return <BigHeadlineModule {...layout} />
     case 'FullscreenLinkWithMedia':
