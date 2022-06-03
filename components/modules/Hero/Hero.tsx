@@ -5,7 +5,6 @@ import IHero from './Hero.interface'
 
 const HeroModule: FunctionComponent<IHero> = (props) => {
   const { hero } = props
-  console.log(hero)
   return (
     <div className={`${styles.root}`}>
       <div className="container">
