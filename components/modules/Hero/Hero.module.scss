@@ -1,5 +1,29 @@
+@import './../../../styles/variables';
+
 .root {
   position: relative;
-  padding: 10rem 0rem;
-  border-bottom: 1px solid black;
+  background-color: theme('colors.mediumSky');
+}
+
+.icon-container {
+
+}
+
+.logos {
+  align-items: center;
+
+  li {
+
+  }
+}
+
+.iconContainer {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 31px;
+
+  span {
+    object-position: left center;
+  }
 }
