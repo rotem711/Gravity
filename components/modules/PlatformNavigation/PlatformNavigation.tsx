@@ -1,18 +1,6 @@
-import React, { FunctionComponent } from 'react'
-import styles from './PlatformNavigation.module.scss'
-import IPlatformNavigation from './PlatformNavigation.interface'
+import PlatformNavigation from 'components/generic/platformNavigation/platformNavigation'
+import React from 'react'
 
-const PlatformNavigationModule:FunctionComponent<IPlatformNavigation> = (props) => {
-  console.log(props)
-  return (
-    <div
-      className={`${styles.root}`}
-    >
-      <div className="container">
-        Platformnavigation Module
-      </div>
-    </div>
-  )
-}
+const PlatformNavigationModule = () => <PlatformNavigation />
 
 export default PlatformNavigationModule

@@ -40,6 +40,43 @@ export default `
   ${TabNavigationContentFragment(TEMPLATE_PREFIX)}
 
   query page($uri: String) {
+    header: acfOptionsHeader {
+      header {
+        rightSideNavigation {
+          link {
+            ...Link
+          }
+        }
+        mainNavigation {
+          link {
+            ...Link
+          }
+        }
+      }
+    }
+    footer: acfOptionsFooter {
+      footer {
+        contact
+        navigation {
+          label
+          links {
+            link {
+              ...Link
+            }
+          }
+        }
+      }
+    }
+    platformNavigation: acfOptionsPlatformNavigation {
+      platformNavigation {
+        title
+        platformMainNavigation {
+          link {
+            ...Link
+          }
+        }
+      }
+    }
     entry: pageBy(uri: $uri) {
       id
       title
