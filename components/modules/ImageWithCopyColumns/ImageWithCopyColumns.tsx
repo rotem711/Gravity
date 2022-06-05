@@ -26,7 +26,9 @@ const ImageWithCopyColumnsModule: FunctionComponent<IImageWithCopyColumns> = (
                 key={e.copy}
                 className="flex md:block gap-x-15 col-span-6 md:col-span-3 xl:col-span-2 typo-body last-of-type:mb-0 mb-65"
               >
-                <h3 className="w-1/2 md:w-full md:mb-20 xl:mb-30">{e.headline}</h3>
+                <h3 className="w-1/2 md:w-full md:mb-20 xl:mb-30">
+                  {e.headline}
+                </h3>
                 <div
                   className="w-1/2 md:w-full "
                   dangerouslySetInnerHTML={{ __html: e.copy }}
