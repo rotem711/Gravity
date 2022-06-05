@@ -4,6 +4,7 @@ const HeadlineSeparatorFragment = (t: string) => `
     headlineSeparator {
       headline
       backgroundColor
+      enableSubscribe
       link {
         ...Link
       }

@@ -4,14 +4,20 @@ import BigQuoteFragment from 'components/modules/BigQuote/BigQuote.graphql'
 import CountingNumbersFragment from 'components/modules/CountingNumbers/CountingNumbers.graphql'
 import FeaturedInsightsFragment from 'components/modules/FeaturedInsights/FeaturedInsights.graphql'
 import FullscreenLinkWithMediaFragment from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia.graphql'
+import HeadlineCopyMediaRowsFragment from 'components/modules/HeadlineCopyMediaRows/HeadlineCopyMediaRows.graphql'
 import HeadlineSeparatorFragment from 'components/modules/HeadlineSeparator/HeadlineSeparator.graphql'
 import HeroFragment from 'components/modules/Hero/Hero.graphql'
 import HeroV2Fragment from 'components/modules/HeroV2/HeroV2.graphql'
+import HeroWithAnimatedTextFragment from 'components/modules/HeroWithAnimatedText/HeroWithAnimatedText.graphql'
+import ImageWithCopyColumnsFragment from 'components/modules/ImageWithCopyColumns/ImageWithCopyColumns.graphql'
+import InsightsWithNavigationFragment from 'components/modules/InsightsWithNavigation/InsightsWithNavigation.graphql'
 import MediaWithCopyAndLinkFragment from 'components/modules/MediaWithCopyAndLink/MediaWithCopyAndLink.graphql'
 import PlatformNavigationFragment from 'components/modules/PlatformNavigation/PlatformNavigation.graphql'
 import SideBySideMediaFragment from 'components/modules/SideBySideMedia/SideBySideMedia.graphql'
 import SliderWithMediaFragment from 'components/modules/SliderWithMedia/SliderWithMedia.graphql'
+import SublineHeadlineMediaFragment from 'components/modules/SublineHeadlineMedia/SublineHeadlineMedia.graphql'
 import TabNavigationContentFragment from 'components/modules/TabNavigationContent/TabNavigationContent.graphql'
+import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
 import Image from 'queries/fragments/Image'
@@ -38,6 +44,12 @@ export default `
   ${BigHeadlineFragment(TEMPLATE_PREFIX)}
   ${FullscreenLinkWithMediaFragment(TEMPLATE_PREFIX)}
   ${TabNavigationContentFragment(TEMPLATE_PREFIX)}
+  ${HeroWithAnimatedTextFragment(TEMPLATE_PREFIX)}
+  ${TeamGridFragment(TEMPLATE_PREFIX)}
+  ${ImageWithCopyColumnsFragment(TEMPLATE_PREFIX)}
+  ${HeadlineCopyMediaRowsFragment(TEMPLATE_PREFIX)}
+  ${SublineHeadlineMediaFragment(TEMPLATE_PREFIX)}
+  ${InsightsWithNavigationFragment(TEMPLATE_PREFIX)}
 
   query page($uri: String) {
     header: acfOptionsHeader {
@@ -77,6 +89,36 @@ export default `
         }
       }
     }
+
+    insights: posts {
+      nodes {
+        slug
+        title
+        post {
+          publishedDate
+          previewVideo
+        }
+        featuredImage {
+          node {
+            ...Image
+          }
+        }
+        categories {
+          nodes {
+            id
+            name
+          }
+        }
+      }
+    }
+
+    insightsCategories: categories {
+      nodes {
+        id
+        name
+      }
+    }
+
     entry: pageBy(uri: $uri) {
       id
       title
@@ -135,6 +177,24 @@ export default `
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_TabNavigationContent {
                 ...TabNavigationContent
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_HeroWithAnimatedText {
+                ...HeroWithAnimatedText
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_TeamGrid {
+                ...TeamGrid
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_ImageWithCopyColumns {
+                ...ImageWithCopyColumns
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_HeadlineCopyMediaRows {
+                ...HeadlineCopyMediaRows
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_SublineHeadlineMedia {
+                ...SublineHeadlineMedia
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_InsightsWithNavigation {
+                ...InsightsWithNavigation
               }
             }
           }
