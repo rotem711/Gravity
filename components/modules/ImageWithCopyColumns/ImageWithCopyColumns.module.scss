@@ -1,6 +1,4 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
-
-  border-bottom: 1px solid black;
+  @apply pb-30 md:pb-35 xl:pb-40;
 }
