@@ -1,6 +1,4 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
-
-  border-bottom: 1px solid black;
+  @apply pt-100 md:pt-145 xl:pt-155 pb-165 md:pb-120 xl:pb-270;
 }
