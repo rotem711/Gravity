@@ -1,7 +1,37 @@
+@import './../../../styles/typography';
+
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
+.title {
+  @screen xl {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+  }
+}
 
-  border-bottom: 1px solid black;
+.quote {
+  position: relative;
+  
+  @screen xl {
+    grid-column-start: 5;
+    grid-column-end: span end;
+  }
+
+  &::before {
+    content: "“";
+    display: inline-block;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    @extend .typo-big-quotes;
+  }
+}
+
+.cite {
+  display: block;
 }
