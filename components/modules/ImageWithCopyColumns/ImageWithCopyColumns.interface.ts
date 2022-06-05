@@ -4,8 +4,10 @@ export default interface IImageWithCopyColumns {
   fieldGroupName: string
   imageWithCopyColumns: {
     headline: string
+    backgroundColor: string
     columns: [
       {
+        headline: string
         copy: string
       },
     ]

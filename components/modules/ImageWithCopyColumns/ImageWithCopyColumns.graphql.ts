@@ -5,7 +5,9 @@ const ImageWithCopyColumnsFragment = (t: string) => `
     fieldGroupName
     imageWithCopyColumns {
       headline
+      backgroundColor
       columns {
+        headline
         copy
       }
       ${ImageComponent()}
