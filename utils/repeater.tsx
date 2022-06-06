@@ -16,6 +16,12 @@ import BigHeadlineModule from 'components/modules/BigHeadline/BigHeadline'
 import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
 import TabNavigationContentModule from 'components/modules/TabNavigationContent/TabNavigationContent'
 import PlatformNavigation from 'components/generic/platformNavigation/platformNavigation'
+import TeamGridModule from 'components/modules/TeamGrid/TeamGrid'
+import HeroWithAnimatedTextModule from 'components/modules/HeroWithAnimatedText/HeroWithAnimatedText'
+import ImageWithCopyColumnsModule from 'components/modules/ImageWithCopyColumns/ImageWithCopyColumns'
+import HeadlineCopyMediaRowsModule from 'components/modules/HeadlineCopyMediaRows/HeadlineCopyMediaRows'
+import SublineHeadlineMediaModule from 'components/modules/SublineHeadlineMedia/SublineHeadlineMedia'
+import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigation/InsightsWithNavigation'
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -54,7 +60,18 @@ const renderLayout = (layout: any, prefix: string) => {
       return <FullscreenLinkWithMediaModule {...layout} />
     case 'TabNavigationContent':
       return <TabNavigationContentModule {...layout} />
-
+    case 'TeamGrid':
+      return <TeamGridModule {...layout} />
+    case 'HeroWithAnimatedText':
+      return <HeroWithAnimatedTextModule {...layout} />
+    case 'ImageWithCopyColumns':
+      return <ImageWithCopyColumnsModule {...layout} />
+    case 'HeadlineCopyMediaRows':
+      return <HeadlineCopyMediaRowsModule {...layout} />
+    case 'SublineHeadlineMedia':
+      return <SublineHeadlineMediaModule {...layout} />
+    case 'InsightsWithNavigation':
+      return <InsightsWithNavigationModule />
     default:
       return null
   }

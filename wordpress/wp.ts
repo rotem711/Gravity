@@ -61,6 +61,8 @@ export const getWpStaticProps = async (
       footer: res.footer.footer,
       header: res.header.header,
       platformNavigation: res.platformNavigation.platformNavigation,
+      insights: res.insights.nodes,
+      insightsCategories: res.insightsCategories,
     },
     revalidate: undefined,
   }

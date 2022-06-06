@@ -1,3 +1,6 @@
+@tailwind utilities;
+
+@layer utilities {
 .typo-subhead {
   font-family: 'Modern Gothic Trial';
   font-size: 1.4rem;
@@ -30,6 +33,15 @@
   line-height: 2.5rem;
   letter-spacing: -0.01em;
   font-weight: 300;
+}
+
+.typo-number {
+  @media (max-width: 768px) {
+    font-family: 'Modern Gothic Trial';
+    font-size: 10rem;
+    line-height: 11rem;
+    font-weight: 300;
+  }
 }
 
 .typo-captions-and-buttons {
@@ -69,4 +81,5 @@
     font-size: 15rem;
     line-height: 17.3rem;
   }
+}
 }

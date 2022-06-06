@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React from 'react'
 import { PageInterface } from 'wordpress/page-query'
 import Head from 'next/head'
@@ -5,6 +6,7 @@ import renderLayout from 'utils/repeater'
 import { GlobalContextProvider } from 'pages/_app'
 import FooterInterface from 'components/generic/footer/footer.interface'
 import HeaderInterface from 'components/generic/header/header.interface'
+import InsightsInterface, { InsightsCategory } from 'interfaces/Insights'
 import PlatformNavigationInterface from 'components/generic/platformNavigation/platformNavigation.interface'
 import Header from '../components/generic/header/header'
 import Footer from '../components/generic/footer/footer'
@@ -14,13 +16,19 @@ const Page = ({
   footer,
   header,
   platformNavigation,
+  insights,
+  insightsCategories,
 }: {
   page: PageInterface
   footer: FooterInterface
   header: HeaderInterface
   platformNavigation: PlatformNavigationInterface
+  insights: [InsightsInterface]
+  insightsCategories: [InsightsCategory]
 }) => (
-  <GlobalContextProvider value={{ header, footer, platformNavigation }}>
+  <GlobalContextProvider
+    value={{ header, footer, platformNavigation, insights, insightsCategories }}
+  >
     <div>
       <Head>
         <title>Gravity</title>
@@ -43,7 +51,9 @@ const Page = ({
             </div>
           </div>
         )}
-        {page.template.pageBuilder.pageBuilder.map((layout) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'))}
+        {page.template.pageBuilder.pageBuilder.map((layout) =>
+          renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'),
+        )}
       </main>
       <Footer data={footer} />
     </div>

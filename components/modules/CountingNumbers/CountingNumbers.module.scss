@@ -1,7 +1,51 @@
+@import './../../../styles/typography';
+
 .root {
   position: relative;
-  margin: 10rem 0rem;
+  border-top: 1px solid #000000;
+}
 
+.numbers {
+  position: relative;
+  
+  @screen xl {
+    grid-column-start: 5;
+    grid-column-end: span end;
+  }
+}
 
-  border-bottom: 1px solid black;
+.number {
+  @media (max-width: 768px) {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @screen md {
+    &:first-child,
+    &:nth-child(2) {
+      margin-top: 65px;
+    }
+  }
+
+  @screen xl {
+    &:first-child,
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+
+  dt {
+    @extend .typo-number;
+
+    @screen md {
+      @extend .typo-cta-text;
+    }
+  }
+
+  dd {
+    @screen md {
+      width: 65%;
+    }
+  }
 }

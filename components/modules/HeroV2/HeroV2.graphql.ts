@@ -1,3 +1,5 @@
+import { ImageComponent } from 'queries/fragments/Image'
+
 const HeroV2Fragment = (t: string) => `
   fragment HeroV2 on ${t}_HeroV2 {
     fieldGroupName
@@ -8,6 +10,7 @@ const HeroV2Fragment = (t: string) => `
       svgLayer {
         ...Image
       }
+      ${ImageComponent()}
     }
   }
 `
