@@ -5,16 +5,12 @@
   background-color: theme('colors.mediumSky');
 }
 
-.icon-container {
-
+.title {
+  
 }
 
 .logos {
   align-items: center;
-
-  li {
-
-  }
 }
 
 .iconContainer {
@@ -25,5 +21,23 @@
 
   span {
     object-position: left center;
+  }
+}
+
+@screen md {
+  .title {
+    order: 2;
+  }
+
+  .video {
+    order: 1;
+  }
+
+  .logos {
+    order: 4;
+  }
+
+  .button {
+    order: 3;
   }
 }
