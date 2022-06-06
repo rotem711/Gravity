@@ -5,6 +5,8 @@ import styles from './button.module.scss'
 
 const Button = (props: IButtonInterface) => {
   const { link, variant } = props
+
+  if (!link) return null
   return (
     <Link href={link.url}>
       <a target={link.target} className={`${styles.root} ${styles[variant]}`}>
