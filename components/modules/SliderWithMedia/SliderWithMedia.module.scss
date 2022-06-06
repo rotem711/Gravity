@@ -1,3 +1,16 @@
 .root {
   position: relative;
 }
+
+.navItem {
+  opacity: 0.25;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.isActive {
+  opacity: 1;
+}
