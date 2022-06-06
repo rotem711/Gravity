@@ -17,7 +17,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
         <ul className={`${styles.logos} default-grid w-full mt-95`}>
           <h2 className="typo-subhead w-full col-span-6 md:col-span-3 xl:col-span-2 mb-45 md:mb-25 xl:mb-45 uppercase">{hero.logoRowHeadline}</h2>
           {hero.logos.map((item) => (
-            <li className="col-span-3 md:col-span-2 mt-25 mb-25 md:mt-0" key={item.id}>
+            <li className="col-span-3 md:col-span-2 mt-25 mb-25 md:mt-0">
               <span className={`${styles.iconContainer} `}>
                 <Image
                   layout="fill"
