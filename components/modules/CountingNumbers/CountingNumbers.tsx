@@ -43,7 +43,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
             {countingNumbers.headline}
           </h2>
           <dl className={`${styles.numbers} default-grid`}>
-            {countingNumbers.numbers.map((item, i) => (
+            {countingNumbers.numbers.map((item) => (
               <div
                 key={item.copy}
                 className={`${styles.number} col-span-4 md:col-span-6 xl:col-span-6 mt-75 md:mt-95 xl:mt-110`}
