@@ -9,33 +9,28 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-const useArrayRef = () => {
-  const refs = useRef([])
-  refs.current = []
-  return [refs, (ref) => ref && refs.current.push(ref)]
-}
-
-const CountingNumbersModule:FunctionComponent<ICountingNumbers> = (props) => {
+const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
   const { countingNumbers } = props
-  const [refs, setRef] = useArrayRef()
+
+  const refs = useRef<HTMLSpanElement[]>([])
 
   useEffect(() => {
-    refs.current.map((ref, index) => {
+    refs.current.forEach((ref: HTMLSpanElement, index) => {
       const zero = { val: 0 }
       const num = parseInt(ref.innerHTML, 10)
 
       gsap.to(zero, {
         val: num,
-        duration: 1.5,
+        duration: 2.5,
         scrollTrigger: ref,
         ease: 'expo.out',
         delay: index * 0.2,
-        onUpdate() {
-          ref.innerHTML = zero.val.toFixed()
+        onUpdate: () => {
+          refs.current[index].innerHTML = zero.val.toFixed().toString()
         },
       })
     })
-  }, [])
+  }, [refs])
 
   return (
     <div
@@ -44,12 +39,17 @@ const CountingNumbersModule:FunctionComponent<ICountingNumbers> = (props) => {
     >
       <div className="container pt-25 pb-155 xl:pt-35 xl:pb-145">
         <div className="xl:default-grid">
-          <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>{countingNumbers.headline}</h2>
+          <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
+            {countingNumbers.headline}
+          </h2>
           <dl className={`${styles.numbers} default-grid`}>
-            {countingNumbers.numbers.map((item, index) => (
-              <div key={index} className={`${styles.number} col-span-4 md:col-span-6 xl:col-span-6 mt-75 md:mt-95 xl:mt-110`}>
+            {countingNumbers.numbers.map((item, i) => (
+              <div
+                key={item.copy}
+                className={`${styles.number} col-span-4 md:col-span-6 xl:col-span-6 mt-75 md:mt-95 xl:mt-110`}
+              >
                 <dt className="mb-20">
-                  <span ref={setRef}>{item.value}</span>
+                  <span ref={(r) => refs.current.push(r)}>{item.value}</span>
                   {item.unit}
                 </dt>
                 <dd className="typo-body">{item.copy}</dd>
