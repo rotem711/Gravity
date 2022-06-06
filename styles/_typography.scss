@@ -32,6 +32,15 @@
   font-weight: 300;
 }
 
+.typo-number {
+  @media (max-width: 768px) {
+    font-family: 'Modern Gothic Trial';
+    font-size: 10rem;
+    line-height: 11rem;
+    font-weight: 300;
+  }
+}
+
 .typo-captions-and-buttons {
   font-family: 'Test Söhne Mono';
   font-size: 1.6rem;
