@@ -17,7 +17,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
   useEffect(() => {
     refs.current.forEach((ref: HTMLSpanElement, index) => {
       const zero = { val: 0 }
-      const num = parseInt(ref.innerHTML, 10)
+      const num = parseInt(ref?.innerHTML, 10)
 
       gsap.to(zero, {
         val: num,
