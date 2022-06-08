@@ -1,5 +1,43 @@
+@import './../../../styles/variables';
+
 .root {
   position: relative;
-  padding: 10rem 0rem;
-  border-bottom: 1px solid black;
+  background-color: theme('colors.mediumSky');
+}
+
+.title {
+  
+}
+
+.logos {
+  align-items: center;
+}
+
+.iconContainer {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 31px;
+
+  span {
+    object-position: left center;
+  }
+}
+
+@screen md {
+  .title {
+    order: 2;
+  }
+
+  .video {
+    order: 1;
+  }
+
+  .logos {
+    order: 4;
+  }
+
+  .button {
+    order: 3;
+  }
 }
