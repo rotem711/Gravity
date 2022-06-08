@@ -13,6 +13,7 @@ export default interface ITextVideoCombination {
         vimeoVideoUrl: string
         image: Image
         flipHorizontally: boolean
+        stackOnTablet: boolean
       },
     ]
   }
