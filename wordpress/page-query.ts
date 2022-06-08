@@ -64,6 +64,9 @@ export default `
             ...Link
           }
         }
+        mobileMenuCta {
+          ...Link
+        }
       }
     }
     footer: acfOptionsFooter {

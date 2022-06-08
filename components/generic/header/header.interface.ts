@@ -11,4 +11,5 @@ export default interface HeaderInterface {
       link: Link
     },
   ]
+  mobileMenuCta: Link
 }
