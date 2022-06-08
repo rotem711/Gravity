@@ -1,7 +1,17 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
+.item {
+  header {
+    @screen md {
+      order: 2;
+    }
+  }
 
-  border-bottom: 1px solid black;
+  .mediaItem {
+    @screen md {
+      order: 1;
+    }
+  }
 }
