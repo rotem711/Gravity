@@ -3,7 +3,7 @@ import Link from 'interfaces/Link'
 
 export default interface IFullscreenLinkWithMedia {
   fieldGroupName: string
-  fullscreenLinkWithMediaModule: {
+  fullscreenLinkWithMedia: {
     link: Link
     vimeoVideoUrl: string
     image: Image
