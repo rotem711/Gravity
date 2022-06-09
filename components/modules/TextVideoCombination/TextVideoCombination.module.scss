@@ -1,7 +1,51 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
+.item {
+  padding: 8.5rem 0;
 
-  border-bottom: 1px solid black;
+  @screen xl {
+    padding: 13.5rem 0;
+  }
+
+  &.isFlipped {
+    header {
+      @screen xl {
+        order: 2;
+        grid-column-start: 7;
+      }
+    }
+
+    .mediaItem {
+      @screen xl {
+        order: 1;
+        grid-column-start: 1;
+      }
+    }
+  }
+
+  header {
+    order: 1;
+
+    @screen md {
+      order: 2;
+    }
+
+    @screen xl {
+      order: 1;
+    }
+  }
+
+  .mediaItem {
+    order: 2;
+
+    @screen md {
+      order: 1;
+    }
+
+    @screen xl {
+      order: 2;
+    }
+  }
 }
