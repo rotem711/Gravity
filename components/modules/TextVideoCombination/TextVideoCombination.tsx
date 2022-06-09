@@ -11,21 +11,23 @@ const TextVideoCombinationModule:FunctionComponent<ITextVideoCombination> = (pro
       className={`${styles.root} container`}
     >
       {textVideoCombination.items.map((item) => (
-        <div className={`${styles.item} md:default-grid items-center`}>
-          <header className="md:default-grid xl:block xl:col-span-6">
+        <div className={`${styles.item} ${item.flipHorizontally ? styles.isFlipped : ''} md:default-grid items-center`}>
+          <header className="md:default-grid md:col-span-12 xl:block xl:col-span-6">
             <div className="md:col-span-5">
-              { item.vimeoVideoUrl && (
-                <span className="typo-subhead uppercase mb-25">{item.topHeadline}</span>
+              { item.topHeadline && (
+                <span className="typo-subhead uppercase mb-25 block">{item.topHeadline}</span>
               )}
               <h2 className="typo-headlines mb-75">{item.headline}</h2>
             </div>
             <div className="md:col-span-5 md:col-start-8">
               <div className="typo-body mb-45" dangerouslySetInnerHTML={{ __html: item.copy }} />
-              <Button variant="light" link={item.link} />
+              <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
+                <Button variant="light" link={item.link} />
+              </div>
             </div>
           </header>
           <div
-            className={`${styles.mediaItem} col-span-6 md:col-span-12 xl:col-span-6 md:mb-60 xl:mb-0`}
+            className={`${styles.mediaItem} col-span-6 md:col-span-12 xl:col-span-5 xl:col-start-8 md:mb-60 xl:mb-0`}
           >
             {
                 item.vimeoVideoUrl
