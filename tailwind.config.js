@@ -1,4 +1,4 @@
-const generateSpacings = (interval = 5, max = 300) => {
+const generateSpacings = (interval = 5, max = 320) => {
   const array = {}
   for (let x = 0; x <= max; x += interval) {
     array[x] = `${x / 10}rem`

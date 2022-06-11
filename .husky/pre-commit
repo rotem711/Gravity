@@ -4,12 +4,12 @@
 GIT_EMAIL=$(git config user.email)
 DOMAIN="@pxlp.dev"
 
-if [[ "$GIT_EMAIL" == *"$DOMAIN"* ]]; then
-  echo "PXLP email is used"
-else
-  echo "please use your PXLP email to commit changes"
-  exit 1
-fi
+# if [[ "$GIT_EMAIL" == *"$DOMAIN"* ]]; then
+#   echo "PXLP email is used"
+# else
+#   echo "please use your PXLP email to commit changes"
+#   exit 1
+# fi
 
-yarn lint
-yarn typecheck
+# yarn lint
+# yarn typecheck
