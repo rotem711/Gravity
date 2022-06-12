@@ -5,7 +5,7 @@ import Head from 'next/head'
 import renderLayout from 'utils/repeater'
 import { GlobalContextProvider } from 'pages/_app'
 import FooterInterface from 'components/generic/footer/footer.interface'
-import HeaderInterface from 'components/generic/header/header.interface'
+import { Navigation } from 'components/generic/header/header.interface'
 import InsightsInterface, { InsightsCategory } from 'interfaces/Insights'
 import PlatformNavigationInterface from 'components/generic/platformNavigation/platformNavigation.interface'
 import Header from '../components/generic/header/header'
@@ -21,7 +21,7 @@ const Page = ({
 }: {
   page: PageInterface
   footer: FooterInterface
-  header: HeaderInterface
+  header: Navigation
   platformNavigation: PlatformNavigationInterface
   insights: [InsightsInterface]
   insightsCategories: [InsightsCategory]
@@ -30,12 +30,16 @@ const Page = ({
     value={{ header, footer, platformNavigation, insights, insightsCategories }}
   >
     <div>
+      {console.log(header)}
       <Head>
         <title>Gravity</title>
         <meta name="description" content="TBD" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header data={header} />
+      <Header
+        inverted={page.pageOption.invertNavigation}
+        data={header}
+      />
       <main>
         {true && process.env.NODE_ENV === 'development' && (
           <div className="devGrid w-full container">

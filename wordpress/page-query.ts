@@ -127,6 +127,9 @@ export default `
       title
       slug
       uri
+      pageOption {
+        invertNavigation
+      }
       template {
         __typename
         ... on DefaultTemplate {
@@ -211,6 +214,9 @@ export interface PageInterface {
   id: string
   title: string
   slug: string
+  pageOption: {
+    invertNavigation: boolean
+  }
   template: {
     pageBuilder: {
       pageBuilder: [any]
