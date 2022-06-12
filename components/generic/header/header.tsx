@@ -4,7 +4,7 @@ import Logo from 'public/gravity-logo.svg'
 import styles from './header.module.scss'
 import HeaderInterface from './header.interface'
 
-const HeaderBlock = ({ data }: { data: HeaderInterface }) => {
+const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
   const [scrollDir, setScrollDir] = useState('up')
 

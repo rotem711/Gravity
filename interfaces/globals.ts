@@ -1,10 +1,10 @@
 import FooterInterface from 'components/generic/footer/footer.interface'
-import HeaderInterface from 'components/generic/header/header.interface'
+import { Navigation } from 'components/generic/header/header.interface'
 import PlatformNavigationInterface from 'components/generic/platformNavigation/platformNavigation.interface'
 import InsightsInterface, { InsightsCategory } from './Insights'
 
 export interface GlobalSet {
-  header: HeaderInterface
+  header: Navigation
   footer: FooterInterface
   platformNavigation: PlatformNavigationInterface
   insights: [InsightsInterface]
