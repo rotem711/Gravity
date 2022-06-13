@@ -1,3 +1,5 @@
+import { ImageComponent } from 'queries/fragments/Image'
+
 const SliderWithMediaFragment = (t: string) => `
   fragment SliderWithMedia on ${t}_SliderWithMedia {
     fieldGroupName
@@ -7,9 +9,7 @@ const SliderWithMediaFragment = (t: string) => `
         title
         copy
         vimeoVideoUrl
-        svg {
-          ...Image
-        }
+        ${ImageComponent()}
       }
       link {
         ...Link
