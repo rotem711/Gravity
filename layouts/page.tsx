@@ -30,14 +30,13 @@ const Page = ({
     value={{ header, footer, platformNavigation, insights, insightsCategories }}
   >
     <div>
-      {console.log(header)}
       <Head>
         <title>Gravity</title>
         <meta name="description" content="TBD" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
-        inverted={page.pageOption.invertNavigation}
+        inverted={page?.pageOption?.invertNavigation}
         data={header}
       />
       <main>
@@ -55,9 +54,7 @@ const Page = ({
             </div>
           </div>
         )}
-        {page.template.pageBuilder.pageBuilder.map((layout) =>
-          renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'),
-        )}
+        {page && page.template.pageBuilder.pageBuilder.map((layout) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'))}
       </main>
       <Footer data={footer} />
     </div>
