@@ -1,5 +1,9 @@
 import React, {
-  FunctionComponent, useEffect, useLayoutEffect, useRef, useState,
+  FunctionComponent,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
 } from 'react'
 import { useInView } from 'react-intersection-observer'
 import Button from 'components/generic/button/button'
@@ -7,7 +11,7 @@ import Image from 'next/image'
 import styles from './SliderWithMedia.module.scss'
 import ISliderWithMedia from './SliderWithMedia.interface'
 
-const SliderWithMediaModule:FunctionComponent<ISliderWithMedia> = (props) => {
+const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
   const { sliderWithMedia } = props
   const [index, setIndex] = useState(0)
   const [copyHeight, setCopyHeight] = useState(0)
@@ -52,7 +56,9 @@ const SliderWithMediaModule:FunctionComponent<ISliderWithMedia> = (props) => {
       timer = setTimeout(() => {
         if (indexRef.current + 1 === mediaRefs.current.length) {
           setIndex(0)
-        } else { setIndex(indexRef.current + 1) }
+        } else {
+          setIndex(indexRef.current + 1)
+        }
       }, 4000)
       return () => clearTimeout(timer)
     }
@@ -64,14 +70,18 @@ const SliderWithMediaModule:FunctionComponent<ISliderWithMedia> = (props) => {
       className={`${styles.root} container pt-35 pb-100 md:pt-70xl:pt-35 xl:pb-150`}
       ref={ref}
     >
-      <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>{sliderWithMedia.subline}</h2>
+      <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
+        {sliderWithMedia.subline}
+      </h2>
       <div className="xl:default-grid">
         <header className="md:default-grid xl:block xl:col-span-6 md:mb-90">
           <ul className="md:col-span-6 xl:w-full sm:mb-55 md:mb-0 xl:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
               <li>
                 <button
-                  className={`${styles.navItem} ${index === itemIndex ? styles.isActive : ''} typo-big-quotes`}
+                  className={`${styles.navItem} ${
+                    index === itemIndex ? styles.isActive : ''
+                  } typo-big-quotes`}
                   onClick={onClickItem}
                   onKeyPress={onClickItem}
                   data-index={itemIndex}
@@ -89,8 +99,12 @@ const SliderWithMediaModule:FunctionComponent<ISliderWithMedia> = (props) => {
             >
               {sliderWithMedia.slides.map((item, itemIndex) => (
                 <div
-                  className={`${styles.copyItem} ${index === itemIndex ? styles.isActive : ''} typo-body`}
-                  ref={(element) => { copyRefs.current[itemIndex] = element }}
+                  className={`${styles.copyItem} ${
+                    index === itemIndex ? styles.isActive : ''
+                  } typo-body`}
+                  ref={(element) => {
+                    copyRefs.current[itemIndex] = element
+                  }}
                 >
                   {item.copy}
                 </div>
@@ -107,24 +121,23 @@ const SliderWithMediaModule:FunctionComponent<ISliderWithMedia> = (props) => {
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
             <div
-              className={`${styles.mediaItem} ${index === itemIndex ? styles.isActive : ''}`}
-              ref={(element) => { mediaRefs.current[itemIndex] = element }}
+              className={`${styles.mediaItem} ${
+                index === itemIndex ? styles.isActive : ''
+              }`}
+              ref={(element) => {
+                mediaRefs.current[itemIndex] = element
+              }}
               role="button"
             >
-              {
-                item.vimeoVideoUrl
-                  ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                  : (
-                    item.svg && (
-                      <Image
-                        src={item.svg.sourceUrl}
-                        alt={item.svg.altText}
-                        width={item.svg.mediaDetails.width}
-                        height={item.svg.mediaDetails.height}
-                      />
-                    )
-                  )
-              }
+              {item.vimeoVideoUrl && (
+                <video
+                  src={item.vimeoVideoUrl}
+                  playsInline
+                  muted
+                  loop
+                  autoPlay
+                />
+              )}
             </div>
           ))}
         </div>
