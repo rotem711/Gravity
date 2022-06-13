@@ -13,12 +13,11 @@ const FooterBlock = ({ data }: { data: FooterInterface }) => (
         {data.navigation.map((item) => (
           <li className="col-span-3 md:col-span-4 mb-75 last:mb-0 md:mb-0" key={item.label}>
             <span>{item.label}</span>
-            <ul>
+            <ul className={`${styles.list} `}>
               {item.links.map((subItem) => (
                 <li key={subItem.link.title}>
-                  <br />
                   <Link href={subItem.link.url}>
-                    <a target={subItem.link.target}>
+                    <a className={`${styles.navItem} `} target={subItem.link.target}>
                       {subItem.link.title}
                     </a>
                   </Link>
