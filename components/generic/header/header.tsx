@@ -23,7 +23,10 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
   }, [])
 
   return (
-    <header className={`${styles.root} container flex items-center justify-between pt-30 pb-30 xl:pt-35 xl:pb-35 bg-white xl:bg-opacity-0`} data-scroll-dir={scrollDir}>
+    <header
+      className={`${styles.root} ${inverted && styles.isInverted} container flex items-center justify-between pt-30 pb-30 xl:pt-35 xl:pb-35 bg-white xl:bg-opacity-0`}
+      data-scroll-dir={scrollDir}
+    >
       <Link href="/">
         <a><Logo /></a>
       </Link>

@@ -10,7 +10,22 @@
 
   &[data-scroll-dir="down"] {
     transform: translateY(-100%);
+  }
+
+  svg {
+    fill: theme('colors.black');
+  }
 }
+
+.isInverted {
+  @screen xl {
+    svg {
+      fill: theme('colors.white');
+    }
+    a {
+      color: theme('colors.white');
+    }
+  }
 }
 
 .navCenter {
