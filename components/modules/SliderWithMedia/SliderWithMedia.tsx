@@ -7,7 +7,6 @@ import React, {
 } from 'react'
 import { useInView } from 'react-intersection-observer'
 import Button from 'components/generic/button/button'
-import Image from 'next/image'
 import styles from './SliderWithMedia.module.scss'
 import ISliderWithMedia from './SliderWithMedia.interface'
 

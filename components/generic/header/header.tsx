@@ -7,7 +7,7 @@ import HeaderInterface from './header.interface'
 const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
   const [scrollDir, setScrollDir] = useState('up')
-
+  console.log(inverted)
   useEffect(() => {
     let prevPos = 0;
     window.onscroll = () => {
