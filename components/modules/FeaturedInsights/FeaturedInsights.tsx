@@ -37,7 +37,7 @@ const FeaturedInsightsModule:FunctionComponent<IFeaturedInsights> = (props) => {
               <time className={`${styles.title} block typo-subhead uppercase sm:mb-30`} dateTime={item.insight.post.publishedDate.replace('.', '-')}>{item.insight.post.publishedDate}</time>
               <h3 className="typo-headlines mb-60 md:mb-50">{item.insight.title}</h3>
               <Link href={`/insights/${item.insight.slug}`}>
-                <a className={`${buttonStyles.root}`}>
+                <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
                   Read more
                 </a>
               </Link>
