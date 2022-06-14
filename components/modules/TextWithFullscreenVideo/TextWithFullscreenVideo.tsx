@@ -15,7 +15,7 @@ const TextWithFullscreenVideoModule:FunctionComponent<ITextWithFullscreenVideo> 
       <div className="col-span-6 md:col-span-12 mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3 default-grid">
         {
           textWithFullscreenVideo.vimeoVideoUrl && (
-            <video className="col-span-6 md:col-span-8 xl:col-span-7 mb-75 md:mb-0" src={textWithFullscreenVideo.vimeoVideoUrl} playsInline muted loop autoPlay />
+            <video className="col-span-6 md:col-span-8 xl:col-span-7 xl:col-start-2 mb-75 md:mb-0" src={textWithFullscreenVideo.vimeoVideoUrl} playsInline muted loop autoPlay />
           )
         }
         <span className={`${styles.iconContainer} col-span-2 pr-10 md:pr-50`}>
