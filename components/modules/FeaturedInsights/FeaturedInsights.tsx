@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from 'components/generic/button/button'
+import buttonStyles from 'components/generic/button/button.module.scss'
 import styles from './FeaturedInsights.module.scss'
-import buttonStyles from 'components/generic/button/Button.module.scss'
 import IFeaturedInsights from './FeaturedInsights.interface'
 
 const FeaturedInsightsModule:FunctionComponent<IFeaturedInsights> = (props) => {
