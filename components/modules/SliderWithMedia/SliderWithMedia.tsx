@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { useInView } from 'react-intersection-observer'
 import Button from 'components/generic/button/button'
+import Image from 'components/generic/image/image'
 import styles from './SliderWithMedia.module.scss'
 import ISliderWithMedia from './SliderWithMedia.interface'
 
@@ -115,7 +116,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
           </div>
         </header>
         <div
-          className={`${styles.mediaContainer} xl:col-span-6`}
+          className={`${styles.mediaContainer} xl:col-span-6 default-grid`}
           style={{ height: mediaHeight }}
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
@@ -130,12 +131,20 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
             >
               {item.vimeoVideoUrl && (
                 <video
+                  className={`${styles.video}`}
                   src={item.vimeoVideoUrl}
                   playsInline
                   muted
                   loop
                   autoPlay
                 />
+              )}
+              {item.image && (
+                <div className={`${styles.image}`}>
+                  <Image
+                    image={item.image}
+                  />
+                </div>
               )}
             </div>
           ))}

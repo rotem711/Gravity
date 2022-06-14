@@ -42,11 +42,14 @@
   position: relative;
 
   .mediaItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     opacity: 0;
     transition: opacity 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -57,3 +60,13 @@
   }
 }
 
+.video, .image {
+  display: block;
+  width: 75%;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+}
