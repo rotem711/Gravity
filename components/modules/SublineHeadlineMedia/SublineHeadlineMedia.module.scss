@@ -1,6 +1,10 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
-  border-bottom: 1px solid black;
+.mediaContainer {
+  @screen xl {
+    margin-left: 8.7%;
+    margin-right: 5.8%;
+  }
 }
