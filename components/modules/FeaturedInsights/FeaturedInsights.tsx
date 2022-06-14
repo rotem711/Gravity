@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import buttonStyles from 'components/generic/button/button.module.scss'
 import styles from './FeaturedInsights.module.scss'
 import IFeaturedInsights from './FeaturedInsights.interface'
 
@@ -33,7 +35,12 @@ const FeaturedInsightsModule:FunctionComponent<IFeaturedInsights> = (props) => {
                 }
               </div>
               <time className={`${styles.title} block typo-subhead uppercase sm:mb-30`} dateTime={item.insight.post.publishedDate.replace('.', '-')}>{item.insight.post.publishedDate}</time>
-              <h3 className="typo-headlines">{item.insight.title}</h3>
+              <h3 className="typo-headlines mb-60 md:mb-50">{item.insight.title}</h3>
+              <Link href={`/insights/${item.insight.slug}`}>
+                <a className={`${buttonStyles.root}`}>
+                  Read more
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
