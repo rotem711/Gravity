@@ -65,7 +65,7 @@ const BigQuoteModule:FunctionComponent<IBigQuote> = (props) => {
               <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85 xl:col-span-3`}>{bigQuote.leftHeadline}</h2>
               {bigQuote.quotes.map((item) => (
                 <blockquote className={`${styles.quoteElement} typo-big-quotes xl:col-span-8 xl:col-start-5`}>
-                  {item.quote}
+                  <div dangerouslySetInnerHTML={{ __html: item.quote }} />
                   <i aria-hidden="true">”</i>
                   <cite className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}>
                     <p>{item.subline}</p>
@@ -86,7 +86,7 @@ const BigQuoteModule:FunctionComponent<IBigQuote> = (props) => {
                     ref={(element) => { quoteRefs.current[itemIndex] = element }}
                   >
                     <div className={`${styles.quoteElement} col-span-6 md:col-span-9`}>
-                      {item.quote}
+                      <div dangerouslySetInnerHTML={{ __html: item.quote }} />
                       <i aria-hidden="true">”</i>
                       <cite className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}>
                         <p>{item.subline}</p>

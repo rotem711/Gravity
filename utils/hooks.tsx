@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export default function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
-  const bpWidth = 768
+  const bpWidth = 835
 
   const onResize = () => {
     setIsMobile(window.innerWidth <= bpWidth)
