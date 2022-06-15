@@ -24,7 +24,10 @@ const BigImageCarouselModule:FunctionComponent<IBigImageCarousel> = (props) => {
             }}
             className={`${styles.swiper}`}
             loop
+            allowTouchMove={false}
+            touchRatio={0}
             modules={[Autoplay]}
+            preventClicks
             spaceBetween={0}
           >
             {bigImageCarousel.images.map((item) => (
