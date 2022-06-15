@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState, useLayoutEffect, useRef } from 'react'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
 import {
@@ -17,7 +17,24 @@ import ITabNavigationContent from './TabNavigationContent.interface'
 
 const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (props) => {
   const { tabNavigationContent } = props
+  const [index, setIndex] = useState(0)
+  const [tabHeight, setTabHeight] = useState(0)
+  const tabContentRefs = useRef([])
+
   const isMobile = useIsMobile()
+
+  const onClickItem = (e) => {
+    setIndex(parseInt(e.currentTarget.dataset.index, 10))
+  }
+
+  // set copyContainer height
+  useLayoutEffect(() => {
+    for (let i = 0; i < tabContentRefs.current.length; i += 1) {
+      if (tabContentRefs.current[i].clientHeight > tabHeight) {
+        setTabHeight(tabContentRefs.current[i].clientHeight)
+      }
+    }
+  })
 
   return (
     <div
@@ -65,7 +82,70 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
             ))}
           </Accordion>
         ) : (
-          <div>dazdaz desktop</div>
+          <div>
+            <nav>
+              <ul className="flex w-full">
+                {tabNavigationContent.tabs.map((item, itemIndex) => (
+                  <li
+                    style={{ backgroundColor: item.backgroundColor }}
+                    className="flex-1"
+                  >
+                    <button
+                      className={`${styles.navItem} ${
+                        index === itemIndex ? styles.isActive : ''
+                      } typo-subhead uppercase block w-full pt-35 pb-35 pl-40`}
+                      onClick={onClickItem}
+                      onKeyPress={onClickItem}
+                      data-index={itemIndex}
+                      type="button"
+                    >
+                      {item.titleIcon}
+                      {item.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div
+              className={`${styles.tabContainer} w-full`}
+              style={{ height: tabHeight }}
+            >
+              {tabNavigationContent.tabs.map((item, itemIndex) => (
+                <div
+                  style={{ backgroundColor: item.backgroundColor }}
+                  className={`${styles.tabItem} ${
+                    index === itemIndex ? styles.isActive : ''
+                  }`}
+                  ref={(element) => {
+                    tabContentRefs.current[itemIndex] = element
+                  }}
+                >
+                  <div className="container default-grid xl:col-span-12 pt-50 pb-150">
+                    {item.content.map((subItem) => (
+                      <div className="mt-155 col-span-4">
+                        <h2 className="typo-headlines mb-50">{subItem.headline}</h2>
+                        <div className="typo-body">{subItem.copy}</div>
+                      </div>
+                    ))}
+                    <div
+                      className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
+                      style={{ color: item.backgroundColor }}
+                    >
+                      <Image
+                        image={item.image}
+                      />
+                      <span className={`${styles.corners}`} aria-hidden="true">
+                        <i />
+                        <i />
+                        <i />
+                        <i />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
         {/* {tabNavigationContent.tabs.map((item, itemIndex) => (isMobile ? (
           <div>
