@@ -25,8 +25,6 @@ import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigat
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
-  console.log(extractedLayout)
-
   switch (extractedLayout) {
     case 'Hero':
       return <HeroModule {...layout} />

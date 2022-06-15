@@ -4,6 +4,7 @@ const TextVideoCombinationFragment = (t: string) => `
   fragment TextVideoCombination on ${t}_TextVideoCombination {
     fieldGroupName
     textVideoCombination {
+      optionWithLineOnTop
       items {
         topHeadline
         headline
