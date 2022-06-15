@@ -32,3 +32,9 @@ h1, h2 {
 li {
   list-style: none;
 }
+
+button, input {
+  -webkit-appearance: none;
+  outline: none;
+  box-shadow: none;
+}
