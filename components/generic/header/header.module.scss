@@ -15,7 +15,7 @@
   &[data-scroll-dir='up'] {
     @screen xl {
       &.scrolled {
-        background: #fff;
+        background: theme('colors.white');
         &.is-inverted {
           background: #000;
         }

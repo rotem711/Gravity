@@ -55,7 +55,7 @@ const Page = ({
             </div>
           </div>
         )}
-        {page.uri === '/' && <ScrollNudge />}
+        {page && page.uri === '/' && <ScrollNudge />}
         {page && page.template.pageBuilder.pageBuilder.map((layout) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'))}
       </main>
       <Footer data={footer} />
