@@ -11,7 +11,7 @@ const TextVideoCombinationModule:FunctionComponent<ITextVideoCombination> = (pro
       className={`${styles.root} container`}
     >
       {textVideoCombination.items.map((item) => (
-        <div className={`${styles.item} ${item.flipHorizontally ? styles.isFlipped : ''} md:default-grid items-center`}>
+        <div id={item.topHeadline.toLowerCase()} className={`${styles.item} ${item.flipHorizontally ? styles.isFlipped : ''} md:default-grid items-center`}>
           <header className="md:default-grid md:col-span-12 xl:block xl:col-span-6">
             <div className="md:col-span-5">
               { item.topHeadline && (
