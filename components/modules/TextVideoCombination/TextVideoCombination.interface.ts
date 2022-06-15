@@ -4,6 +4,7 @@ import Link from 'interfaces/Link'
 export default interface ITextVideoCombination {
   fieldGroupName: string
   textVideoCombination: {
+    optionWithLineOnTop: boolean
     items: [
       {
         topHeadline: string

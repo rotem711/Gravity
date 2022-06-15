@@ -214,6 +214,7 @@ export interface PageInterface {
   id: string
   title: string
   slug: string
+  uri: string
   pageOption: {
     invertNavigation: boolean
   }

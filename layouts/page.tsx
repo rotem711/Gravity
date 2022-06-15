@@ -4,13 +4,13 @@ import { PageInterface } from 'wordpress/page-query'
 import Head from 'next/head'
 import renderLayout from 'utils/repeater'
 import { GlobalContextProvider } from 'pages/_app'
+import ScrollNudge from 'components/generic/ScrollNudge/ScrollNudge'
 import FooterInterface from 'components/generic/footer/footer.interface'
 import { Navigation } from 'components/generic/header/header.interface'
 import InsightsInterface, { InsightsCategory } from 'interfaces/Insights'
 import PlatformNavigationInterface from 'components/generic/platformNavigation/platformNavigation.interface'
 import Header from '../components/generic/header/header'
 import Footer from '../components/generic/footer/footer'
-import ScrollNudge from 'components/generic/ScrollNudge/ScrollNudge'
 
 const Page = ({
   page,
@@ -55,7 +55,7 @@ const Page = ({
             </div>
           </div>
         )}
-        <ScrollNudge />
+        {page.uri === '/' && <ScrollNudge />}
         {page && page.template.pageBuilder.pageBuilder.map((layout) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'))}
       </main>
       <Footer data={footer} />

@@ -1,5 +1,18 @@
 .root {
   position: relative;
+  &.lined {
+    border-top: 1px solid #000;
+    .item {
+      @screen xl {
+        padding: 4rem 0 23.5rem 0;
+      }
+    }
+    .topHeadline {
+      @screen xl {
+        padding-bottom: 13.5rem;
+      }
+    }
+  }
 }
 
 .item {
