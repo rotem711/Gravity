@@ -1,4 +1,6 @@
-import React, { FunctionComponent, useState, useLayoutEffect, useRef } from 'react'
+import React, {
+  FunctionComponent, useState, useLayoutEffect, useRef,
+} from 'react'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
 import {
@@ -42,10 +44,8 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
     >
       <div className="">
         {isMobile ? (
-          <Accordion
-            // preExpanded={tabNavigationContent.mobileDefaultOpenIndex}
-          >
-            {tabNavigationContent.tabs.map((item, itemIndex) => (
+          <Accordion>
+            {tabNavigationContent.tabs.map((item) => (
               <AccordionItem style={{ backgroundColor: item.backgroundColor }}>
                 <AccordionItemHeading>
                   <AccordionItemButton className="typo-subhead uppercase container flex items-center justify-between pt-25 pb-25">
@@ -57,7 +57,7 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                   </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel className="container pt-85 pb-145">
-                  {item.content.map((subItem, itemIndex) => (
+                  {item.content.map((subItem) => (
                     <div className="mt-155 first:mt-0">
                       <h2 className="typo-headlines mb-50">{subItem.headline}</h2>
                       <div className="typo-body">{subItem.copy}</div>
