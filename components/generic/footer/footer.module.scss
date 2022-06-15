@@ -1,35 +1,6 @@
 @import '../../../styles/variables';
 
-.root {
-  position: relative;
-}
-
-.logo {
-  display: block;
-  width: 63px;
-  height: 51px;
-}
-
-.contact {
-  p {
-    &:not(:last-child) {
-      &::after { content: "\A "; display: block; white-space: pre; }
-    }
-  }
-}
-
-.list {
-  &::before { content: "\A "; display: block; white-space: pre; }
-}
-
-.navItem {
-  font-size: 1.6rem;
-  line-height: 2.2rem;
-  letter-spacing: -0.01em;
-  padding-bottom: 0.3rem;
-  transform-origin: bottom left;
-  position:relative;
-
+.hover-effect {
   &:hover {
     &::after {
       transform-origin: left center;
@@ -49,5 +20,42 @@
     transform-origin: right center;
     transition: transform 0.35s ease-in-out;
   }
+}
+
+.root {
+  position: relative;
+}
+
+.logo {
+  display: block;
+  width: 63px;
+  height: 51px;
+}
+
+.contact {
+  p {
+    &:not(:last-child) {
+      &::after { content: "\A "; display: block; white-space: pre; }
+    }
+  }
+  a {
+    position: relative;
+    @extend .hover-effect;
+  }
+}
+
+.list {
+  &::before { content: "\A "; display: block; white-space: pre; }
+}
+
+.navItem {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.3rem;
+  transform-origin: bottom left;
+  position:relative;
+
+  @extend .hover-effect;
 
 }
