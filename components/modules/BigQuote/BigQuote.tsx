@@ -67,16 +67,16 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
     >
       <div className="container pt-25 pb-155 xl:pt-35 xl:pb-230">
         {quoteLayout === 'simple' ? (
-          <div className="xl:default-grid">
+          <div className="md:default-grid">
             <h2
-              className={`${styles.title} typo-subhead uppercase sm:mb-85 xl:col-span-3`}
+              className={`${styles.title} typo-subhead col-span-full uppercase sm:mb-85 xl:col-span-3`}
             >
               <Fade>{bigQuote.leftHeadline}</Fade>
             </h2>
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
-                className={`${styles.quoteElement} typo-big-quotes xl:col-span-8 xl:col-start-5`}
+                className={`${styles.quoteElement} typo-big-quotes md:col-span-11  xl:col-span-8 xl:col-start-5`}
               >
                 <Fade delay={150}>
                   <div dangerouslySetInnerHTML={{ __html: item.quote }} />
