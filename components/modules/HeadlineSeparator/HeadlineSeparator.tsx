@@ -9,10 +9,13 @@ const HeadlineSeparatorModule:FunctionComponent<IHeadlineSeparator> = (props) =>
 
   return (
     <div
-      className={`${styles.root} container pt-100 pb-100`}
+      className={`${styles.root} pt-100 pb-100`}
+      style={{ backgroundColor: headlineSeparator.backgroundColor }}
     >
-      <p className="typo-cta-text mb-50"><Fade>{headlineSeparator.headline}</Fade></p>
-      <Fade delay={200}><Button variant="dark" link={headlineSeparator.link} /></Fade>
+      <div className="container">
+        <p className="typo-cta-text mb-50"><Fade>{headlineSeparator.headline}</Fade></p>
+        <Fade delay={200}><Button variant="dark" link={headlineSeparator.link} /></Fade>
+      </div>
     </div>
   )
 }
