@@ -40,7 +40,7 @@ const Page = ({
         inverted={page?.pageOption?.invertNavigation}
         data={header}
       />
-      <main>
+      <main key={page.uri}>
         {true && process.env.NODE_ENV === 'development' && (
           <div className="devGrid w-full container">
             <div className="default-grid h-full">
