@@ -1,0 +1,12 @@
+$ns: '.fade';
+
+.root {
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: 700ms ease-in;
+
+  &.fade--in {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}

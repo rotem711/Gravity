@@ -3,6 +3,8 @@ const HeadlineSeparatorFragment = (t: string) => `
     fieldGroupName
     headlineSeparator {
       headline
+      backgroundColor
+      enableSubscribe
       link {
         ...Link
       }

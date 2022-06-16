@@ -1,0 +1,30 @@
+.root {
+  position: fixed;
+  right: 0.8rem;
+  top: 10rem;
+  z-index: 10;
+  transform: rotate(90deg);
+
+  .values {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.4rem;
+
+    span {
+      font-family: 'So:hne Mono';
+      font-size: 1.2rem;
+      line-height: 2.4rem;
+      color: #000;
+      letter-spacing: 0.003em;
+      text-transform: uppercase;
+    }
+    svg {
+      display: block;
+      width: 0.72rem;
+      height: auto;
+      transform: rotate(270deg) translateY(1.2rem);
+    }
+  }
+}

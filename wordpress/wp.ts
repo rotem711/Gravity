@@ -1,4 +1,3 @@
-import { GraphQLFetcherResult } from '@commerce/api'
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -27,6 +26,7 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
   })
   const res = {
     paths: pages.edges.map(
+      // eslint-disable-next-line arrow-body-style
       ({ node }: { node: { slug: string; uri: string; id: string } }) => ({
         params: {
           slug: node.uri
@@ -34,7 +34,7 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
             .split('/')
             .filter((i) => !!i),
         },
-      })
+      }),
     ),
     fallback: 'blocking',
   }
@@ -42,7 +42,7 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
 }
 
 export const getWpStaticProps = async (
-  ctx: GetStaticPropsContext
+  ctx: GetStaticPropsContext,
 ): Promise<GetStaticPropsResult<any>> => {
   const res = await fetch({
     query: pageQuery,
@@ -58,6 +58,11 @@ export const getWpStaticProps = async (
   return {
     props: {
       page: res.entry,
+      footer: res.footer.footer,
+      header: res.header.header,
+      platformNavigation: res.platformNavigation.platformNavigation,
+      insights: res.insights.nodes,
+      insightsCategories: res.insightsCategories,
     },
     revalidate: undefined,
   }

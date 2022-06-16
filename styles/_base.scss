@@ -2,6 +2,10 @@
 
 html {
 	font-size: 10px;
+
+  body {
+    background: #F7F7F2;
+  }
 }
 
 .devGrid {
@@ -15,4 +19,22 @@ html {
     background-color: rebeccapurple;
     opacity: 0.1;
   }
+}
+
+cite {
+  font-style: normal;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button, input {
+  -webkit-appearance: none;
+  outline: none;
+  box-shadow: none;
 }

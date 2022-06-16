@@ -8,6 +8,7 @@ const FeaturedInsightsFragment = (t: string) => `
         insight {
           ...on Post {
             id
+            slug
             title
             featuredImage {
               node {

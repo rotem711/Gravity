@@ -1,7 +1,56 @@
+@import './../../../styles/typography';
+
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
+.cite {
+  display: block;
+}
 
-  border-bottom: 1px solid black;
+.quoteContainer {
+  position: relative;
+
+  .quote {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    // opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    &.isActive {
+      opacity: 1;
+      transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+
+.quoteElement {
+  position: relative;
+  order: 2;
+  
+  &::before {
+    content: "“";
+    display: inline-block;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    @extend .typo-big-quotes;
+  }
+
+  @screen md {
+    order: 1;
+  }
+}
+
+.logo {
+  order: 1;
+
+  @screen md {
+    order: 2;
+  }
 }

@@ -1,4 +1,4 @@
-import { MediaItem } from 'interfaces/Image'
+import Image from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface ISliderWithMedia {
@@ -10,7 +10,7 @@ export default interface ISliderWithMedia {
         title: string
         copy: string
         vimeoVideoUrl: string
-        svg: MediaItem
+        image: Image
       },
     ]
     link: Link

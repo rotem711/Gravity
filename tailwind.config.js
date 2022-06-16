@@ -1,7 +1,7 @@
-const generateSpacings = (interval = 5, max = 300) => {
+const generateSpacings = (interval = 5, max = 320) => {
   const array = {}
   for (let x = 0; x <= max; x += interval) {
-    array[x] = `${interval / 10}rem`
+    array[x] = `${x / 10}rem`
   }
   return array
 }
@@ -30,7 +30,8 @@ module.exports = {
     },
     screens: {
       sm: '375px',
-      md: '768px',
+      md: '835px',
+      lg: '1024px',
       xl: '1440px',
     },
     extend: {
@@ -48,6 +49,18 @@ module.exports = {
           'grid-template-columns': 'repeat(6, minmax(0, 1fr))',
           'column-gap': '1.5rem',
           '@screen md': {
+            'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
+            'column-gap': '2rem',
+          },
+          '@screen xl': {
+            'column-gap': '3rem',
+          },
+        },
+        '.default-grid-lg': {
+          display: 'grid',
+          'grid-template-columns': 'repeat(6, minmax(0, 1fr))',
+          'column-gap': '1.5rem',
+          '@screen lg': {
             'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
             'column-gap': '2rem',
           },

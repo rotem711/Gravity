@@ -1,14 +1,74 @@
 import React, { FunctionComponent } from 'react'
+import Button from 'components/generic/button/button'
+import Fade from 'components/generic/fade/fade'
+import Image from 'components/generic/image/image'
 import styles from './TextVideoCombination.module.scss'
 import ITextVideoCombination from './TextVideoCombination.interface'
 
-const TextVideoCombinationModule:FunctionComponent<ITextVideoCombination> = (props) => {
-  console.log(props)
+const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
+  props,
+) => {
+  const { textVideoCombination } = props
   return (
-    <div
-      className={`${styles.root} container`}
-    >
-      Textvideocombination Module
+    <div className={`${styles.root}`}>
+      <div className="container">
+        {textVideoCombination.items.map((item) => (
+          <div key={item.copy} className={`${styles.item} md:default-grid`}>
+            <span
+              className={`col-span-full typo-subhead uppercase md:mb-100 hidden md:block xl:hidden ${styles.topHeadline}`}
+            >
+              <Fade>{item.topHeadline}</Fade>
+            </span>
+            <div className="md:col-span-5 md:row-start-2">
+              {item.topHeadline && (
+                <span
+                  className={`typo-subhead uppercase mb-90 xl:mb-135 block md:hidden xl:block ${styles.topHeadline}`}
+                >
+                  <Fade>{item.topHeadline}</Fade>
+                </span>
+              )}
+              <h2 className="typo-headlines mb-50 xl:mb-180">
+                <Fade delay={200}>{item.headline}</Fade>
+              </h2>
+              <Fade delay={300}>
+                <div
+                  className="typo-body mb-45 hidden md:block xl:mb-60"
+                  dangerouslySetInnerHTML={{ __html: item.copy }}
+                />
+              </Fade>
+              <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
+                <Fade delay={400}>
+                  <Button variant="light" link={item.link} />
+                </Fade>
+              </div>
+            </div>
+            <div
+              className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
+            >
+              {item.vimeoVideoUrl ? (
+                <video
+                  src={item.vimeoVideoUrl}
+                  playsInline
+                  muted
+                  loop
+                  autoPlay
+                />
+              ) : (
+                item.image && <Image image={item.image} />
+              )}
+            </div>
+            <Fade delay={300}>
+              <div
+                className="typo-body mb-45 mt-50 md:hidden"
+                dangerouslySetInnerHTML={{ __html: item.copy }}
+              />
+            </Fade>
+            <div className="w-full md:hidden">
+              <Button variant="light" link={item.link} />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

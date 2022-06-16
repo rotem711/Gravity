@@ -1,7 +1,94 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+}
 
+.mediaContainer {
+  display: block;
+  width: 100%;
+  height: 0;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: percentage(450 / 354);
+  
+  @screen md {
+    order: 3;
+  }
+  
+  @screen md {
+    padding-bottom: percentage(700 / 1360);
+  }
 
-  border-bottom: 1px solid black;
+  > span, video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+  }
+}
+
+.swiper {
+  position: absolute;
+  inset: 0;
+}
+
+.swiperSlide {
+  height: 100%;
+
+  > div {
+    height: 100%;
+
+    span {
+      height: 100% !important;
+
+      img {
+        height: 100% !important;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.corners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  
+  i {
+    position: absolute;
+    width: 3.8rem;
+    height: 3.8rem;
+    background-color: theme('colors.white');
+    transform: translate(-50%,-50%) rotate(45deg);
+    pointer-events: none;
+    user-select: none;
+
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      top: 0;
+      left: 100%;
+    }
+
+    &:nth-child(3) {
+      top: 100%;
+      left: 0;
+    }
+
+    &:nth-child(4) {
+      top: 100%;
+      left: 100%;
+    }
+  }
+}
+
+.copyContainer {
+  @screen xl {
+    order: 2;
+  }
 }

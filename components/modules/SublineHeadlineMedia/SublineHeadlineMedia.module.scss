@@ -1,0 +1,10 @@
+.root {
+  position: relative;
+}
+
+.mediaContainer {
+  @screen xl {
+    margin-left: 8.7%;
+    margin-right: 5.8%;
+  }
+}
