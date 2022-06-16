@@ -79,9 +79,8 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 className={`${styles.quoteElement} typo-big-quotes xl:col-span-8 xl:col-start-5`}
               >
                 <Fade delay={150}>
-                  <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                  <div dangerouslySetInnerHTML={{ __html: item.quote + "”" }} />
                 </Fade>
-                <i aria-hidden="true">”</i>
                 <cite
                   className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
                 >
@@ -117,9 +116,8 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                     className={`${styles.quoteElement} col-span-6 md:col-span-9`}
                   >
                     <Fade delay={150}>
-                      <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                      <div dangerouslySetInnerHTML={{ __html: item.quote + "”" }} />
                     </Fade>
-                    <i aria-hidden="true">”</i>
                     <cite
                       className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
                     >
