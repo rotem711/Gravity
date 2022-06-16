@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import Image from 'next/image'
+import Fade from 'components/generic/fade/fade'
 import { useInView } from 'react-intersection-observer'
 import styles from './BigQuote.module.scss'
 import IBigQuote from './BigQuote.interface'
@@ -70,19 +71,23 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             <h2
               className={`${styles.title} typo-subhead uppercase sm:mb-85 xl:col-span-3`}
             >
-              {bigQuote.leftHeadline}
+              <Fade>{bigQuote.leftHeadline}</Fade>
             </h2>
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
                 className={`${styles.quoteElement} typo-big-quotes xl:col-span-8 xl:col-start-5`}
               >
-                <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                <Fade delay={150}>
+                  <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                </Fade>
                 <i aria-hidden="true">”</i>
                 <cite
                   className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: item.subline }} />
+                  <Fade delay={300}>
+                    <div dangerouslySetInnerHTML={{ __html: item.subline }} />
+                  </Fade>
                 </cite>
               </blockquote>
             ))}
@@ -92,7 +97,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             <h2
               className={`${styles.title} typo-subhead uppercase sm:mb-85 w-full`}
             >
-              {bigQuote.leftHeadline}
+              <Fade>{bigQuote.leftHeadline}</Fade>
             </h2>
             <div
               className={`${styles.quoteContainer}`}
@@ -111,12 +116,18 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   <div
                     className={`${styles.quoteElement} col-span-6 md:col-span-9`}
                   >
-                    <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                    <Fade delay={150}>
+                      <div dangerouslySetInnerHTML={{ __html: item.quote }} />
+                    </Fade>
                     <i aria-hidden="true">”</i>
                     <cite
                       className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
                     >
-                      <div dangerouslySetInnerHTML={{ __html: item.subline }} />
+                      <Fade delay={300}>
+                        <div
+                          dangerouslySetInnerHTML={{ __html: item.subline }}
+                        />
+                      </Fade>
                     </cite>
                   </div>
                   <div

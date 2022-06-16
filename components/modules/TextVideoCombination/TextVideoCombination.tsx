@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Button from 'components/generic/button/button'
+import Fade from 'components/generic/fade/fade'
 import Image from 'components/generic/image/image'
 import styles from './TextVideoCombination.module.scss'
 import ITextVideoCombination from './TextVideoCombination.interface'
@@ -21,19 +22,25 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             <header className="md:default-grid md:col-span-12 xl:block xl:col-span-6">
               <div className="md:col-span-5">
                 {item.topHeadline && (
-                  <span className={`typo-subhead uppercase mb-25 block ${styles.topHeadline}`}>
-                    {item.topHeadline}
+                  <span
+                    className={`typo-subhead uppercase mb-25 block ${styles.topHeadline}`}
+                  >
+                    <Fade>{item.topHeadline}</Fade>
                   </span>
                 )}
-                <h2 className="typo-headlines mb-75">{item.headline}</h2>
+                <h2 className="typo-headlines mb-75">
+                  <Fade delay={200}>{item.headline}</Fade>
+                </h2>
               </div>
               <div className="md:col-span-5 md:col-start-8">
-                <div
-                  className="typo-body mb-45"
-                  dangerouslySetInnerHTML={{ __html: item.copy }}
-                />
+                <Fade delay={300}>
+                  <div
+                    className="typo-body mb-45"
+                    dangerouslySetInnerHTML={{ __html: item.copy }}
+                  />
+                </Fade>
                 <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
-                  <Button variant="light" link={item.link} />
+                  <Fade delay={400}><Button variant="light" link={item.link} /></Fade>
                 </div>
               </div>
             </header>

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Button from 'components/generic/button/button'
+import Fade from 'components/generic/fade/fade'
 import styles from './HeadlineSeparator.module.scss'
 import IHeadlineSeparator from './HeadlineSeparator.interface'
 
@@ -10,8 +11,8 @@ const HeadlineSeparatorModule:FunctionComponent<IHeadlineSeparator> = (props) =>
     <div
       className={`${styles.root} container pt-100 pb-100`}
     >
-      <p className="typo-cta-text mb-50">{headlineSeparator.headline}</p>
-      <Button variant="dark" link={headlineSeparator.link} />
+      <p className="typo-cta-text mb-50"><Fade>{headlineSeparator.headline}</Fade></p>
+      <Fade delay={200}><Button variant="dark" link={headlineSeparator.link} /></Fade>
     </div>
   )
 }
