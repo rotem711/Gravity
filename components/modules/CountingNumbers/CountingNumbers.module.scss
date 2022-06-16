@@ -7,7 +7,7 @@
 
 .numbers {
   position: relative;
-  
+
   @screen xl {
     grid-column-start: 5;
     grid-column-end: span end;
@@ -36,11 +36,7 @@
   }
 
   dt {
-    @extend .typo-number;
-
-    @screen md {
-      @extend .typo-cta-text;
-    }
+    @apply typo-number;
   }
 
   dd {

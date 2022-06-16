@@ -13,22 +13,24 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     let prevPos = 0
-    window.onscroll = () => {
-      if (window.innerWidth <= 1024) {
-        setScrollDir('up')
-      } else if (prevPos >= window.scrollY) {
-        setScrollDir('up')
-      } else {
-        setScrollDir('down')
+    setTimeout(() => {
+      window.onscroll = () => {
+        if (window.innerWidth <= 1024) {
+          setScrollDir('up')
+        } else if (prevPos >= window.scrollY) {
+          setScrollDir('up')
+        } else if (window.scrollY > 1 && prevPos > 0) {
+          setScrollDir('down')
+        }
+        if (window.scrollY === 0) {
+          setScrollDir('')
+          setScrolled(false)
+        } else {
+          setScrolled(true)
+        }
+        prevPos = window.scrollY
       }
-      if (window.scrollY === 0) {
-        setScrollDir('')
-        setScrolled(false)
-      } else {
-        setScrolled(true)
-      }
-      prevPos = window.scrollY
-    }
+    }, 10)
   }, [])
 
   return (
