@@ -27,6 +27,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
               delay: 2500,
               disableOnInteraction: false,
             }}
+            effect="fade"
             className={`${styles.swiper}`}
             loop
             allowTouchMove={false}
@@ -34,6 +35,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
             modules={[Autoplay]}
             preventClicks
             spaceBetween={0}
+            speed={0}
           >
             {bigImageCarousel.images.map((item) => (
               <SwiperSlide className={`${styles.swiperSlide}`}>
