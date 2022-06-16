@@ -31,8 +31,8 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
 
   const recalculate = () => {
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
-      if (tabContentRefs.current[i].clientHeight > tabHeight) {
-        setTabHeight(tabContentRefs.current[i].clientHeight)
+      if (tabContentRefs.current[i].children[0].clientHeight > tabHeight) {
+        setTabHeight(tabContentRefs.current[i].children[0].getBoundingClientRect().height)
       }
     }
   }
