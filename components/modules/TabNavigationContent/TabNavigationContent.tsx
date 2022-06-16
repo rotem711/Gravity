@@ -1,5 +1,5 @@
 import React, {
-  FunctionComponent, useState, useLayoutEffect, useRef,
+  FunctionComponent, useState, useEffect, useLayoutEffect, useRef,
 } from 'react'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
@@ -29,14 +29,25 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
     setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
-  // set copyContainer height
-  useLayoutEffect(() => {
+  const recalculate = () => {
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (tabContentRefs.current[i].clientHeight > tabHeight) {
         setTabHeight(tabContentRefs.current[i].clientHeight)
       }
     }
+  }
+
+  // set copyContainer height
+  useLayoutEffect(() => {
+    recalculate()
   })
+
+  useEffect(() => {
+    window.addEventListener('orientationchange', recalculate)
+    return () => {
+      window.removeEventListener('orientationchange', recalculate)
+    }
+  }, [index])
 
   return (
     <div
