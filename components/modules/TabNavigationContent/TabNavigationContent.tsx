@@ -88,7 +88,7 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                 {tabNavigationContent.tabs.map((item, itemIndex) => (
                   <li
                     style={{ backgroundColor: item.backgroundColor }}
-                    className="flex-1"
+                    className={`${styles.navTopItem} flex-1`}
                   >
                     <button
                       className={`${styles.navItem} ${
@@ -121,26 +121,53 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                   }}
                 >
                   <div className="container default-grid xl:col-span-12 pt-50 pb-150">
-                    {item.content.map((subItem) => (
-                      <div className="mt-155 col-span-4">
-                        <h2 className="typo-headlines mb-50">{subItem.headline}</h2>
-                        <div className="typo-body">{subItem.copy}</div>
-                      </div>
-                    ))}
-                    <div
-                      className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
-                      style={{ color: item.backgroundColor }}
-                    >
-                      <Image
-                        image={item.image}
-                      />
-                      <span className={`${styles.corners}`} aria-hidden="true">
-                        <i />
-                        <i />
-                        <i />
-                        <i />
-                      </span>
-                    </div>
+                    {item.content.length === 3 ? (
+                      <>
+                        {item.content.map((subItem) => (
+                          <div className="mt-155 col-span-4 flex flex-col">
+                            <h2 className="typo-headlines mb-50 flex-1">{subItem.headline}</h2>
+                            <div className="typo-body">{subItem.copy}</div>
+                          </div>
+                        ))}
+                        <div
+                          className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
+                          style={{ color: item.backgroundColor }}
+                        >
+                          <Image
+                            image={item.image}
+                          />
+                          <span className={`${styles.corners}`} aria-hidden="true">
+                            <i />
+                            <i />
+                            <i />
+                            <i />
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {item.content.map((subItem) => (
+                          <div className="mt-155 col-span-12 default-grid">
+                            <h2 className="typo-headlines mb-50 col-span-5">{subItem.headline}</h2>
+                            <div className="typo-body col-span-4 col-start-8">{subItem.copy}</div>
+                          </div>
+                        ))}
+                        <div
+                          className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
+                          style={{ color: item.backgroundColor }}
+                        >
+                          <Image
+                            image={item.image}
+                          />
+                          <span className={`${styles.corners}`} aria-hidden="true">
+                            <i />
+                            <i />
+                            <i />
+                            <i />
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
