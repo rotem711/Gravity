@@ -10,12 +10,10 @@ export default interface ITabNavigationContent {
         titleIcon: MediaItem
         backgroundColor: string
         image: Image
-        content: [
-          {
-            headline: string
-            copy: string
-          },
-        ]
+        content: {
+          headline: string
+          copy: string
+        }[]
       },
     ]
   }
