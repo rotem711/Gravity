@@ -18,19 +18,21 @@ const TextVideoCombinationV2Module: FunctionComponent<
           const imageC = item.image && <ImageComponent image={item.image} />
           const contentC = (
             <>
-              <div className="col-span-5">
+              <div className="col-span-6 md:col-span-5">
                 <h4 className="pb-30 typo-subhead uppercase">
                   {item.topHeadline}
                 </h4>
-                <h2 className="pb-125 typo-headlines">{item.headline}</h2>
+                <h2 className="pb-75 md:pb-125 typo-headlines">
+                  {item.headline}
+                </h2>
               </div>
-              <div className="col-span-5 col-start-7">
+              <div className="col-span-6 md:col-span-5 md:col-start-7">
                 <div
-                  className="pb-55 typo-body"
+                  className="pb-45 md:pb-55 typo-body"
                   style={{ fontWeight: 400 }}
                   dangerouslySetInnerHTML={{ __html: item.copy }}
                 />
-                <div className="md:hidden">
+                <div className="hidden md:block">
                   <Button variant="light" link={item.link} />
                 </div>
               </div>
@@ -38,12 +40,17 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           return (
             <div
-              className={`default-grid ${index > 0 ? 'pt-230 xl:pt-270' : ''}`}
+              className={`default-grid ${index > 0 ? 'pt-170 md:pt-230 xl:pt-270' : ''}`}
             >
               {flipHorizontally || isMobile ? (
                 <>
-                  <div className="col-span-12 xl:col-span-6">{imageC}</div>
-                  <div className="col-span-12 xl:col-span-4 xl:col-start-8 default-grid xl:block mt-60 xl:mt-0">
+                  <div className="col-span-12 xl:col-span-6 order-2 md:order-1">
+                    {imageC}
+                    <div className="md:hidden mt-50">
+                      <Button variant="light" link={item.link} />
+                    </div>
+                  </div>
+                  <div className="col-span-12 xl:col-span-4 xl:col-start-8 default-grid xl:block md:mt-60 xl:mt-0 order-1 md:order-2">
                     {contentC}
                   </div>
                 </>

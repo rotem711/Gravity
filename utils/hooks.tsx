@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 
 const { theme } = require('../tailwind.config')
 
-export default function useIsMobile(breakPoint = 'md') {
+export default function useIsMobile(breakPoint) {
   const [isMobile, setIsMobile] = useState(false)
-  const bpWidth = theme.screens[breakPoint].replace('px', '')
+  console.log(breakPoint)
+  const bpWidth = theme.screens[breakPoint || 'md'].replace('px', '')
 
   const onResize = () => {
     setIsMobile(window.innerWidth <= bpWidth)

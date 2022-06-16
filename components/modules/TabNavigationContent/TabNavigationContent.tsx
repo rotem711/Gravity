@@ -1,5 +1,9 @@
 import React, {
-  FunctionComponent, useState, useEffect, useLayoutEffect, useRef,
+  FunctionComponent,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
 } from 'react'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
@@ -17,7 +21,9 @@ import ITabNavigationContent from './TabNavigationContent.interface'
 // temporary
 // import 'react-accessible-accordion/dist/fancy-example.css'
 
-const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (props) => {
+const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
+  props,
+) => {
   const { tabNavigationContent } = props
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
@@ -31,8 +37,11 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
 
   const recalculate = () => {
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
+      if (!tabContentRefs.current[i]) return
       if (tabContentRefs.current[i].children[0].clientHeight > tabHeight) {
-        setTabHeight(tabContentRefs.current[i].children[0].getBoundingClientRect().height)
+        setTabHeight(
+          tabContentRefs.current[i].children[0].getBoundingClientRect().height,
+        )
       }
     }
   }
@@ -50,9 +59,7 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
   }, [index])
 
   return (
-    <div
-      className={`${styles.root}`}
-    >
+    <div className={`${styles.root}`}>
       <div className="">
         {isMobile ? (
           <Accordion>
@@ -70,7 +77,9 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                 <AccordionItemPanel className="container pt-85 pb-145">
                   {item.content.map((subItem) => (
                     <div className="mt-155 first:mt-0">
-                      <h2 className="typo-headlines mb-50">{subItem.headline}</h2>
+                      <h2 className="typo-headlines mb-50">
+                        {subItem.headline}
+                      </h2>
                       <div className="typo-body">{subItem.copy}</div>
                     </div>
                   ))}
@@ -78,9 +87,7 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                     className={`${styles.mediaContainer} mt-45`}
                     style={{ color: item.backgroundColor }}
                   >
-                    <Image
-                      image={item.image}
-                    />
+                    <Image image={item.image} />
                     <span className={`${styles.corners}`} aria-hidden="true">
                       <i />
                       <i />
@@ -136,7 +143,9 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                       <>
                         {item.content.map((subItem) => (
                           <div className="mt-155 col-span-4 flex flex-col">
-                            <h2 className="typo-headlines mb-50 flex-1">{subItem.headline}</h2>
+                            <h2 className="typo-headlines mb-50 flex-1">
+                              {subItem.headline}
+                            </h2>
                             <div className="typo-body">{subItem.copy}</div>
                           </div>
                         ))}
@@ -144,10 +153,11 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                           className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          <Image
-                            image={item.image}
-                          />
-                          <span className={`${styles.corners}`} aria-hidden="true">
+                          <Image image={item.image} />
+                          <span
+                            className={`${styles.corners}`}
+                            aria-hidden="true"
+                          >
                             <i />
                             <i />
                             <i />
@@ -159,18 +169,23 @@ const TabNavigationContentModule:FunctionComponent<ITabNavigationContent> = (pro
                       <>
                         {item.content.map((subItem) => (
                           <div className="mt-155 col-span-12 default-grid">
-                            <h2 className="typo-headlines mb-50 col-span-5">{subItem.headline}</h2>
-                            <div className="typo-body col-span-4 col-start-8">{subItem.copy}</div>
+                            <h2 className="typo-headlines mb-50 col-span-5">
+                              {subItem.headline}
+                            </h2>
+                            <div className="typo-body col-span-4 col-start-8">
+                              {subItem.copy}
+                            </div>
                           </div>
                         ))}
                         <div
                           className={`${styles.mediaContainer} mt-45 xl:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          <Image
-                            image={item.image}
-                          />
-                          <span className={`${styles.corners}`} aria-hidden="true">
+                          <Image image={item.image} />
+                          <span
+                            className={`${styles.corners}`}
+                            aria-hidden="true"
+                          >
                             <i />
                             <i />
                             <i />
