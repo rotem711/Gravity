@@ -11,7 +11,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
   const { textVideoCombinationV2 } = props
   const isMobile = useIsMobile('xl')
   return (
-    <div className={`${styles.root} pt-0 pb-100 xl:pb-150`}>
+    <div className={`${styles.root} pt-0 pb-100 lg:pb-150`}>
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally } = item
@@ -40,17 +40,36 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           return (
             <div
-              className={`default-grid ${index > 0 ? 'pt-170 md:pt-230 xl:pt-270' : ''}`}
+              className={`default-grid ${
+                index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''
+              }`}
             >
               {flipHorizontally || isMobile ? (
                 <>
-                  <div className="col-span-12 xl:col-span-6 order-2 md:order-1">
-                    {imageC}
+                  <div className="col-span-12 lg:col-span-6 order-2 md:order-1 mb-auto">
+                    <div className="relative">
+                      <div
+                        className={`${
+                          item.vimeoVideoUrl ? styles.absoluteImage : ''
+                        }`}
+                      >
+                        {imageC}
+                      </div>
+                      {item.vimeoVideoUrl && (
+                        <video
+                          src={item.vimeoVideoUrl}
+                          playsInline
+                          muted
+                          loop
+                          autoPlay
+                        />
+                      )}
+                    </div>
                     <div className="md:hidden mt-50">
                       <Button variant="light" link={item.link} />
                     </div>
                   </div>
-                  <div className="col-span-12 xl:col-span-4 xl:col-start-8 default-grid xl:block md:mt-60 xl:mt-0 order-1 md:order-2">
+                  <div className="col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 order-1 md:order-2">
                     {contentC}
                   </div>
                 </>
