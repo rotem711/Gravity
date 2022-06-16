@@ -74,6 +74,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             </h2>
             {bigQuote.quotes.map((item) => (
               <blockquote
+                key={item.quote}
                 className={`${styles.quoteElement} typo-big-quotes xl:col-span-8 xl:col-start-5`}
               >
                 <div dangerouslySetInnerHTML={{ __html: item.quote }} />
@@ -99,6 +100,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             >
               {bigQuote.quotes.map((item, itemIndex) => (
                 <blockquote
+                  key={item.quote}
                   className={`${styles.quote} ${
                     index === itemIndex ? styles.isActive : ''
                   } typo-big-quotes default-grid xl:col-span-12`}

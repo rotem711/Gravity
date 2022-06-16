@@ -19,6 +19,7 @@ import SublineHeadlineMediaFragment from 'components/modules/SublineHeadlineMedi
 import TabNavigationContentFragment from 'components/modules/TabNavigationContent/TabNavigationContent.graphql'
 import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
+import TextVideoCombinationV2Fragment from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
 import Image from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
@@ -31,6 +32,7 @@ export default `
   ${HeroFragment(TEMPLATE_PREFIX)}
   ${SliderWithMediaFragment(TEMPLATE_PREFIX)}
   ${TextVideoCombinationFragment(TEMPLATE_PREFIX)}
+  ${TextVideoCombinationV2Fragment(TEMPLATE_PREFIX)}
   ${TextWithFullscreenVideoFragment(TEMPLATE_PREFIX)}
   ${BigImageCarouselFragment(TEMPLATE_PREFIX)}
   ${HeadlineSeparatorFragment(TEMPLATE_PREFIX)}
@@ -144,6 +146,9 @@ export default `
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_TextVideoCombination {
                 ...TextVideoCombination
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_TextVideoCombinationV2 {
+                ...TextVideoCombinationV2
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_TextWithFullscreenVideo {
                 ...TextWithFullscreenVideo

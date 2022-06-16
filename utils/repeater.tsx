@@ -22,54 +22,60 @@ import ImageWithCopyColumnsModule from 'components/modules/ImageWithCopyColumns/
 import HeadlineCopyMediaRowsModule from 'components/modules/HeadlineCopyMediaRows/HeadlineCopyMediaRows'
 import SublineHeadlineMediaModule from 'components/modules/SublineHeadlineMedia/SublineHeadlineMedia'
 import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigation/InsightsWithNavigation'
+import DividerModule from 'components/modules/Divider/Divider'
+import TextVideoCombinationV2Module from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
 
 const renderLayout = (layout: any, prefix: string) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
   switch (extractedLayout) {
     case 'Hero':
-      return <HeroModule {...layout} />
+      return <HeroModule key="HeroModule" {...layout} />
     case 'SliderWithMedia':
-      return <SliderWithMediaModule {...layout} />
+      return <SliderWithMediaModule key="SliderWithMediaModule" {...layout} />
     case 'TextVideoCombination':
-      return <TextVideoCombinationModule {...layout} />
+      return <TextVideoCombinationModule key="TextVideoCombination" {...layout} />
     case 'TextWithFullscreenVideo':
-      return <TextWithFullscreenVideoModule {...layout} />
+      return <TextWithFullscreenVideoModule key="TextWithFullscreenVideo" {...layout} />
     case 'BigImageCarousel':
-      return <BigImageCarouselModule {...layout} />
+      return <BigImageCarouselModule key="BigImageCarousel" {...layout} />
     case 'HeadlineSeparator':
-      return <HeadlineSeparatorModule {...layout} />
+      return <HeadlineSeparatorModule key="HeadlineSeparator" {...layout} />
     case 'BigQuote':
-      return <BigQuoteModule {...layout} />
+      return <BigQuoteModule key="BigQuote" {...layout} />
     case 'MediaWithCopyAndLink':
-      return <MediaWithCopyAndLinkModule {...layout} />
+      return <MediaWithCopyAndLinkModule key="MediaWithCopyAndLink" {...layout} />
     case 'FeaturedInsights':
-      return <FeaturedInsightsModule {...layout} />
+      return <FeaturedInsightsModule key="FeaturedInsights" {...layout} />
     case 'CountingNumbers':
-      return <CountingNumbersModule {...layout} />
+      return <CountingNumbersModule key="CountingNumbers" {...layout} />
     case 'SideBySideMedia':
-      return <SideBySideMediaModule {...layout} />
+      return <SideBySideMediaModule key="SideBySideMedia" {...layout} />
     case 'HeroV2':
-      return <HeroV2Module {...layout} />
+      return <HeroV2Module key="HeroV2" {...layout} />
     case 'PlatformNavigation':
-      return <PlatformNavigation />
+      return <PlatformNavigation key="PlatformNavigation" />
     case 'BigHeadline':
-      return <BigHeadlineModule {...layout} />
+      return <BigHeadlineModule key="BigHeadline" {...layout} />
     case 'FullscreenLinkWithMedia':
-      return <FullscreenLinkWithMediaModule {...layout} />
+      return <FullscreenLinkWithMediaModule key="FullscreenLinkWithMedia" {...layout} />
     case 'TabNavigationContent':
-      return <TabNavigationContentModule {...layout} />
+      return <TabNavigationContentModule key="TabNavigationContent" {...layout} />
     case 'TeamGrid':
-      return <TeamGridModule {...layout} />
+      return <TeamGridModule key="TeamGrid" {...layout} />
     case 'HeroWithAnimatedText':
-      return <HeroWithAnimatedTextModule {...layout} />
+      return <HeroWithAnimatedTextModule key="HeroWithAnimatedText" {...layout} />
     case 'ImageWithCopyColumns':
-      return <ImageWithCopyColumnsModule {...layout} />
+      return <ImageWithCopyColumnsModule key="ImageWithCopyColumns" {...layout} />
     case 'HeadlineCopyMediaRows':
-      return <HeadlineCopyMediaRowsModule {...layout} />
+      return <HeadlineCopyMediaRowsModule key="HeadlineCopyMediaRows" {...layout} />
     case 'SublineHeadlineMedia':
-      return <SublineHeadlineMediaModule {...layout} />
+      return <SublineHeadlineMediaModule key="SublineHeadlineMedia" {...layout} />
     case 'InsightsWithNavigation':
-      return <InsightsWithNavigationModule />
+      return <InsightsWithNavigationModule key="InsightsWithNavigation" />
+    case 'Divider':
+      return <DividerModule key="Divider" {...layout} />
+    case 'TextVideoCombinationV2':
+      return <TextVideoCombinationV2Module key="TextVideoCombinationV2" {...layout} />
     default:
       return null
   }

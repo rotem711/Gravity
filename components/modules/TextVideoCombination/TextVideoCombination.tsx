@@ -9,10 +9,11 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
 ) => {
   const { textVideoCombination } = props
   return (
-    <div className={`${styles.root} ${textVideoCombination.optionWithLineOnTop ? styles.lined : ''}`}>
+    <div className={`${styles.root}`}>
       <div className="container">
         {textVideoCombination.items.map((item) => (
           <div
+            key={item.copy}
             className={`${styles.item} ${
               item.flipHorizontally ? styles.isFlipped : ''
             } md:default-grid`}
