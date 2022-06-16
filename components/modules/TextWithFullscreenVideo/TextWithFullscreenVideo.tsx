@@ -12,7 +12,7 @@ const TextWithFullscreenVideoModule: FunctionComponent<
 
   return (
     <div
-      className={`${styles.root} container default-grid pt-30 pb-150 md:pb-200`}
+      className={`${styles.root} container default-grid pb-150 md:pb-200`}
     >
       <h2 className="col-span-6 typo-headlines mb-80">
         <Fade>{textWithFullscreenVideo.headline}</Fade>
