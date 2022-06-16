@@ -29,7 +29,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
           </Fade>
         </div>
         <ul className={`${styles.logos} default-grid w-full mt-95`}>
-          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 xl:col-span-2 mb-45 md:mb-25 xl:mb-45 uppercase">
+          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 mb-45 md:mb-25 xl:mb-45 uppercase">
             <Fade delay={300}>{hero.logoRowHeadline}</Fade>
           </h2>
           {hero.logos.map((item, index) => (

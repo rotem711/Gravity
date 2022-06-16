@@ -13,7 +13,6 @@ const TextVideoCombinationFragment = (t: string) => `
         }
         vimeoVideoUrl
         ${ImageComponent()}
-        flipHorizontally
       }
     }
   }
