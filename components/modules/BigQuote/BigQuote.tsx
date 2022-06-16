@@ -133,12 +133,14 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   <div
                     className={`${styles.logo} col-span-2 md:col-start-11 mb-50 md:mb-0`}
                   >
-                    <Image
-                      src={item.logo.sourceUrl}
-                      alt={item.logo.altText}
-                      width={item.logo.mediaDetails.width}
-                      height={item.logo.mediaDetails.height}
-                    />
+                    <Fade delay={500}>
+                      <Image
+                        src={item.logo.sourceUrl}
+                        alt={item.logo.altText}
+                        width={item.logo.mediaDetails.width}
+                        height={item.logo.mediaDetails.height}
+                      />
+                    </Fade>
                   </div>
                 </blockquote>
               ))}
