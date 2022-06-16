@@ -29,4 +29,18 @@
       bottom: 8rem;
     }
   }
+
+  .flipped {
+    video {
+      margin-left: auto;
+    }
+    .absoluteImage {
+      left: 0;
+      @screen lg {
+        left: initial;
+        right: 10rem;
+        bottom: 8rem;
+      }
+    }
+  }
 }

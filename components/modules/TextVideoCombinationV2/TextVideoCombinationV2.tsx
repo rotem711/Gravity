@@ -15,7 +15,11 @@ const TextVideoCombinationV2Module: FunctionComponent<
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally } = item
+
           const imageC = item.image && <ImageComponent image={item.image} />
+          const videoC = item.vimeoVideoUrl && (
+            <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+          )
           const contentC = (
             <>
               <div className="col-span-6 md:col-span-5">
@@ -38,33 +42,26 @@ const TextVideoCombinationV2Module: FunctionComponent<
               </div>
             </>
           )
+          const mediaC = (
+            <div className="relative">
+              <div
+                className={`${item.vimeoVideoUrl ? styles.absoluteImage : ''}`}
+              >
+                {imageC}
+              </div>
+              {videoC}
+            </div>
+          )
           return (
             <div
-              className={`default-grid ${
+              className={`default-grid ${true ? styles.flipped : ''} ${
                 index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''
               }`}
             >
-              {flipHorizontally || isMobile ? (
+              {(flipHorizontally || isMobile) ? (
                 <>
                   <div className="col-span-12 lg:col-span-6 order-2 md:order-1 mb-auto">
-                    <div className="relative">
-                      <div
-                        className={`${
-                          item.vimeoVideoUrl ? styles.absoluteImage : ''
-                        }`}
-                      >
-                        {imageC}
-                      </div>
-                      {item.vimeoVideoUrl && (
-                        <video
-                          src={item.vimeoVideoUrl}
-                          playsInline
-                          muted
-                          loop
-                          autoPlay
-                        />
-                      )}
-                    </div>
+                    {mediaC}
                     <div className="md:hidden mt-50">
                       <Button variant="light" link={item.link} />
                     </div>
@@ -76,7 +73,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
               ) : (
                 <>
                   <div className="col-span-5">{contentC}</div>
-                  <div className="col-span-6 col-start-7">{imageC}</div>
+                  <div className="col-span-6 col-start-7">{mediaC}</div>
                 </>
               )}
             </div>
