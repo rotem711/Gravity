@@ -56,7 +56,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                 </h3>
                 <Link href={`/insights/${item.insight.slug}`}>
                   <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
-                    Read more
+                    Read More
                   </a>
                 </Link>
               </Fade>
