@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import { useInView } from 'react-intersection-observer'
+import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import Image from 'components/generic/image/image'
 import styles from './SliderWithMedia.module.scss'
@@ -71,7 +72,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
       ref={ref}
     >
       <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
-        {sliderWithMedia.subline}
+        <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
       <div className="xl:default-grid">
         <header className="md:default-grid xl:block xl:col-span-6 md:mb-90">
@@ -87,7 +88,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                   data-index={itemIndex}
                   type="button"
                 >
-                  {item.title}
+                  <Fade delay={itemIndex * 150}>{item.title}</Fade>
                 </button>
               </li>
             ))}
@@ -106,12 +107,14 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                     copyRefs.current[itemIndex] = element
                   }}
                 >
-                  {item.copy}
+                  <Fade delay={itemIndex * 150}>{item.copy}</Fade>
                 </div>
               ))}
             </div>
             <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
-              <Button variant="light" link={sliderWithMedia.link} />
+              <Fade>
+                <Button variant="light" link={sliderWithMedia.link} />
+              </Fade>
             </div>
           </div>
         </header>
@@ -141,9 +144,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               )}
               {item.image && (
                 <div className={`${styles.image}`}>
-                  <Image
-                    image={item.image}
-                  />
+                  <Image image={item.image} />
                 </div>
               )}
             </div>
