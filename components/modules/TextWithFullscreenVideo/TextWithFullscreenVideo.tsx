@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
+import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import styles from './TextWithFullscreenVideo.module.scss'
 import ITextWithFullscreenVideo from './TextWithFullscreenVideo.interface'
-import Fade from 'components/generic/fade/fade'
 
 const TextWithFullscreenVideoModule: FunctionComponent<
   ITextWithFullscreenVideo

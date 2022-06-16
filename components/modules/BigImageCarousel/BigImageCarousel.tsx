@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { Autoplay } from 'swiper'
 // eslint-disable-next-line import/no-unresolved
-import Fade from 'components/generic/fade/fade'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import Image from 'components/generic/image/image'
 import styles from './BigImageCarousel.module.scss'

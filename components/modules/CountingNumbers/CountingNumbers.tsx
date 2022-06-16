@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, FunctionComponent } from 'react'
-
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Fade from 'components/generic/fade/fade'
 import ICountingNumbers from './CountingNumbers.interface'
 import styles from './CountingNumbers.module.scss'
-import Fade from 'components/generic/fade/fade'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
