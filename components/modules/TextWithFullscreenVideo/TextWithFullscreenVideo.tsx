@@ -11,12 +11,12 @@ const TextWithFullscreenVideoModule: FunctionComponent<
   const { textWithFullscreenVideo } = props
 
   return (
-    <div
-      className={`${styles.root} container default-grid pb-150 md:pb-200`}
-    >
-      <h2 className="col-span-6 typo-headlines mb-80">
-        <Fade>{textWithFullscreenVideo.headline}</Fade>
-      </h2>
+    <div className={`${styles.root} container default-grid pb-150 md:pb-200`}>
+      <Fade className="col-span-6 typo-headlines mb-80">
+        <h2
+          dangerouslySetInnerHTML={{ __html: textWithFullscreenVideo.headline }}
+        />
+      </Fade>
       <div className="col-span-6 md:col-span-12 mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3 default-grid">
         {textWithFullscreenVideo.vimeoVideoUrl && (
           <video
