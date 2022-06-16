@@ -3,9 +3,7 @@ import styles from './Divider.module.scss'
 import IDivider from './Divider.interface'
 
 const DividerModule: FunctionComponent<IDivider> = () => (
-  <div className={`${styles.root}`}>
-    <div className="container">Divider Module</div>
-  </div>
+  <div className={`${styles.root}`} />
 )
 
 export default DividerModule
