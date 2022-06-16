@@ -13,39 +13,37 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
     <div className={`${styles.root}`}>
       <div className="container">
         {textVideoCombination.items.map((item) => (
-          <div
-            key={item.copy}
-            className={`${styles.item} ${
-              item.flipHorizontally ? styles.isFlipped : ''
-            } md:default-grid`}
-          >
-            <header className="md:default-grid md:col-span-12 xl:block xl:col-span-6">
-              <div className="md:col-span-5">
-                {item.topHeadline && (
-                  <span
-                    className={`typo-subhead uppercase mb-25 block ${styles.topHeadline}`}
-                  >
-                    <Fade>{item.topHeadline}</Fade>
-                  </span>
-                )}
-                <h2 className="typo-headlines mb-75">
-                  <Fade delay={200}>{item.headline}</Fade>
-                </h2>
-              </div>
-              <div className="md:col-span-5 md:col-start-8">
-                <Fade delay={300}>
-                  <div
-                    className="typo-body mb-45"
-                    dangerouslySetInnerHTML={{ __html: item.copy }}
-                  />
+          <div key={item.copy} className={`${styles.item} md:default-grid`}>
+            <span
+              className={`col-span-full typo-subhead uppercase md:mb-100 hidden md:block xl:hidden ${styles.topHeadline}`}
+            >
+              <Fade>{item.topHeadline}</Fade>
+            </span>
+            <div className="md:col-span-5 md:row-start-2">
+              {item.topHeadline && (
+                <span
+                  className={`typo-subhead uppercase mb-90 xl:mb-135 block md:hidden xl:block ${styles.topHeadline}`}
+                >
+                  <Fade>{item.topHeadline}</Fade>
+                </span>
+              )}
+              <h2 className="typo-headlines mb-50 xl:mb-180">
+                <Fade delay={200}>{item.headline}</Fade>
+              </h2>
+              <Fade delay={300}>
+                <div
+                  className="typo-body mb-45 hidden md:block xl:mb-60"
+                  dangerouslySetInnerHTML={{ __html: item.copy }}
+                />
+              </Fade>
+              <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
+                <Fade delay={400}>
+                  <Button variant="light" link={item.link} />
                 </Fade>
-                <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
-                  <Fade delay={400}><Button variant="light" link={item.link} /></Fade>
-                </div>
               </div>
-            </header>
+            </div>
             <div
-              className={`${styles.mediaItem} col-span-6 md:col-span-12 xl:col-span-5 xl:col-start-8 md:mb-60 xl:mb-0`}
+              className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
             >
               {item.vimeoVideoUrl ? (
                 <video
@@ -59,7 +57,13 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                 item.image && <Image image={item.image} />
               )}
             </div>
-            <div className="w-full mt-50 md:hidden">
+            <Fade delay={300}>
+              <div
+                className="typo-body mb-45 mt-50 md:hidden"
+                dangerouslySetInnerHTML={{ __html: item.copy }}
+              />
+            </Fade>
+            <div className="w-full md:hidden">
               <Button variant="light" link={item.link} />
             </div>
           </div>
