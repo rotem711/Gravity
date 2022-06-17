@@ -60,10 +60,8 @@
     top: 0;
     right: 0;
 
-    // @screen lg {
-    //   position: absolute;
-    // }
     &.isActive {
+      display: flex;
       opacity: 1;
     }
   }
