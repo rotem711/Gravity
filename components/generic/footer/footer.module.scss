@@ -36,6 +36,8 @@
 
 .contact {
   p {
+    display: flex;
+    flex-direction: column;
     &:not(:last-child) {
       &::after {
         content: '\A ';
@@ -46,8 +48,8 @@
   }
   a {
     position: relative;
-    width: 100%;
     display: inline-block;
+    margin-right: auto;
     @extend .hover-effect;
   }
 }
