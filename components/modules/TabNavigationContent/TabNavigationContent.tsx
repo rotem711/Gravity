@@ -64,9 +64,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             allowZeroExpanded
             preExpanded={[tabNavigationContent.mobileDefaultOpenIndex]}
           >
-            {tabNavigationContent.tabs.slice(0).reverse().map((item, index) => (
+            {tabNavigationContent.tabs.slice(0).reverse().map((item, itemIndex) => (
               <AccordionItem
-                uuid={index}
+                uuid={itemIndex}
                 key={item.title}
                 style={{ backgroundColor: item.backgroundColor }}
                 className={`${styles.accordionItem}`}
