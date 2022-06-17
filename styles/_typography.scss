@@ -1,85 +1,91 @@
 @tailwind utilities;
 
 @layer utilities {
-.typo-subhead {
-  font-family: 'Modern Gothic';
-  font-size: 1.4rem;
-  line-height: 1.9rem;
-  letter-spacing: 0.03em;
-  font-weight: 400;
-}
-
-.typo-headlines {
-  font-family: 'Modern Gothic';
-  font-size: 4rem;
-  line-height: 4.4rem;
-  letter-spacing: -0.01em;
-  font-weight: 300;
-
-  @screen md {
-    font-size: 4.5rem;
-    line-height: 5rem;
+  .typo-subhead {
+    font-family: 'Modern Gothic';
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    letter-spacing: 0.03em;
+    font-weight: 400;
   }
 
-  @screen xl {
-    font-size: 5.2rem;
-    line-height: 5.7rem;
+  .typo-headlines {
+    font-family: 'Modern Gothic';
+    font-size: 3.7rem;
+    line-height: 4rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+
+    @screen md {
+      font-size: 4.5rem;
+      line-height: 5rem;
+    }
+
+    @screen xl {
+      font-size: 5.2rem;
+      line-height: 5.7rem;
+    }
   }
-}
 
-.typo-body {
-  font-family: 'Modern Gothic';
-  font-size: 1.8rem;
-  line-height: 2.5rem;
-  letter-spacing: -0.01em;
-  font-weight: 300;
-}
+  .typo-body {
+    font-family: 'Modern Gothic';
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
 
-.typo-number {
-  @media (max-width: 835px) {
+  .typo-number {
     font-family: 'Modern Gothic';
     font-size: 10rem;
     line-height: 11rem;
     font-weight: 300;
+    @screen md {
+      line-height: 11.5rem;
+    }
+    @screen xl {
+      font-size: 15rem;
+      line-height: 17.2rem;
+    }
   }
-}
 
-.typo-captions-and-buttons {
-  font-family: 'So:hne Mono';
-  font-size: 1.6rem;
-  line-height: 2.2rem;
-  letter-spacing: -0.01em;
-  font-weight: 300;
-}
+  .typo-captions-and-buttons {
+    font-family: 'So:hne Mono';
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
 
-.typo-big-quotes {
-  font-family: 'Modern Gothic';
-  font-size: 4.7rem;
-  line-height: 5.4rem;
-  letter-spacing: -0.01em;
-  font-weight: 300;
-  @screen md {
-    font-size: 5.5rem;
-    line-height: 6.3rem;
-  }
-  @screen xl {
-    font-size: 7.5rem;
-    line-height: 8.6rem;
-  }
-}
 
-.typo-cta-text {
-  font-family: 'Modern Gothic';
-  font-size: 6.5rem;
-  line-height: 7.2rem;
-  font-weight: 300;
-  @screen md {
-    font-size: 10rem;
-    line-height: 11.5rem;
+  .typo-big-quotes {
+    font-family: 'Modern Gothic';
+    font-size: 4rem;
+    line-height: 4.6rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+    @screen md {
+      font-size: 5.5rem;
+      line-height: 6.3rem;
+    }
+    @screen xl {
+      font-size: 7.5rem;
+      line-height: 8.6rem;
+    }
   }
-  @screen xl {
-    font-size: 15rem;
-    line-height: 17.3rem;
+
+  .typo-cta-text {
+    font-family: 'Modern Gothic';
+    font-size: 6.5rem;
+    line-height: 7.2rem;
+    font-weight: 300;
+    @screen md {
+      font-size: 10rem;
+      line-height: 11.5rem;
+    }
+    @screen xl {
+      font-size: 15rem;
+      line-height: 17.3rem;
+    }
   }
-}
 }

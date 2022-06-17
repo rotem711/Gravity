@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, FunctionComponent } from 'react'
-
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Fade from 'components/generic/fade/fade'
 import ICountingNumbers from './CountingNumbers.interface'
 import styles from './CountingNumbers.module.scss'
 
@@ -39,20 +39,24 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
     >
       <div className="container pt-25 pb-155 xl:pt-35 xl:pb-145">
         <div className="xl:default-grid">
-          <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
-            {countingNumbers.headline}
+          <h2 className={`${styles.title} typo-subhead uppercase`}>
+            <Fade>{countingNumbers.headline}</Fade>
           </h2>
           <dl className={`${styles.numbers} default-grid`}>
-            {countingNumbers.numbers.map((item) => (
+            {countingNumbers.numbers.map((item, index) => (
               <div
                 key={item.copy}
                 className={`${styles.number} col-span-4 md:col-span-6 xl:col-span-6 mt-75 md:mt-95 xl:mt-110`}
               >
-                <dt className="mb-20">
-                  <span ref={(r) => refs.current.push(r)}>{item.value}</span>
-                  {item.unit}
-                </dt>
-                <dd className="typo-body">{item.copy}</dd>
+                <Fade delay={index * 150}>
+                  <dt className="mb-20">
+                    <span ref={(r) => refs.current.push(r)}>{item.value}</span>
+                    {item.unit}
+                  </dt>
+                </Fade>
+                <dd className="typo-body">
+                  <Fade delay={index * 150 + 50}>{item.copy}</Fade>
+                </dd>
               </div>
             ))}
           </dl>

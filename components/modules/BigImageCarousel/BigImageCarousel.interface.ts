@@ -5,11 +5,13 @@ export default interface IBigImageCarousel {
   fieldGroupName: string
   bigImageCarousel: {
     headline: string
+    customHeadline: string
     copy: string
     link: Link
     images: [
       {
         image: Image
+        vimeoVideoUrl: string
       },
     ]
   }

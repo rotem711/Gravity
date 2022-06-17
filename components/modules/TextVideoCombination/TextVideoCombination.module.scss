@@ -3,37 +3,29 @@
 }
 
 .item {
-  padding: 8.5rem 0;
+  padding: 2.5rem 0 8.5rem 0;
+
+  @screen md {
+    padding: 3.5rem 0 22.5rem 0;
+  }
 
   @screen xl {
-    padding: 13.5rem 0;
+    padding: 3.5rem 0 26.5rem 0;
   }
 
   &.isFlipped {
     header {
-      @screen xl {
+      @screen md {
         order: 2;
         grid-column-start: 7;
       }
     }
 
     .mediaItem {
-      @screen xl {
+      @screen md {
         order: 1;
         grid-column-start: 1;
       }
-    }
-  }
-
-  header {
-    order: 1;
-
-    @screen md {
-      order: 2;
-    }
-
-    @screen xl {
-      order: 1;
     }
   }
 
@@ -43,15 +35,4 @@
     background-position: left 10px;
   }
 
-  .mediaItem {
-    order: 2;
-
-    @screen md {
-      order: 1;
-    }
-
-    @screen xl {
-      order: 2;
-    }
-  }
 }

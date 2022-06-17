@@ -1,3 +1,7 @@
 .root {
   position: relative;
+  overflow: hidden;
+  > span {
+    max-height: 100%;
+  }
 }

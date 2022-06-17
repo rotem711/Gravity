@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 
-export default function useIsMobile() {
+const { theme } = require('../tailwind.config')
+
+export default function useIsMobile(breakPoint?: string) {
   const [isMobile, setIsMobile] = useState(false)
-  const bpWidth = 835
+  const bpWidth = theme.screens[breakPoint || 'md'].replace('px', '')
 
   const onResize = () => {
-    setIsMobile(window.innerWidth <= bpWidth)
+    setIsMobile(window.innerWidth < bpWidth)
   }
 
   const events = ['resize', 'orientationchange']

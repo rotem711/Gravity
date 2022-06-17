@@ -1,20 +1,22 @@
 import { ImageComponent } from 'queries/fragments/Image'
 
-const TextVideoCombinationFragment = (t: string) => `
-  fragment TextVideoCombination on ${t}_TextVideoCombination {
+const TextVideoCombinationV2Fragment = (t: string) => `
+  fragment TextVideoCombinationV2 on ${t}_TextVideoCombinationV2 {
     fieldGroupName
-    textVideoCombination {
+    textVideoCombinationV2 {
       items {
         topHeadline
         headline
+        headlineBreakpoint
         copy
         link {
           ...Link
         }
         vimeoVideoUrl
         ${ImageComponent()}
+        flipHorizontally
       }
     }
   }
 `
-export default TextVideoCombinationFragment
+export default TextVideoCombinationV2Fragment

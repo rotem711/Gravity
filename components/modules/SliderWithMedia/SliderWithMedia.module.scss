@@ -1,5 +1,10 @@
 .root {
   position: relative;
+  padding-bottom: 10rem;
+  @screen lg {
+    padding-bottom: 15rem;
+  }
+
 }
 
 .navItem {
@@ -7,9 +12,10 @@
   cursor: pointer;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
-  &:hover, &.isActive {
+  &:hover,
+  &.isActive {
     opacity: 1;
-    transform: translate(15px,0);
+    transform: translate(15px, 0);
     transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
@@ -17,19 +23,19 @@
 .copyContainer {
   position: relative;
 
-  @screen xl {
-    width: 50%;
+  @screen lg {
+    max-width: 35rem;
   }
-
   .copyItem {
     position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     opacity: 0;
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
+    font-weight: 400;
 
     &.isActive {
       opacity: 1;
@@ -42,31 +48,48 @@
   position: relative;
 
   .mediaItem {
+    width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%,0);
+    flex-direction: column;
     opacity: 0;
-    transition: opacity 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: 500ms ease;
 
+    @screen lg {
+      position: absolute;
+    }
     &.isActive {
       opacity: 1;
-      transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
 }
 
-.video, .image {
+.video {
+  object-fit: cover;
+  margin-left: auto;
+  aspect-ratio: 265 / 185;
+  @screen md {
+    aspect-ratio: 575 / 400;
+  }
+  @screen lg {
+    aspect-ratio: 500 / 350;
+  }
+
+}
+.video,
+.image {
   display: block;
-  width: 75%;
+  width: 80%;
+
 }
 
 .image {
-  position: absolute;
-  top: 50%;
-  right: 25%;
+  margin-top: -20%;
+  @screen lg {
+    position: absolute;
+    top: 50%;
+    right: 13rem;
+    margin-top: 0;
+  }
 }
