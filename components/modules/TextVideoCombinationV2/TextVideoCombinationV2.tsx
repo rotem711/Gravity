@@ -65,6 +65,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           return (
             <div
+              key={`${item.topHeadline}-${item.headline}-${item.copy}`}
               id={item.anchor}
               className={`default-grid ${
                 flipHorizontally ? '' : styles.flipped

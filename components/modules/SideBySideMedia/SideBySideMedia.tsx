@@ -14,6 +14,7 @@ const SideBySideMediaModule:FunctionComponent<ISideBySideMedia> = (props) => {
     >
       {sideBySideMedia.media.map((item) => (
         <div
+          key={item.headline}
           className={`${styles.item}`}
         >
           <div className={`${styles.itemWrapper}`}>

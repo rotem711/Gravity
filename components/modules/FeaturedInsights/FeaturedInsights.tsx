@@ -36,6 +36,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                     />
                   ) : (
                     <Image
+                      loading="eager"
                       src={item.insight.featuredImage.node.sourceUrl}
                       alt={item.insight.featuredImage.node.altText}
                       width={item.insight.featuredImage.node.mediaDetails.width}

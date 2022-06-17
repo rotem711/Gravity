@@ -48,7 +48,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
             speed={0}
           >
             {bigImageCarousel.images.map((item) => (
-              <SwiperSlide className={`${styles.swiperSlide}`}>
+              <SwiperSlide key={item?.image?.desktopImage?.sourceUrl || item.vimeoVideoUrl} className={`${styles.swiperSlide}`}>
                 {item.vimeoVideoUrl ? (
                   <video
                     src={item.vimeoVideoUrl}
@@ -73,9 +73,9 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
         <div
           className={`${styles.copyContainer} col-span-6 md:col-start-8 md:col-span-5 xl:col-start-9 xl:col-span-4 md:mb-60`}
         >
-          <p className="typo-body mb-45 xl:mb-60">
+          <div className="typo-body mb-45 xl:mb-60">
             <Fade delay={200}>{bigImageCarousel.copy}</Fade>
-          </p>
+          </div>
           <Fade delay={300}>
             <Button variant="light" link={bigImageCarousel.link} />
           </Fade>

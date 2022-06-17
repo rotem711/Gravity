@@ -81,7 +81,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         <header className="md:default-grid md:col-span-12 lg:col-span-4 md:mb-90 lg:mb-0">
           <ul className="md:col-span-6 mb-50 md:mb-0 lg:col-span-12 lg:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
-              <li>
+              <li key={item.title}>
                 <button
                   className={`${styles.navItem} ${
                     index === itemIndex ? styles.isActive : ''
@@ -103,6 +103,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
             >
               {sliderWithMedia.slides.map((item, itemIndex) => (
                 <div
+                  key={item.title}
                   className={`${styles.copyItem} ${
                     index === itemIndex ? styles.isActive : ''
                   } typo-body`}
@@ -132,6 +133,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               ref={(element) => {
                 mediaRefs.current[itemIndex] = element
               }}
+              key={item.title}
               role="button"
             >
               {item.vimeoVideoUrl && (
