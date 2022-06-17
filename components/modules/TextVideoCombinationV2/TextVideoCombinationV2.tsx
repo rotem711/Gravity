@@ -9,13 +9,14 @@ const TextVideoCombinationV2Module: FunctionComponent<
   ITextVideoCombinationV2
 > = (props) => {
   const { textVideoCombinationV2 } = props
-  const isMobile = useIsMobile('xl')
+  const isMobile = useIsMobile('lg')
   return (
-    <div className={`${styles.root} pt-0 pb-100 lg:pb-150`}>
+    <div className={`${styles.root} py-100 lg:py-150`}>
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
-          const { flipHorizontally } = item
+          const { flipHorizontally, headlineBreakpoint } = item
 
+          const headline = !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
           const imageC = item.image && <ImageComponent image={item.image} />
           const videoC = item.vimeoVideoUrl && (
             <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
@@ -26,9 +27,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 <h4 className="pb-30 typo-subhead uppercase">
                   {item.topHeadline}
                 </h4>
-                <h2 className="pb-75 md:pb-125 typo-headlines">
-                  {item.headline}
-                </h2>
+                <h2 className="pb-75 md:pb-125 typo-headlines" dangerouslySetInnerHTML={{ __html: headline }} />
               </div>
               <div className="col-span-6 md:col-span-5 md:col-start-7">
                 <div
@@ -54,11 +53,11 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           return (
             <div
-              className={`default-grid ${true ? styles.flipped : ''} ${
-                index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''
-              }`}
+              className={`default-grid ${
+                flipHorizontally ? '' : styles.flipped
+              } ${index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''}`}
             >
-              {(flipHorizontally || isMobile) ? (
+              {flipHorizontally || isMobile ? (
                 <>
                   <div className="col-span-12 lg:col-span-6 order-2 md:order-1 mb-auto">
                     {mediaC}

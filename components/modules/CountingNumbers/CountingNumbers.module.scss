@@ -15,11 +15,6 @@
 }
 
 .number {
-  @media (max-width: 768px) {
-    &:first-child {
-      margin-top: 0;
-    }
-  }
 
   @screen md {
     &:first-child,

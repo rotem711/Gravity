@@ -6,7 +6,6 @@ import IHeadlineSeparator from './HeadlineSeparator.interface'
 
 const HeadlineSeparatorModule:FunctionComponent<IHeadlineSeparator> = (props) => {
   const { headlineSeparator } = props
-
   return (
     <div
       className={`${styles.root} pt-100 pb-100`}

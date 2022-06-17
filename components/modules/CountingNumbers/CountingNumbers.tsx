@@ -39,7 +39,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
     >
       <div className="container pt-25 pb-155 xl:pt-35 xl:pb-145">
         <div className="xl:default-grid">
-          <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
+          <h2 className={`${styles.title} typo-subhead uppercase`}>
             <Fade>{countingNumbers.headline}</Fade>
           </h2>
           <dl className={`${styles.numbers} default-grid`}>

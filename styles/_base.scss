@@ -29,8 +29,11 @@ h1, h2 {
   margin: 0;
 }
 
-li {
-  list-style: none;
+ul {
+  list-style: disc;
+  li {
+    margin-left: 17px;
+  }
 }
 
 button, input {

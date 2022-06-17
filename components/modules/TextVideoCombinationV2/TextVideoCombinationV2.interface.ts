@@ -8,6 +8,7 @@ export default interface ITextVideoCombinationV2 {
       {
         topHeadline: string
         headline: string
+        headlineBreakpoint: string
         copy: string
         link: Link
         vimeoVideoUrl: string
