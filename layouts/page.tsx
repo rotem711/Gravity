@@ -39,7 +39,7 @@ const Page = ({
       <Header
         inverted={page?.pageOption?.invertNavigation}
         data={header}
-        uri={page.uri}
+        uri={page?.uri}
       />
       <main key={page.uri}>
         {true && process.env.NODE_ENV === 'development' && (
