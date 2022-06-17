@@ -87,7 +87,16 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     className={`${styles.mediaContainer} mt-45`}
                     style={{ color: item.backgroundColor }}
                   >
-                    <Image image={item.image} />
+                    {
+                     item.vimeoVideoUrl
+                       ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+                       : (
+                         item.image && (
+                         <Image image={item.image} />
+                         )
+                       )
+                    }
+                    {/* <Image image={item.image} /> */}
                     <span className={`${styles.corners}`} aria-hidden="true">
                       <i />
                       <i />
