@@ -2,10 +2,7 @@ const MediaWithCopyAndLinkFragment = (t: string) => `
   fragment MediaWithCopyAndLink on ${t}_MediaWithCopyAndLink {
     fieldGroupName
     mediaWithCopyAndLink {
-      vimeoVideoUrl
-      lottie {
-        ...Image
-      }
+      lottieSelect
       subline
       headline
       link {

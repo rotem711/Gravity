@@ -8,6 +8,6 @@ export default interface ITextWithFullscreenVideo {
     copy: string
     link: Link
     logo: MediaItem
-    vimeoVideoUrl: string
+    lottieSelect: string
   }
 }
