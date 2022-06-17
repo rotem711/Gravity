@@ -1,11 +1,10 @@
 .root {
   position: relative;
-
   padding-bottom: 10rem;
-
   @screen lg {
     padding-bottom: 15rem;
   }
+
 }
 
 .navItem {
