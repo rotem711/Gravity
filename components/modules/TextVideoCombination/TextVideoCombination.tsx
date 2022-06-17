@@ -47,7 +47,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             <div
               className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
             >
-              {item.image ? (
+              {(item.image.desktopImage || item.image.mobileImage) ? (
                 item.image && <Image image={item.image} />
               ) : (
                 item.lottieSelect ? (
