@@ -7,10 +7,16 @@ import navBackground from 'public/nav-bg-tiny.jpg'
 import styles from './header.module.scss'
 import HeaderInterface from './header.interface'
 
-const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
+const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
   const [scrollDir, setScrollDir] = useState('up')
   const [scrolled, setScrolled] = useState(false)
+  const { rightSideNavigation, mobileMenuCta } = data
+
+  useEffect(() => {
+    setDeployed(false)
+  }, [uri])
+
   useEffect(() => {
     let prevPos = 0
     setTimeout(() => {
@@ -35,9 +41,9 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
 
   return (
     <header
-      className={`${styles.root} ${scrolled ? styles.scrolled : ''} ${deployed && styles['is-deployed']} ${
-        inverted ? styles['is-inverted'] : ''
-      } bg-white xl:bg-opacity-0`}
+      className={`${styles.root} ${scrolled ? styles.scrolled : ''} ${
+        deployed && styles['is-deployed']
+      } ${inverted ? styles['is-inverted'] : ''}`}
       data-scroll-dir={scrollDir}
     >
       <div className="container flex items-center justify-between pt-30 pb-30 xl:pt-35 xl:pb-35">
@@ -52,7 +58,7 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
           }`}
         >
           <div className="container">
-            <nav className={`${styles.navCenter}`}>
+            <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
               <ul className="xl:flex">
                 {data?.mainNavigation?.map((subItem) => (
                   <li key={subItem.link.title}>
@@ -68,29 +74,35 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
                 ))}
               </ul>
             </nav>
-            <nav>
-              <ul className="xl:flex">
-                {data.rightSideNavigation.map((subItem) => (
-                  <li key={subItem.link.title}>
-                    <Link href={subItem.link.url}>
-                      <a
-                        className={`${styles.navItem} ${
-                          subItem.link.title === 'Get Started'
-                            ? 'hidden xl:block'
-                            : ''
-                        } last:mr-0`}
-                        target={subItem.link.target}
-                      >
-                        {subItem.link.title}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className={`${styles.button} col-span-6 xl:hidden md:mt-80`}>
-                <Button link={data.mobileMenuCta} variant="dark" />
-              </div>
-            </nav>
+            {rightSideNavigation && (
+              <nav>
+                <ul className="xl:flex">
+                  {rightSideNavigation.map((subItem) => (
+                    <li key={subItem.link.title}>
+                      <Link href={subItem.link.url}>
+                        <a
+                          className={`${styles.navItem} ${
+                            subItem.link.title === 'Get Started'
+                              ? 'hidden xl:block'
+                              : ''
+                          } last:mr-0`}
+                          target={subItem.link.target}
+                        >
+                          {subItem.link.title}
+                        </a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {mobileMenuCta && (
+                  <div
+                    className={`${styles.button} col-span-6 xl:hidden md:mt-80`}
+                  >
+                    <Button link={mobileMenuCta} variant="dark" />
+                  </div>
+                )}
+              </nav>
+            )}
           </div>
           <div className={`${styles.navBackground} xl:hidden`}>
             <Image

@@ -3,6 +3,7 @@ import Link from 'interfaces/Link'
 export default interface HeaderInterface {
   data: Navigation
   inverted?: boolean
+  uri: string
 }
 
 export interface Navigation {
