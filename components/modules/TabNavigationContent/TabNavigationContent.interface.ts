@@ -10,6 +10,7 @@ export default interface ITabNavigationContent {
         titleIcon: MediaItem
         backgroundColor: string
         image: Image
+        vimeoVideoUrl: string
         content: {
           headline: string
           copy: string
