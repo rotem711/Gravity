@@ -42,6 +42,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
                     objectPosition="left center"
                     src={item.logo.sourceUrl}
                     alt={item.logo.altText}
+                    loading="eager"
                   />
                 </span>
               </Fade>
