@@ -12,6 +12,7 @@ const TabNavigationContentFragment = (t: string) => `
         }
         backgroundColor
         ${ImageComponent()}
+        vimeoVideoUrl
         content {
           headline
           copy
