@@ -12,6 +12,7 @@ export default interface ITextVideoCombination {
         link: Link
         vimeoVideoUrl: string
         image: Image
+        lottieSelect: string
       },
     ]
   }
