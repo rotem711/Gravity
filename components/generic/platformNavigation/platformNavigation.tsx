@@ -47,7 +47,7 @@ const PlatformNavigation = () => {
     >
       <div className="container flex justify-between">
         <h2 className="typo-subhead uppercase hidden md:block">{ctx.platformNavigation.title}</h2>
-        <ul className="flex w-full justify-between">
+        <ul className="flex w-full md:w-auto justify-between">
           {ctx.platformNavigation.platformMainNavigation.map((item) => (
             <li key={item.link.title} className="lg:mr-40 last:mr-0">
               <button
