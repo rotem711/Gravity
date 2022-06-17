@@ -64,7 +64,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         {isMobile ? (
           <Accordion>
             {tabNavigationContent.tabs.map((item) => (
-              <AccordionItem style={{ backgroundColor: item.backgroundColor }}>
+              <AccordionItem key={item.title} style={{ backgroundColor: item.backgroundColor }}>
                 <AccordionItemHeading>
                   <AccordionItemButton className="typo-subhead uppercase container flex items-center justify-between pt-25 pb-25">
                     <p>
@@ -76,7 +76,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                 </AccordionItemHeading>
                 <AccordionItemPanel className="container pt-85 pb-145">
                   {item.content.map((subItem) => (
-                    <div className="mt-155 first:mt-0">
+                    <div key={subItem.headline} className="mt-155 first:mt-0">
                       <h2 className="typo-headlines mb-50">
                         {subItem.headline}
                       </h2>
@@ -105,6 +105,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
               <ul className="flex w-full">
                 {tabNavigationContent.tabs.map((item, itemIndex) => (
                   <li
+                    key={item.title}
                     style={{ backgroundColor: item.backgroundColor }}
                     className={`${styles.navTopItem} flex-1`}
                   >
@@ -130,6 +131,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             >
               {tabNavigationContent.tabs.map((item, itemIndex) => (
                 <div
+                  key={item.title}
                   style={{ backgroundColor: item.backgroundColor }}
                   className={`${styles.tabItem} ${
                     index === itemIndex ? styles.isActive : ''
@@ -142,7 +144,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     {item.content.length === 3 ? (
                       <>
                         {item.content.map((subItem) => (
-                          <div className="mt-155 col-span-4 flex flex-col">
+                          <div key={subItem.headline} className="mt-155 col-span-4 flex flex-col">
                             <h2 className="typo-headlines mb-50 flex-1">
                               {subItem.headline}
                             </h2>
@@ -168,7 +170,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     ) : (
                       <>
                         {item.content.map((subItem) => (
-                          <div className="mt-155 col-span-12 default-grid">
+                          <div key={subItem.headline} className="mt-155 col-span-12 default-grid">
                             <h2 className="typo-headlines mb-50 col-span-5">
                               {subItem.headline}
                             </h2>

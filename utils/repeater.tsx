@@ -25,7 +25,7 @@ import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigat
 import DividerModule from 'components/modules/Divider/Divider'
 import TextVideoCombinationV2Module from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
 
-const renderLayout = (layout: any, prefix: string) => {
+const renderLayout = (layout: any, prefix: string, index: number) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
   switch (extractedLayout) {
     case 'Hero':
@@ -39,7 +39,7 @@ const renderLayout = (layout: any, prefix: string) => {
     case 'BigImageCarousel':
       return <BigImageCarouselModule key="BigImageCarousel" {...layout} />
     case 'HeadlineSeparator':
-      return <HeadlineSeparatorModule key="HeadlineSeparator" {...layout} />
+      return <HeadlineSeparatorModule key={`HeadlineSeparator-${index}`} {...layout} />
     case 'BigQuote':
       return <BigQuoteModule key="BigQuote" {...layout} />
     case 'MediaWithCopyAndLink':
@@ -73,9 +73,9 @@ const renderLayout = (layout: any, prefix: string) => {
     case 'InsightsWithNavigation':
       return <InsightsWithNavigationModule key="InsightsWithNavigation" />
     case 'Divider':
-      return <DividerModule key="Divider" {...layout} />
+      return <DividerModule key={`Divider-${index}`} {...layout} />
     case 'TextVideoCombinationV2':
-      return <TextVideoCombinationV2Module key="TextVideoCombinationV2" {...layout} />
+      return <TextVideoCombinationV2Module key={`TextVideoCombinationV2-${index}`} {...layout} />
     default:
       return null
   }
