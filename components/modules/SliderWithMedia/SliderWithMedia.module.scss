@@ -46,6 +46,7 @@
 
 .mediaContainer {
   position: relative;
+  pointer-events: none;
 
   .mediaItem {
     width: 100%;
