@@ -35,16 +35,20 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
   }
 
   const recalculate = () => {
+    let l = 0
     for (let i = 0; i < copyRefs.current.length; i += 1) {
-      if (copyRefs.current[i].clientHeight * 0.75 > copyHeight) {
-        setCopyHeight(copyRefs.current[i].clientHeight * 0.75)
+      if (copyRefs.current[i].clientHeight * 0.75 > l) {
+        l = copyRefs.current[i].clientHeight * 0.75
       }
     }
+    let m = 0
     for (let i = 0; i < mediaRefs.current.length; i += 1) {
-      if (mediaRefs.current[i].clientHeight > mediaHeight) {
-        setMediaHeight(mediaRefs.current[i].clientHeight)
+      if (mediaRefs.current[i].clientHeight > m) {
+        m = mediaRefs.current[i].clientHeight
       }
     }
+    setCopyHeight(l)
+    setMediaHeight(m)
   }
 
   // set copyContainer height
