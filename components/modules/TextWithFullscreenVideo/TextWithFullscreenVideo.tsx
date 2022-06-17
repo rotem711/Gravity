@@ -17,16 +17,7 @@ const TextWithFullscreenVideoModule: FunctionComponent<
         />
       </Fade>
       <div className="col-span-6 md:col-span-12 mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3">
-        {textWithFullscreenVideo.vimeoVideoUrl && (
-          <video
-            className="w-full mb-75 md:mb-0"
-            src={textWithFullscreenVideo.vimeoVideoUrl}
-            playsInline
-            muted
-            loop
-            autoPlay
-          />
-        )}
+        XXX
       </div>
       <div className="col-span-6 md:col-span-5 md:col-start-8 xl:col-span-4 xl:col-start-9 md:order-2">
         <div className="typo-body mb-45 md:mb-60">
