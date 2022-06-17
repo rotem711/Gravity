@@ -1,24 +1,26 @@
 @import '../../../styles/variables';
 
 .hover-effect {
-  &:hover {
-    &::after {
-      transform-origin: left center;
-      transform: scaleX(1);
+  @screen md {
+    &:hover {
+      &::after {
+        transform-origin: left center;
+        transform: scaleX(1);
+      }
     }
-  }
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: currentcolor;
-    transform: scaleX(0);
-    transform-origin: right center;
-    transition: transform 0.35s ease-in-out;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: currentcolor;
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.35s ease-in-out;
+    }
   }
 }
 
@@ -35,17 +37,27 @@
 .contact {
   p {
     &:not(:last-child) {
-      &::after { content: "\A "; display: block; white-space: pre; }
+      &::after {
+        content: '\A ';
+        display: block;
+        white-space: pre;
+      }
     }
   }
   a {
     position: relative;
+    width: 100%;
+    display: inline-block;
     @extend .hover-effect;
   }
 }
 
 .list {
-  &::before { content: "\A "; display: block; white-space: pre; }
+  &::before {
+    content: '\A ';
+    display: block;
+    white-space: pre;
+  }
 }
 
 .navItem {
@@ -54,8 +66,7 @@
   letter-spacing: -0.01em;
   padding-bottom: 0.3rem;
   transform-origin: bottom left;
-  position:relative;
+  position: relative;
 
   @extend .hover-effect;
-
 }

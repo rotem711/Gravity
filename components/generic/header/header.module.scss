@@ -22,10 +22,14 @@
       }
     }
   }
+  svg {
+    width: 4rem;
+    height: auto;
+  }
 
   @screen xl {
     &.is-inverted:not(.is-deployed) {
-      svg {
+      svg path {
         fill: theme('colors.white');
       }
 
@@ -37,7 +41,7 @@
   }
 
   &.is-deployed {
-    svg {
+    svg path {
       fill: theme('colors.white');
     }
 
@@ -47,7 +51,7 @@
     }
 
     @screen xl {
-      svg {
+      svg path {
         fill: theme('colors.black');
       }
 
@@ -63,7 +67,7 @@
   position: relative;
   z-index: 1;
 
-  svg {
+  svg path {
     fill: theme('colors.black');
   }
 }
@@ -71,7 +75,7 @@
 .inverted {
   color: theme('colors.white');
 
-  svg {
+  svg path {
     fill: theme('colors.white');
   }
 
