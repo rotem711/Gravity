@@ -107,7 +107,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               <Image image={item.image} />
                               )
                             )}
-                          {/* <Image image={item.image} /> */}
                           <span className={`${styles.corners}`} aria-hidden="true">
                             <i />
                             <i />
@@ -179,7 +178,13 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          <Image image={item.image} />
+                          {item.vimeoVideoUrl
+                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+                            : (
+                              item.image && (
+                              <Image image={item.image} />
+                              )
+                            )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"
@@ -207,7 +212,13 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          <Image image={item.image} />
+                          {item.vimeoVideoUrl
+                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+                            : (
+                              item.image && (
+                              <Image image={item.image} />
+                              )
+                            )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"
