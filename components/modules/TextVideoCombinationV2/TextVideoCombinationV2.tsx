@@ -65,6 +65,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           return (
             <div
+              id={item.anchor}
               className={`default-grid ${
                 flipHorizontally ? '' : styles.flipped
               } ${index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''}`}

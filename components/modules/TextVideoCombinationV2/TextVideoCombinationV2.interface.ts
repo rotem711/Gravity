@@ -7,6 +7,7 @@ export default interface ITextVideoCombinationV2 {
     items: [
       {
         topHeadline: string
+        anchor: string
         headline: string
         headlineBreakpoint: string
         copy: string
