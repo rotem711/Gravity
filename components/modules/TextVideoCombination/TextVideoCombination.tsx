@@ -1,7 +1,9 @@
+/* eslint-disable no-nested-ternary */
 import React, { FunctionComponent } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import Image from 'components/generic/image/image'
+import LottiePlayer from 'components/generic/LottiePlayer/LottiePlayer'
 import styles from './TextVideoCombination.module.scss'
 import ITextVideoCombination from './TextVideoCombination.interface'
 
@@ -45,16 +47,23 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             <div
               className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
             >
-              {item.vimeoVideoUrl ? (
-                <video
-                  src={item.vimeoVideoUrl}
-                  playsInline
-                  muted
-                  loop
-                  autoPlay
-                />
-              ) : (
+              {(item.image.desktopImage || item.image.mobileImage) ? (
                 item.image && <Image image={item.image} />
+              ) : (
+                item.lottieSelect ? (
+                  <LottiePlayer
+                    animation={item.lottieSelect}
+                  />
+                ) : (
+                  <video
+                    src={item.vimeoVideoUrl}
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                  />
+                )
+
               )}
             </div>
             <Fade delay={300}>
