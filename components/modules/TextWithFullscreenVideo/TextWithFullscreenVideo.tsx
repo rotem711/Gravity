@@ -29,9 +29,9 @@ const TextWithFullscreenVideoModule: FunctionComponent<
         )}
       </div>
       <div className="col-span-6 md:col-span-5 md:col-start-8 xl:col-span-4 xl:col-start-9 md:order-2">
-        <p className="typo-body mb-45 md:mb-60">
+        <div className="typo-body mb-45 md:mb-60">
           <Fade delay={200}>{textWithFullscreenVideo.copy}</Fade>
-        </p>
+        </div>
         <Fade delay={300}>
           <Button variant="light" link={textWithFullscreenVideo.link} />
         </Fade>

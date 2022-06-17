@@ -13,7 +13,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
     <div className={`${styles.root}`}>
       <div className="container">
         {textVideoCombination.items.map((item) => (
-          <div className={`${styles.item} md:default-grid`}>
+          <div key={item.headline} className={`${styles.item} md:default-grid`}>
             <span
               className={`col-span-full typo-subhead uppercase md:mb-100 hidden md:block xl:hidden ${styles.topHeadline}`}
             >
