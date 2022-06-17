@@ -43,7 +43,6 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                       height={
                         item.insight.featuredImage.node.mediaDetails.height
                       }
-                      quality={0.75}
                     />
                   )}
                 </div>
