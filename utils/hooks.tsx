@@ -7,7 +7,7 @@ export default function useIsMobile(breakPoint?: string) {
   const bpWidth = theme.screens[breakPoint || 'md'].replace('px', '')
 
   const onResize = () => {
-    setIsMobile(window.innerWidth <= bpWidth)
+    setIsMobile(window.innerWidth < bpWidth)
   }
 
   const events = ['resize', 'orientationchange']

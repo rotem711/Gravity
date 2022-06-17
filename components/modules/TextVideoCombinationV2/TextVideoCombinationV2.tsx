@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Button from 'components/generic/button/button'
+import Fade from 'components/generic/fade/fade'
 import useIsMobile from 'utils/hooks'
 import ImageComponent from 'components/generic/image/image'
 import styles from './TextVideoCombinationV2.module.scss'
@@ -16,7 +17,9 @@ const TextVideoCombinationV2Module: FunctionComponent<
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally, headlineBreakpoint } = item
 
-          const headline = !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
+          // eslint-disable-next-line operator-linebreak
+          const headline =
+            !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
           const imageC = item.image && <ImageComponent image={item.image} />
           const videoC = item.vimeoVideoUrl && (
             <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
@@ -25,18 +28,27 @@ const TextVideoCombinationV2Module: FunctionComponent<
             <>
               <div className="col-span-6 md:col-span-5">
                 <h4 className="pb-30 typo-subhead uppercase">
-                  {item.topHeadline}
+                  <Fade>{item.topHeadline}</Fade>
                 </h4>
-                <h2 className="pb-75 md:pb-125 typo-headlines" dangerouslySetInnerHTML={{ __html: headline }} />
+                <Fade delay={200}>
+                  <h2
+                    className="pb-75 md:pb-125 typo-headlines"
+                    dangerouslySetInnerHTML={{ __html: headline }}
+                  />
+                </Fade>
               </div>
               <div className="col-span-6 md:col-span-5 md:col-start-7">
-                <div
-                  className="pb-45 md:pb-55 typo-body"
-                  style={{ fontWeight: 400 }}
-                  dangerouslySetInnerHTML={{ __html: item.copy }}
-                />
+                <Fade delay={300}>
+                  <div
+                    className="pb-45 md:pb-55 typo-body"
+                    style={{ fontWeight: 400 }}
+                    dangerouslySetInnerHTML={{ __html: item.copy }}
+                  />
+                </Fade>
                 <div className="hidden md:block">
-                  <Button variant="light" link={item.link} />
+                  <Fade delay={400}>
+                    <Button variant="light" link={item.link} />
+                  </Fade>
                 </div>
               </div>
             </>
