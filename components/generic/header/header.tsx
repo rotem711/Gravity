@@ -41,6 +41,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
   return (
     <header
+      id="header"
       className={`${styles.root} ${scrolled ? styles.scrolled : ''} ${
         deployed && styles['is-deployed']
       } ${inverted ? styles['is-inverted'] : ''}`}

@@ -1,5 +1,13 @@
 @import '../../../styles/variables';
 
 .root {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: theme('colors.white');
+  border-bottom: 1px solid #000;
+
+  @screen md {
+    border: 0;
+  }
 }
