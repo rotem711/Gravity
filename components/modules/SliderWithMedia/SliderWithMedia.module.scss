@@ -56,11 +56,14 @@
     flex-direction: column;
     opacity: 0;
     transition: 500ms ease;
+    display: none;
 
     @screen lg {
+      display: flex;
       position: absolute;
     }
     &.isActive {
+      display: flex;
       opacity: 1;
     }
   }
