@@ -49,9 +49,13 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     >
       <div className="container flex items-center justify-between pt-30 pb-30 md:pt-35 md:pb-35">
         <Link href="/">
-          <a className={`${styles.logo}`}>
+          <button
+            type="button"
+            onClick={() => (uri === '/' ? setDeployed(false) : () => {})}
+            className={`${styles.logo}`}
+          >
             <Logo />
-          </a>
+          </button>
         </Link>
         <div
           className={`${styles.navContainer} ${

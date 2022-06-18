@@ -90,9 +90,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                       >
                         {item.content.map((subItem) => (
                           <div key={subItem.headline} className="mt-55 lg:mt-155 first:mt-0">
-                            <h2 className="typo-headlines mb-50">
-                              {subItem.headline}
-                            </h2>
+                            <h2 className="typo-headlines mb-50" dangerouslySetInnerHTML={{ __html: subItem.headline }} />
                             <div className="typo-body">{subItem.copy}</div>
                           </div>
                         ))}

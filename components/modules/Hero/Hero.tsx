@@ -35,7 +35,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
           {hero.logos.map((item, index) => (
             <li key={item.logo.sourceUrl} className="col-span-3 md:col-span-2 mt-25 mb-25 md:mt-0">
               <Fade delay={index * 150 + 500}>
-                <span className={`${styles.iconContainer} `}>
+                <span className={`${styles.iconContainer}`}>
                   <Image
                     layout="fill"
                     objectFit="contain"
