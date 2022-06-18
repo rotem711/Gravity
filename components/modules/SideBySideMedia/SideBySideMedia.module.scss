@@ -27,16 +27,18 @@
   a {
     position: absolute;
     inset: 0;
-    padding: 2rem 3rem;
 
-    @screen md {
-      padding: 3rem 4rem;
-    }
 
     > div {
       &:first-child {
+        padding: 2rem 3rem 0 3rem;
+
+        @screen md {
+          padding: 3rem 4rem 0;
+        }
         position: relative;
         z-index: 1;
+
       }
 
       p {
