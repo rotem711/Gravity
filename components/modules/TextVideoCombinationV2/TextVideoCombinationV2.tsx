@@ -41,7 +41,6 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 <Fade delay={300}>
                   <div
                     className="pb-45 md:pb-55 typo-body"
-                    style={{ fontWeight: 400 }}
                     dangerouslySetInnerHTML={{ __html: item.copy }}
                   />
                 </Fade>

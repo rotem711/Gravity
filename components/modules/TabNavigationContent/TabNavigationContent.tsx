@@ -64,61 +64,88 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             allowZeroExpanded
             preExpanded={[tabNavigationContent.mobileDefaultOpenIndex]}
           >
-            {tabNavigationContent.tabs.slice(0).reverse().map((item, itemIndex) => (
-              <AccordionItem
-                uuid={itemIndex}
-                key={item.title}
-                style={{ backgroundColor: item.backgroundColor }}
-                className={`${styles.accordionItem}`}
-              >
-                <AccordionItemState>
-                  {(state) => (
-                    <>
-                      <AccordionItemHeading>
-                        <AccordionItemButton
-                          className={`${state.expanded ? styles.accordionItemActive : styles.accordionItemInActive} typo-subhead uppercase container flex items-center justify-between pt-25 pb-25`}
+            {tabNavigationContent.tabs
+              .slice(0)
+              .reverse()
+              .map((item, itemIndex) => (
+                <AccordionItem
+                  uuid={itemIndex}
+                  key={item.title}
+                  style={{ backgroundColor: item.backgroundColor }}
+                  className={`${styles.accordionItem}`}
+                >
+                  <AccordionItemState>
+                    {(state) => (
+                      <>
+                        <AccordionItemHeading>
+                          <AccordionItemButton
+                            className={`${
+                              state.expanded
+                                ? styles.accordionItemActive
+                                : styles.accordionItemInActive
+                            } typo-subhead uppercase container flex items-center justify-between pt-25 pb-25`}
+                          >
+                            <p>
+                              {item.titleIcon}
+                              {item.title}
+                            </p>
+                            <DropdownArrow />
+                          </AccordionItemButton>
+                        </AccordionItemHeading>
+                        <AccordionItemPanel
+                          className={`${
+                            state.expanded
+                              ? styles.accordionItemPanelActive
+                              : styles.accordionItemPanelInActive
+                          } container pt-85 pb-145`}
                         >
-                          <p>
-                            {item.titleIcon}
-                            {item.title}
-                          </p>
-                          <DropdownArrow />
-                        </AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel
-                        className={`${state.expanded ? styles.accordionItemPanelActive : styles.accordionItemPanelInActive} container pt-85 pb-145`}
-                      >
-                        {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-55 lg:mt-155 first:mt-0">
-                            <h2 className="typo-headlines mb-50" dangerouslySetInnerHTML={{ __html: subItem.headline }} />
-                            <div className="typo-body">{subItem.copy}</div>
-                          </div>
-                        ))}
-                        <div
-                          className={`${styles.mediaContainer} mt-45`}
-                          style={{ color: item.backgroundColor }}
-                        >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
+                          {item.content.map((subItem) => (
+                            <div
+                              key={subItem.headline}
+                              className="mt-55 lg:mt-155 first:mt-0"
+                            >
+                              <h2
+                                className="typo-headlines mb-50"
+                                dangerouslySetInnerHTML={{
+                                  __html: subItem.headline,
+                                }}
+                              />
+                              <div className="typo-body">
+                                {subItem.copy}
+                              </div>
+                            </div>
+                          ))}
+                          <div
+                            className={`${styles.mediaContainer} mt-45`}
+                            style={{ color: item.backgroundColor }}
+                          >
+                            {item.vimeoVideoUrl ? (
+                              <video
+                                src={item.vimeoVideoUrl}
+                                playsInline
+                                muted
+                                loop
+                                autoPlay
+                              />
+                            ) : (
+                              item.image && <Image image={item.image} />
                             )}
-                          <span className={`${styles.corners}`} aria-hidden="true">
-                            <i />
-                            <i />
-                            <i />
-                            <i />
-                          </span>
-                        </div>
-                      </AccordionItemPanel>
-
-                    </>
-                  )}
-                </AccordionItemState>
-              </AccordionItem>
-            ))}
+                            <span
+                              className={`${styles.corners}`}
+                              aria-hidden="true"
+                            >
+                              <i />
+                              <i />
+                              <i />
+                              <i />
+                            </span>
+                          </div>
+                        </AccordionItemPanel>
+                      </>
+                    )}
+                  </AccordionItemState>
+                </AccordionItem>
+              ))}
           </Accordion>
         ) : (
           <div>
@@ -165,24 +192,36 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     {item.content.length === 3 ? (
                       <>
                         {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col">
-                            <h2 className="typo-headlines mb-50 col-span-6 lg:w-full lg:flex-1">
-                              {subItem.headline}
-                            </h2>
-                            <div className="typo-body col-span-5 col-start-8 lg:w-10/12">{subItem.copy}</div>
+                          <div
+                            key={subItem.headline}
+                            className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
+                          >
+                            <h2
+                              className="typo-headlines mb-50 col-span-6 lg:w-full lg:flex-1"
+                              dangerouslySetInnerHTML={{
+                                __html: subItem.headline,
+                              }}
+                            />
+                            <div className="typo-body col-span-5 col-start-8 lg:w-10/12">
+                              {subItem.copy}
+                            </div>
                           </div>
                         ))}
                         <div
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
-                            )}
+                          {item.vimeoVideoUrl ? (
+                            <video
+                              src={item.vimeoVideoUrl}
+                              playsInline
+                              muted
+                              loop
+                              autoPlay
+                            />
+                          ) : (
+                            item.image && <Image image={item.image} />
+                          )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"
@@ -197,7 +236,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     ) : (
                       <>
                         {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-55 lg:mt-155 col-span-12 default-grid">
+                          <div
+                            key={subItem.headline}
+                            className="mt-55 lg:mt-155 col-span-12 default-grid"
+                          >
                             <h2 className="typo-headlines mb-50 col-span-5">
                               {subItem.headline}
                             </h2>
@@ -210,13 +252,17 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
-                            )}
+                          {item.vimeoVideoUrl ? (
+                            <video
+                              src={item.vimeoVideoUrl}
+                              playsInline
+                              muted
+                              loop
+                              autoPlay
+                            />
+                          ) : (
+                            item.image && <Image image={item.image} />
+                          )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"
