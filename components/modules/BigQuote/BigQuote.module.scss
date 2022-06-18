@@ -43,6 +43,14 @@
   position: relative;
   order: 2;
 
+  @screen md {
+    order: 1;
+  }
+}
+
+.quoteElementChild {
+  position: relative;
+
   &::before {
     content: "“";
     display: inline-block;
@@ -53,10 +61,6 @@
     top: 0;
     right: 100%;
     @extend .typo-big-quotes;
-  }
-
-  @screen md {
-    order: 1;
   }
 }
 

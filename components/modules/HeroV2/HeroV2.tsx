@@ -10,7 +10,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
 
   return (
     <div className={`${styles.root}`}>
-      <div className="container default-grid pt-290 pb-95 md:pt-200 md:pb-55 xl:pt-320 xl:pb-40">
+      <div className="container default-grid pt-240 pb-95 md:pt-200 md:pb-55 xl:pt-320 xl:pb-40">
         {heroV2.subline && (
           <span className="typo-subhead uppercase col-span-3 md:col-span-12 mb-30 md:mb-45 xl:mb-55 z-10 relative text-white">
             <Fade>{heroV2.subline}</Fade>

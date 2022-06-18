@@ -89,7 +89,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                 <button
                   className={`${styles.navItem} ${
                     index === itemIndex ? styles.isActive : ''
-                  } typo-big-quotes`}
+                  } typo-md:typo-big-quotes`}
                   onClick={onClickItem}
                   onKeyPress={onClickItem}
                   data-index={itemIndex}
