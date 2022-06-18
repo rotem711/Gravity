@@ -26,15 +26,54 @@
 }
 
 .navTopItem {
+  position: relative;
+
   &:hover {
     background-color: theme('colors.black');
-    color: theme('colors.white');
+    color: theme('colors.black') !important;
+
+    &::before {
+      background-color: theme('colors.black');
+    }
+
+    button {
+      background-color: theme('colors.black');
+      color: theme('colors.white');
+    }
+  }
+
+  &:first-of-type, &:last-of-type {
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      width: 50vw;
+      background-color: currentColor;
+    }
+  }
+
+  &:first-of-type::before {
+    right: 50%;
+  }
+
+  &:last-of-type::before {
+    left: 50%;
+  }
+}
+
+.navTopItemFirst {
+  button {
+    padding-left: 0;
   }
 }
 
 .navItem {
   height: 100%; 
   text-align: left;
+  color: theme('colors.black');
 
   &:hover {
     background-color: theme('colors.black');

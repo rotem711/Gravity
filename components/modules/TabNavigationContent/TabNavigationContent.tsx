@@ -150,12 +150,12 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         ) : (
           <div>
             <nav>
-              <ul className="flex w-full">
+              <ul className="flex container w-full">
                 {tabNavigationContent.tabs.map((item, itemIndex) => (
                   <li
                     key={item.title}
-                    style={{ backgroundColor: item.backgroundColor }}
-                    className={`${styles.navTopItem} flex-1`}
+                    style={{ backgroundColor: item.backgroundColor, color: item.backgroundColor }}
+                    className={`${styles.navTopItem} ${itemIndex === 0 ? styles.navTopItemFirst : ''} flex-1`}
                   >
                     <button
                       className={`${styles.navItem} ${
