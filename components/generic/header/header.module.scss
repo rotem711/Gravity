@@ -81,7 +81,7 @@
 }
 
 .navCenter {
-  @screen xl {
+  @screen md {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -90,7 +90,7 @@
 }
 
 .navContainer {
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 834px) {
     position: absolute;
     top: 0;
     left: 0;
@@ -124,7 +124,7 @@
     }
   }
 
-  @screen xl {
+  @screen md {
     > div:first-child {
       padding-right: 0;
     }
@@ -139,7 +139,7 @@
   font-weight: 300;
   position: relative;
 
-  @screen xl {
+  @screen md {
     font-size: 1.6rem;
     line-height: 2.08rem;
     padding-bottom: 0.3rem;
