@@ -128,6 +128,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         </header>
         <div
           className={`${styles.mediaContainer} md:col-span-12 lg:col-start-7 lg:col-span-6 default-grid`}
+          style={{ height: mediaHeight }}
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
             <div
