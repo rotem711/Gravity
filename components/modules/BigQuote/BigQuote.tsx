@@ -91,7 +91,8 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 <Fade delay={150}>
                   <div
                     className={`${styles.quoteElementChild}`}
-                    dangerouslySetInnerHTML={{ __html: `${item.quote}”` }} />
+                    dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
+                  />
                 </Fade>
                 <cite
                   className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
