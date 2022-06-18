@@ -21,7 +21,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth <= 834) {
           setScrollDir('up')
         } else if (prevPos >= window.scrollY) {
           setScrollDir('up')
@@ -47,7 +47,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       } ${inverted ? styles['is-inverted'] : ''}`}
       data-scroll-dir={scrollDir}
     >
-      <div className="container flex items-center justify-between pt-30 pb-30 xl:pt-35 xl:pb-35">
+      <div className="container flex items-center justify-between pt-30 pb-30 md:pt-35 md:pb-35">
         <Link href="/">
           <a className={`${styles.logo}`}>
             <Logo />
@@ -60,7 +60,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         >
           <div className="container">
             <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
-              <ul className="xl:flex">
+              <ul className="md:flex">
                 {data?.mainNavigation?.map((subItem) => (
                   <li key={subItem.link.title}>
                     <Link href={subItem.link.url}>
@@ -77,14 +77,14 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
             </nav>
             {rightSideNavigation && (
               <nav>
-                <ul className="xl:flex">
+                <ul className="md:flex">
                   {rightSideNavigation.map((subItem) => (
                     <li key={subItem.link.title}>
                       <Link href={subItem.link.url}>
                         <a
                           className={`${styles.navItem} ${
                             subItem.link.title === 'Get Started'
-                              ? 'hidden xl:block'
+                              ? 'hidden md:block'
                               : ''
                           } last:mr-0`}
                           target={subItem.link.target}
@@ -97,7 +97,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
                 </ul>
                 {mobileMenuCta && (
                   <div
-                    className={`${styles.button} col-span-6 xl:hidden md:mt-80`}
+                    className={`${styles.button} col-span-6 md:hidden md:mt-80`}
                   >
                     <Button link={mobileMenuCta} variant="dark" />
                   </div>
@@ -105,7 +105,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
               </nav>
             )}
           </div>
-          <div className={`${styles.navBackground} xl:hidden`}>
+          <div className={`${styles.navBackground} md:hidden`}>
             <Image
               src={navBackground.src}
               alt="descriptive alt tag"
@@ -116,7 +116,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
             />
           </div>
         </div>
-        <div className="xl:hidden z-10">
+        <div className="md:hidden z-10">
           <button
             type="button"
             className={`${styles.navSubItem} mr-0`}
