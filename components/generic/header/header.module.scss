@@ -90,7 +90,7 @@
 }
 
 .navContainer {
-  @media screen and (max-width: 834px) {
+  @media screen and (max-width: 833px) {
     position: absolute;
     top: 0;
     left: 0;
@@ -191,11 +191,9 @@
 }
 
 .button {
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 833px) {
     position: absolute;
     bottom: 45px;
-
-
     a {
       display: block;
       width: 100%;
