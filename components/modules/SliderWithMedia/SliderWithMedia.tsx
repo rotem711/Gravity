@@ -132,7 +132,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
             <div
-              className={`${styles.mediaItem} col-span-full ${
+              className={`${styles.mediaItem} ${
                 index === itemIndex ? styles.isActive : ''
               }`}
               ref={(element) => {
