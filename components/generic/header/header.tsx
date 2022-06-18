@@ -47,7 +47,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       } ${inverted ? styles['is-inverted'] : ''}`}
       data-scroll-dir={scrollDir}
     >
-      <div className="relative container flex items-center justify-between pt-30 pb-30 md:pt-35 md:pb-35">
+      <div className="relative container flex items-center justify-between pt-30 pb-30 md:pt-25 md:pb-25">
         <Link href="/">
           <button
             type="button"

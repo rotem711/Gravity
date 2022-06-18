@@ -102,7 +102,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-55 lg:mt-155 first:mt-0"
+                              className="mt-155 first:mt-0"
                             >
                               <h2
                                 className="typo-headlines mb-50"
@@ -160,7 +160,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     <button
                       className={`${styles.navItem} ${
                         index === itemIndex ? styles.isActive : ''
-                      } typo-subhead uppercase block w-full pt-35 pb-35 pl-40`}
+                      } typo-subhead uppercase block w-full pt-30 pb-30 pl-40`}
                       onClick={onClickItem}
                       onKeyPress={onClickItem}
                       data-index={itemIndex}

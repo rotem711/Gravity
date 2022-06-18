@@ -11,9 +11,27 @@
   opacity: 0.25;
   cursor: pointer;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: 'Modern Gothic';
+  font-size: 5rem;
+  line-height: 5.75rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  @screen md {
+    font-size: 5.5rem;
+    line-height: 6.3rem;
+  }
+  @screen xl {
+    font-size: 7.5rem;
+    line-height: 8.6rem;
+  }
 
   &.isActive {
     opacity: 1;
+    transform: translate(15px, 0);
+    transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  &:hover {
     transform: translate(15px, 0);
     transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }

@@ -28,8 +28,8 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
             <Button variant="dark" link={hero.link} />
           </Fade>
         </div>
-        <ul className={`${styles.logos} default-grid w-full mt-95`}>
-          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 mb-45 md:mb-25 xl:mb-45 uppercase">
+        <ul className={`${styles.logos} default-grid w-full mt-95 lg:mt-145`}>
+          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 lg:col-span-2 mb-45 md:mb-25 xl:mb-45 uppercase">
             <Fade delay={300}>{hero.logoRowHeadline}</Fade>
           </h2>
           {hero.logos.map((item, index) => (

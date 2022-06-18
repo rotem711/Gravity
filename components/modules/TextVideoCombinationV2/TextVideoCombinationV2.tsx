@@ -84,7 +84,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 </>
               ) : (
                 <>
-                  <div className="col-span-5">{contentC}</div>
+                  <div className="col-span-4">{contentC}</div>
                   <div className="col-span-6 col-start-7">{mediaC}</div>
                 </>
               )}
