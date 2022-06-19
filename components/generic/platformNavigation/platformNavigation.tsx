@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react'
 import { GlobalContext } from 'pages/_app'
 import useIsMobile from 'utils/hooks'
 import styles from './platformNavigation.module.scss'
