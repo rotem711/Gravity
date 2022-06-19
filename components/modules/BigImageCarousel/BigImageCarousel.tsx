@@ -21,7 +21,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
       ? bigImageCarousel.customHeadline
       : bigImageCarousel.headline
   return (
-    <div className={`${styles.root} container pt-35 pb-100`}>
+    <div className={`${styles.root} container pt-35 pb-175 md:pb-100`}>
       <div className="default-grid">
         <Fade className="col-span-6 mb-50 md:mb-60">
           <h2

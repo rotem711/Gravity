@@ -16,7 +16,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
             <Fade>{heroV2.subline}</Fade>
           </span>
         )}
-        <h1 className="typo-headlines z-10 relative text-white col-span-6 md:col-span-12 xl:col-span-8">
+        <h1 className="typo-headlines z-10 relative text-white col-span-6 md:col-span-7 xl:-col-span-8">
           <Fade delay={150}>{heroV2.headline}</Fade>
         </h1>
         <div className={`${styles.mediaContainer} z-0`}>
@@ -26,7 +26,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
             heroV2.image && <ImageComponent image={heroV2.image} />
           )}
         </div>
-        <div className={`${styles.assetContainer} z-10 hidden xl:block`}>
+        <div className={`${styles.assetContainer} z-10 hidden md:block`}>
           {heroV2.svgLayer && (
             <Image
               width={heroV2.svgLayer.mediaDetails.width}
