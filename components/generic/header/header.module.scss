@@ -1,5 +1,26 @@
 @import '../../../styles/variables';
 
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 .root {
   position: fixed;
   top: 0;
@@ -47,28 +68,20 @@
 
   &.is-deployed {
     svg path {
-      fill: theme('colors.white');
+      fill: theme('colors.white') !important;
     }
 
     a,
     span {
-      color: theme('colors.white');
+      color: theme('colors.white') !important;
     }
 
-    svg path {
-      fill: theme('colors.black');
-    }
-
-    a,
-    span {
-      color: theme('colors.black');
-    }
   }
 }
 
 .logo {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   svg path {
     fill: theme('colors.black');
@@ -144,6 +157,7 @@
   }
 }
 
+
 .navItem {
   font-family: 'Modern Gothic';
   font-size: 5rem;
@@ -162,24 +176,23 @@
     font-weight: 400;
   }
 
-  &:hover {
-    &::after {
-      transform-origin: left center;
-      transform: scaleX(1);
-    }
-  }
-
   &::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
+    opacity: 0;
     height: 1px;
+    animation: ANIMATE_OUT 400ms ease forwards;
     background-color: currentcolor;
-    transform: scaleX(0);
-    transform-origin: right center;
-    transition: transform 0.35s ease-in-out;
+    transform-origin: left center;
+  }
+
+  &:hover {
+    &::after {
+      animation: ANIMATE_IN 0.35s ease-in-out forwards;
+    }
   }
 }
 
@@ -190,7 +203,6 @@
   padding-bottom: 0.3rem;
   transform-origin: bottom left;
   position: relative;
-  // margin: 0 2.5rem;
 }
 
 .navBackground,
