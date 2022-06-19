@@ -17,7 +17,7 @@ const TextWithFullscreenVideoModule: FunctionComponent<
           dangerouslySetInnerHTML={{ __html: textWithFullscreenVideo.headline }}
         />
       </Fade>
-      <div className="col-span-6 md:col-span-7 md:col-start-2 mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3">
+      <div className="col-span-6 md:col-span-8 md:-translate-x-[5%] xl:col-span-9 xl:-translate-x-[5%] mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3">
         <LottiePlayer
           animation={textWithFullscreenVideo.lottieSelect}
         />

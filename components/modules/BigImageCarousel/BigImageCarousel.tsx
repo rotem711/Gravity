@@ -34,7 +34,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
         >
           <Swiper
             autoplay={{
-              delay: 5000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             effect="fade"
