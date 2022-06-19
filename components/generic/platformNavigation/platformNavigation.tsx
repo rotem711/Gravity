@@ -6,7 +6,6 @@ import useIsMobile from 'utils/hooks'
 import styles from './platformNavigation.module.scss'
 
 const PlatformNavigation = () => {
-  const [height, setHeight] = useState(0)
   const [activeIndex, setActiveIndex] = useState(-1)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -50,19 +49,13 @@ const PlatformNavigation = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', checkActiveElement)
-    if (isMobile) {
-      const header = document.getElementById('header')
-      setHeight(header.getBoundingClientRect().height)
-    } else {
-      setHeight(0)
-    }
     return () => {
       window.removeEventListener('scroll', checkActiveElement)
     }
   }, [])
 
   return (
-    <div className={`${styles.root}`} ref={platformRef} style={{ top: height }}>
+    <div className={`${styles.root}`} ref={platformRef}>
       <div className="container flex justify-between my-auto">
         <h2 className="typo-subhead uppercase hidden md:block">
           {ctx.platformNavigation.title}
