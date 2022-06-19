@@ -50,8 +50,9 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
               >
                 <Fade delay={index * 150}>
                   <dt className="mb-20">
+                    {item?.prefix}
                     <span ref={(r) => refs.current.push(r)}>{item.value}</span>
-                    {item.unit}
+                    {item?.unit}
                   </dt>
                 </Fade>
                 <dd className="typo-body">
