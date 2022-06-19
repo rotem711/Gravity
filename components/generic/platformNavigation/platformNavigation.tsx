@@ -2,7 +2,6 @@ import React, {
   useContext, useEffect, useRef, useState,
 } from 'react'
 import { GlobalContext } from 'pages/_app'
-import useIsMobile from 'utils/hooks'
 import styles from './platformNavigation.module.scss'
 
 const PlatformNavigation = () => {
@@ -11,7 +10,6 @@ const PlatformNavigation = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ctx = useContext(GlobalContext)
   const platformRef = useRef(null)
-  const isMobile = useIsMobile()
   const offset = 120
 
   const goToSection = (e, index) => {
