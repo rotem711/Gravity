@@ -21,9 +21,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
-        if (window.innerWidth <= 834) {
-          setScrollDir('up')
-        } else if (prevPos >= window.scrollY) {
+        if (prevPos >= window.scrollY) {
           setScrollDir('up')
         } else if (window.scrollY > 1 && prevPos > 0) {
           setScrollDir('down')
