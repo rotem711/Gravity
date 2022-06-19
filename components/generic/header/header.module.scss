@@ -28,13 +28,16 @@
   right: 0;
   z-index: 100;
   transition: 400ms ease;
-
+  border-bottom: 1px solid transparent;
+  height: 8rem;
 
   &[data-scroll-dir='down'] {
     transform: translateY(-100%);
   }
 
   &[data-scroll-dir='up'] {
+    border-color: #000;
+
     &.scrolled {
       background: theme('colors.white');
 

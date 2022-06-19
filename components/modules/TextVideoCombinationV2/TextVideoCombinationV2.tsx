@@ -68,7 +68,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
               id={item.anchor}
               className={`default-grid ${
                 flipHorizontally ? '' : styles.flipped
-              } ${index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''}`}
+              } ${index > 0 ? 'mt-170 md:mt-230 lg:mt-270' : ''}`}
             >
               {flipHorizontally || isMobile ? (
                 <>
