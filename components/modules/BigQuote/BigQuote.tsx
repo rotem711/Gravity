@@ -73,10 +73,10 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
       style={{ backgroundColor: bigQuote.backgroundColor }}
       ref={ref}
     >
-      <div className="container pt-25 pb-95 xl:pt-35 xl:pb-230">
+      <div className="container pt-25 pb-95 xl:pt-35 xl:pb-150">
         {quoteLayout === 'simple' ? (
           <div className="md:default-grid">
-            <Fade className="col-span-full sm:mb-85 md:col-span-3">
+            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 md:col-span-3">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
@@ -106,7 +106,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
           </div>
         ) : (
           <div className="">
-            <Fade className="w-full sm:mb-85">
+            <Fade className="w-full mb-95 md:mb-85 xl:mb-130">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}

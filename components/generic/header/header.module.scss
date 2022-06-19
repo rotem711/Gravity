@@ -7,7 +7,7 @@
   right: 0;
   z-index: 100;
   transition: 400ms ease;
-  border-bottom: 1px solid transparent;
+
 
   &[data-scroll-dir='down'] {
     transform: translateY(-100%);
@@ -16,16 +16,21 @@
   &[data-scroll-dir='up'] {
     &.scrolled {
       background: theme('colors.white');
-      border-color: #000;
 
       &.is-inverted {
-        background: #000;
+        background: theme('colors.white');
+        a, span {
+          color: theme('colors.black');
+        }
+        svg path {
+          fill: theme('colors.black');
+        }
       }
     }
   }
   svg {
-    width: 4rem;
-    height: auto;
+    width: auto;
+    height: 3.3rem;
     transition: 500ms ease;
   }
 
@@ -99,18 +104,20 @@
     left: 0;
     width: 100%;
     height: 100vh;
+    max-height: 0;
     background: theme('colors.white');
     visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s cubic-bezier(0.9, 0, 0.1, 1) 300ms, opacity 300ms;
+
+    transition: 400ms cubic-bezier(0.9, 0, 0.1, 1);
 
     &.is-deployed {
       visibility: visible;
-      opacity: 1;
-      transition: visibility 0s linear 0s, opacity 300ms cubic-bezier(0.9, 0, 0.1, 1);
+      max-height: 100vh;
+      transition: 400ms cubic-bezier(0.9, 0, 0.1, 1);
 
       > div:first-child {
         opacity: 1;
+        transition-delay: 500ms;
       }
     }
 
@@ -122,7 +129,7 @@
       justify-content: center;
       height: 100%;
       opacity: 0;
-      transition: opacity 300ms cubic-bezier(0.26, 1.04, 0.54, 1) 300ms;
+      transition: opacity 400ms cubic-bezier(0.26, 1.04, 0.54, 1);
 
       a {
         color: theme('colors.white');
@@ -152,6 +159,7 @@
     transform-origin: bottom left;
     position: relative;
     margin-left: 5rem;
+    font-weight: 400;
   }
 
   &:hover {
@@ -189,9 +197,9 @@
 .navBackground > span {
   position: absolute !important;
   top: 0;
-left: 0;
-right: 0;
-bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100% !important;
   height: 100% !important;
   z-index: 0;
