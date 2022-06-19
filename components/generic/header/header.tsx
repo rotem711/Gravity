@@ -9,7 +9,7 @@ import HeaderInterface from './header.interface'
 
 const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
-  const [scrollDir, setScrollDir] = useState('up')
+  const [scrollDir, setScrollDir] = useState('')
   const [scrolled, setScrolled] = useState(false)
   const { rightSideNavigation, mobileMenuCta } = data
 
