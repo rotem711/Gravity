@@ -118,15 +118,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 0;
+    height: 100vh;
+    opacity: 0;
     background: theme('colors.white');
     visibility: hidden;
-
     transition: 400ms ease;
+    pointer-events: none;
 
     &.is-deployed {
       visibility: visible;
-      height: 100vh;
+      pointer-events: initial;
+      opacity: 1;
       transition: 400ms ease;
 
       > div:first-child {
