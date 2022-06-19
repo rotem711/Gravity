@@ -33,6 +33,9 @@
     line-height: 2.5rem;
     letter-spacing: -0.01em;
     font-weight: 400;
+    * {
+      font-weight: inherit !important;
+    }
   }
 
   .typo-number {
@@ -49,6 +52,7 @@
     }
   }
 
+
   .typo-captions-and-buttons {
     font-family: 'So:hne Mono';
     font-size: 1.6rem;
@@ -56,7 +60,6 @@
     letter-spacing: -0.01em;
     font-weight: 300;
   }
-
 
   .typo-big-quotes {
     font-family: 'Modern Gothic';
@@ -76,7 +79,7 @@
 
   .typo-cta-text {
     font-family: 'Modern Gothic';
-    font-size: 6.5rem;
+    font-size: 6rem;
     line-height: 7.2rem;
     font-weight: 300;
     @screen md {

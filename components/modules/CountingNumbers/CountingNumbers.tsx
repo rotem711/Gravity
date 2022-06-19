@@ -2,6 +2,7 @@ import React, { useEffect, useRef, FunctionComponent } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Fade from 'components/generic/fade/fade'
+import parse from 'html-react-parser'
 import ICountingNumbers from './CountingNumbers.interface'
 import styles from './CountingNumbers.module.scss'
 
@@ -56,7 +57,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
                   </dt>
                 </Fade>
                 <dd className="typo-body">
-                  <Fade delay={index * 150 + 50}>{item.copy}</Fade>
+                  <Fade delay={index * 150 + 50}>{parse(item.copy)}</Fade>
                 </dd>
               </div>
             ))}
