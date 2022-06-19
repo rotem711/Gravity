@@ -39,6 +39,14 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     }, 10)
   }, [])
 
+  useEffect(() => {
+    if (deployed) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [deployed])
+
   return (
     <header
       id="header"

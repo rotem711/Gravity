@@ -16,12 +16,12 @@
     letter-spacing: -0.01em;
     font-weight: 300;
 
-    @screen md {
+    @screen sm {
       font-size: 4.5rem;
       line-height: 5rem;
     }
 
-    @screen xl {
+    @screen md {
       font-size: 5.2rem;
       line-height: 5.7rem;
     }

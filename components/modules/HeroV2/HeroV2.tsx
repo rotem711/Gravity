@@ -13,29 +13,39 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
       <div className="container default-grid pt-240 pb-95 md:pt-200 md:pb-55 xl:pt-320 xl:pb-40">
         {heroV2.subline && (
           <span className="typo-subhead uppercase col-span-3 md:col-span-12 mb-30 md:mb-45 xl:mb-55 z-10 relative text-white">
-            <Fade>{heroV2.subline}</Fade>
+            <Fade delay={300}>{heroV2.subline}</Fade>
           </span>
         )}
         <h1 className="typo-headlines z-10 relative text-white col-span-6 md:col-span-7 xl:-col-span-8">
-          <Fade delay={150}>{heroV2.headline}</Fade>
+          <Fade delay={400}>{heroV2.headline}</Fade>
         </h1>
         <div className={`${styles.mediaContainer} z-0`}>
-          {heroV2.vimeoVideoUrl ? (
-            <video src={heroV2.vimeoVideoUrl} playsInline muted loop autoPlay />
-          ) : (
-            heroV2.image && <ImageComponent image={heroV2.image} />
-          )}
+          <Fade>
+            {heroV2.vimeoVideoUrl ? (
+              <video
+                src={heroV2.vimeoVideoUrl}
+                playsInline
+                muted
+                loop
+                autoPlay
+              />
+            ) : (
+              heroV2.image && <ImageComponent image={heroV2.image} />
+            )}
+          </Fade>
         </div>
         <div className={`${styles.assetContainer} z-10 hidden md:block`}>
-          {heroV2.svgLayer && (
-            <Image
-              width={heroV2.svgLayer.mediaDetails.width}
-              height={heroV2.svgLayer.mediaDetails.height}
-              layout="responsive"
-              src={heroV2.svgLayer.sourceUrl}
-              loading="eager"
-            />
-          )}
+          <Fade delay={150}>
+            {heroV2.svgLayer && (
+              <Image
+                width={heroV2.svgLayer.mediaDetails.width}
+                height={heroV2.svgLayer.mediaDetails.height}
+                layout="responsive"
+                src={heroV2.svgLayer.sourceUrl}
+                loading="eager"
+              />
+            )}
+          </Fade>
         </div>
       </div>
     </div>
