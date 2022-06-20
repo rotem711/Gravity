@@ -1,3 +1,16 @@
 .root {
   position: relative;
+
+  &.simplify-carbon-accounting {
+    svg {
+      transform: scale(1.83) !important;
+      transform-origin: top;
+      opacity: 0;
+    }
+  }
+  &.scale {
+    svg {
+      opacity: 1;
+    }
+  }
 }
