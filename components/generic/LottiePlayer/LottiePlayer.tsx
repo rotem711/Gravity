@@ -31,10 +31,10 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     }
   }
   useEffect(() => {
-    window.addEventListener('resize', calculate)
+    window.addEventListener('orientationchange', calculate)
     import(`public/animations/${animation}.json`).then(setAnimationData)
     return () => {
-      window.removeEventListener('resize', calculate)
+      window.removeEventListener('orientationchange', calculate)
     }
   }, [])
 
