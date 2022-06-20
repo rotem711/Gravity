@@ -1,6 +1,8 @@
 .root {
   position: relative;
-
+  svg {
+    transition: 400ms ease;
+  }
   &.simplify-carbon-accounting {
     svg {
       transform: scale(1.83) !important;
@@ -8,7 +10,7 @@
       opacity: 0;
     }
   }
-  &.scale {
+  &.fadeIn {
     svg {
       opacity: 1;
     }
