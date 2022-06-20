@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useLayoutEffect,
   useRef,
 } from 'react'
 import useIsMobile from 'utils/hooks'
@@ -17,49 +16,51 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 ) => {
   const { tabNavigationContent } = props
   const { headlineSeparator } = tabNavigationContent
+  const isMobile = useIsMobile()
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
   const [titleHeight, setTitleTabHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
 
-  const isMobile = useIsMobile()
-
   const onClickItem = (e) => {
     setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
   const recalculate = () => {
+    setTabHeight(0)
+    setTitleTabHeight(0)
+    let height = 0
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (!tabContentRefs.current[i]) return
-      if (tabContentRefs.current[i].children[0].clientHeight > tabHeight) {
-        setTabHeight(
-          tabContentRefs.current[i].children[0].getBoundingClientRect().height,
-        )
+      if (tabContentRefs.current[i].children[0].clientHeight > height) {
+        height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
+    let height_2 = 0
     for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
       if (!tabTitleRefs.current[i]) return
-      if (tabTitleRefs.current[i].clientHeight > titleHeight) {
-        setTitleTabHeight(
-          tabTitleRefs.current[i].getBoundingClientRect().height + 50,
-        )
+      if (tabTitleRefs.current[i].clientHeight > height_2) {
+        height_2 = tabTitleRefs.current[i].getBoundingClientRect().height + 50
       }
     }
+    setTabHeight(height)
+    setTitleTabHeight(height_2)
   }
 
-  useLayoutEffect(() => {
-    recalculate()
-  })
+  useEffect(() => {
+    setIndex(tabNavigationContent.mobileDefaultOpenIndex)
+  }, [isMobile])
 
   useEffect(() => {
+    recalculate()
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, recalculate)
     return () => {
       window.removeEventListener(hook, recalculate)
     }
-  }, [index])
+  }, [])
 
   const getHeadlineSeparatorModule = (item) => (
     <HeadlineSeparatorModule
@@ -92,6 +93,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                   id="accordion"
                   key={item.title}
                   style={{ backgroundColor: item.backgroundColor }}
+                  className={`${styles.accordion} ${index === itemIndex ? styles.accordionItemActive : ''}`}
                 >
                   <button
                     type="button"
