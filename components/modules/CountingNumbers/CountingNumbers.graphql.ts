@@ -5,6 +5,7 @@ const CountingNumbersFragment = (t: string) => `
       headline
       backgroundColor
       numbers {
+        prefix
         value
         unit
         copy

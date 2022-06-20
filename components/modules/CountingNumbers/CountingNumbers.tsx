@@ -2,6 +2,7 @@ import React, { useEffect, useRef, FunctionComponent } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Fade from 'components/generic/fade/fade'
+import parse from 'html-react-parser'
 import ICountingNumbers from './CountingNumbers.interface'
 import styles from './CountingNumbers.module.scss'
 
@@ -38,7 +39,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
       style={{ backgroundColor: countingNumbers.backgroundColor }}
     >
       <div className="container pt-25 pb-95 md:pb-100 xl:pt-35 xl:pb-145">
-        <div className="xl:default-grid">
+        <div className="md:default-grid">
           <h2 className={`${styles.title} typo-subhead uppercase`}>
             <Fade>{countingNumbers.headline}</Fade>
           </h2>
@@ -46,16 +47,17 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
             {countingNumbers.numbers.map((item, index) => (
               <div
                 key={item.copy}
-                className={`${styles.number} col-span-4 md:col-span-6 xl:col-span-6 mt-75 md:mt-95 xl:mt-110`}
+                className={`${styles.number} col-span-4 md:col-span-6 mt-75 md:mt-95 xl:mt-110`}
               >
                 <Fade delay={index * 150}>
                   <dt className="mb-20">
+                    {item?.prefix}
                     <span ref={(r) => refs.current.push(r)}>{item.value}</span>
-                    {item.unit}
+                    {item?.unit}
                   </dt>
                 </Fade>
                 <dd className="typo-body">
-                  <Fade delay={index * 150 + 50}>{item.copy}</Fade>
+                  <Fade delay={index * 150 + 50}>{parse(item.copy)}</Fade>
                 </dd>
               </div>
             ))}

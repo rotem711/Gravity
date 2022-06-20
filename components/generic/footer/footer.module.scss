@@ -1,25 +1,45 @@
 @import '../../../styles/variables';
 
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 .hover-effect {
   @screen md {
-    &:hover {
-      &::after {
-        transform-origin: left center;
-        transform: scaleX(1);
-      }
-    }
-
     &::after {
       content: '';
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;
+      opacity: 0;
       height: 1px;
-      background-color: currentcolor;
-      transform: scaleX(0);
-      transform-origin: right center;
-      transition: transform 0.35s ease-in-out;
+      animation: ANIMATE_OUT 400ms ease forwards;
+      background-color: theme('colors.black');
+      transform-origin: left center;
+    }
+
+    &:hover {
+      &::after {
+        animation: ANIMATE_IN 0.35s ease-in-out forwards;
+      }
     }
   }
 }

@@ -73,10 +73,10 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
       style={{ backgroundColor: bigQuote.backgroundColor }}
       ref={ref}
     >
-      <div className="container pt-25 pb-155 xl:pt-35 xl:pb-230">
+      <div className="container pt-25 pb-95 xl:pt-35 xl:pb-150">
         {quoteLayout === 'simple' ? (
           <div className="md:default-grid">
-            <Fade className="col-span-full sm:mb-85 xl:col-span-3">
+            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 md:col-span-3">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
@@ -86,10 +86,13 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
-                className={`${styles.quoteElement} typo-big-quotes md:col-span-10 xl:col-span-8 xl:col-start-5`}
+                className={`${styles.quoteElement} typo-big-quotes md:col-span-10 md:col-span-8 md:col-start-5`}
               >
                 <Fade delay={150}>
-                  <div dangerouslySetInnerHTML={{ __html: `${item.quote}”` }} />
+                  <div
+                    className={`${styles.quoteElementChild}`}
+                    dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
+                  />
                 </Fade>
                 <cite
                   className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
@@ -103,7 +106,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
           </div>
         ) : (
           <div className="">
-            <Fade className="w-full sm:mb-85">
+            <Fade className="w-full mb-95 md:mb-85 xl:mb-130">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
@@ -128,6 +131,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   >
                     <Fade delay={150}>
                       <div
+                        className={`${styles.quoteElementChild}`}
                         dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
                       />
                     </Fade>

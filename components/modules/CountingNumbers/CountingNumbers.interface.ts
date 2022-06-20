@@ -5,6 +5,7 @@ export default interface ICountingNumbers {
     backgroundColor: string
     numbers: [
       {
+        prefix: string
         value: number
         unit: string
         copy: string

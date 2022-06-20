@@ -2,13 +2,6 @@
 
 .root {
   position: relative;
-
-  blockquote {
-    max-width: 35rem;
-    @screen md {
-      max-width: initial;
-    }
-  }
 }
 
 .cite {
@@ -43,6 +36,15 @@
   position: relative;
   order: 2;
 
+}
+
+.quoteElementChild {
+  position: relative;
+
+  @screen md {
+    transform: translateY(-1.2rem);
+
+  }
   &::before {
     content: "“";
     display: inline-block;
@@ -53,10 +55,6 @@
     top: 0;
     right: 100%;
     @extend .typo-big-quotes;
-  }
-
-  @screen md {
-    order: 1;
   }
 }
 

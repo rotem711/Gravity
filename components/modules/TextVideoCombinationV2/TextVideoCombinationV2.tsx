@@ -41,7 +41,6 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 <Fade delay={300}>
                   <div
                     className="pb-45 md:pb-55 typo-body"
-                    style={{ fontWeight: 400 }}
                     dangerouslySetInnerHTML={{ __html: item.copy }}
                   />
                 </Fade>
@@ -69,7 +68,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
               id={item.anchor}
               className={`default-grid ${
                 flipHorizontally ? '' : styles.flipped
-              } ${index > 0 ? 'pt-170 md:pt-230 lg:pt-270' : ''}`}
+              } ${index > 0 ? 'mt-170 md:mt-230 lg:mt-270' : ''}`}
             >
               {flipHorizontally || isMobile ? (
                 <>
@@ -85,7 +84,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 </>
               ) : (
                 <>
-                  <div className="col-span-5">{contentC}</div>
+                  <div className="col-span-4">{contentC}</div>
                   <div className="col-span-6 col-start-7">{mediaC}</div>
                 </>
               )}

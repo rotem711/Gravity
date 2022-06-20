@@ -29,7 +29,8 @@ module.exports = {
       lightClay: '#FFC48D',
     },
     screens: {
-      sm: '375px',
+      sm: '440px',
+      sd: '480px',
       md: '834px',
       lg: '1024px',
       xl: '1440px',

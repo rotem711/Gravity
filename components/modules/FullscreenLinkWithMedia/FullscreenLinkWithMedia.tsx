@@ -18,6 +18,7 @@ const FullscreenLinkWithMediaModule:FunctionComponent<IFullscreenLinkWithMedia> 
             <div>
               <p className="typo-headlines mb-30">{fullscreenLinkWithMedia.link.title}</p>
               <div className={`${styles.iconContainer} `}>
+
                 <Arrow />
               </div>
             </div>

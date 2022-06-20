@@ -11,10 +11,27 @@
   opacity: 0.25;
   cursor: pointer;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: 'Modern Gothic';
+  font-size: 5rem;
+  line-height: 5.75rem;
+  letter-spacing: -0.01em;
+  font-weight: 300;
+  @screen md {
+    font-size: 5.5rem;
+    line-height: 6.3rem;
+  }
+  @screen xl {
+    font-size: 7.5rem;
+    line-height: 8.6rem;
+  }
 
-  &:hover,
   &.isActive {
     opacity: 1;
+    transform: translate(15px, 0);
+    transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &:hover {
     transform: translate(15px, 0);
     transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
@@ -29,11 +46,10 @@
   .copyItem {
     position: absolute;
     width: 100%;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     opacity: 0;
-    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 50ms cubic-bezier(0.19, 1, 0.22, 1);
 
     font-weight: 400;
 
@@ -60,10 +76,8 @@
     top: 0;
     right: 0;
 
-    // @screen lg {
-    //   position: absolute;
-    // }
     &.isActive {
+      display: flex;
       opacity: 1;
     }
   }

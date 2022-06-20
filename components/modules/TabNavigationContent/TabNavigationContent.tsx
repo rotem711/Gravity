@@ -75,7 +75,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   }, [index])
 
   return (
-    <div className={`${styles.root}`}>
+    <div id="tabNavigationContent" className={`${styles.root}`}>
       <div className="">
         {isMobile ? (
           <Accordion
@@ -172,42 +172,68 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45`}
                           style={{ color: item.backgroundColor }}
                         >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
+                          {item.content.map((subItem) => (
+                            <div
+                              key={subItem.headline}
+                              className="mt-155 first:mt-0"
+                            >
+                              <h2
+                                className="typo-headlines mb-50"
+                                dangerouslySetInnerHTML={{
+                                  __html: subItem.headline,
+                                }}
+                              />
+                              <div className="typo-body">
+                                {subItem.copy}
+                              </div>
+                            </div>
+                          ))}
+                          <div
+                            className={`${styles.mediaContainer} mt-45`}
+                            style={{ color: item.backgroundColor }}
+                          >
+                            {item.vimeoVideoUrl ? (
+                              <video
+                                src={item.vimeoVideoUrl}
+                                playsInline
+                                muted
+                                loop
+                                autoPlay
+                              />
+                            ) : (
+                              item.image && <Image image={item.image} />
                             )}
-                          <span className={`${styles.corners}`} aria-hidden="true">
-                            <i />
-                            <i />
-                            <i />
-                            <i />
-                          </span>
-                        </div>
-                      </AccordionItemPanel>
-
-                    </>
-                  )}
-                </AccordionItemState>
-              </AccordionItem>
-            ))}
+                            <span
+                              className={`${styles.corners}`}
+                              aria-hidden="true"
+                            >
+                              <i />
+                              <i />
+                              <i />
+                              <i />
+                            </span>
+                          </div>
+                        </AccordionItemPanel>
+                      </>
+                    )}
+                  </AccordionItemState>
+                </AccordionItem>
+              ))}
           </Accordion>
         ) : (
           <div>
             <nav>
-              <ul className="flex w-full">
+              <ul className="flex container w-full">
                 {tabNavigationContent.tabs.map((item, itemIndex) => (
                   <li
                     key={item.title}
-                    style={{ backgroundColor: item.backgroundColor }}
-                    className={`${styles.navTopItem} flex-1`}
+                    style={{ backgroundColor: item.backgroundColor, color: item.backgroundColor }}
+                    className={`${styles.navTopItem} ${itemIndex === 0 ? styles.navTopItemFirst : ''} flex-1`}
                   >
                     <button
                       className={`${styles.navItem} ${
                         index === itemIndex ? styles.isActive : ''
-                      } typo-subhead uppercase block w-full pt-35 pb-35 pl-40`}
+                      } typo-subhead uppercase block w-full pt-30 pb-30 pl-40`}
                       onClick={onClickItem}
                       onKeyPress={onClickItem}
                       data-index={itemIndex}
@@ -262,13 +288,17 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
-                            )}
+                          {item.vimeoVideoUrl ? (
+                            <video
+                              src={item.vimeoVideoUrl}
+                              playsInline
+                              muted
+                              loop
+                              autoPlay
+                            />
+                          ) : (
+                            item.image && <Image image={item.image} />
+                          )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"
@@ -283,7 +313,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     ) : (
                       <>
                         {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-55 lg:mt-155 col-span-12 default-grid">
+                          <div
+                            key={subItem.headline}
+                            className="mt-55 lg:mt-155 col-span-12 default-grid"
+                          >
                             <h2 className="typo-headlines mb-50 col-span-5">
                               {subItem.headline}
                             </h2>
@@ -296,13 +329,17 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           className={`${styles.mediaContainer} mt-45 md:col-span-12`}
                           style={{ color: item.backgroundColor }}
                         >
-                          {item.vimeoVideoUrl
-                            ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
-                            : (
-                              item.image && (
-                              <Image image={item.image} />
-                              )
-                            )}
+                          {item.vimeoVideoUrl ? (
+                            <video
+                              src={item.vimeoVideoUrl}
+                              playsInline
+                              muted
+                              loop
+                              autoPlay
+                            />
+                          ) : (
+                            item.image && <Image image={item.image} />
+                          )}
                           <span
                             className={`${styles.corners}`}
                             aria-hidden="true"

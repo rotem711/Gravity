@@ -7,18 +7,21 @@
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 100%;
-  padding-bottom: percentage(715 / 414);
+  padding-bottom: percentage(715 / 537);
 
-  @screen md {
-    @screen md {
-      padding-bottom: percentage(845 / 1440);
-    }
+  @screen sd {
+    padding-bottom: percentage(500 / 845);
+  }
+  @screen xl {
+    padding-bottom: percentage(845 / 1440);
   }
 
   a {
     position: absolute;
-    inset: 0;
+    top: 0;
+left: 0;
+right: 0;
+bottom: 0;
     padding: 2rem 3rem;
 
     @screen md {
@@ -28,7 +31,7 @@
     > div {
       position: relative;
       z-index: 1;
-  
+
       p {
         color: theme('colors.white')
       }

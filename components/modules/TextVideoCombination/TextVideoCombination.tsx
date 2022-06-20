@@ -38,7 +38,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                   dangerouslySetInnerHTML={{ __html: item.copy }}
                 />
               </Fade>
-              <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
+              <div className="w-full mt-50 xl:mt-60 hidden md:block">
                 <Fade delay={400}>
                   <Button variant="light" link={item.link} />
                 </Fade>

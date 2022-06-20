@@ -1,5 +1,24 @@
 @import '../../../styles/variables';
 
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .root {
   position: fixed;
   top: 0;
@@ -7,22 +26,34 @@
   right: 0;
   z-index: 100;
   transition: 400ms ease;
+  border-bottom: 1px solid transparent;
+  height: 8rem;
 
   &[data-scroll-dir='down'] {
     transform: translateY(-100%);
   }
 
   &[data-scroll-dir='up'] {
+    border-color: #000;
+
     &.scrolled {
       background: theme('colors.white');
+
       &.is-inverted {
-        background: #000;
+        background: theme('colors.white');
+        a,
+        span {
+          color: theme('colors.black');
+        }
+        svg path {
+          fill: theme('colors.black');
+        }
       }
     }
   }
   svg {
-    width: 4rem;
-    height: auto;
+    width: auto;
+    height: 3.3rem;
     transition: 500ms ease;
   }
 
@@ -38,29 +69,21 @@
   }
 
   &.is-deployed {
+    z-index: 999;
     svg path {
-      fill: theme('colors.white');
+      fill: theme('colors.white') !important;
     }
 
     a,
     span {
-      color: theme('colors.white');
-    }
-
-    svg path {
-      fill: theme('colors.black');
-    }
-
-    a,
-    span {
-      color: theme('colors.black');
+      color: theme('colors.white') !important;
     }
   }
 }
 
 .logo {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   svg path {
     fill: theme('colors.black');
@@ -81,7 +104,7 @@
 }
 
 .navCenter {
-  @screen xl {
+  @screen md {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -90,21 +113,27 @@
 }
 
 .navContainer {
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 833px) {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
+    opacity: 0;
     background: theme('colors.white');
-    transform: translate(0, -100%);
-    transition: transform 500ms cubic-bezier(0.9, 0, 0.1, 1);
+    visibility: hidden;
+    transition: 400ms ease;
+    pointer-events: none;
 
     &.is-deployed {
-      transform: translate(0, 0);
+      visibility: visible;
+      pointer-events: initial;
+      opacity: 1;
+      transition: 400ms ease;
 
       > div:first-child {
         opacity: 1;
+        transition-delay: 500ms;
       }
     }
 
@@ -116,15 +145,14 @@
       justify-content: center;
       height: 100%;
       opacity: 0;
-      transition: opacity 300ms cubic-bezier(0.26, 1.04, 0.54, 1) 600ms;
-
+      transition: opacity 400ms ease;
       a {
         color: theme('colors.white');
       }
     }
   }
 
-  @screen xl {
+  @screen md {
     > div:first-child {
       padding-right: 0;
     }
@@ -139,20 +167,14 @@
   font-weight: 300;
   position: relative;
 
-  @screen xl {
+  @screen md {
     font-size: 1.6rem;
     line-height: 2.08rem;
     padding-bottom: 0.3rem;
     transform-origin: bottom left;
     position: relative;
     margin-left: 5rem;
-  }
-
-  &:hover {
-    &::after {
-      transform-origin: left center;
-      transform: scaleX(1);
-    }
+    font-weight: 400;
   }
 
   &::after {
@@ -161,11 +183,17 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    opacity: 0;
     height: 1px;
+    animation: ANIMATE_OUT 400ms ease forwards;
     background-color: currentcolor;
-    transform: scaleX(0);
-    transform-origin: right center;
-    transition: transform 0.35s ease-in-out;
+    transform-origin: left center;
+  }
+
+  &:hover {
+    &::after {
+      animation: ANIMATE_IN 0.35s ease-in-out forwards;
+    }
   }
 }
 
@@ -176,13 +204,15 @@
   padding-bottom: 0.3rem;
   transform-origin: bottom left;
   position: relative;
-  // margin: 0 2.5rem;
 }
 
 .navBackground,
 .navBackground > span {
   position: absolute !important;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100% !important;
   height: 100% !important;
   z-index: 0;
@@ -191,11 +221,9 @@
 }
 
 .button {
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 833px) {
     position: absolute;
     bottom: 45px;
-
-
     a {
       display: block;
       width: 100%;

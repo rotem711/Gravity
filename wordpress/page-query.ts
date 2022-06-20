@@ -21,7 +21,7 @@ import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
 import TextVideoCombinationV2Fragment from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
-import Image from 'queries/fragments/Image'
+import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
 
 const TEMPLATE_PREFIX = 'DefaultTemplate_Pagebuilder_PageBuilder'
@@ -94,7 +94,16 @@ export default `
         }
       }
     }
-
+    settings: themeGeneralSettings {
+      globalSettings {
+        notFound {
+          link {
+            ...Link
+          }
+          ${ImageComponent()}
+        }
+      }
+    }
     insights: posts {
       nodes {
         slug
@@ -116,14 +125,12 @@ export default `
         }
       }
     }
-
     insightsCategories: categories {
       nodes {
         id
         name
       }
     }
-
     entry: pageBy(uri: $uri) {
       id
       title

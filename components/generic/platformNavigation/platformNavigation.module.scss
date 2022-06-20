@@ -1,13 +1,66 @@
 @import '../../../styles/variables';
 
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .root {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 101;
   background-color: theme('colors.white');
   border-bottom: 1px solid #000;
+  height: 8rem;
+  display: flex;
+  transition: all 300ms ease, border-color 300ms ease 200ms;
 
-  @screen md {
-    border: 0;
+  &.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    border-color: transparent;
+  }
+
+  button {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0;
+      height: 1px;
+      animation: ANIMATE_OUT 400ms ease forwards;
+      background-color: currentcolor;
+      transform-origin: left center;
+    }
+
+    &.active {
+      &::after {
+        animation: ANIMATE_IN 0.35s ease-in-out forwards;
+      }
+    }
+    &:hover {
+      @screen md {
+        &::after {
+          animation: ANIMATE_IN 0.35s ease-in-out forwards;
+        }
+      }
+    }
   }
 }

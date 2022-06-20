@@ -11,13 +11,13 @@ const TextWithFullscreenVideoModule: FunctionComponent<
   const { textWithFullscreenVideo } = props
 
   return (
-    <div className={`${styles.root} container default-grid pb-150 md:pb-200`}>
+    <div className={`${styles.root} container default-grid`}>
       <Fade className="col-span-6 typo-headlines mb-80">
         <h2
           dangerouslySetInnerHTML={{ __html: textWithFullscreenVideo.headline }}
         />
       </Fade>
-      <div className="col-span-6 md:col-span-7 md:col-start-2 mb-60 md:mb-0 md:mt-75 xl:mt-130 md:order-3">
+      <div className="col-span-6 md:col-span-9 xl:col-span-8 md:mt-75 xl:mt-130 md:order-3 xl:col-start-2">
         <LottiePlayer
           animation={textWithFullscreenVideo.lottieSelect}
         />
