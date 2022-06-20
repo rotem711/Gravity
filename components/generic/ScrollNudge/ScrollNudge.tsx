@@ -11,10 +11,11 @@ const ScrollNudge: FunctionComponent<IScrollNudge> = () => {
     const { documentElement } = document
     // eslint-disable-next-line radix
     const y =
-      documentElement.getBoundingClientRect().height - documentElement.clientHeight -
-        documentElement.scrollTop
+      documentElement.getBoundingClientRect().height -
+      documentElement.clientHeight -
+      documentElement.scrollTop
 
-    setVal(Math.round(y))
+    setVal(Math.round((1 - Math.round(y) / documentElement.getBoundingClientRect().height) * 419))
   }
 
   useEffect(() => {

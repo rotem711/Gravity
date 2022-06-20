@@ -154,22 +154,25 @@
   }
 }
 
-
-
-.accordionItem {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 1s cubic-bezier(0, 1, 0, 1);
-  transform-origin: bottom;
-  &.active {
-    transform-origin: bottom;
-    max-height: 4000px;
-    transition: max-height 1s ease-in-out;
-  }
-}
-
-.accordionItemActive {
+.accordion {
   svg {
-    transform: rotate(180deg);
+    transition: 400ms ease;
+  }
+  .accordionItem {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    transform-origin: bottom;
+    &.active {
+      transform-origin: bottom;
+      max-height: 4000px;
+      transition: max-height 1s ease-in-out;
+    }
+  }
+
+  &.accordionItemActive {
+    svg {
+      transform: rotate(180deg);
+    }
   }
 }
