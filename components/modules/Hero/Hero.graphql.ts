@@ -3,6 +3,8 @@ const HeroFragment = (t: string) => `
     fieldGroupName
     hero {
       vimeoVideoId
+      vimeoVideoIdTablet
+      vimeoVideoIdMobile
       headline
       link {
         ...Link
