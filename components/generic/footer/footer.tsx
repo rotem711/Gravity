@@ -9,7 +9,7 @@ const FooterBlock = ({ data }: { data: FooterInterface }) => (
     <SimpleLogo className={`${styles.logo} mb-100 md:mb-110 xl:mb-125`} />
     <div className="default-grid">
       <div className={`${styles.contact} col-span-6 md:col-span-5 typo-captions-and-buttons`} dangerouslySetInnerHTML={{ __html: data.contact }} />
-      <ul className="col-span-6 md:col-span-12 xl:col-span-6 xl:col-start-7 sm:mt-150 md:mt-100 xl:mt-0 default-grid typo-captions-and-buttons">
+      <ul className="col-span-6 md:col-span-12 xl:col-span-6 xl:col-start-7 mt-150 md:mt-100 xl:mt-0 default-grid typo-captions-and-buttons">
         {data.navigation.map((item) => (
           <li className="col-span-3 xl:col-span-4 mb-75 last:mb-0 md:mb-0" key={item.label}>
             <span>{item.label}</span>
