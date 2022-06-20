@@ -5,6 +5,8 @@ export default interface IHero {
   fieldGroupName: string
   hero: {
     vimeoVideoId: string
+    vimeoVideoIdTablet: string
+    vimeoVideoIdMobile: string
     headline: string
     link: Link
     logoRowHeadline: string
