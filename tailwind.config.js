@@ -29,8 +29,10 @@ module.exports = {
       lightClay: '#FFC48D',
     },
     screens: {
-      sm: '375px',
-      md: '768px',
+      sm: '440px',
+      sd: '480px',
+      md: '834px',
+      lg: '1024px',
       xl: '1440px',
     },
     extend: {
@@ -55,6 +57,18 @@ module.exports = {
             'column-gap': '3rem',
           },
         },
+        '.default-grid-lg': {
+          display: 'grid',
+          'grid-template-columns': 'repeat(6, minmax(0, 1fr))',
+          'column-gap': '1.5rem',
+          '@screen lg': {
+            'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
+            'column-gap': '2rem',
+          },
+          '@screen xl': {
+            'column-gap': '3rem',
+          },
+        },
         '.container': {
           maxWidth: '100%',
           padding: '0 3rem',
@@ -64,7 +78,7 @@ module.exports = {
           },
           '@screen xl': {
             maxWidth: '1360px',
-            padding: '0 4rem',
+            padding: '0rem',
           },
         },
       })

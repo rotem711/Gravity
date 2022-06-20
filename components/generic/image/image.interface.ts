@@ -5,4 +5,5 @@ export default interface IImage {
     desktopImage: MediaItem
     mobileImage: MediaItem
   }
+  layout?: string
 }

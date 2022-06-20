@@ -16,6 +16,8 @@ const ImageComponent = ({ image }: IImage) => {
           height={desktopImage.mediaDetails.height}
           layout="responsive"
           src={mobileImage.sourceUrl}
+          quality={100}
+          loading="eager"
         />
       ) : (
         desktopImage && (
@@ -24,6 +26,8 @@ const ImageComponent = ({ image }: IImage) => {
             height={desktopImage.mediaDetails.height}
             layout="responsive"
             src={desktopImage.sourceUrl}
+            quality={100}
+            loading="eager"
           />
         )
       )}

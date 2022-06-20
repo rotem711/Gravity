@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  svg {
+    transition: 400ms ease;
+  }
+  &.simplify-carbon-accounting {
+    svg {
+      transform: scale(1.83) !important;
+      transform-origin: top;
+      opacity: 0;
+    }
+  }
+  &.fadeIn {
+    svg {
+      opacity: 1;
+    }
+  }
+}

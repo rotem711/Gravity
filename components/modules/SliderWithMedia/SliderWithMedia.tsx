@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import { useInView } from 'react-intersection-observer'
+import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import Image from 'components/generic/image/image'
 import styles from './SliderWithMedia.module.scss'
@@ -33,25 +34,30 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
     setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
+  const recalculate = () => {
+    let l = 0
+    for (let i = 0; i < copyRefs.current.length; i += 1) {
+      if (copyRefs.current[i].clientHeight * 0.75 > l) {
+        l = copyRefs.current[i].clientHeight * 0.75
+      }
+    }
+    let m = 0
+    for (let i = 0; i < mediaRefs.current.length; i += 1) {
+      if (mediaRefs.current[i].clientHeight > m) {
+        m = mediaRefs.current[i].clientHeight
+      }
+    }
+    setCopyHeight(l)
+    setMediaHeight(m)
+  }
+
   // set copyContainer height
   useLayoutEffect(() => {
-    for (let i = 0; i < copyRefs.current.length; i += 1) {
-      if (copyRefs.current[i].clientHeight > copyHeight) {
-        setCopyHeight(copyRefs.current[i].clientHeight)
-      }
-    }
-  })
-
-  // set mediaContainer height
-  useLayoutEffect(() => {
-    for (let i = 0; i < mediaRefs.current.length; i += 1) {
-      if (mediaRefs.current[i].clientHeight > mediaHeight) {
-        setMediaHeight(mediaRefs.current[i].clientHeight)
-      }
-    }
+    recalculate()
   })
 
   useEffect(() => {
+    window.addEventListener('orientationchange', recalculate)
     if (inView) {
       timer = setTimeout(() => {
         if (indexRef.current + 1 === mediaRefs.current.length) {
@@ -62,43 +68,46 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
       }, 4000)
       return () => clearTimeout(timer)
     }
-    return null
+    return () => {
+      window.removeEventListener('orientationchange', recalculate)
+    }
   }, [inView, index])
 
   return (
     <div
-      className={`${styles.root} container pt-35 pb-100 md:pt-70xl:pt-35 xl:pb-150`}
+      className={`${styles.root} container pt-35 md:pb-0 md:pt-70 lg:pt-35 lg:pb-150`}
       ref={ref}
     >
-      <h2 className={`${styles.title} typo-subhead uppercase sm:mb-85`}>
-        {sliderWithMedia.subline}
+      <h2 className={`${styles.title} typo-subhead uppercase mb-85 md:mb-100`}>
+        <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
-      <div className="xl:default-grid">
-        <header className="md:default-grid xl:block xl:col-span-6 md:mb-90">
-          <ul className="md:col-span-6 xl:w-full sm:mb-55 md:mb-0 xl:mb-95">
+      <div className="md:default-grid">
+        <header className="md:default-grid md:col-span-12 lg:col-span-4 md:mb-90 lg:mb-0">
+          <ul className="md:col-span-6 mb-50 md:mb-0 lg:col-span-12 lg:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
-              <li>
+              <li key={item.title}>
                 <button
                   className={`${styles.navItem} ${
                     index === itemIndex ? styles.isActive : ''
-                  } typo-big-quotes`}
+                  } typo-md:typo-big-quotes`}
                   onClick={onClickItem}
                   onKeyPress={onClickItem}
                   data-index={itemIndex}
                   type="button"
                 >
-                  {item.title}
+                  <Fade delay={itemIndex * 150}>{item.title}</Fade>
                 </button>
               </li>
             ))}
           </ul>
-          <div className="md:col-span-5 xl:col-span-3">
+          <div className="md:col-span-6 lg:col-span-12">
             <div
               className={`${styles.copyContainer} md:col-span-6 mb-55`}
               style={{ height: copyHeight }}
             >
               {sliderWithMedia.slides.map((item, itemIndex) => (
                 <div
+                  key={item.title}
                   className={`${styles.copyItem} ${
                     index === itemIndex ? styles.isActive : ''
                   } typo-body`}
@@ -106,17 +115,19 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                     copyRefs.current[itemIndex] = element
                   }}
                 >
-                  {item.copy}
+                  <Fade delay={itemIndex * 150}>{item.copy}</Fade>
                 </div>
               ))}
             </div>
-            <div className="w-full mt-50 xl:mt-60 sm:hidden md:block">
-              <Button variant="light" link={sliderWithMedia.link} />
+            <div className="w-full mt-50 md:mt-45 lg:mt-60 hidden md:block">
+              <Fade>
+                <Button variant="light" link={sliderWithMedia.link} />
+              </Fade>
             </div>
           </div>
         </header>
         <div
-          className={`${styles.mediaContainer} xl:col-span-6 default-grid`}
+          className={`${styles.mediaContainer} md:col-span-12 lg:col-start-7 lg:col-span-6 default-grid`}
           style={{ height: mediaHeight }}
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
@@ -127,6 +138,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               ref={(element) => {
                 mediaRefs.current[itemIndex] = element
               }}
+              key={item.title}
               role="button"
             >
               {item.vimeoVideoUrl && (
@@ -141,9 +153,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               )}
               {item.image && (
                 <div className={`${styles.image}`}>
-                  <Image
-                    image={item.image}
-                  />
+                  <Image image={item.image} />
                 </div>
               )}
             </div>

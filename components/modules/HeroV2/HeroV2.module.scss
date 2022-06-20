@@ -4,10 +4,14 @@
 
 .mediaContainer {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
 
-  > div > span, video {
+  > div > span,
+  video {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -23,5 +27,5 @@
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translate(0,-50%);
+  transform: translate(0, -50%);
 }

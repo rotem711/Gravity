@@ -3,10 +3,16 @@
 .root {
   position: relative;
   background-color: theme('colors.mediumSky');
-}
+  z-index: 11;
 
-.title {
-  
+  h1 {
+    @screen md {
+      max-width: 97.5rem;
+    }
+  }
+  video {
+    mix-blend-mode: multiply;
+  }
 }
 
 .logos {
@@ -17,7 +23,7 @@
   display: block;
   position: relative;
   width: 100%;
-  height: 31px;
+  height: 7.5rem;
 
   span {
     object-position: left center;

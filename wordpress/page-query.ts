@@ -19,8 +19,9 @@ import SublineHeadlineMediaFragment from 'components/modules/SublineHeadlineMedi
 import TabNavigationContentFragment from 'components/modules/TabNavigationContent/TabNavigationContent.graphql'
 import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
+import TextVideoCombinationV2Fragment from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
-import Image from 'queries/fragments/Image'
+import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
 
 const TEMPLATE_PREFIX = 'DefaultTemplate_Pagebuilder_PageBuilder'
@@ -31,6 +32,7 @@ export default `
   ${HeroFragment(TEMPLATE_PREFIX)}
   ${SliderWithMediaFragment(TEMPLATE_PREFIX)}
   ${TextVideoCombinationFragment(TEMPLATE_PREFIX)}
+  ${TextVideoCombinationV2Fragment(TEMPLATE_PREFIX)}
   ${TextWithFullscreenVideoFragment(TEMPLATE_PREFIX)}
   ${BigImageCarouselFragment(TEMPLATE_PREFIX)}
   ${HeadlineSeparatorFragment(TEMPLATE_PREFIX)}
@@ -92,7 +94,16 @@ export default `
         }
       }
     }
-
+    settings: themeGeneralSettings {
+      globalSettings {
+        notFound {
+          link {
+            ...Link
+          }
+          ${ImageComponent()}
+        }
+      }
+    }
     insights: posts {
       nodes {
         slug
@@ -114,14 +125,12 @@ export default `
         }
       }
     }
-
     insightsCategories: categories {
       nodes {
         id
         name
       }
     }
-
     entry: pageBy(uri: $uri) {
       id
       title
@@ -144,6 +153,9 @@ export default `
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_TextVideoCombination {
                 ...TextVideoCombination
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_TextVideoCombinationV2 {
+                ...TextVideoCombinationV2
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_TextWithFullscreenVideo {
                 ...TextWithFullscreenVideo
@@ -214,6 +226,7 @@ export interface PageInterface {
   id: string
   title: string
   slug: string
+  uri: string
   pageOption: {
     invertNavigation: boolean
   }

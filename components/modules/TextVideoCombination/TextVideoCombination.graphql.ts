@@ -12,9 +12,8 @@ const TextVideoCombinationFragment = (t: string) => `
           ...Link
         }
         vimeoVideoUrl
+        lottieSelect
         ${ImageComponent()}
-        flipHorizontally
-        stackOnTablet
       }
     }
   }

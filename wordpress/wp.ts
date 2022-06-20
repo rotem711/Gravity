@@ -50,7 +50,7 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
-  if (!res) {
+  if (!res || !res.entry) {
     return {
       notFound: true,
     }
@@ -59,6 +59,7 @@ export const getWpStaticProps = async (
     props: {
       page: res.entry,
       footer: res.footer.footer,
+      settings: res.settings.globalSettings,
       header: res.header.header,
       platformNavigation: res.platformNavigation.platformNavigation,
       insights: res.insights.nodes,

@@ -5,12 +5,14 @@ const BigImageCarouselFragment = (t: string) => `
     fieldGroupName
     bigImageCarousel {
       headline
+      customHeadline
       copy
       link {
         ...Link
       }
       images {
        ${ImageComponent()}
+       vimeoVideoUrl
       }
     }
   }
