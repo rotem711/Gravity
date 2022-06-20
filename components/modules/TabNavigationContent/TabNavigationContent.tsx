@@ -25,11 +25,11 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const { tabNavigationContent } = props
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
-  const [accordionHeight, setAccordionHeight] = useState([])
+  // const [accordionHeight, setAccordionHeight] = useState([])
   const [titleHeight, setTitleTabHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
-  const accordionRefs = useRef([])
+  // const accordionRefs = useRef([])
 
   const isMobile = useIsMobile()
 
@@ -54,12 +54,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         )
       }
     }
-    console.log(accordionRefs)
-    for (let i = 0; i < accordionRefs.current.length; i += 1) {
-      console.log(accordionRefs.current[i].clientHeight)
-      setAccordionHeight((items) => [...items, accordionRefs.current[i].clientHeight])
-    }
-    console.log(accordionRefs, accordionHeight)
+    // for (let i = 0; i < accordionRefs.current.length; i += 1) {
+    //   console.log(accordionRefs.current[i].clientHeight)
+    //   setAccordionHeight((items) => [...items, accordionRefs.current[i].clientHeight])
+    // }
   }
 
   // set copyContainer height
@@ -117,12 +115,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               : styles.accordionItemPanelInActive
                           }`}
                         >
-                          <div
-                            style={{ height: accordionHeight[itemIndex] }}
-                            ref={(element) => {
-                              accordionRefs.current[itemIndex] = element
-                            }}
-                          >
+                          <div>
                             <div className="container pt-85 pb-145">
                               {item.content.map((subItem) => (
                                 <div
@@ -166,52 +159,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 </span>
                               </div>
                             </div>
-                          </div>
-                        ))}
-                        <div
-                          className={`${styles.mediaContainer} mt-45`}
-                          style={{ color: item.backgroundColor }}
-                        >
-                          {item.content.map((subItem) => (
-                            <div
-                              key={subItem.headline}
-                              className="mt-155 first:mt-0"
-                            >
-                              <h2
-                                className="typo-headlines mb-50"
-                                dangerouslySetInnerHTML={{
-                                  __html: subItem.headline,
-                                }}
-                              />
-                              <div className="typo-body">
-                                {subItem.copy}
-                              </div>
-                            </div>
-                          ))}
-                          <div
-                            className={`${styles.mediaContainer} mt-45`}
-                            style={{ color: item.backgroundColor }}
-                          >
-                            {item.vimeoVideoUrl ? (
-                              <video
-                                src={item.vimeoVideoUrl}
-                                playsInline
-                                muted
-                                loop
-                                autoPlay
-                              />
-                            ) : (
-                              item.image && <Image image={item.image} />
-                            )}
-                            <span
-                              className={`${styles.corners}`}
-                              aria-hidden="true"
-                            >
-                              <i />
-                              <i />
-                              <i />
-                              <i />
-                            </span>
                           </div>
                         </AccordionItemPanel>
                       </>
@@ -358,15 +305,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             </div>
           </div>
         )}
-        {/* {tabNavigationContent.tabs.map((item, itemIndex) => (isMobile ? (
-          <div>
-            {item.title}
-          </div>
-        ) : (
-          <div>
-            {item.title}
-          </div>
-        )))} */}
       </div>
     </div>
   )
