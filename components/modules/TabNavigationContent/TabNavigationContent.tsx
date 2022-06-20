@@ -49,7 +49,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   }
 
   useEffect(() => {
-    setIndex(tabNavigationContent.mobileDefaultOpenIndex)
+    if (isMobile) {
+      setIndex(tabNavigationContent.mobileDefaultOpenIndex)
+    }
   }, [isMobile])
 
   useEffect(() => {
