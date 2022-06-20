@@ -57,7 +57,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   }, [index])
 
   return (
-    <div className={`${styles.root}`}>
+    <div id="tabNavigationContent" className={`${styles.root}`}>
       <div className="">
         {isMobile ? (
           <Accordion

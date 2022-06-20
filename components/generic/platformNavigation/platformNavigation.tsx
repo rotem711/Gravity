@@ -6,6 +6,7 @@ import styles from './platformNavigation.module.scss'
 
 const PlatformNavigation = () => {
   const [activeIndex, setActiveIndex] = useState(-1)
+  const [endTrigger, setEndTrigger] = useState(false)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ctx = useContext(GlobalContext)
@@ -26,11 +27,16 @@ const PlatformNavigation = () => {
 
   const isElementInViewport = (el) => {
     const rect = el.getBoundingClientRect()
-    const off = offset + 40
+    const off = offset + 80
     return rect.top < off && rect.bottom > off && rect.top < document.documentElement.clientHeight
   }
 
   const checkActiveElement = () => {
+    if (document.getElementById('tabNavigationContent').getBoundingClientRect().top < 0) {
+      setEndTrigger(true)
+    } else {
+      setEndTrigger(false)
+    }
     let found = false
     const items = ctx.platformNavigation.platformMainNavigation.map((item) => item.link.url.replace(/[/]/g, ''))
     if (items) {
@@ -53,7 +59,7 @@ const PlatformNavigation = () => {
   }, [])
 
   return (
-    <div className={`${styles.root}`} ref={platformRef}>
+    <div className={`${styles.root} ${endTrigger ? styles.hide : ''}`} ref={platformRef}>
       <div className="container flex justify-between my-auto">
         <h2 className="typo-subhead uppercase hidden md:block">
           {ctx.platformNavigation.title}
