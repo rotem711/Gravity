@@ -7,14 +7,6 @@ import React, {
 } from 'react'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-  AccordionItemState,
-} from 'react-accessible-accordion'
 import DropdownArrow from 'public/icons/icon-drop-arrow.svg'
 import styles from './TabNavigationContent.module.scss'
 import ITabNavigationContent from './TabNavigationContent.interface'
@@ -62,7 +54,8 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
-    const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
+    const hook =
+      typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, recalculate)
     return () => {
       window.removeEventListener(hook, recalculate)
@@ -86,109 +79,95 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     <div id="tabNavigationContent" className={`${styles.root}`}>
       <div className="">
         {isMobile ? (
-          <Accordion
-            allowZeroExpanded
-            preExpanded={[tabNavigationContent.mobileDefaultOpenIndex]}
-          >
-            {tabNavigationContent.tabs
-              .slice(0)
-              .reverse()
-              .map((item, itemIndex) => {
-                const headlineSeparatorModule = (
-                  <div className="w-full px-0" style={{ order: 10 }}>
-                    {getHeadlineSeparatorModule(item)}
-                  </div>
-                )
-                return (
-                  <AccordionItem
-                    uuid={itemIndex}
-                    key={item.title}
-                    style={{ backgroundColor: item.backgroundColor }}
-                    className={`${styles.accordionItem}`}
+          tabNavigationContent.tabs
+            .slice(0)
+            .reverse()
+            .map((item, itemIndex) => {
+              const headlineSeparatorModule = (
+                <div className="w-full px-0" style={{ order: 10 }}>
+                  {getHeadlineSeparatorModule(item)}
+                </div>
+              )
+              return (
+                <div
+                  id="accordion"
+                  key={item.title}
+                  style={{ backgroundColor: item.backgroundColor }}
+                >
+                  <button
+                    type="button"
+                    className="typo-subhead uppercase container flex items-center justify-between pt-25 pb-25"
+                    onClick={() => {
+                      document.getElementById('accordion').scrollIntoView({ behavior: 'smooth' })
+                      setTimeout(() => {
+                        setIndex(index === itemIndex ? -1 : itemIndex)
+                      }, 1000)
+                    }}
                   >
-                    <AccordionItemState>
-                      {(state) => (
-                        <>
-                          <AccordionItemHeading>
-                            <AccordionItemButton
-                              className={`${
-                                state.expanded
-                                  ? styles.accordionItemActive
-                                  : styles.accordionItemInActive
-                              } typo-subhead uppercase container flex items-center justify-between pt-25 pb-25`}
-                            >
-                              <p>
-                                {item.titleIcon}
-                                {item.title}
-                              </p>
-                              <DropdownArrow />
-                            </AccordionItemButton>
-                          </AccordionItemHeading>
-                          <AccordionItemPanel
-                            className={`${
-                              state.expanded
-                                ? styles.accordionItemPanelActive
-                                : styles.accordionItemPanelInActive
-                            }`}
+                    <p>
+                      {item.titleIcon}
+                      {item.title}
+                    </p>
+                    <DropdownArrow />
+                  </button>
+
+                  <div
+                    className={`${styles.accordionItem} ${
+                      itemIndex === index ? styles.active : ''
+                    }`}
+                  >
+                    <div>
+                      <div
+                        className={`container pt-85 ${
+                          headlineSeparator.headline ? '' : 'pb-145'
+                        }`}
+                      >
+                        {item.content.map((subItem) => (
+                          <div
+                            key={subItem.headline}
+                            className="mt-155 first:mt-0"
                           >
-                            <div>
-                              <div
-                                className={`container pt-85 ${
-                                  headlineSeparator.headline ? '' : 'pb-145'
-                                }`}
-                              >
-                                {item.content.map((subItem) => (
-                                  <div
-                                    key={subItem.headline}
-                                    className="mt-155 first:mt-0"
-                                  >
-                                    <h2
-                                      className="typo-headlines mb-50"
-                                      dangerouslySetInnerHTML={{
-                                        __html: subItem.headline,
-                                      }}
-                                    />
-                                    <div className="typo-body">
-                                      {subItem.copy}
-                                    </div>
-                                  </div>
-                                ))}
-                                <div
-                                  className={`${styles.mediaContainer} mt-45`}
-                                  style={{ color: item.backgroundColor }}
-                                >
-                                  {item.vimeoVideoUrl ? (
-                                    <video
-                                      src={item.vimeoVideoUrl}
-                                      playsInline
-                                      muted
-                                      loop
-                                      autoPlay
-                                    />
-                                  ) : (
-                                    item.image && <Image image={item.image} />
-                                  )}
-                                  <span
-                                    className={`${styles.corners}`}
-                                    aria-hidden="true"
-                                  >
-                                    <i />
-                                    <i />
-                                    <i />
-                                    <i />
-                                  </span>
-                                </div>
-                                {headlineSeparatorModule}
-                              </div>
-                            </div>
-                          </AccordionItemPanel>
-                        </>
-                      )}
-                    </AccordionItemState>
-                  </AccordionItem>
-                )
-              })}
-          </Accordion>
+                            <h2
+                              className="typo-headlines mb-50"
+                              dangerouslySetInnerHTML={{
+                                __html: subItem.headline,
+                              }}
+                            />
+                            <div className="typo-body">{subItem.copy}</div>
+                          </div>
+                        ))}
+                        <div
+                          className={`${styles.mediaContainer} mt-45`}
+                          style={{ color: item.backgroundColor }}
+                        >
+                          {item.vimeoVideoUrl ? (
+                            <video
+                              src={item.vimeoVideoUrl}
+                              playsInline
+                              muted
+                              loop
+                              autoPlay
+                            />
+                          ) : (
+                            item.image && <Image image={item.image} />
+                          )}
+                          <span
+                            className={`${styles.corners}`}
+                            aria-hidden="true"
+                          >
+                            <i />
+                            <i />
+                            <i />
+                            <i />
+                          </span>
+                        </div>
+                        {headlineSeparatorModule}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
         ) : (
           <div>
             <nav>
