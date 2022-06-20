@@ -54,8 +54,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
-    const hook =
-      typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
+    const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, recalculate)
     return () => {
       window.removeEventListener(hook, recalculate)
