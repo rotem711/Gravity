@@ -2,7 +2,7 @@
 
 .root {
   position: relative;
-  border-top: 1px solid #000000;
+  margin-top: -1px;
 }
 
 .numbers {
@@ -15,7 +15,6 @@
 }
 
 .number {
-
   @screen md {
     &:first-child,
     &:nth-child(2) {

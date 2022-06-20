@@ -26,6 +26,18 @@
       line-height: 5.7rem;
     }
   }
+  .typo-headlines-late {
+    font-family: 'Modern Gothic';
+    font-size: 3.7rem;
+    line-height: 4rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+
+    @screen xl {
+      font-size: 5.2rem;
+      line-height: 5.7rem;
+    }
+  }
 
   .typo-body {
     font-family: 'Modern Gothic';
