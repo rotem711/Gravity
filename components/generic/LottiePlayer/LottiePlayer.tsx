@@ -16,19 +16,19 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   })
 
   const calculate = () => {
-    setTimeout(() => {
-      const svgParent = document.getElementById(animation).querySelector('svg')
-      const x = svgParent?.childNodes[1] as Element
-      if (x) {
-        const pRect = svgParent.getBoundingClientRect()
-        const { height, width } = x.getBoundingClientRect()
+    const svgParent = document.getElementById(animation).querySelector('svg')
+    const x = svgParent?.childNodes[1] as Element
+    if (x) {
+      const pRect = svgParent.getBoundingClientRect()
+      const { height, width } = x.getBoundingClientRect()
 
-        const offset = (pRect.height - height) / 2 + 5
-        const offsetLeft = (pRect.width - width) / 2
-        setOffsetY(offset * -1)
-        if (animation !== 'simplify-carbon-accounting') setOffsetX(offsetLeft * -1)
+      const offset = (pRect.height - height) / 2 + 5
+      const offsetLeft = (pRect.width - width) / 2
+      setOffsetY(offset * -1)
+      if (animation !== 'simplify-carbon-accounting') {
+        setOffsetX(offsetLeft * -1)
       }
-    }, 100)
+    }
   }
   useEffect(() => {
     window.addEventListener('resize', calculate)
@@ -41,9 +41,9 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   return (
     <div
       id={animation}
-      className={`${styles.root} ${
-        inView && offsetY !== -1 ? styles.scale : ''
-      } ${styles[animation]}`}
+      className={`${styles.root} ${styles[animation]} ${
+        inView ? styles.fadeIn : ''
+      }`}
       style={{ transform: `translateX(${offsetX}px) translateY(${offsetY}px)` }}
       ref={ref}
     >
@@ -52,7 +52,11 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         animationData={animationData}
         goTo={inView ? 0 : 100}
         play={inView}
-        onLoad={calculate}
+        onLoad={() => {
+          setTimeout(() => {
+            calculate()
+          }, 1000)
+        }}
       />
     </div>
   )
