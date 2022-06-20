@@ -31,10 +31,12 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     }
   }
   useEffect(() => {
-    window.addEventListener('orientationchange', calculate)
+    // eslint-disable-next-line no-restricted-globals
+    const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
+    window.addEventListener(hook, calculate)
     import(`public/animations/${animation}.json`).then(setAnimationData)
     return () => {
-      window.removeEventListener('orientationchange', calculate)
+      window.removeEventListener(hook, calculate)
     }
   }, [])
 
