@@ -105,6 +105,23 @@
   }
 }
 
+.accordionItemPanelActive {
+  > div {
+    opacity: 1;
+    max-height: 2000px;
+    transition: all 750ms ease-out;
+  }
+}
+
+.accordionItemPanelInActive {
+  > div {
+    pointer-events: none;
+    opacity: 0;
+    max-height: 0;
+    transition: all 750ms ease-out;
+  }
+}
+
 .accordionItemActive {
   svg {
     transform: rotate(180deg);

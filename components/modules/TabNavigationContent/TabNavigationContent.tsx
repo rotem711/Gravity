@@ -25,7 +25,11 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const { tabNavigationContent } = props
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
+  const [accordionHeight, setAccordionHeight] = useState([])
+  const [titleHeight, setTitleTabHeight] = useState(0)
   const tabContentRefs = useRef([])
+  const tabTitleRefs = useRef([])
+  const accordionRefs = useRef([])
 
   const isMobile = useIsMobile()
 
@@ -42,6 +46,20 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         )
       }
     }
+    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
+      if (!tabTitleRefs.current[i]) return
+      if (tabTitleRefs.current[i].clientHeight > titleHeight) {
+        setTitleTabHeight(
+          tabTitleRefs.current[i].getBoundingClientRect().height + 50,
+        )
+      }
+    }
+    console.log(accordionRefs)
+    for (let i = 0; i < accordionRefs.current.length; i += 1) {
+      console.log(accordionRefs.current[i].clientHeight)
+      setAccordionHeight((items) => [...items, accordionRefs.current[i].clientHeight])
+    }
+    console.log(accordionRefs, accordionHeight)
   }
 
   // set copyContainer height
@@ -64,36 +82,90 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             allowZeroExpanded
             preExpanded={[tabNavigationContent.mobileDefaultOpenIndex]}
           >
-            {tabNavigationContent.tabs.slice(0).reverse().map((item, itemIndex) => (
-              <AccordionItem
-                uuid={itemIndex}
-                key={item.title}
-                style={{ backgroundColor: item.backgroundColor }}
-                className={`${styles.accordionItem}`}
-              >
-                <AccordionItemState>
-                  {(state) => (
-                    <>
-                      <AccordionItemHeading>
-                        <AccordionItemButton
-                          className={`${state.expanded ? styles.accordionItemActive : styles.accordionItemInActive} typo-subhead uppercase container flex items-center justify-between pt-25 pb-25`}
+            {tabNavigationContent.tabs
+              .slice(0)
+              .reverse()
+              .map((item, itemIndex) => (
+                <AccordionItem
+                  uuid={itemIndex}
+                  key={item.title}
+                  style={{ backgroundColor: item.backgroundColor }}
+                  className={`${styles.accordionItem}`}
+                >
+                  <AccordionItemState>
+                    {(state) => (
+                      <>
+                        <AccordionItemHeading>
+                          <AccordionItemButton
+                            className={`${
+                              state.expanded
+                                ? styles.accordionItemActive
+                                : styles.accordionItemInActive
+                            } typo-subhead uppercase container flex items-center justify-between pt-25 pb-25`}
+                          >
+                            <p>
+                              {item.titleIcon}
+                              {item.title}
+                            </p>
+                            <DropdownArrow />
+                          </AccordionItemButton>
+                        </AccordionItemHeading>
+                        <AccordionItemPanel
+                          className={`${
+                            state.expanded
+                              ? styles.accordionItemPanelActive
+                              : styles.accordionItemPanelInActive
+                          }`}
                         >
-                          <p>
-                            {item.titleIcon}
-                            {item.title}
-                          </p>
-                          <DropdownArrow />
-                        </AccordionItemButton>
-                      </AccordionItemHeading>
-                      <AccordionItemPanel
-                        className={`${state.expanded ? styles.accordionItemPanelActive : styles.accordionItemPanelInActive} container pt-85 pb-145`}
-                      >
-                        {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-55 lg:mt-155 first:mt-0">
-                            <h2 className="typo-headlines mb-50">
-                              {subItem.headline}
-                            </h2>
-                            <div className="typo-body">{subItem.copy}</div>
+                          <div
+                            style={{ height: accordionHeight[itemIndex] }}
+                            ref={(element) => {
+                              accordionRefs.current[itemIndex] = element
+                            }}
+                          >
+                            <div className="container pt-85 pb-145">
+                              {item.content.map((subItem) => (
+                                <div
+                                  key={subItem.headline}
+                                  className="mt-155 first:mt-0"
+                                >
+                                  <h2
+                                    className="typo-headlines mb-50"
+                                    dangerouslySetInnerHTML={{
+                                      __html: subItem.headline,
+                                    }}
+                                  />
+                                  <div className="typo-body">
+                                    {subItem.copy}
+                                  </div>
+                                </div>
+                              ))}
+                              <div
+                                className={`${styles.mediaContainer} mt-45`}
+                                style={{ color: item.backgroundColor }}
+                              >
+                                {item.vimeoVideoUrl ? (
+                                  <video
+                                    src={item.vimeoVideoUrl}
+                                    playsInline
+                                    muted
+                                    loop
+                                    autoPlay
+                                  />
+                                ) : (
+                                  item.image && <Image image={item.image} />
+                                )}
+                                <span
+                                  className={`${styles.corners}`}
+                                  aria-hidden="true"
+                                >
+                                  <i />
+                                  <i />
+                                  <i />
+                                  <i />
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         ))}
                         <div
@@ -167,11 +239,23 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     {item.content.length === 3 ? (
                       <>
                         {item.content.map((subItem) => (
-                          <div key={subItem.headline} className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col">
-                            <h2 className="typo-headlines mb-50 col-span-6 lg:w-full lg:flex-1">
-                              {subItem.headline}
-                            </h2>
-                            <div className="typo-body col-span-5 col-start-8 lg:w-10/12">{subItem.copy}</div>
+                          <div
+                            key={subItem.headline}
+                            className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
+                          >
+                            <h2
+                              className="typo-headlines mb-50 col-span-6 lg:w-full block"
+                              dangerouslySetInnerHTML={{
+                                __html: subItem.headline,
+                              }}
+                              style={{ height: titleHeight !== 0 ? titleHeight : '' }}
+                              ref={(element) => {
+                                tabTitleRefs.current[itemIndex] = element
+                              }}
+                            />
+                            <div className="typo-body col-span-5 col-start-8 lg:w-10/12 block">
+                              {subItem.copy}
+                            </div>
                           </div>
                         ))}
                         <div

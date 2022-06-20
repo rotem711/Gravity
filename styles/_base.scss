@@ -38,3 +38,7 @@ button, input {
   outline: none;
   box-shadow: none;
 }
+
+[hidden] {
+  display: block !important;
+}
