@@ -17,16 +17,11 @@ const TeamGridModule:FunctionComponent<ITeamGrid> = (props) => {
           <Fade>{teamGrid.topline}</Fade>
         </h2>
         <Fade
-        className={`${styles.copyContainer} typo-headlines col-span-10 mb-230 sd:mb-70 lg:mb-100`}
-        delay={200}
-        >
-          <div
-            dangerouslySetInnerHTML={{ __html: teamGrid.bigCopy }}/>
-        </Fade>
-        {/* <div
           className={`${styles.copyContainer} typo-headlines col-span-10 mb-230 sd:mb-70 lg:mb-100`}
-          dangerouslySetInnerHTML={{ __html: teamGrid.bigCopy }}
-        /> */}
+          delay={200}
+        >
+          <div dangerouslySetInnerHTML={{ __html: teamGrid.bigCopy }} />
+        </Fade>
         <ul className="default-grid col-span-12">
           {teamGrid.members.map((item, index) => (
             <div
