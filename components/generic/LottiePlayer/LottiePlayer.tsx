@@ -30,17 +30,18 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
       if (x) {
         const pRect = svgParent.getBoundingClientRect()
         const { height, width } = x.getBoundingClientRect()
-        if (
-          animation === 'simplify-carbon-accounting' && window.innerWidth < 834) {
-          setSVGHeight(
-            pRect.height - innerRef.current.getBoundingClientRect().height,
-          )
-        }
-
         const offset = (pRect.height - height) / 2 + 5
         const offsetLeft = (pRect.width - width) / 2
         setOffsetY(offset * -1)
         setOffsetX(offsetLeft * -1)
+        if (animation === 'simplify-carbon-accounting') {
+          if (window.innerWidth < 834) {
+            setSVGHeight(
+              pRect.height - innerRef.current.getBoundingClientRect().height,
+            )
+          }
+          setOffsetY((offset + 8) * -1)
+        }
         setRender(true)
       }
     }, 1)
