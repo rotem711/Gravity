@@ -9,6 +9,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const [animationData, setAnimationData] = useState()
   const [offsetY, setOffsetY] = useState(-1)
   const [offsetX, setOffsetX] = useState(-1)
+  const [render, setRender] = useState(false)
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -25,16 +26,19 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
       const offset = (pRect.height - height) / 2 + 5
       const offsetLeft = (pRect.width - width) / 2
       setOffsetY(offset * -1)
-      if (animation !== 'simplify-carbon-accounting') {
-        setOffsetX(offsetLeft * -1)
-      }
+      setOffsetX(offsetLeft * -1)
+      setRender(true)
     }
   }
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, calculate)
-    import(`public/animations/${animation}.json`).then(setAnimationData)
+    import(`public/animations/${animation}.json`).then(setAnimationData).then(() => {
+      setTimeout(() => {
+        calculate()
+      }, 1000)
+    })
     return () => {
       window.removeEventListener(hook, calculate)
     }
@@ -44,7 +48,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     <div
       id={animation}
       className={`${styles.root} ${styles[animation]} ${
-        inView ? styles.fadeIn : ''
+        (inView && render) ? styles.fadeIn : ''
       }`}
       style={{ transform: `translateX(${offsetX}px) translateY(${offsetY}px)` }}
       ref={ref}
@@ -52,13 +56,8 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
       <Lottie
         loop={false}
         animationData={animationData}
-        goTo={inView ? 0 : 100}
-        play={inView}
-        onLoad={() => {
-          setTimeout(() => {
-            calculate()
-          }, 1000)
-        }}
+        goTo={(inView && render) ? 0 : 100}
+        play={inView && render}
       />
     </div>
   )
