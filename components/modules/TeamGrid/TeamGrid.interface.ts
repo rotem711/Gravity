@@ -5,13 +5,11 @@ export default interface ITeamGrid {
   teamGrid: {
     topline: string
     bigCopy: string
-    members: [
-      {
-        image: Image
-        name: string
-        position: string
-        linkedUrl: string
-      },
-    ]
+    members: {
+      image: Image
+      name: string
+      position: string
+      linkedUrl: string
+    }[]
   }
 }
