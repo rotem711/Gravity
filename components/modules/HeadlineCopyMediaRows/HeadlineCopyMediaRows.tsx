@@ -12,7 +12,7 @@ const HeadlineCopyMediaRowsModule:FunctionComponent<IHeadlineCopyMediaRows> = (p
       className={`${styles.root} pt-35 pb-140 md:pb-160 lg:pb-260`}
     >
       <div className="container default-grid">
-        <Fade><h2 className="col-span-6 md:col-span-12 typo-subhead uppercase mb-110 lg:mb-155">{headlineCopyMediaRows.topHeadline}</h2></Fade>
+        <h2 className="col-span-6 md:col-span-12 typo-subhead uppercase mb-110 lg:mb-155"><Fade>{headlineCopyMediaRows.topHeadline}</Fade></h2>
         {headlineCopyMediaRows.rows.map((item, index) => (
           <Fade
             delay={index * 150 + 200}
