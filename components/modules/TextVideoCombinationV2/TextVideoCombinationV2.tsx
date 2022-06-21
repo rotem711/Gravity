@@ -40,15 +40,17 @@ const TextVideoCombinationV2Module: FunctionComponent<
               <div className="col-span-6 md:col-span-5 md:col-start-7">
                 <Fade delay={300}>
                   <div
-                    className="pb-45 md:pb-55 typo-body"
+                    className="typo-body"
                     dangerouslySetInnerHTML={{ __html: item.copy }}
                   />
                 </Fade>
-                <div className="hidden md:block">
-                  <Fade delay={400}>
-                    <Button variant="light" link={item.link} />
-                  </Fade>
-                </div>
+                {item.link && (
+                  <div className="hidden md:block pt-45 md:pt-55">
+                    <Fade delay={400}>
+                      <Button variant="light" link={item.link} />
+                    </Fade>
+                  </div>
+                )}
               </div>
             </>
           )
@@ -74,9 +76,11 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 <>
                   <div className="col-span-12 lg:col-span-6 order-2 md:order-1 mb-auto">
                     {mediaC}
-                    <div className="md:hidden mt-50">
-                      <Button variant="light" link={item.link} />
-                    </div>
+                    {item.link && (
+                      <div className="md:hidden mt-50">
+                        <Button variant="light" link={item.link} />
+                      </div>
+                    )}
                   </div>
                   <div className="col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 order-1 md:order-2">
                     {contentC}
