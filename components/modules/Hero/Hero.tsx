@@ -20,12 +20,12 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
   }
   return (
     <div id="main_hero" className={`${styles.root}`}>
-      <div className="container pt-130 pb-100 md:pt-150 md:pb-110 flex flex-wrap">
-        <h1 className={`${styles.title} typo-headlines mb-60 col-span-8`}>
+      <div className="container pt-130 pb-100 md:pt-100 flex flex-wrap">
+        <h1 className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}>
           <Fade>{hero.headline}</Fade>
         </h1>
         <video
-          className={`${styles.video} mb-55 md:mb-100 xl:mb-0`}
+          className={`${styles.video}`}
           src={videoSrc}
           playsInline
           muted

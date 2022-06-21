@@ -9,6 +9,10 @@
     @screen md {
       max-width: 97.5rem;
     }
+    @screen xl {
+      font-size: 4.5rem;
+      line-height: 5rem;
+    }
   }
   video {
     mix-blend-mode: multiply;
