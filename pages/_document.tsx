@@ -31,7 +31,7 @@ class MyDocument extends Document {
               }}
             />
           )}
-          {process.env.NODE_ENV !== 'development' && (
+          {process.env.NODE_ENV !== 'development' && false && (
             <script
               dangerouslySetInnerHTML={{
                 __html: `
