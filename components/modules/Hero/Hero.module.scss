@@ -22,11 +22,21 @@
 .iconContainer {
   display: block;
   position: relative;
-  width: 100%;
-  height: 7.5rem;
+  flex-basis: 50%;
+
+  @screen md {
+    flex-basis: initial;
+    flex-shrink: 0;
+  }
 
   span {
-    object-position: left center;
+    img {
+      width: auto;
+      height: 2.5rem !important;
+      @screen lg {
+        height: 4.5rem !important;
+      }
+    }
   }
 }
 

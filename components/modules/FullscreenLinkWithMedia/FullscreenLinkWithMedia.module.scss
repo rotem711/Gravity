@@ -50,11 +50,12 @@
 
   span,
   video {
-    width: 100%;
+    width: 102%;
     height: 100%;
     position: absolute;
+    max-width: 102%;
     top: 0;
-    left: 0;
+    left: -1%;
     object-fit: cover;
   }
 }
