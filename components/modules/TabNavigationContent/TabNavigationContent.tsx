@@ -65,16 +65,18 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   }, [])
 
   const getHeadlineSeparatorModule = (item) => (
-    <HeadlineSeparatorModule
-      disableContainer
-      fieldGroupName="headlineSeparator"
-      headlineSeparator={{
-        headline: headlineSeparator.headline,
-        backgroundColor: item.backgroundColor,
-        link: headlineSeparator.link,
-        enableSubscribe: false,
-      }}
-    />
+    (headlineSeparator.headline && headlineSeparator.link) ? (
+      <HeadlineSeparatorModule
+        disableContainer
+        fieldGroupName="headlineSeparator"
+        headlineSeparator={{
+          headline: headlineSeparator.headline,
+          backgroundColor: item.backgroundColor,
+          link: headlineSeparator.link,
+          enableSubscribe: false,
+        }}
+      />
+    ) : null
   )
 
   return (
