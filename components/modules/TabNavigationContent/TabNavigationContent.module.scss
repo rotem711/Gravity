@@ -1,5 +1,6 @@
 .root {
   position: relative;
+  overflow: hidden;
 }
 
 .mediaContainer {
@@ -8,16 +9,19 @@
   height: 0;
   position: relative;
   padding-bottom: percentage(450 / 354);
-  
+
   @screen md {
     order: 3;
   }
-  
+
   @screen md {
     padding-bottom: percentage(700 / 1360);
   }
 
-  > div, > div > span, img {
+  > div,
+  > div > span,
+  img,
+  > video {
     width: 100% !important;
     height: 100% !important;
     position: absolute !important;
@@ -26,14 +30,55 @@
 }
 
 .navTopItem {
+  position: relative;
+
   &:hover {
     background-color: theme('colors.black');
-    color: theme('colors.white');
+    color: theme('colors.black') !important;
+
+    &::before {
+      background-color: theme('colors.black');
+    }
+
+    button {
+      background-color: theme('colors.black');
+      color: theme('colors.white');
+    }
+  }
+
+  &:first-of-type,
+  &:last-of-type {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      width: 50vw;
+      background-color: currentColor;
+    }
+  }
+
+  &:first-of-type::before {
+    right: 50%;
+  }
+
+  &:last-of-type::before {
+    left: 50%;
+  }
+}
+
+.navTopItemFirst {
+  button {
+    padding-left: 0;
   }
 }
 
 .navItem {
+  height: 100%;
   text-align: left;
+  color: theme('colors.black');
 
   &:hover {
     background-color: theme('colors.black');
@@ -52,15 +97,12 @@
   bottom: 0;
   z-index: 0;
   opacity: 0;
-  // display: none;
-  // opacity: 00.1;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
   &.isActive {
     z-index: 1;
     opacity: 1;
-    // display: block;
-    // opacity: 1;
+
     transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
@@ -69,18 +111,26 @@
   position: absolute;
   top: 0;
   left: 0;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
   pointer-events: none;
-  
+
   i {
     position: absolute;
     width: 3.8rem;
     height: 3.8rem;
     background-color: currentColor;
-    transform: translate(-50%,-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     pointer-events: none;
     user-select: none;
+
+    @screen lg {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
 
     &:nth-child(1) {
       top: 0;
@@ -100,6 +150,29 @@
     &:nth-child(4) {
       top: 100%;
       left: 100%;
+    }
+  }
+}
+
+.accordion {
+  svg {
+    transition: 400ms ease;
+  }
+  .accordionItem {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+    transform-origin: bottom;
+    &.active {
+      transform-origin: bottom;
+      max-height: 4000px;
+      transition: max-height 1s ease-in-out;
+    }
+  }
+
+  &.accordionItemActive {
+    svg {
+      transform: rotate(180deg);
     }
   }
 }

@@ -5,6 +5,12 @@ const TabNavigationContentFragment = (t: string) => `
     fieldGroupName
     tabNavigationContent {
       mobileDefaultOpenIndex
+      headlineSeparator {
+        headline
+        link {
+          ...Link
+        }
+      }
       tabs {
         title
         titleIcon {
@@ -12,6 +18,7 @@ const TabNavigationContentFragment = (t: string) => `
         }
         backgroundColor
         ${ImageComponent()}
+        vimeoVideoUrl
         content {
           headline
           copy

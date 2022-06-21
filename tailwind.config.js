@@ -29,8 +29,9 @@ module.exports = {
       lightClay: '#FFC48D',
     },
     screens: {
-      sm: '375px',
-      md: '835px',
+      sm: '440px',
+      sd: '480px',
+      md: '834px',
       lg: '1024px',
       xl: '1440px',
     },
@@ -77,7 +78,7 @@ module.exports = {
           },
           '@screen xl': {
             maxWidth: '1360px',
-            padding: '0 4rem',
+            padding: '0rem',
           },
         },
       })

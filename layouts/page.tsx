@@ -39,8 +39,9 @@ const Page = ({
       <Header
         inverted={page?.pageOption?.invertNavigation}
         data={header}
+        uri={page?.uri}
       />
-      <main key={page.uri}>
+      <main key={page?.uri}>
         {true && process.env.NODE_ENV === 'development' && (
           <div className="devGrid w-full container">
             <div className="default-grid h-full">
@@ -56,7 +57,7 @@ const Page = ({
           </div>
         )}
         {page && page.uri === '/' && <ScrollNudge />}
-        {page && page.template.pageBuilder.pageBuilder.map((layout) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_'))}
+        {page && page.template.pageBuilder.pageBuilder.map((layout, index) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_', index))}
       </main>
       <Footer data={footer} />
     </div>

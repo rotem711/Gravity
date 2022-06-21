@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
+import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import styles from './Hero.module.scss'
@@ -7,17 +8,25 @@ import IHero from './Hero.interface'
 
 const HeroModule: FunctionComponent<IHero> = (props) => {
   const { hero } = props
+  const isMobile = useIsMobile('')
+  const isTablet = useIsMobile('lg')
+
+  let videoSrc = hero.vimeoVideoId
+  if (isTablet && hero.vimeoVideoIdTablet) {
+    videoSrc = hero.vimeoVideoIdTablet
+  }
+  if (isMobile && hero.vimeoVideoIdMobile) {
+    videoSrc = hero.vimeoVideoIdMobile
+  }
   return (
-    <div className={`${styles.root}`}>
-      <div className="container pt-130 pb-75 md:pt-180 md:pb-110 flex flex-wrap">
-        <h1
-          className={`${styles.title} typo-headlines mb-60 md:mt-125 col-span-8`}
-        >
+    <div id="main_hero" className={`${styles.root}`}>
+      <div className="container pt-130 pb-100 md:pt-100 flex flex-wrap">
+        <h1 className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}>
           <Fade>{hero.headline}</Fade>
         </h1>
         <video
-          className={`${styles.video} mb-55 md:mb-0`}
-          src={hero.vimeoVideoId}
+          className={`${styles.video}`}
+          src={videoSrc}
           playsInline
           muted
           loop
@@ -28,26 +37,34 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
             <Button variant="dark" link={hero.link} />
           </Fade>
         </div>
-        <ul className={`${styles.logos} default-grid w-full mt-95`}>
-          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 mb-45 md:mb-25 xl:mb-45 uppercase">
+        <div
+          className={`${styles.logos} default-grid w-full mt-95 lg:mt-145 items-start`}
+        >
+          <h2 className="typo-subhead w-full col-span-6 md:col-span-3 lg:col-span-2 uppercase">
             <Fade delay={300}>{hero.logoRowHeadline}</Fade>
           </h2>
-          {hero.logos.map((item, index) => (
-            <li className="col-span-3 md:col-span-2 mt-25 mb-25 md:mt-0">
-              <Fade delay={index * 150 + 500}>
-                <span className={`${styles.iconContainer} `}>
+          <div className="col-span-6 md:col-span-7 lg:col-span-10 flex flex-wrap md:flex-nowrap gap-y-60 md:gap-50 lg:gap-60 mt-70 md:mt-0">
+            {hero.logos.map((item, index) => (
+              <span
+                key={item.logo.sourceUrl}
+                className={`${styles.iconContainer} md:flex-shrink-0`}
+              >
+                <Fade delay={index * 150 + 500}>
                   <Image
-                    layout="fill"
+                    layout="intrinsic"
                     objectFit="contain"
-                    objectPosition="left center"
+                    objectPosition="left top"
                     src={item.logo.sourceUrl}
+                    width={item.logo.mediaDetails.width}
+                    height={item.logo.mediaDetails.height}
                     alt={item.logo.altText}
+                    loading="eager"
                   />
-                </span>
-              </Fade>
-            </li>
-          ))}
-        </ul>
+                </Fade>
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -9,12 +9,14 @@ const ScrollNudge: FunctionComponent<IScrollNudge> = () => {
 
   const updateValue = () => {
     const { documentElement } = document
-    // eslint-disable-next-line radix
-    const y =
-      documentElement.getBoundingClientRect().height - documentElement.clientHeight -
-        documentElement.scrollTop
 
-    setVal(Math.round(y))
+    const mainHero = document.getElementById('main_hero')
+    const heightHero = mainHero ? mainHero.getBoundingClientRect().height : 0
+    // eslint-disable-next-line radix
+    const y = documentElement.scrollTop - heightHero + 100
+
+    const value = 1 - y / (documentElement.getBoundingClientRect().height - heightHero + 100)
+    setVal(Math.round(value <= 1 ? value * 419 : 419))
   }
 
   useEffect(() => {

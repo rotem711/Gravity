@@ -1,4 +1,51 @@
 .root {
   position: relative;
 
+  video {
+    width: 66.6%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 240 / 300;
+    @screen md {
+      aspect-ratio: 517 / 630;
+    }
+    @screen lg {
+      aspect-ratio: 450 / 550;
+    }
+  }
+  .absoluteImage {
+    position: absolute;
+    width: 83.3%;
+    right: 0;
+    bottom: 4rem;
+
+    @screen md {
+      bottom: 9rem;
+    }
+
+    @screen lg {
+      right: initial;
+      left: 10rem;
+      bottom: 8rem;
+    }
+  }
+
+  .flipped {
+    video {
+      margin-left: auto;
+    }
+    .absoluteImage {
+      left: 0;
+      @screen lg {
+        left: initial;
+        right: 10rem;
+        bottom: 8rem;
+      }
+    }
+  }
+  li {
+    background: url('/icons/icon-list.svg') no-repeat left top;
+    padding: 0px 0 0 16px;
+    background-position: left 10px;
+  }
 }

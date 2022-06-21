@@ -3,6 +3,7 @@ const BigQuoteFragment = (t: string) => `
     fieldGroupName
     bigQuote {
       leftHeadline
+      leftHeadlineMobile
       backgroundColor
       quotes {
         quote

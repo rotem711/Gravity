@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import Image from 'next/image'
+import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
 import { useInView } from 'react-intersection-observer'
 import styles from './BigQuote.module.scss'
@@ -17,6 +18,13 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
   const [quoteLayout, setQuoteLayout] = useState('simple')
   const [quoteHeight, setQuoteHeight] = useState(0)
   const quoteRefs = useRef([])
+  const isMobile = useIsMobile()
+
+  // eslint-disable-next-line operator-linebreak
+  const topHeadline =
+    isMobile && bigQuote.leftHeadlineMobile
+      ? bigQuote.leftHeadlineMobile
+      : bigQuote.leftHeadline
 
   let timer = null
   const indexRef = useRef(index)
@@ -65,21 +73,26 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
       style={{ backgroundColor: bigQuote.backgroundColor }}
       ref={ref}
     >
-      <div className="container pt-25 pb-155 xl:pt-35 xl:pb-230">
+      <div className="container pt-25 pb-95 xl:pt-35 xl:pb-150">
         {quoteLayout === 'simple' ? (
           <div className="md:default-grid">
-            <h2
-              className={`${styles.title} typo-subhead col-span-full uppercase sm:mb-85 xl:col-span-3`}
-            >
-              <Fade>{bigQuote.leftHeadline}</Fade>
-            </h2>
+            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 md:col-span-3">
+              <h2
+                className={`${styles.title} typo-subhead uppercase`}
+                dangerouslySetInnerHTML={{ __html: topHeadline }}
+              />
+            </Fade>
+
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
-                className={`${styles.quoteElement} typo-big-quotes md:col-span-11  xl:col-span-8 xl:col-start-5`}
+                className={`${styles.quoteElement} typo-big-quotes md:col-span-8 md:col-start-5`}
               >
                 <Fade delay={150}>
-                  <div dangerouslySetInnerHTML={{ __html: `${item.quote}”` }} />
+                  <div
+                    className={`${styles.quoteElementChild}`}
+                    dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
+                  />
                 </Fade>
                 <cite
                   className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
@@ -93,11 +106,12 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
           </div>
         ) : (
           <div className="">
-            <h2
-              className={`${styles.title} typo-subhead uppercase sm:mb-85 w-full`}
-            >
-              <Fade>{bigQuote.leftHeadline}</Fade>
-            </h2>
+            <Fade className="w-full mb-95 md:mb-85 xl:mb-130">
+              <h2
+                className={`${styles.title} typo-subhead uppercase`}
+                dangerouslySetInnerHTML={{ __html: topHeadline }}
+              />
+            </Fade>
             <div
               className={`${styles.quoteContainer}`}
               style={{ height: quoteHeight }}
@@ -113,10 +127,13 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   }}
                 >
                   <div
-                    className={`${styles.quoteElement} col-span-6 md:col-span-9`}
+                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-10`}
                   >
                     <Fade delay={150}>
-                      <div dangerouslySetInnerHTML={{ __html: `${item.quote}”` }} />
+                      <div
+                        className={`${styles.quoteElementChild}`}
+                        dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
+                      />
                     </Fade>
                     <cite
                       className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
@@ -133,6 +150,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   >
                     <Fade delay={500}>
                       <Image
+                        loading="eager"
                         src={item.logo.sourceUrl}
                         alt={item.logo.altText}
                         width={item.logo.mediaDetails.width}

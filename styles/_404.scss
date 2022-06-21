@@ -1,0 +1,31 @@
+.notFound {
+  position: relative;
+  .children {
+    position: relative;
+    .image {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      max-height: 72rem;
+      @screen md {
+        max-height: 81.5rem;
+      }
+      @screen lg {
+        max-height: 84rem;
+      }
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      h1 {
+        font-family: 'Modern Gothic';
+        font-size: 15rem;
+        line-height: 17.3rem;
+        color: #fff;
+        font-weight: 300;
+      }
+    }
+  }
+}

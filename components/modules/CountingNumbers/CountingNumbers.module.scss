@@ -2,25 +2,19 @@
 
 .root {
   position: relative;
-  border-top: 1px solid #000000;
+  margin-top: -1px;
 }
 
 .numbers {
   position: relative;
 
-  @screen xl {
+  @screen md {
     grid-column-start: 5;
     grid-column-end: span end;
   }
 }
 
 .number {
-  @media (max-width: 768px) {
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
   @screen md {
     &:first-child,
     &:nth-child(2) {
@@ -28,7 +22,7 @@
     }
   }
 
-  @screen xl {
+  @screen md {
     &:first-child,
     &:nth-child(2) {
       margin-top: 0;

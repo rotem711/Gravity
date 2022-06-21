@@ -10,7 +10,7 @@ const TextWithFullscreenVideoFragment = (t: string) => `
       logo {
         ...Image
       }
-      vimeoVideoUrl
+      lottieSelect
     }
   }
 `

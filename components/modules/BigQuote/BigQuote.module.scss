@@ -8,6 +8,12 @@
   display: block;
 }
 
+.title {
+  @screen xl {
+    max-width: 23rem;
+  }
+}
+
 .quoteContainer {
   position: relative;
 
@@ -16,7 +22,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    // opacity: 0;
+    opacity: 0;
     transition: opacity 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
     &.isActive {
@@ -29,7 +35,16 @@
 .quoteElement {
   position: relative;
   order: 2;
-  
+
+}
+
+.quoteElementChild {
+  position: relative;
+
+  @screen md {
+    transform: translateY(-1.2rem);
+
+  }
   &::before {
     content: "“";
     display: inline-block;
@@ -40,10 +55,6 @@
     top: 0;
     right: 100%;
     @extend .typo-big-quotes;
-  }
-
-  @screen md {
-    order: 1;
   }
 }
 

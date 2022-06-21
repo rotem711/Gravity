@@ -7,6 +7,8 @@ const TextVideoCombinationV2Fragment = (t: string) => `
       items {
         topHeadline
         headline
+        headlineBreakpoint
+        anchor
         copy
         link {
           ...Link

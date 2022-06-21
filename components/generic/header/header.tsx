@@ -7,17 +7,21 @@ import navBackground from 'public/nav-bg-tiny.jpg'
 import styles from './header.module.scss'
 import HeaderInterface from './header.interface'
 
-const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
+const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
-  const [scrollDir, setScrollDir] = useState('up')
+  const [scrollDir, setScrollDir] = useState('')
   const [scrolled, setScrolled] = useState(false)
+  const { rightSideNavigation, mobileMenuCta } = data
+
+  useEffect(() => {
+    setDeployed(false)
+  }, [uri])
+
   useEffect(() => {
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
-        if (window.innerWidth <= 1024) {
-          setScrollDir('up')
-        } else if (prevPos >= window.scrollY) {
+        if (prevPos >= window.scrollY) {
           setScrollDir('up')
         } else if (window.scrollY > 1 && prevPos > 0) {
           setScrollDir('down')
@@ -33,18 +37,31 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
     }, 10)
   }, [])
 
+  useEffect(() => {
+    if (deployed) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [deployed])
+
   return (
     <header
-      className={`${styles.root} ${scrolled ? styles.scrolled : ''} ${deployed && styles['is-deployed']} ${
-        inverted ? styles['is-inverted'] : ''
-      } bg-white xl:bg-opacity-0`}
+      id="header"
+      className={`${styles.root} ${scrolled ? styles.scrolled : ''} ${
+        deployed && styles['is-deployed']
+      } ${inverted ? styles['is-inverted'] : ''}`}
       data-scroll-dir={scrollDir}
     >
-      <div className="container flex items-center justify-between pt-30 pb-30 xl:pt-35 xl:pb-35">
+      <div className="relative container flex items-center justify-between pt-30 pb-30 md:pt-25 md:pb-25">
         <Link href="/">
-          <a className={`${styles.logo}`}>
+          <button
+            type="button"
+            onClick={() => (uri === '/' ? setDeployed(false) : () => {})}
+            className={`${styles.logo}`}
+          >
             <Logo />
-          </a>
+          </button>
         </Link>
         <div
           className={`${styles.navContainer} ${
@@ -52,8 +69,8 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
           }`}
         >
           <div className="container">
-            <nav className={`${styles.navCenter}`}>
-              <ul className="xl:flex">
+            <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
+              <ul className="md:flex">
                 {data?.mainNavigation?.map((subItem) => (
                   <li key={subItem.link.title}>
                     <Link href={subItem.link.url}>
@@ -68,41 +85,48 @@ const HeaderBlock = ({ data, inverted }: HeaderInterface) => {
                 ))}
               </ul>
             </nav>
-            <nav>
-              <ul className="xl:flex">
-                {data.rightSideNavigation.map((subItem) => (
-                  <li key={subItem.link.title}>
-                    <Link href={subItem.link.url}>
-                      <a
-                        className={`${styles.navItem} ${
-                          subItem.link.title === 'Get Started'
-                            ? 'hidden xl:block'
-                            : ''
-                        } last:mr-0`}
-                        target={subItem.link.target}
-                      >
-                        {subItem.link.title}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className={`${styles.button} col-span-6 xl:hidden md:mt-80`}>
-                <Button link={data.mobileMenuCta} variant="dark" />
-              </div>
-            </nav>
+            {rightSideNavigation && (
+              <nav>
+                <ul className="md:flex">
+                  {rightSideNavigation.map((subItem) => (
+                    <li key={subItem.link.title}>
+                      <Link href={subItem.link.url}>
+                        <a
+                          className={`${styles.navItem} ${
+                            subItem.link.title === 'Get Started'
+                              ? 'hidden md:block'
+                              : ''
+                          } last:mr-0`}
+                          target={subItem.link.target}
+                        >
+                          {subItem.link.title}
+                        </a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {mobileMenuCta && (
+                  <div
+                    className={`${styles.button} col-span-6 md:hidden md:mt-80`}
+                  >
+                    <Button link={mobileMenuCta} variant="dark" />
+                  </div>
+                )}
+              </nav>
+            )}
           </div>
-          <div className={`${styles.navBackground} xl:hidden`}>
+          <div className={`${styles.navBackground} md:hidden`}>
             <Image
               src={navBackground.src}
               alt="descriptive alt tag"
               layout="responsive"
               width={834}
               height={1195}
+              loading="eager"
             />
           </div>
         </div>
-        <div className="xl:hidden z-10">
+        <div className="md:hidden z-10">
           <button
             type="button"
             className={`${styles.navSubItem} mr-0`}
