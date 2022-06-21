@@ -21,6 +21,7 @@ import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
 import TextVideoCombinationV2Fragment from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
+import { MediaItem } from 'interfaces/Image'
 import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
 
@@ -139,6 +140,27 @@ export default `
       pageOption {
         invertNavigation
       }
+      seoData {
+        description
+        fieldGroupName
+        ogDescription
+        ogImage {
+          ...Image
+        }
+        ogLocale
+        ogSiteName
+        ogTitle
+        ogType
+        title
+        ogUrl
+        twitterCard
+        twitterDescription
+        twitterSite
+        twitterTitle
+        twitterImage {
+          ...Image
+        }
+      }
       template {
         __typename
         ... on DefaultTemplate {
@@ -232,7 +254,24 @@ export interface PageInterface {
   }
   template: {
     pageBuilder: {
-      pageBuilder: [any]
+      pageBuilder: any[]
     }
+  }
+  seoData: {
+    description: string
+    fieldGroupName: string
+    ogDescription: string
+    ogImage: MediaItem
+    ogLocale: string
+    ogSiteName: string
+    ogTitle: string
+    ogType: string
+    title: string
+    ogUrl: string
+    twitterCard: string
+    twitterDescription: string
+    twitterSite: string
+    twitterTitle: string
+    twitterImage: MediaItem
   }
 }
