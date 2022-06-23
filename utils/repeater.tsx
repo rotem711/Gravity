@@ -24,6 +24,7 @@ import SublineHeadlineMediaModule from 'components/modules/SublineHeadlineMedia/
 import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigation/InsightsWithNavigation'
 import DividerModule from 'components/modules/Divider/Divider'
 import TextVideoCombinationV2Module from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
+import BookADemoModule from 'components/modules/BookADemo/BookADemo'
 
 const renderLayout = (layout: any, prefix: string, index: number) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -33,17 +34,31 @@ const renderLayout = (layout: any, prefix: string, index: number) => {
     case 'SliderWithMedia':
       return <SliderWithMediaModule key="SliderWithMediaModule" {...layout} />
     case 'TextVideoCombination':
-      return <TextVideoCombinationModule key="TextVideoCombination" {...layout} />
+      return (
+        <TextVideoCombinationModule key="TextVideoCombination" {...layout} />
+      )
     case 'TextWithFullscreenVideo':
-      return <TextWithFullscreenVideoModule key="TextWithFullscreenVideo" {...layout} />
+      return (
+        <TextWithFullscreenVideoModule
+          key="TextWithFullscreenVideo"
+          {...layout}
+        />
+      )
     case 'BigImageCarousel':
       return <BigImageCarouselModule key="BigImageCarousel" {...layout} />
     case 'HeadlineSeparator':
-      return <HeadlineSeparatorModule key={`HeadlineSeparator-${index}`} {...layout} />
+      return (
+        <HeadlineSeparatorModule
+          key={`HeadlineSeparator-${index}`}
+          {...layout}
+        />
+      )
     case 'BigQuote':
       return <BigQuoteModule key="BigQuote" {...layout} />
     case 'MediaWithCopyAndLink':
-      return <MediaWithCopyAndLinkModule key="MediaWithCopyAndLink" {...layout} />
+      return (
+        <MediaWithCopyAndLinkModule key="MediaWithCopyAndLink" {...layout} />
+      )
     case 'FeaturedInsights':
       return <FeaturedInsightsModule key="FeaturedInsights" {...layout} />
     case 'CountingNumbers':
@@ -57,25 +72,57 @@ const renderLayout = (layout: any, prefix: string, index: number) => {
     case 'BigHeadline':
       return <BigHeadlineModule key="BigHeadline" {...layout} />
     case 'FullscreenLinkWithMedia':
-      return <FullscreenLinkWithMediaModule key="FullscreenLinkWithMedia" {...layout} />
+      return (
+        <FullscreenLinkWithMediaModule
+          key="FullscreenLinkWithMedia"
+          {...layout}
+        />
+      )
     case 'TabNavigationContent':
-      return <TabNavigationContentModule key="TabNavigationContent" {...layout} />
+      return (
+        <TabNavigationContentModule key="TabNavigationContent" {...layout} />
+      )
     case 'TeamGrid':
       return <TeamGridModule key="TeamGrid" {...layout} />
     case 'HeroWithAnimatedText':
-      return <HeroWithAnimatedTextModule key="HeroWithAnimatedText" {...layout} />
+      return (
+        <HeroWithAnimatedTextModule key="HeroWithAnimatedText" {...layout} />
+      )
     case 'ImageWithCopyColumns':
-      return <ImageWithCopyColumnsModule key="ImageWithCopyColumns" {...layout} />
+      return (
+        <ImageWithCopyColumnsModule key="ImageWithCopyColumns" {...layout} />
+      )
     case 'HeadlineCopyMediaRows':
-      return <HeadlineCopyMediaRowsModule key="HeadlineCopyMediaRows" {...layout} />
+      return (
+        <HeadlineCopyMediaRowsModule key="HeadlineCopyMediaRows" {...layout} />
+      )
     case 'SublineHeadlineMedia':
-      return <SublineHeadlineMediaModule key="SublineHeadlineMedia" {...layout} />
+      return (
+        <SublineHeadlineMediaModule key="SublineHeadlineMedia" {...layout} />
+      )
     case 'InsightsWithNavigation':
-      return <InsightsWithNavigationModule key="InsightsWithNavigation" {...layout} />
+      return (
+        <InsightsWithNavigationModule
+          key="InsightsWithNavigation"
+          {...layout}
+        />
+      )
     case 'Divider':
       return <DividerModule key={`Divider-${index}`} {...layout} />
     case 'TextVideoCombinationV2':
-      return <TextVideoCombinationV2Module key={`TextVideoCombinationV2-${index}`} {...layout} />
+      return (
+        <TextVideoCombinationV2Module
+          key={`TextVideoCombinationV2-${index}`}
+          {...layout}
+        />
+      )
+    case 'BookADemo':
+      return (
+        <BookADemoModule
+          key={`BookADemo-${index}`}
+          {...layout}
+        />
+      )
     default:
       return null
   }

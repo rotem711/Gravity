@@ -4,8 +4,21 @@ import IButtonInterface from './button.interface'
 import styles from './button.module.scss'
 
 const Button = (props: IButtonInterface) => {
-  const { link, variant } = props
+  const {
+    link, variant, onClick, children,
+  } = props
 
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        type="submit"
+        className={`${styles.root} ${styles[variant]}`}
+      >
+        {children}
+      </button>
+    )
+  }
   if (!link) return null
   return (
     <Link href={link.url}>
