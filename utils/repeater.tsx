@@ -71,7 +71,7 @@ const renderLayout = (layout: any, prefix: string, index: number) => {
     case 'SublineHeadlineMedia':
       return <SublineHeadlineMediaModule key="SublineHeadlineMedia" {...layout} />
     case 'InsightsWithNavigation':
-      return <InsightsWithNavigationModule key="InsightsWithNavigation" />
+      return <InsightsWithNavigationModule key="InsightsWithNavigation" {...layout} />
     case 'Divider':
       return <DividerModule key={`Divider-${index}`} {...layout} />
     case 'TextVideoCombinationV2':
