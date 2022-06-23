@@ -5,15 +5,10 @@
 import React, { FunctionComponent, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
+import { validateEmail } from 'utils/hooks'
 import ImageComponent from 'components/generic/image/image'
 import styles from './BookADemo.module.scss'
 import IBookADemo from './BookADemo.interface'
-
-const validateEmail = (email: string) => {
-  const regexp =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return regexp.test(email)
-}
 
 const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   const {
@@ -59,6 +54,9 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
     if (validateFields()) {
       setSuccess(true)
       setFormData(emptyFormObject)
+      setTimeout(() => {
+        setSuccess(false)
+      }, 3000)
     }
   }
 
@@ -75,30 +73,35 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
               <input
                 placeholder="First name"
                 type="text"
+                value={formData.firstName}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'firstName')}
               />
               <input
                 placeholder="Last name"
                 type="text"
+                value={formData.lastName}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'lastName')}
               />
               <input
                 placeholder="Company name"
                 type="text"
+                value={formData.companyName}
                 className="col-span-2"
                 onChange={(e) => handleChange(e, 'companyName')}
               />
               <input
                 placeholder="Business email address"
                 type="email"
+                value={formData.email}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'email')}
               />
               <input
                 placeholder="Phone number"
                 type="text"
+                value={formData.phoneNumber}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'phoneNumber')}
               />

@@ -5,7 +5,7 @@ import styles from './button.module.scss'
 
 const Button = (props: IButtonInterface) => {
   const {
-    link, variant, onClick, children,
+    link, variant, onClick, children, disableHover,
   } = props
 
   if (onClick) {
@@ -13,7 +13,9 @@ const Button = (props: IButtonInterface) => {
       <button
         onClick={onClick}
         type="submit"
-        className={`${styles.root} ${styles[variant]}`}
+        className={`${styles.root} ${styles[variant]} ${
+          disableHover ? styles.disableHover : ''
+        }`}
       >
         {children}
       </button>

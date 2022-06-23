@@ -5,4 +5,5 @@ export default interface IButton {
   variant: 'dark' | 'light'
   onClick?: () => void
   children?: any
+  disableHover?: boolean
 }
