@@ -4,10 +4,10 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React, { FunctionComponent, useState } from 'react'
 import Button from 'components/generic/button/button'
+import Fade from 'components/generic/fade/fade'
 import ImageComponent from 'components/generic/image/image'
 import styles from './BookADemo.module.scss'
 import IBookADemo from './BookADemo.interface'
-import Fade from 'components/generic/fade/fade'
 
 const validateEmail = (email: string) => {
   const regexp =
