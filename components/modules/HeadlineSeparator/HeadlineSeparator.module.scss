@@ -1,4 +1,73 @@
 .root {
   position: relative;
   margin-top: -1px;
+
+  .enableSubscribe  {
+    min-width: 30rem;
+  }
+
+  input {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    outline: none;
+    -webkit-appearance: none;
+    box-shadow: none;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    background: transparent;
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  span {
+    display: inline-flex;
+    &.hide {
+      position: absolute;
+      z-index: -1;
+    }
+  }
+
+  .arrow {
+    svg {
+      position: absolute;
+      right: 2.5rem;
+      top: 50%;
+      transition: 400ms;
+      transform: translateY(-50%) translateX(1rem);
+      opacity: 0;
+      z-index: 2;
+      width: 1.6rem;
+      height: auto;
+    }
+
+    &.active {
+      svg {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+  }
+
+  .input {
+    display: inline-flex;
+    transition: max-width 500ms ease, max-height 500ms ease, opacity 1000ms ease;
+    max-width: 0px;
+    overflow: hidden;
+    opacity: 0;
+
+    &.show {
+      width: auto;
+      max-width: 30rem;
+      max-height: 1000px;
+      opacity: 1;
+      padding-right: 6rem;
+    }
+  }
 }

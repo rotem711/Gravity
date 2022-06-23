@@ -1,6 +1,7 @@
 @import './../../../styles/typography';
 
 .root {
+  position: relative;
   display: inline-block;
   padding: 1.2rem 3rem;
   border-radius: 10rem;
@@ -12,17 +13,21 @@
     background: theme('colors.black');
     color: theme('colors.white');
 
-    &:hover {
-      background: transparent;
-      color: theme('colors.black');
+    &:not(.disableHover) {
+      &:hover {
+        background: transparent;
+        color: theme('colors.black');
+      }
     }
   }
   &.light {
     background: transparent;
-    &:hover {
-      background: theme('colors.black');
-      color: theme('colors.white');
-      border: 1px solid theme('colors.black');
+    &:not(.disableHover) {
+      &:hover {
+        background: theme('colors.black');
+        color: theme('colors.white');
+        border: 1px solid theme('colors.black');
+      }
     }
   }
 }
