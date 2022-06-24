@@ -26,25 +26,3 @@
     font-style: normal;
     font-display: swap;
 }
-
-
-
-// @mixin font-face ($family, $src, $weight: normal, $style: normal) {
-// 	@font-face {
-// 		font-family: $family;
-// 		src:
-// 			url('#{$src}.otf') format('opentype');
-// 		font-style: $style;
-// 		font-weight: $weight;
-// 		font-display: swap;
-// 	}
-// }
-
-// $avenirRegular: fontSrc('Avenir/AvenirNextLTPro-Regular');
-
-// @at-root {
-// 	@include font-face(
-// 		'AvenirNextLTPro-Regular',
-// 		$avenirRegular,
-// 		400
-// 	);
