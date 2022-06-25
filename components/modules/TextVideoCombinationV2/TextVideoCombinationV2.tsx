@@ -56,12 +56,14 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           const mediaC = (
             <div className="relative">
-              <div
-                className={`${item.vimeoVideoUrl ? styles.absoluteImage : ''}`}
-              >
-                {imageC}
-              </div>
-              {videoC}
+              <Fade delay={400}>
+                <div
+                  className={`${item.vimeoVideoUrl ? styles.absoluteImage : ''}`}
+                >
+                  {imageC}
+                </div>
+                {videoC}
+              </Fade>
             </div>
           )
           return (

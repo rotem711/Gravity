@@ -39,6 +39,20 @@
       }
     }
 
+    > div:last-child {
+      z-index: 0;
+    }
+
+    > div:last-child, > div:last-child > span, video {
+      width: 101% !important;
+      height: 101% !important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      object-fit: cover;
+    }
+
     &:hover {
       .iconContainer {
         opacity: 1;
@@ -48,16 +62,16 @@
     }
   }
 
-  span,
-  video {
-    width: 102%;
-    height: 100%;
-    position: absolute;
-    max-width: 102%;
-    top: 0;
-    left: -1%;
-    object-fit: cover;
-  }
+  // span,
+  // video {
+  //   width: 102%;
+  //   height: 100%;
+  //   position: absolute;
+  //   max-width: 102%;
+  //   top: 0;
+  //   left: -1%;
+  //   object-fit: cover;
+  // }
 }
 
 .iconContainer {
