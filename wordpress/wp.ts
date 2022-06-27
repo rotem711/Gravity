@@ -64,7 +64,7 @@ export const getWpStaticProps = async (
       settings: res.settings.globalSettings,
       header: res.header.header,
       platformNavigation: res.platformNavigation.platformNavigation,
-      insights: res.insights.nodes,
+      insights: [],
       insightsCategories: res.insightsCategories,
     },
     revalidate: undefined,
