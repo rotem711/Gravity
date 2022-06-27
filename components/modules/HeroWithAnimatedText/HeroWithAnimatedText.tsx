@@ -1,16 +1,62 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import styles from './HeroWithAnimatedText.module.scss'
 import IHeroWithAnimatedText from './HeroWithAnimatedText.interface'
 
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
+
 const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (props) => {
-  console.log(props)
+  const { heroWithAnimatedText } = props
+
+  const refs = useRef<HTMLSpanElement[]>([])
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      trigger: '#team-header',
+      start: 'top top',
+      end: 'bottom+=100% top',
+      pin: true,
+      pinSpacing: true,
+    })
+    refs.current.forEach(() => {
+      gsap.timeline({
+        duration: 10,
+        scrollTrigger: {
+          trigger: '#team-header',
+          start: 'top top',
+          end: 'bottom+=100% bottom',
+          pin: true,
+          scrub: 1,
+          pinSpacing: true,
+        },
+      }).to('.line', {
+        opacity: 1,
+        stagger: 0.25,
+        duration: 2,
+      }).to('.list', {
+        y: '-35%',
+        duration: 5,
+      })
+    })
+  }, [refs])
+
   return (
     <div
-      className={`${styles.root}`}
+      id="team-header"
+      className={`${styles.root} pt-180 pb-150 lg:pt-225 lg:pb-190`}
     >
       <div className="container">
-        Herowithanimatedtext Module
+        <div className={`${styles.list} list`}>
+          {heroWithAnimatedText.animatingText.map((item) => (
+            <div className={`${styles.line} line`} ref={(r) => refs.current.push(r)}>{item.text}</div>
+          ))}
+          <div className={`${styles.line} line mt-150 lg:mt-230`} ref={(r) => refs.current.push(r)}>{heroWithAnimatedText.subline}</div>
+        </div>
       </div>
+      <video className={`${styles.video}`} src={heroWithAnimatedText.vimeoVideoUrl} playsInline muted loop autoPlay />
     </div>
   )
 }
