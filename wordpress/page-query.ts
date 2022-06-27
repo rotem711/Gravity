@@ -106,27 +106,7 @@ export default `
         }
       }
     }
-    insights: posts {
-      nodes {
-        slug
-        title
-        post {
-          publishedDate
-          previewVideo
-        }
-        featuredImage {
-          node {
-            ...Image
-          }
-        }
-        categories {
-          nodes {
-            id
-            name
-          }
-        }
-      }
-    }
+
     insightsCategories: categories {
       nodes {
         id
