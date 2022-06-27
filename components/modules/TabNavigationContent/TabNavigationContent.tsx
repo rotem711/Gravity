@@ -130,7 +130,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                         {item.content.map((subItem) => (
                           <div
                             key={subItem.headline}
-                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-full"
+                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-[85%]"
                           >
                             <h2
                               className="typo-headlines-late mb-50"
@@ -238,7 +238,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late mb-50 col-span-6 lg:w-full block"
+                                className="typo-headlines-late mb-50 col-span-6 lg:w-[85%] block"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
                                 }}

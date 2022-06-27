@@ -18,14 +18,16 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
   useEffect(() => {
     refs.current.forEach((ref: HTMLSpanElement, index) => {
       const zero = { val: 0 }
-      const num = parseInt(ref?.innerHTML, 10)
+      const num = parseInt(ref?.getAttribute('data-value'), 10)
 
       gsap.to(zero, {
         val: num,
         duration: 2.5,
-        scrollTrigger: ref,
+        scrollTrigger: {
+          trigger: ref,
+          start: 'top center',
+        },
         ease: 'expo.out',
-        delay: index * 0.2,
         onUpdate: () => {
           refs.current[index].innerHTML = zero.val.toFixed().toString()
         },
@@ -52,7 +54,9 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
                 <Fade delay={index * 150}>
                   <dt className="mb-20">
                     {item?.prefix}
-                    <span ref={(r) => refs.current.push(r)}>{item.value}</span>
+                    <span data-value={item.value} ref={(r) => refs.current.push(r)}>
+                      0
+                    </span>
                     {item?.unit}
                   </dt>
                 </Fade>
