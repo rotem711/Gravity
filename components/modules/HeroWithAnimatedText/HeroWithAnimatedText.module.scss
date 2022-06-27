@@ -1,6 +1,46 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+  height: 100vh;
 
-  border-bottom: 1px solid black;
+  @screen lg {
+  }
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list {
+  position: relative;
+  z-index: 2;
+}
+
+.line {
+  opacity: 0;
+  color: theme('colors.white');
+  font-family: 'Modern Gothic';
+  font-weight: 300;
+  font-size: 3.5rem;
+  line-height: 4.55rem;
+  letter-spacing: -0.01em;
+
+  @screen lg {
+    font-size: 5.2rem;
+    line-height: 6.24rem;
+  }
+
+  &:first-of-type {
+    opacity: 1 !important;
+  }
+
+  @screen lg {
+    &:last-of-type {
+      opacity: 1 !important;
+    }
+  }
 }
