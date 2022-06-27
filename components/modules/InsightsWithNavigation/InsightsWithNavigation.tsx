@@ -1,6 +1,7 @@
 import { GlobalContext } from 'pages/_app'
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Fade from 'components/generic/fade/fade'
 import ArrowRight from 'public/icons/icon-arrow-right.svg'
@@ -9,14 +10,18 @@ import TextVideoCombinationV2 from 'components/modules/TextVideoCombinationV2/Te
 import IInsightsWithNavigation from './InsightsWithNavigation.interface'
 import styles from './InsightsWithNavigation.module.scss'
 
-const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithNavigation) => {
+const InsightsWithNavigationModule = ({
+  textVideoCombinationV2,
+}: IInsightsWithNavigation) => {
   const ctx = useContext(GlobalContext)
   const { insights, insightsCategories } = ctx
   const [category, setCategory] = useState('all')
   const [displayFilters, setDisplayFilters] = useState(false)
+  const router = useRouter()
 
   const onClickCategory = (e) => {
-    setCategory(e.currentTarget.dataset.category)
+    router.query.cat = e.currentTarget.dataset.category
+    router.push(router)
   }
 
   return (
@@ -30,7 +35,9 @@ const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithN
           <ul className={`${styles.nav} flex items-center`}>
             <li key="all">
               <button
-                className={`typo-subhead uppercase ${category === 'all' ? styles.active : ''}`}
+                className={`typo-subhead uppercase ${
+                  category === 'all' ? styles.active : ''
+                }`}
                 type="button"
                 data-category="all"
                 onClick={(e) => onClickCategory(e)}
@@ -41,7 +48,11 @@ const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithN
             {insightsCategories.nodes.map((item) => (
               <li key={item.id} className="ml-30 md:ml-40 first:ml-0">
                 <button
-                  className={`typo-subhead uppercase ${category === (item.name.toLowerCase().replace(/[" "]/g, '-')) ? styles.active : ''}`}
+                  className={`typo-subhead uppercase ${
+                    category === item.name.toLowerCase().replace(/[" "]/g, '-')
+                      ? styles.active
+                      : ''
+                  }`}
                   type="button"
                   data-category={item.name.toLowerCase().replace(/[" "]/g, '-')}
                   onClick={(e) => onClickCategory(e)}
@@ -54,17 +65,24 @@ const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithN
         </div>
       </nav>
       <div className="">
-        {category === 'all'
-          && <TextVideoCombinationV2 textVideoCombinationV2={textVideoCombinationV2} />}
+        {category === 'all' && (
+          <TextVideoCombinationV2
+            fieldGroupName="TextVideoCombinationV2"
+            textVideoCombinationV2={textVideoCombinationV2}
+          />
+        )}
         <ul className="default-grid pt-200 container">
           {insights.map((item, index) => (
             // eslint-disable-next-line react/jsx-no-useless-fragment
             <>
-              {((category == item.categories.nodes[0].name.toLowerCase().replace(/[" "]/g, '-')) || (category === 'all')) && (
               <li
                 key={item.post.id}
-                className={`col-span-6 xl:col-span-6 mb-180 sm:mb-180 md:mb-275 last:mb-0 ${category === 'all' ? styles.active : ''} `}
-                data-category={item.categories.nodes[0].name.toLowerCase().replace(/[" "]/g, '-')}
+                className={`col-span-6 xl:col-span-6 mb-180 sm:mb-180 md:mb-275 last:mb-0 ${
+                  category === 'all' ? styles.active : ''
+                } `}
+                data-category={item.categories.nodes[0].name
+                  .toLowerCase()
+                  .replace(/[" "]/g, '-')}
               >
                 <Fade delay={index * 150 + 150}>
                   <div className={`${styles.mediaContainer} sm:mb-50`}>
@@ -81,9 +99,7 @@ const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithN
                         src={item.featuredImage.node.sourceUrl}
                         alt={item.featuredImage.node.altText}
                         width={item.featuredImage.node.mediaDetails.width}
-                        height={
-                          item.featuredImage.node.mediaDetails.height
-                        }
+                        height={item.featuredImage.node.mediaDetails.height}
                       />
                     )}
                   </div>
@@ -103,19 +119,14 @@ const InsightsWithNavigationModule = ({ textVideoCombinationV2 }: IInsightsWithN
                   </Link>
                 </Fade>
               </li>
-              )}
             </>
           ))}
         </ul>
-        {insights.length > 4
-          ?? (
-          <button
-            type="button"
-            className="typo-body"
-          >
+        {insights.length > 4 ?? (
+          <button type="button" className="typo-body">
             Learn More
           </button>
-          )}
+        )}
       </div>
     </div>
   )
