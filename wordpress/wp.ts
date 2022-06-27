@@ -1,8 +1,4 @@
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next'
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
 
@@ -21,6 +17,7 @@ export const getAllPagesQuery = /* GraphQL */ `
 `
 
 export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
+  console.log(ctx)
   const { pages } = await fetch({
     query: getAllPagesQuery,
   })
@@ -44,6 +41,7 @@ export const getWpStaticPaths = async (ctx: GetStaticPropsContext) => {
 export const getWpStaticProps = async (
   ctx: GetStaticPropsContext,
 ): Promise<GetStaticPropsResult<any>> => {
+  console.log(ctx.params)
   const res = await fetch({
     query: pageQuery,
     variables: {

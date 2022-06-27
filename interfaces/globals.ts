@@ -6,7 +6,7 @@ import InsightsInterface, { InsightsCategory } from './Insights'
 export interface GlobalSet {
   header: Navigation
   footer: FooterInterface
-  platformNavigation: PlatformNavigationInterface
-  insights: [InsightsInterface]
-  insightsCategories: [InsightsCategory]
+  platformNavigation?: PlatformNavigationInterface
+  insights?: [InsightsInterface]
+  insightsCategories?: InsightsCategory[]
 }
