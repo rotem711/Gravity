@@ -84,7 +84,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                       </div>
                     )}
                   </div>
-                  <div className="col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 order-1 md:order-2">
+                  <div className="mb-45 md:mb-0 col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 order-1 md:order-2">
                     {contentC}
                   </div>
                 </>

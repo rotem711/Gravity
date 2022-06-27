@@ -32,6 +32,7 @@ const Page = ({
   <GlobalContextProvider
     value={{ header, footer, platformNavigation, insights, insightsCategories }}
   >
+    {console.log(insights)}
     <div>
       <Head>
         <title>Gravity</title>

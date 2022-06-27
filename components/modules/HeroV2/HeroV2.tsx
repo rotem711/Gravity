@@ -20,7 +20,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
           <Fade delay={400}>{heroV2.headline}</Fade>
         </h1>
         <div className={`${styles.mediaContainer} z-0`}>
-          <Fade>
+          <Fade className="h-full">
             {heroV2.vimeoVideoUrl ? (
               <video
                 src={heroV2.vimeoVideoUrl}
