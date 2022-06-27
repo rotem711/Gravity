@@ -2,7 +2,7 @@ import Image from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface ISideBySideMedia {
-  fieldGroupName: string
+  fieldGroupName?: string
   sideBySideMedia: {
     media: [
       {

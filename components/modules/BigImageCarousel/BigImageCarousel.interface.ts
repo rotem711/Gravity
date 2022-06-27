@@ -2,7 +2,7 @@ import Image from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface IBigImageCarousel {
-  fieldGroupName: string
+  fieldGroupName?: string
   bigImageCarousel: {
     headline: string
     customHeadline: string

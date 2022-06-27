@@ -1,7 +1,7 @@
 import { MediaItem } from 'interfaces/Image'
 
 export default interface IHeadlineCopyMediaRows {
-  fieldGroupName: string
+  fieldGroupName?: string
   headlineCopyMediaRows: {
     topHeadline: string
     rows: [

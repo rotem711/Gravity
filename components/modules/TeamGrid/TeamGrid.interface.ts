@@ -1,7 +1,7 @@
 import Image from 'interfaces/Image'
 
 export default interface ITeamGrid {
-  fieldGroupName: string
+  fieldGroupName?: string
   teamGrid: {
     topline: string
     bigCopy: string

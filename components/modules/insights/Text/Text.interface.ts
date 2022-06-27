@@ -1,3 +1,3 @@
 export default interface IText {
-  fieldGroupName: string
+  fieldGroupName?: string
 }

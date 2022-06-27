@@ -1,3 +1,3 @@
 export default interface IDivider {
-  fieldGroupName: string
+  fieldGroupName?: string
 }
