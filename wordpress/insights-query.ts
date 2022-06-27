@@ -40,6 +40,13 @@ export default `
     settings: themeGeneralSettings {
       globalSettings {
         insightsDetailPage {
+          fullscreenLinkWithMedia {
+            vimeoVideoUrl
+            link {
+              ...Link
+            }
+            ${ImageComponent()}
+          }
           headlineSeparator {
             backgroundColor
             enableSubscribe

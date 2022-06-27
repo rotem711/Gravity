@@ -1,3 +1,3 @@
 export default interface IQuote {
-  fieldGroupName: string
+  fieldGroupName?: string
 }

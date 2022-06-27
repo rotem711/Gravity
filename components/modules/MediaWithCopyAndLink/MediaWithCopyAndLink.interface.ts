@@ -1,7 +1,7 @@
 import Link from 'interfaces/Link'
 
 export default interface IMediaWithCopyAndLink {
-  fieldGroupName: string
+  fieldGroupName?: string
   mediaWithCopyAndLink: {
     backgroundColor: string
     lottieSelect: string
