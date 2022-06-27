@@ -7,6 +7,8 @@ export interface GlobalSet {
   header: Navigation
   footer: FooterInterface
   platformNavigation?: PlatformNavigationInterface
-  insights?: [InsightsInterface]
+  insights?: {
+    nodes: [InsightsInterface]
+  }
   insightsCategories?: InsightsCategory[]
 }
