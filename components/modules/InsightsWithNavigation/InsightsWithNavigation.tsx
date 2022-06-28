@@ -1,11 +1,10 @@
 import { GlobalContext } from 'pages/_app'
-import React, {
-  useContext, useEffect, useRef, useState,
-} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import useIsMobile from 'utils/hooks'
 import Link from 'next/link'
 import Fade from 'components/generic/fade/fade'
+import InsightsInterface from 'interfaces/Insights'
 import ArrowRight from 'public/icons/icon-arrow-right.svg'
 import buttonStyles from 'components/generic/button/button.module.scss'
 import TextVideoCombinationV2 from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
@@ -17,94 +16,96 @@ const InsightsWithNavigationModule = ({
 }: IInsightsWithNavigation) => {
   const ctx = useContext(GlobalContext)
   const { insights, insightsCategories } = ctx
-  const offset = useRef(4)
-  const [noMore, setNoMore] = useState(false)
-  const [category, setCategory] = useState('all')
-  const router = useRouter()
-  const postsRef = useRef<HTMLUListElement>()
+  const [spliceIndex, setSpliceIndex] = useState(1)
+  const [category, setCategory] = useState(null)
+  const [filteredInsights, setFilteredInsights] = useState<InsightsInterface[]>(
+    insights.nodes,
+  )
+  const isMobile = useIsMobile('md')
+  const [hideFilters, setHideFilters] = useState(true)
 
-  const onClickCategory = (e) => {
-    if (category === e.currentTarget.dataset.category) return
-    setCategory(e.currentTarget.dataset.category)
-    router.query.cat = e.currentTarget.dataset.category
-    offset.current = 4
-    router.query.offset = offset.current.toString()
-    router.push(router)
+  const onClickCategory = (catId) => {
+    setSpliceIndex(1)
+    setCategory(catId)
+    if (catId === null) {
+      setFilteredInsights([...insights.nodes])
+    } else {
+      const filtered = insights.nodes.filter((x) => x.categories.nodes.find((a) => a.id === catId))
+      setFilteredInsights([...filtered])
+    }
   }
 
   const fetchMore = () => {
-    offset.current += 4
-    router.query.offset = offset.current.toString()
-    router.push(router)
+    setSpliceIndex(spliceIndex + 1)
   }
 
   useEffect(() => {
-    setNoMore(false)
-    if (insights.nodes.length % 4 !== 0) {
-      setNoMore(true)
-    }
-    if (postsRef.current && (insights.nodes.length > 4 || category !== 'all')) {
-      postsRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [insights])
+    setHideFilters(isMobile)
+  }, [isMobile])
 
+  const splicedInsights = [...filteredInsights].splice(0, spliceIndex * 4)
   return (
-    <div className={`${styles.root} pb-200`}>
+    <div className={`${styles.root} pb-65 md:pb-100`}>
       <nav className={`${styles.navContainer}`}>
         <div className="container flex items-center">
-          <p className="md:hidden flex items-center typo-subhead uppercase">
+          <button
+            type="button"
+            onClick={() => setHideFilters(false)}
+            className="md:hidden flex gap-10 items-center typo-subhead uppercase"
+          >
             Filters
             <ArrowRight />
-          </p>
-          <ul className={`${styles.nav} flex items-center`}>
+          </button>
+          <ul
+            className={`${styles.nav} ${
+              hideFilters === true ? 'opacity-0' : ''
+            } flex items-center`}
+          >
             <li key="all">
               <button
                 className={`typo-subhead uppercase ${
-                  category === 'all' ? styles.active : ''
+                  category === null ? styles.active : ''
                 }`}
                 type="button"
-                data-category="all"
-                onClick={(e) => onClickCategory(e)}
+                onClick={() => onClickCategory(null)}
               >
                 All
               </button>
             </li>
-            {insightsCategories.map((item) => (
-              <li key={item.id} className="ml-30 md:ml-40 first:ml-0">
-                <button
-                  className={`typo-subhead uppercase ${
-                    category === item.name.toLowerCase().replace(/[" "]/g, '-')
-                      ? styles.active
-                      : ''
-                  }`}
-                  type="button"
-                  data-category={item.name.toLowerCase().replace(/[" "]/g, '-')}
-                  onClick={(e) => onClickCategory(e)}
-                >
-                  {item.name}
-                </button>
-              </li>
-            ))}
+            {insightsCategories
+              // eslint-disable-next-line max-len
+              .filter((x) => insights.nodes.find((c) => c.categories.nodes.find((y) => y.id === x.id)))
+              .map((item) => (
+                <li key={item.id} className="ml-30 md:ml-40 first:ml-0">
+                  <button
+                    className={`typo-subhead uppercase ${
+                      category === item.id ? styles.active : ''
+                    }`}
+                    type="button"
+                    onClick={() => onClickCategory(item.id)}
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
           </ul>
         </div>
       </nav>
       <div className="">
-        {category === 'all' && (
+        {category === null && (
           <TextVideoCombinationV2
+            extendedOnMobile
             fieldGroupName="TextVideoCombinationV2"
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul ref={postsRef} className="default-grid pt-200 container">
-          {insights.nodes.map((item, index) => (
+        <ul className="default-grid pt-80 lg:pt-200 container">
+          {splicedInsights.map((item, index) => (
             <li
-              key={item.slug}
+              key={`${item.slug} - ${category}`}
               className={`col-span-6 xl:col-span-6 mb-180 sm:mb-180 md:mb-275 last:mb-0 ${
                 category === 'all' ? styles.active : ''
               } `}
-              data-category={item.categories.nodes[0].name
-                .toLowerCase()
-                .replace(/[" "]/g, '-')}
             >
               <Fade delay={index * 50 + 150}>
                 <div className={`${styles.mediaContainer} sm:mb-50`}>
@@ -142,7 +143,7 @@ const InsightsWithNavigationModule = ({
           ))}
         </ul>
         <div className="container mt-95 md:mt-100 lg:mt-150">
-          {!noMore && (
+          {filteredInsights.length > spliceIndex * 4 && (
             <button
               onClick={fetchMore}
               type="button"

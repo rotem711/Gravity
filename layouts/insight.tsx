@@ -4,14 +4,14 @@ import React from 'react'
 import Head from 'next/head'
 import renderLayout from 'utils/repeater'
 import SettingsInterface from 'interfaces/Settings'
+import HeadlineSeparatorModule from 'components/modules/HeadlineSeparator/HeadlineSeparator'
+import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
 import { InsightsInterface } from 'wordpress/insights-query'
 import { GlobalContextProvider } from 'pages/_app'
 import FooterInterface from 'components/generic/footer/footer.interface'
 import { Navigation } from 'components/generic/header/header.interface'
 import Header from '../components/generic/header/header'
 import Footer from '../components/generic/footer/footer'
-import HeadlineSeparatorModule from 'components/modules/HeadlineSeparator/HeadlineSeparator'
-import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
 
 const Insight = ({
   insight,

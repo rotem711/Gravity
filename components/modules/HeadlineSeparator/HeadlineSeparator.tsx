@@ -37,12 +37,14 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
             activate && !submitted ? styles.show : ''
           }`}
         >
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            autoFocus
-            type="email"
-            placeholder="Enter Email"
-          />
+          {activate && (
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              autoFocus
+              type="email"
+              placeholder="Enter Email"
+            />
+          )}
           <button
             onClick={submit}
             type="submit"

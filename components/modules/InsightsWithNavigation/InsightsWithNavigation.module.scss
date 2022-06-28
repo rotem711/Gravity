@@ -35,29 +35,19 @@
   & > div:first-of-type {
     overflow: visible;
     padding-right: 0;
-    
+
     @screen md {
       padding-right: 3rem;
     }
   }
 
-  &.hide {
-    opacity: 0;
-    transform: translateY(-100%);
-    border-color: transparent;
-  }
-
-  p {
-    padding-right: 20px;
-    background-color: #B8B7A4;
-
-    svg {
-      margin-left: 10px;
-    }
-  }
-
   button {
     position: relative;
+    svg {
+      width: 1.3rem;
+      height: auto;
+      transform: translateY(-1px);
+    }
     &::after {
       content: '';
       position: absolute;
@@ -90,7 +80,7 @@
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-left: 40px;
+  margin-left: 1.5rem;
   padding-right: 3rem;
 
   &::-webkit-scrollbar {
