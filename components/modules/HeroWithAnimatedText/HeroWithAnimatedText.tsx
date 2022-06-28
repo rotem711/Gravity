@@ -23,7 +23,7 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
     })
     refs.current.forEach(() => {
       gsap.timeline({
-        duration: 10,
+        duration: 20,
         scrollTrigger: {
           trigger: '#team-header',
           start: 'top top',
@@ -34,11 +34,13 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
         },
       }).to('.line', {
         opacity: 1,
-        stagger: 0.25,
         duration: 2,
+        stagger: 1.75,
+        delay: -20,
       }).to('.list', {
         y: '-35%',
-        duration: 5,
+        delay: -6,
+        duration: 2,
       })
     })
   }, [refs])
