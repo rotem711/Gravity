@@ -6,4 +6,9 @@ export default interface SettingsInterface {
     image: Image
     link: Link
   }
+  newsBanner: {
+    newsBannerText: string
+    newsBannerLink: Link
+    newsBannerActive: boolean
+  }
 }

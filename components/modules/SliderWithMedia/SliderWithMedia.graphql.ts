@@ -10,6 +10,7 @@ const SliderWithMediaFragment = (t: string) => `
         copy
         vimeoVideoUrl
         ${ImageComponent()}
+        ${ImageComponent('backgroundImage')}
       }
       link {
         ...Link

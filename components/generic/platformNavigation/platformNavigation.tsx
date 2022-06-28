@@ -61,7 +61,7 @@ const PlatformNavigation = () => {
   return (
     <div className={`${styles.root} ${endTrigger ? styles.hide : ''}`} ref={platformRef}>
       <div className="container flex justify-between my-auto">
-        <h2 className="typo-subhead uppercase hidden md:block">
+        <h2 role="none" onClick={() => window.scroll({ top: 0, behavior: 'smooth' })} className="typo-subhead uppercase hidden md:block cursor-pointer">
           {ctx.platformNavigation.title}
         </h2>
         <ul className="flex w-full md:w-auto justify-between">

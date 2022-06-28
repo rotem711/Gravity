@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import Image from 'next/image'
 import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
@@ -9,6 +9,7 @@ import IHero from './Hero.interface'
 
 const HeroModule: FunctionComponent<IHero> = (props) => {
   const { hero } = props
+  const [videoLoaded, setVideoLoaded] = useState(false)
   const isMobile = useIsMobile('')
   const isTablet = useIsMobile('lg')
 
@@ -20,13 +21,8 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
     videoSrc = hero.vimeoVideoIdMobile
   }
   return (
-    <div id="main_hero" className={`${styles.root}`}>
-      <div className="container pt-130 pb-100 md:pt-100 flex flex-wrap">
-        <h1
-          className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
-        >
-          <Fade>{hero.headline}</Fade>
-        </h1>
+    <div id="main_hero" className={`${styles.root} pt-130 pb-100 md:pt-100`}>
+      <div className="container flex flex-wrap h-full">
         <video
           className={`${styles.video}`}
           src={videoSrc}
@@ -34,9 +30,17 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
           muted
           loop
           autoPlay
+          onLoadedData={() => setVideoLoaded(true)}
+          onPlaying={() => setVideoLoaded(true)}
         />
+        <h1
+          className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
+        >
+          <Fade delay={200} disable={!videoLoaded}>{hero.headline}</Fade>
+        </h1>
+
         <div className={`${styles.button} w-full`}>
-          <Fade delay={200}>
+          <Fade disable={!videoLoaded} delay={400}>
             <Button variant="dark" link={hero.link} />
           </Fade>
         </div>
@@ -44,7 +48,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
           className={`${styles.logos} default-grid w-full mt-95 lg:mt-145 items-start`}
         >
           <h2 className="typo-subhead w-full col-span-6 md:col-span-3 lg:col-span-2 uppercase">
-            <Fade delay={300}>{parse(hero.logoRowHeadline)}</Fade>
+            <Fade disable={!videoLoaded} delay={600}>{parse(hero.logoRowHeadline)}</Fade>
           </h2>
           <div className="col-span-6 md:col-start-5 md:col-span-8 lg:col-start-4 lg:col-span-9 flex flex-wrap md:flex-nowrap gap-y-60 md:gap-50 lg:gap-60 mt-70 md:mt-0">
             {hero.logos.map((item, index) => (
@@ -52,7 +56,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
                 key={item.logo.sourceUrl}
                 className={`${styles.iconContainer} md:flex-shrink-0`}
               >
-                <Fade delay={index * 150 + 500}>
+                <Fade disable={!videoLoaded} delay={index * 150 + 800}>
                   <Image
                     layout="intrinsic"
                     objectFit="contain"

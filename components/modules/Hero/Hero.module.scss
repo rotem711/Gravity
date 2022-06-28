@@ -4,6 +4,9 @@
   position: relative;
   background-color: theme('colors.mediumSky');
   z-index: 11;
+  @screen md {
+    //  min-height: 100vh;
+  }
 
   h1 {
     @screen md {
@@ -18,6 +21,7 @@
     width: 100%;
     height: auto;
     mix-blend-mode: multiply;
+    flex: 1;
   }
 }
 

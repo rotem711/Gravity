@@ -11,6 +11,7 @@ export default interface ISliderWithMedia {
         copy: string
         vimeoVideoUrl: string
         image: Image
+        backgroundImage: Image
       },
     ]
     link: Link
