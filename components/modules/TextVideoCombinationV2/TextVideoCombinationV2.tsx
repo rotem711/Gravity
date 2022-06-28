@@ -9,7 +9,7 @@ import ITextVideoCombinationV2 from './TextVideoCombinationV2.interface'
 const TextVideoCombinationV2Module: FunctionComponent<
   ITextVideoCombinationV2
 > = (props) => {
-  const { textVideoCombinationV2 } = props
+  const { textVideoCombinationV2, extendedOnMobile = false } = props
   const isMobile = useIsMobile('lg')
   return (
     <div className={`${styles.root} py-100 lg:py-150`}>
@@ -26,7 +26,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
           )
           const contentC = (
             <>
-              <div className="col-span-6 md:col-span-5">
+              <div className={`col-span-6 ${extendedOnMobile ? 'md:col-span-8' : 'md:col-span-5'}`}>
                 <h4 className="pb-30 typo-subhead uppercase">
                   <Fade>{item.topHeadline}</Fade>
                 </h4>
@@ -37,7 +37,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                   />
                 </Fade>
               </div>
-              <div className="col-span-6 md:col-span-5 md:col-start-7">
+              <div className={`col-span-6 ${extendedOnMobile ? 'md:col-span-7' : 'md:col-span-5 md:col-start-7'}`}>
                 <Fade delay={300}>
                   <div
                     className="typo-body"
@@ -45,7 +45,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                   />
                 </Fade>
                 {item.link && (
-                  <div className="hidden md:block pt-45 md:pt-55">
+                  <div className={`${!extendedOnMobile ? 'hidden md:block' : ''} pt-45 md:pt-55`}>
                     <Fade delay={400}>
                       <Button variant="light" link={item.link} />
                     </Fade>
@@ -55,7 +55,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
             </>
           )
           const mediaC = (
-            <div className="relative">
+            <div className={`relative ${extendedOnMobile ? '-mx-30 md:-mx-35 lg:mx-0' : ''}`}>
               <Fade delay={400}>
                 <div
                   className={`${item.vimeoVideoUrl ? styles.absoluteImage : ''}`}
@@ -76,15 +76,15 @@ const TextVideoCombinationV2Module: FunctionComponent<
             >
               {flipHorizontally || isMobile ? (
                 <>
-                  <div className="col-span-12 lg:col-span-6 order-2 md:order-1 mb-auto">
+                  <div className={`col-span-12 lg:col-span-6 ${extendedOnMobile ? 'order-2' : 'order-2 md:order-1'} mb-auto`}>
                     {mediaC}
                     {item.link && (
-                      <div className="md:hidden mt-50">
+                      <div className={`${extendedOnMobile ? 'hidden' : 'md:hidden mt-50'}`}>
                         <Button variant="light" link={item.link} />
                       </div>
                     )}
                   </div>
-                  <div className="mb-45 md:mb-0 col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 order-1 md:order-2">
+                  <div className={`col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 ${extendedOnMobile ? 'mb-50 md:mb-60' : 'order-1 md:order-2 mb-45 md:mb-0'}`}>
                     {contentC}
                   </div>
                 </>

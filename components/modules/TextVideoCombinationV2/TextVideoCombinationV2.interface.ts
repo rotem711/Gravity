@@ -3,6 +3,7 @@ import Link from 'interfaces/Link'
 
 export default interface ITextVideoCombinationV2 {
   fieldGroupName?: string
+  extendedOnMobile?: boolean
   textVideoCombinationV2: {
     items: [
       {

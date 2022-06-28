@@ -94,11 +94,12 @@ const InsightsWithNavigationModule = ({
       <div className="">
         {category === null && (
           <TextVideoCombinationV2
+            extendedOnMobile
             fieldGroupName="TextVideoCombinationV2"
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul className="default-grid pt-80 md:pt-200 container">
+        <ul className="default-grid pt-80 lg:pt-200 container">
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
