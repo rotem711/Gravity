@@ -141,15 +141,21 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               key={item.title}
               role="button"
             >
-              {item.vimeoVideoUrl && (
-                <video
-                  className={`${styles.video}`}
-                  src={item.vimeoVideoUrl}
-                  playsInline
-                  muted
-                  loop
-                  autoPlay
-                />
+              {item.backgroundImage.desktopImage ? (
+                <div className={`${styles.backgroundImage}`}>
+                  <Image image={item.backgroundImage} />
+                </div>
+              ) : (
+                item.vimeoVideoUrl && (
+                  <video
+                    className={`${styles.video}`}
+                    src={item.vimeoVideoUrl}
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                  />
+                )
               )}
               {item.image && (
                 <div className={`${styles.image}`}>

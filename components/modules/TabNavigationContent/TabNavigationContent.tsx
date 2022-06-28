@@ -186,12 +186,12 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     }}
                     className={`${styles.navTopItem} ${
                       itemIndex === 0 ? styles.navTopItemFirst : ''
-                    } flex-1`}
+                    } flex-1 pt-30 pb-30 pl-40`}
                   >
                     <button
                       className={`${styles.navItem} ${
                         index === itemIndex ? styles.isActive : ''
-                      } typo-subhead uppercase block w-full pt-30 pb-30 pl-40`}
+                      } typo-subhead uppercase block ${index !== itemIndex ? 'hover-link' : ''}`}
                       onClick={onClickItem}
                       onKeyPress={onClickItem}
                       data-index={itemIndex}

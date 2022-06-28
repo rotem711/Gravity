@@ -29,6 +29,13 @@
   border-bottom: 1px solid transparent;
   height: 8rem;
 
+  @screen lg {
+    &.offset {
+      padding-top: 5rem;
+      height: 13rem;
+    }
+  }
+
   &[data-scroll-dir='down'] {
     background: theme('colors.white');
     transform: translateY(-100%);
