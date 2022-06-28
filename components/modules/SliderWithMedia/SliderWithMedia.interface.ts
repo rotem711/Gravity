@@ -2,7 +2,7 @@ import Image from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface ISliderWithMedia {
-  fieldGroupName: string
+  fieldGroupName?: string
   sliderWithMedia: {
     subline: string
     slides: [

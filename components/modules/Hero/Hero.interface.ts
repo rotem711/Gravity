@@ -2,7 +2,7 @@ import { MediaItem } from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface IHero {
-  fieldGroupName: string
+  fieldGroupName?: string
   hero: {
     vimeoVideoId: string
     vimeoVideoIdTablet: string

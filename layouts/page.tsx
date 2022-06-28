@@ -28,7 +28,9 @@ const Page = ({
   footer: FooterInterface
   header: Navigation
   platformNavigation: PlatformNavigationInterface
-  insights: [InsightsInterface]
+  insights: {
+    nodes: [InsightsInterface]
+  }
   insightsCategories: [InsightsCategory]
   settings: SettingsInterface
 }) => (

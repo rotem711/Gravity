@@ -1,5 +1,5 @@
 export default interface IBigHeadline {
-  fieldGroupName: string
+  fieldGroupName?: string
   bigHeadline: {
     headline: string
   }

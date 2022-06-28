@@ -1,5 +1,5 @@
 export default interface IHeroWithAnimatedText {
-  fieldGroupName: string
+  fieldGroupName?: string
   heroWithAnimatedText: {
     vimeoVideoUrl: string
     animatingText: [{

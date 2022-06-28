@@ -1,7 +1,7 @@
 import { MediaItem } from 'interfaces/Image'
 
 export default interface IBigQuote {
-  fieldGroupName: string
+  fieldGroupName?: string
   bigQuote: {
     backgroundColor: string
     leftHeadline: string

@@ -1,6 +1,7 @@
 import BigHeadlineFragment from 'components/modules/BigHeadline/BigHeadline.graphql'
 import BigImageCarouselFragment from 'components/modules/BigImageCarousel/BigImageCarousel.graphql'
 import BigQuoteFragment from 'components/modules/BigQuote/BigQuote.graphql'
+import BookADemoFragment from 'components/modules/BookADemo/BookADemo.graphql'
 import CountingNumbersFragment from 'components/modules/CountingNumbers/CountingNumbers.graphql'
 import FeaturedInsightsFragment from 'components/modules/FeaturedInsights/FeaturedInsights.graphql'
 import FullscreenLinkWithMediaFragment from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia.graphql'
@@ -53,6 +54,7 @@ export default `
   ${HeadlineCopyMediaRowsFragment(TEMPLATE_PREFIX)}
   ${SublineHeadlineMediaFragment(TEMPLATE_PREFIX)}
   ${InsightsWithNavigationFragment(TEMPLATE_PREFIX)}
+  ${BookADemoFragment(TEMPLATE_PREFIX)}
 
   query page($uri: String) {
     header: acfOptionsHeader {
@@ -112,27 +114,7 @@ export default `
         }
       }
     }
-    insights: posts {
-      nodes {
-        slug
-        title
-        post {
-          publishedDate
-          previewVideo
-        }
-        featuredImage {
-          node {
-            ...Image
-          }
-        }
-        categories {
-          nodes {
-            id
-            name
-          }
-        }
-      }
-    }
+
     insightsCategories: categories {
       nodes {
         id
@@ -242,6 +224,9 @@ export default `
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_InsightsWithNavigation {
                 ...InsightsWithNavigation
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_BookADemo {
+                ...BookADemo
               }
             }
           }
