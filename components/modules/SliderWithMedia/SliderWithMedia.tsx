@@ -36,9 +36,10 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
 
   const recalculate = () => {
     let l = 0
+
     for (let i = 0; i < copyRefs.current.length; i += 1) {
-      if (copyRefs.current[i].clientHeight * 0.75 > l) {
-        l = copyRefs.current[i].clientHeight * 0.75
+      if (copyRefs.current[i].clientHeight * 1 > l) {
+        l = copyRefs.current[i].clientHeight * 1
       }
     }
     let m = 0
@@ -78,12 +79,12 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
       className={`${styles.root} container pt-35 md:pb-0 md:pt-70 lg:pt-35 lg:pb-150`}
       ref={ref}
     >
-      <h2 className={`${styles.title} typo-subhead uppercase mb-85 md:mb-100`}>
+      <h2 className={`${styles.title} typo-subhead uppercase mb-75 md:mb-100`}>
         <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
       <div className="md:default-grid">
         <header className="md:default-grid md:col-span-12 lg:col-span-4 md:mb-90 lg:mb-0">
-          <ul className="md:col-span-6 mb-50 md:mb-0 lg:col-span-12 lg:mb-95">
+          <ul className="md:col-span-6 mb-45 md:mb-0 lg:col-span-12 lg:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
               <li key={item.title}>
                 <button

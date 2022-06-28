@@ -229,13 +229,19 @@
 }
 
 .button {
-  @media screen and (max-width: 833px) {
+  @media screen and (max-width: 440px) {
     position: absolute;
     bottom: 45px;
+    left: 0;
+    right: 0;
+    padding: 0 3rem;
     a {
       display: block;
       width: 100%;
       text-align: center;
     }
+  }
+  @screen sm {
+    margin-top: 8rem;
   }
 }

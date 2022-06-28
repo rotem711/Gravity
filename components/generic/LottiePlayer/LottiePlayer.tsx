@@ -18,7 +18,8 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const ref = useRef<HTMLDivElement>()
 
   const isInViewport = () => {
-    const rect = ref.current.getBoundingClientRect()
+    const rect = ref?.current?.getBoundingClientRect()
+    if (!rect) return
     setInView(
       rect.top < document.documentElement.clientHeight / 1.5 &&
         rect.bottom <= document.documentElement.clientHeight &&

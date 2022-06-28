@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
-import { useRouter } from 'next/router'
+import { Router, useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
 import Logo from 'public/gravity-logo.svg'
 import navBackground from 'public/nav-bg-tiny.jpg'
@@ -25,10 +25,14 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   )
 
   useEffect(() => {
+    setScrolled(false)
+    setScrollDir('')
     setDeployed(false)
   }, [uri])
 
   useEffect(() => {
+    Router.events.on('routeChangeComplete', () => setDeployed(false))
+
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
@@ -39,7 +43,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
           setScrolled(true)
         }
 
-        if (prevPos >= window.scrollY) {
+        if (prevPos >= window.scrollY && window.scrollY > 1) {
           if (prevPos >= window.scrollY + 80) {
             setScrollDir('up')
             prevPos = window.scrollY
@@ -128,7 +132,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
                       const url = subItem.link.url.replace(/\/+$/, '')
                       const activeItem = router.asPath.includes(url)
                       return (
-                        <li key={subItem.link.title}>
+                        <li
+                          role="none"
+                          onClick={() => setDeployed(false)}
+                          key={subItem.link.title}
+                        >
                           <Link href={subItem.link.url}>
                             <a
                               className={`${styles.navItem} ${
