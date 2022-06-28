@@ -4,12 +4,12 @@ import useIsMobile from 'utils/hooks'
 import IImage from './image.interface'
 import styles from './image.module.scss'
 
-const ImageComponent = ({ image }: IImage) => {
+const ImageComponent = ({ image, className }: IImage) => {
   const { desktopImage, mobileImage } = image
 
   const isMobile = useIsMobile()
   return (
-    <div className={`${styles.root} w-full`}>
+    <div className={`${styles.root} ${className} w-full`}>
       {isMobile && mobileImage ? (
         <Image
           width={desktopImage.mediaDetails.width}

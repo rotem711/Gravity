@@ -1,3 +1,4 @@
+import Author from './Author'
 import { MediaItem } from './Image'
 
 export default interface InsightsInterface {
@@ -6,6 +7,9 @@ export default interface InsightsInterface {
   uri: string
   featuredImage: {
     node: MediaItem
+  }
+  author: {
+    node: Author
   }
   post: {
     publishedDate: string
