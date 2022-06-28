@@ -1,8 +1,8 @@
+/* eslint-disable operator-linebreak */
 import React, {
   FunctionComponent, useEffect, useRef, useState,
 } from 'react'
 import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
-import { useInView } from 'react-intersection-observer'
 import styles from './LottiePlayer.module.scss'
 import ILottiePlayer from './LottiePlayer.interface'
 
@@ -12,13 +12,26 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const [offsetY, setOffsetY] = useState(-1)
   const [offsetX, setOffsetX] = useState(-1)
   const [render, setRender] = useState(false)
+  const [inView, setInView] = useState(false)
   const [svgHeight, setSVGHeight] = useState(0)
   const innerRef = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>()
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-    triggerOnce: false,
-  })
+  const isInViewport = () => {
+    const rect = ref.current.getBoundingClientRect()
+    setInView(
+      rect.top < document.documentElement.clientHeight / 1.5 &&
+        rect.bottom <= document.documentElement.clientHeight &&
+        rect.bottom > -100,
+    )
+  }
+
+  useEffect(() => {
+    document.addEventListener('scroll', isInViewport)
+    return () => {
+      document.removeEventListener('scroll', isInViewport)
+    }
+  }, [])
 
   const calculate = () => {
     setOffsetX(-1)

@@ -15,6 +15,8 @@
     }
   }
   video {
+    width: 100%;
+    height: auto;
     mix-blend-mode: multiply;
   }
 }
@@ -31,6 +33,7 @@
   @screen md {
     flex-basis: initial;
     flex-shrink: 0;
+    flex: 1;
   }
 
   span {

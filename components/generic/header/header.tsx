@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
 import Logo from 'public/gravity-logo.svg'
 import navBackground from 'public/nav-bg-tiny.jpg'
@@ -12,6 +13,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [scrollDir, setScrollDir] = useState('')
   const [scrolled, setScrolled] = useState(false)
   const { rightSideNavigation, mobileMenuCta } = data
+  const router = useRouter()
 
   useEffect(() => {
     setDeployed(false)
@@ -22,8 +24,13 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     setTimeout(() => {
       window.onscroll = () => {
         if (prevPos >= window.scrollY) {
-          setScrollDir('up')
-        } else if (window.scrollY > 1 && prevPos > 0) {
+          if (prevPos >= window.scrollY + 80) {
+            setScrollDir('up')
+            prevPos = window.scrollY
+          }
+          return
+        }
+        if (window.scrollY > 1 && prevPos > 0) {
           setScrollDir('down')
         }
         if (window.scrollY === 0) {
@@ -71,39 +78,51 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
           <div className="container">
             <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
               <ul className="md:flex">
-                {data?.mainNavigation?.map((subItem) => (
-                  <li key={subItem.link.title}>
-                    <Link href={subItem.link.url}>
-                      <a
-                        className={`${styles.navItem}`}
-                        target={subItem.link.target}
-                      >
-                        {subItem.link.title}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            {rightSideNavigation && (
-              <nav>
-                <ul className="md:flex">
-                  {rightSideNavigation.map((subItem) => (
+                {data?.mainNavigation?.map((subItem) => {
+                  const url = subItem.link.url.replace(/\/+$/, '')
+                  const activeItem = router.asPath.includes(url)
+                  return (
                     <li key={subItem.link.title}>
                       <Link href={subItem.link.url}>
                         <a
                           className={`${styles.navItem} ${
-                            subItem.link.title === 'Get Started'
-                              ? 'hidden md:block'
-                              : ''
-                          } last:mr-0`}
+                            activeItem ? styles.active : ''
+                          }`}
                           target={subItem.link.target}
                         >
                           {subItem.link.title}
                         </a>
                       </Link>
                     </li>
-                  ))}
+                  )
+                })}
+              </ul>
+            </nav>
+            {rightSideNavigation && (
+              <nav>
+                <ul className="md:flex">
+                  {rightSideNavigation.map((subItem) => {
+                    const url = subItem.link.url.replace(/\/+$/, '')
+                    const activeItem = router.asPath.includes(url)
+                    return (
+                      <li key={subItem.link.title}>
+                        <Link href={subItem.link.url}>
+                          <a
+                            className={`${styles.navItem} ${
+                              activeItem ? styles.active : ''
+                            } ${
+                              subItem.link.title === 'Get Started'
+                                ? 'hidden md:block'
+                                : ''
+                            } last:mr-0`}
+                            target={subItem.link.target}
+                          >
+                            {subItem.link.title}
+                          </a>
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
                 {mobileMenuCta && (
                   <div

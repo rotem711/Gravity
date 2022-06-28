@@ -130,10 +130,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                         {item.content.map((subItem) => (
                           <div
                             key={subItem.headline}
-                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-full"
+                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-[85%]"
                           >
                             <h2
-                              className="typo-headlines-late mb-50"
+                              className="typo-headlines-late"
                               dangerouslySetInnerHTML={{
                                 __html: subItem.headline,
                               }}
@@ -235,10 +235,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
+                              className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late mb-50 col-span-6 lg:w-full block"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
                                 }}
@@ -286,9 +286,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-55 lg:mt-100f col-span-12 default-grid"
+                              className="mt-55 lg:mt-100 col-span-12 default-grid"
                             >
-                              <h2 className="typo-headlines-late mb-50 col-span-5">
+                              <h2 className="typo-headlines-late col-span-5">
                                 {subItem.headline}
                               </h2>
                               <div className="typo-body col-span-4 col-start-8">

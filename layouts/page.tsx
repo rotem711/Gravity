@@ -35,9 +35,13 @@ const Page = ({
     {console.log(insights)}
     <div>
       <Head>
-        <title>Gravity</title>
-        <meta name="description" content="TBD" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>{page.seoData.title || page.title}</title>
+        <meta name="description" content={page.seoData.description} />
+        <link rel="icon" href="/static/favicon/favicon.ico" />
+        <meta
+          property="og:image"
+          content={`/_next/image?url=${encodeURIComponent(page.seoData.ogImage?.sourceUrl)}&w=1200&h=630&q=75`}
+        />
       </Head>
       <Header
         inverted={page?.pageOption?.invertNavigation}
@@ -60,7 +64,14 @@ const Page = ({
           </div>
         )}
         {page && page.uri === '/' && <ScrollNudge />}
-        {page && page.template.pageBuilder.pageBuilder.map((layout, index) => renderLayout(layout, 'DefaultTemplate_Pagebuilder_PageBuilder_', index))}
+        {page &&
+          page.template.pageBuilder.pageBuilder.map((layout, index) =>
+            renderLayout(
+              layout,
+              'DefaultTemplate_Pagebuilder_PageBuilder_',
+              index,
+            ),
+          )}
       </main>
       <Footer data={footer} />
     </div>
