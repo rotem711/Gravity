@@ -6,6 +6,7 @@
     url('/fonts/ModernGothic-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
     url('/fonts/ModernGothic-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -22,4 +24,5 @@
     url('/fonts/SohneMono-Buch.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
