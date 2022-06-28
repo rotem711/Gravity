@@ -71,6 +71,10 @@
 }
 
 .iconContainer {
+  svg {
+    width: 4rem;
+    height: auto;
+  }
   @screen xl {
     opacity: 0;
     transform: translate(-15px, 0);
