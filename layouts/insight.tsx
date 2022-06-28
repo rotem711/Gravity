@@ -30,7 +30,7 @@ const Insight = ({
     insightsDetailPage: { headlineSeparator, fullscreenLinkWithMedia },
   } = settings
   return (
-    <GlobalContextProvider value={{ header, footer }}>
+    <GlobalContextProvider value={{ header, footer, settings }}>
       <div>
         {console.log(insight, settings, nextPosts)}
         <Head>

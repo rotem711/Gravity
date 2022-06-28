@@ -39,6 +39,13 @@ export default `
     }
     settings: themeGeneralSettings {
       globalSettings {
+        newsBanner {
+          newsBannerActive
+            newsBannerText
+            newsBannerLink {
+              ...Link
+            }
+         }
         insightsDetailPage {
           fullscreenLinkWithMedia {
             vimeoVideoUrl
