@@ -50,7 +50,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
             {bigImageCarousel.images.map((item) => (
               <SwiperSlide
                 key={item?.image?.desktopImage?.sourceUrl || item.vimeoVideoUrl}
-                className={`${styles.swiperSlide}`}
+                className={`${styles.swiperSlide} pointer-events-none`}
               >
                 {item.vimeoVideoUrl ? (
                   <video
