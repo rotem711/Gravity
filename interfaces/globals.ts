@@ -7,7 +7,7 @@ import SettingsInterface from './Settings'
 export interface GlobalSet {
   header: Navigation
   footer: FooterInterface
-  settings: SettingsInterface
+  settings?: SettingsInterface
   platformNavigation?: PlatformNavigationInterface
   insights?: {
     nodes: [InsightsInterface]
