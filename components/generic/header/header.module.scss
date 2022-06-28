@@ -30,6 +30,7 @@
   height: 8rem;
 
   &[data-scroll-dir='down'] {
+    background: theme('colors.white');
     transform: translateY(-100%);
   }
 
@@ -177,6 +178,7 @@
     font-weight: 400;
   }
 
+
   &::after {
     content: '';
     position: absolute;
@@ -190,7 +192,7 @@
     transform-origin: left center;
   }
 
-  &:hover {
+  &:hover, &.active {
     &::after {
       animation: ANIMATE_IN 0.35s ease-in-out forwards;
     }

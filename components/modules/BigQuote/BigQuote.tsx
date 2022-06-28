@@ -86,7 +86,9 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
-                className={`${styles.quoteElement} typo-big-quotes md:col-span-8 md:col-start-5`}
+                className={`${styles.quoteElement} typo-big-quotes ${
+                  item.quote.length > 75 ? 'typo-big-quotes--long' : ''
+                } md:col-span-8 md:col-start-5`}
               >
                 <Fade delay={150}>
                   <div
@@ -121,13 +123,15 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   key={item.quote}
                   className={`${styles.quote} ${
                     index === itemIndex ? styles.isActive : ''
-                  } typo-big-quotes default-grid xl:col-span-12`}
+                  } typo-big-quotes ${
+                    item.quote.length > 75 ? 'typo-big-quotes--long' : ''
+                  } default-grid xl:col-span-12`}
                   ref={(element) => {
                     quoteRefs.current[itemIndex] = element
                   }}
                 >
                   <div
-                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-10`}
+                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-9`}
                   >
                     <Fade delay={150}>
                       <div

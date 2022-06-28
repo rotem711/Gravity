@@ -32,7 +32,7 @@ const PlatformNavigation = () => {
   }
 
   const checkActiveElement = () => {
-    if (document.getElementById('tabNavigationContent').getBoundingClientRect().top < 0) {
+    if (document.getElementById('tabNavigationContent').getBoundingClientRect().top < 80) {
       setEndTrigger(true)
     } else {
       setEndTrigger(false)

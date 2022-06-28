@@ -87,6 +87,12 @@
       font-size: 7.5rem;
       line-height: 8.6rem;
     }
+    &--long {
+      @screen xl {
+        font-size: 6.5rem;
+        line-height: 7.5rem;
+      }
+    }
   }
 
   .typo-cta-text {
