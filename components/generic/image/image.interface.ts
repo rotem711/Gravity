@@ -6,4 +6,5 @@ export default interface IImage {
     mobileImage: MediaItem
   }
   layout?: string
+  className?: string
 }

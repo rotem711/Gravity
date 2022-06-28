@@ -1,3 +1,4 @@
+import Author from 'interfaces/Author'
 import { MediaItem } from 'interfaces/Image'
 import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
@@ -95,10 +96,19 @@ export default `
           ...Image
         }
       }
+      author {
+        node {
+          avatar {
+            url
+          }
+          name
+        }
+      }
       post {
         previewVideo
         publishedDate
         contentBuilder {
+           __typename
           ...on Post_Post_ContentBuilder_Text {
             fieldGroupName
             text
@@ -128,6 +138,9 @@ export interface InsightsInterface {
   title: string
   slug: string
   uri: string
+  author: {
+    node: Author
+  }
   featuredImage: {
     node: MediaItem
   }
