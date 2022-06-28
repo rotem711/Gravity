@@ -78,7 +78,7 @@ input {
 
 .hover-link {
   position: relative;
-   &:hover,
+  &:hover,
   &.active {
     &::after {
       animation: ANIMATE_IN 0.35s ease-in-out forwards;
@@ -88,9 +88,8 @@ input {
     transform: scaleX(0);
     transform-origin: right center;
     transition: transform 0.35s ease-in-out;
-  } 
- }
-
+  }
+}
 
 .underlinedItem {
   &:hover {
