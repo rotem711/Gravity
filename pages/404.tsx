@@ -9,6 +9,7 @@ import React from 'react'
 import useIsMobile from 'utils/hooks'
 import { getWpStaticProps } from 'wordpress/wp'
 import Header from '../components/generic/header/header'
+import { GlobalContextProvider } from './_app'
 
 export const getStaticProps = getWpStaticProps
 // pages/404.js
@@ -29,44 +30,52 @@ const Custom404 = ({
     image: { mobileImage, desktopImage },
   } = notFound
   return (
-    <div className="notFound">
-      <Head>
-        <title>Gravity</title>
-        <meta name="description" content="TBD" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header inverted data={header} uri="/404" />
-      <div className="children">
-        <div className="image">
-          {isMobile && mobileImage ? (
-            <Image
-              layout="fill"
-              src={mobileImage.sourceUrl}
-              quality={100}
-              loading="eager"
-              objectFit="cover"
-              objectPosition="bottom"
-            />
-          ) : (
-            desktopImage && (
+    <GlobalContextProvider
+      value={{
+        header,
+        footer,
+        settings,
+      }}
+    >
+      <div className="notFound">
+        <Head>
+          <title>Gravity</title>
+          <meta name="description" content="TBD" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Header inverted data={header} uri="/404" />
+        <div className="children">
+          <div className="image">
+            {isMobile && mobileImage ? (
               <Image
                 layout="fill"
-                src={desktopImage.sourceUrl}
+                src={mobileImage.sourceUrl}
                 quality={100}
                 loading="eager"
                 objectFit="cover"
-                objectPosition="center"
+                objectPosition="bottom"
               />
-            )
-          )}
+            ) : (
+              desktopImage && (
+                <Image
+                  layout="fill"
+                  src={desktopImage.sourceUrl}
+                  quality={100}
+                  loading="eager"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              )
+            )}
+          </div>
+          <div className="content text-center">
+            <h1 className="mb-65">404</h1>
+            <Button link={notFound.link} variant="dark" />
+          </div>
         </div>
-        <div className="content text-center">
-          <h1 className="mb-65">404</h1>
-          <Button link={notFound.link} variant="dark" />
-        </div>
+        <FooterBlock data={footer} />
       </div>
-      <FooterBlock data={footer} />
-    </div>
+    </GlobalContextProvider>
   )
 }
 export default Custom404
