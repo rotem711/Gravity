@@ -31,21 +31,7 @@
 
 .navTopItem {
   position: relative;
-
-  &:hover {
-    background-color: theme('colors.black');
-    color: theme('colors.black') !important;
-
-    &::before {
-      background-color: theme('colors.black');
-    }
-
-    button {
-      background-color: theme('colors.black');
-      color: theme('colors.white');
-    }
-  }
-
+  display: flex;
   &:first-of-type,
   &:last-of-type {
     &::before {
@@ -76,12 +62,11 @@
 }
 
 .navItem {
-  height: 100%;
+  margin-right: auto;
   text-align: left;
   color: theme('colors.black');
-
-  &:hover {
-    background-color: theme('colors.black');
+  &.isActive {
+    cursor:default;
   }
 }
 
@@ -102,7 +87,6 @@
   &.isActive {
     z-index: 1;
     opacity: 1;
-
     transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 }

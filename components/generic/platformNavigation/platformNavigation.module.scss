@@ -22,7 +22,7 @@
 .root {
   position: sticky;
   top: 0;
-  z-index: 101;
+  z-index: 999;
   background-color: theme('colors.white');
   border-bottom: 1px solid #000;
   height: 8rem;

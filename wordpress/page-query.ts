@@ -99,6 +99,13 @@ export default `
     }
     settings: themeGeneralSettings {
       globalSettings {
+       newsBanner {
+        newsBannerActive
+          newsBannerText
+          newsBannerLink {
+            ...Link
+          }
+       }
         notFound {
           link {
             ...Link
