@@ -17,29 +17,29 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
     ScrollTrigger.create({
       trigger: '#team-header',
       start: 'top top',
-      end: 'bottom+=100% top',
+      end: 'bottom+=300% top',
       pin: true,
       pinSpacing: true,
     })
     refs.current.forEach(() => {
       gsap.timeline({
-        duration: 20,
+        duration: 40,
         scrollTrigger: {
           trigger: '#team-header',
           start: 'top top',
-          end: 'bottom+=100% bottom',
+          end: 'bottom+=300% bottom',
           pin: true,
           scrub: 1,
           pinSpacing: true,
         },
       }).to('.line', {
         opacity: 1,
-        duration: 2,
-        stagger: 1.75,
-        delay: -20,
+        duration: 4,
+        stagger: 6,
+        delay: -40,
       }).to('.list', {
         y: '-35%',
-        delay: -6,
+        delay: -4,
         duration: 2,
       })
     })
