@@ -7,7 +7,6 @@ const Button = (props: IButtonInterface) => {
   const {
     link, variant, onClick, children, disableHover,
   } = props
-
   if (onClick) {
     return (
       <button
@@ -24,7 +23,12 @@ const Button = (props: IButtonInterface) => {
   if (!link) return null
   return (
     <Link href={link.url}>
-      <a target={link.target} className={`${styles.root} ${styles[variant]}`}>
+      <a
+        target={link.target}
+        className={`${styles.root} ${styles[variant]} ${
+          disableHover ? styles.disableHover : ''
+        }`}
+      >
         {link.title}
       </a>
     </Link>

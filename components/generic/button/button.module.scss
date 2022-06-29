@@ -3,11 +3,15 @@
 .root {
   position: relative;
   display: inline-block;
-  padding: 1.2rem 3rem;
+  padding: 1.6rem 3rem;
   border-radius: 10rem;
   transition: 400ms ease;
   border: 1px solid theme('colors.black');
   @extend .typo-captions-and-buttons;
+
+  @screen sm {
+    padding: 1.2rem 3rem;
+  }
 
   &.dark {
     background: theme('colors.black');
