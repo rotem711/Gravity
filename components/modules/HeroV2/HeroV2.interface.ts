@@ -1,4 +1,5 @@
 import Image, { MediaItem } from 'interfaces/Image'
+import Link from 'interfaces/Link'
 
 export default interface IHeroV2 {
   fieldGroupName?: string
@@ -8,5 +9,6 @@ export default interface IHeroV2 {
     vimeoVideoUrl: string
     svgLayer: MediaItem
     image: Image
+    link: Link
   }
 }

@@ -10,6 +10,9 @@ const HeroV2Fragment = (t: string) => `
       svgLayer {
         ...Image
       }
+      link {
+        ...Link
+      }
       ${ImageComponent()}
     }
   }
