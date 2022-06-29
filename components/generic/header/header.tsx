@@ -1,9 +1,11 @@
+/* eslint-disable operator-linebreak */
 import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
 import { Router, useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
+import useIsMobile from 'utils/hooks'
 import Logo from 'public/gravity-logo.svg'
 import navBackground from 'public/nav-bg-tiny.jpg'
 import styles from './header.module.scss'
@@ -17,6 +19,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const { rightSideNavigation, mobileMenuCta } = data
   const router = useRouter()
   const ctx = useContext(GlobalContext)
+  const isMobile = useIsMobile()
   const {
     settings: { newsBanner },
   } = ctx
@@ -24,11 +27,15 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     newsBanner.newsBannerActive && router.asPath === '/',
   )
 
-  useEffect(() => {
-    setScrolled(false)
-    setScrollDir('')
-    setDeployed(false)
-  }, [uri])
+  const isFooterNotVisible = () => {
+    const footer = document.querySelector('footer')
+    return (
+      window.innerHeight +
+        window.scrollY +
+        footer.getBoundingClientRect().height <
+      document.body.scrollHeight
+    )
+  }
 
   useEffect(() => {
     Router.events.on('routeChangeComplete', () => setDeployed(false))
@@ -45,6 +52,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
         if (prevPos >= window.scrollY && window.scrollY > 1) {
           if (prevPos >= window.scrollY + 80) {
+            if (isMobile && !isFooterNotVisible()) return
             setScrollDir('up')
             prevPos = window.scrollY
           }
@@ -69,6 +77,12 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   useEffect(() => {
     setNewsBannerActive(router.asPath === '/')
   }, [router.asPath])
+
+  useEffect(() => {
+    setScrolled(false)
+    setScrollDir('')
+    setDeployed(false)
+  }, [uri])
 
   return (
     <>
