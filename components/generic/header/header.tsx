@@ -51,7 +51,8 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         }
 
         if (prevPos >= window.scrollY && window.scrollY > 1) {
-          if (prevPos >= window.scrollY + 80) {
+          if (prevPos >= window.scrollY + document.documentElement.clientHeight / 3) {
+            console.log(!isFooterNotVisible(), isMobile)
             if (isMobile && !isFooterNotVisible()) return
             setScrollDir('up')
             prevPos = window.scrollY

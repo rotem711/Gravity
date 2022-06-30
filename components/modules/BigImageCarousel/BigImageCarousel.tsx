@@ -21,7 +21,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
       ? bigImageCarousel.customHeadline
       : bigImageCarousel.headline
   return (
-    <div className={`${styles.root} pb-175 md:pb-100`}>
+    <div className={`${styles.root} pb-175 md:pb-225 lg:pb-100`}>
       <div className="container">
         <div className="default-grid">
           <Fade className="col-span-6 mb-50 md:mb-60">
@@ -31,7 +31,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
             />
           </Fade>
           <div
-            className={`${styles.mediaContainer} mb-40 col-span-6 md:col-span-12`}
+            className={`${styles.mediaContainer} mb-40 md:mb-0 col-span-6 md:col-span-12`}
           >
             <Swiper
               autoplay={{
