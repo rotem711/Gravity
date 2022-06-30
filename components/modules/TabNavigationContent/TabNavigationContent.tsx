@@ -133,7 +133,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                             className="mt-100 first:mt-0 sm:w-[70%] lg:w-[85%]"
                           >
                             <h2
-                              className="typo-headlines-late"
+                              className="typo-headlines-late mb-55 sm:mb-0 lg:mb-100"
                               dangerouslySetInnerHTML={{
                                 __html: subItem.headline,
                               }}
@@ -239,12 +239,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late col-span-6 lg:w-[85%] block"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 sm:mb-0 lg:mb-100"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
-                                }}
-                                style={{
-                                  height: titleHeight !== 0 ? titleHeight : '',
                                 }}
                                 ref={(element) => {
                                   tabTitleRefs.current[itemIndex] = element
@@ -290,7 +287,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               key={subItem.headline}
                               className="mt-55 lg:mt-100 col-span-12 default-grid"
                             >
-                              <h2 className="typo-headlines-late col-span-5">
+                              <h2 className="typo-headlines-late col-span-5 mb-55 sm:mb-0 lg:mb-100">
                                 {subItem.headline}
                               </h2>
                               <div className="typo-body col-span-4 col-start-8">
