@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
 import { Router, useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
-import useIsMobile from 'utils/hooks'
 import Logo from 'public/gravity-logo.svg'
 import navBackground from 'public/nav-bg-tiny.jpg'
 import styles from './header.module.scss'
@@ -19,7 +18,6 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const { rightSideNavigation, mobileMenuCta } = data
   const router = useRouter()
   const ctx = useContext(GlobalContext)
-  const isMobile = useIsMobile()
   const {
     settings: { newsBanner },
   } = ctx
