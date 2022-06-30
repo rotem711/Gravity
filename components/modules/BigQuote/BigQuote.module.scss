@@ -61,6 +61,10 @@
 .logo {
   order: 1;
 
+  &.bottom {
+    order: 2;
+  }
+
   @screen md {
     order: 2;
   }

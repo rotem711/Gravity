@@ -5,6 +5,7 @@ const BigQuoteFragment = (t: string) => `
       leftHeadline
       leftHeadlineMobile
       backgroundColor
+      imageAlignment
       quotes {
         quote
         subline

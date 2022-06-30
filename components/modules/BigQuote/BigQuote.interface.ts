@@ -6,6 +6,7 @@ export default interface IBigQuote {
     backgroundColor: string
     leftHeadline: string
     leftHeadlineMobile: string
+    imageAlignment: string
     quotes: [
       {
         quote: string
