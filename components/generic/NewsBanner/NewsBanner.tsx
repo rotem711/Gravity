@@ -5,7 +5,7 @@ import styles from './NewsBanner.module.scss'
 import INewsBanner from './NewsBanner.interface'
 
 const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
-  const isNotDesktop = useIsMobile('lg')
+  const isNotDesktop = useIsMobile('lg', true)
 
   const [closed, setClosed] = useState(false)
 

@@ -6,10 +6,11 @@
   height: 5rem;
   width: 100%;
   z-index: 997;
-  transition: 400ms ease;
+  transition: 0ms ease;
 
   &.hide {
     transform: translateY(-100%);
+    transition-duration: 400ms;
   }
 
   span, a {
