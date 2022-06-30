@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
 import { Router, useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
-import useIsMobile from 'utils/hooks'
 import Logo from 'public/gravity-logo.svg'
 import navBackground from 'public/nav-bg-tiny.jpg'
 import styles from './header.module.scss'
@@ -19,8 +18,6 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const { rightSideNavigation, mobileMenuCta } = data
   const router = useRouter()
   const ctx = useContext(GlobalContext)
-  const isMobile = useIsMobile()
-  console.log('IS MOBILE', isMobile)
   const {
     settings: { newsBanner },
   } = ctx
@@ -53,8 +50,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
         if (prevPos >= window.scrollY && window.scrollY > 1) {
           if (prevPos >= window.scrollY + document.documentElement.clientHeight / 3) {
-            console.log(!isFooterNotVisible(), isMobile, window.innerWidth < 768)
-            if (isMobile && !isFooterNotVisible()) return
+            if (window.innerWidth < 768 && !isFooterNotVisible()) return
             setScrollDir('up')
             prevPos = window.scrollY
           }
