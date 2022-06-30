@@ -24,7 +24,7 @@ const HeadlineCopyMediaRowsModule:FunctionComponent<IHeadlineCopyMediaRows> = (p
             <div className="col-span-6 md:col-start-10 md:col-end-13 mt-10">
               {
               item.vimeoVideoUrl
-                ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+                ? <video preload="none" src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
                 : (
                   item.image && (
                     <Image

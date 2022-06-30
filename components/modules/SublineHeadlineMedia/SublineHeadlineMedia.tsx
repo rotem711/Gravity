@@ -28,6 +28,7 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
                 playsInline
                 muted
                 loop
+                preload="none"
                 autoPlay
               />
             ) : (

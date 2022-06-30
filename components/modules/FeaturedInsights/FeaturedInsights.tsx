@@ -31,6 +31,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                     <video
                       src={item.insight.post.previewVideo}
                       playsInline
+                      preload="none"
                       muted
                       loop
                     />

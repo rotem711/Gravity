@@ -28,6 +28,7 @@ const FullscreenLinkWithMediaModule:FunctionComponent<IFullscreenLinkWithMedia> 
                 <video
                   src={fullscreenLinkWithMedia.vimeoVideoUrl}
                   playsInline
+                  preload="none"
                   muted
                   loop
                   autoPlay

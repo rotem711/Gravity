@@ -22,7 +22,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
             !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
           const imageC = item.image && <ImageComponent image={item.image} />
           const videoC = item.vimeoVideoUrl && (
-            <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+            <video preload="none" src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
           )
           const contentC = (
             <>

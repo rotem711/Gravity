@@ -28,7 +28,7 @@ const SideBySideMediaModule:FunctionComponent<ISideBySideMedia> = (props) => {
                 </div>
                 {
                 item.vimeoVideoUrl
-                  ? <video src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
+                  ? <video preload="none" src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
                   : (
                     item.image && (
                       <Image image={item.image} />
