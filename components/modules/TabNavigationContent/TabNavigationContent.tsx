@@ -19,7 +19,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const isMobile = useIsMobile()
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
-  const [titleHeight, setTitleTabHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
 
@@ -29,7 +28,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 
   const recalculate = () => {
     setTabHeight(0)
-    setTitleTabHeight(0)
     let height = 0
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (!tabContentRefs.current[i]) return
@@ -37,15 +35,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
-    let height_2 = 0
-    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
-      if (!tabTitleRefs.current[i]) return
-      if (tabTitleRefs.current[i].clientHeight > height_2) {
-        height_2 = tabTitleRefs.current[i].getBoundingClientRect().height + 50
-      }
-    }
     setTabHeight(height)
-    setTitleTabHeight(height_2)
   }
 
   useEffect(() => {
