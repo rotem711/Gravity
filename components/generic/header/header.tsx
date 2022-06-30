@@ -20,6 +20,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const router = useRouter()
   const ctx = useContext(GlobalContext)
   const isMobile = useIsMobile()
+  console.log('IS MOBILE', isMobile)
   const {
     settings: { newsBanner },
   } = ctx
@@ -52,7 +53,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
         if (prevPos >= window.scrollY && window.scrollY > 1) {
           if (prevPos >= window.scrollY + document.documentElement.clientHeight / 3) {
-            console.log(!isFooterNotVisible(), isMobile)
+            console.log(!isFooterNotVisible(), isMobile, window.innerWidth < 768)
             if (isMobile && !isFooterNotVisible()) return
             setScrollDir('up')
             prevPos = window.scrollY
