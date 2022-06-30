@@ -184,7 +184,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
                 layout="responsive"
                 width={834}
                 height={1195}
-                loading="eager"
+                loading="lazy"
               />
             </div>
           </div>

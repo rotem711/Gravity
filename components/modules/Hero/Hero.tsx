@@ -65,7 +65,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
                     width={item.logo.mediaDetails.width}
                     height={item.logo.mediaDetails.height}
                     alt={item.logo.altText}
-                    loading="eager"
+                    priority
                   />
                 </Fade>
               </span>

@@ -48,7 +48,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
                 height={heroV2.svgLayer.mediaDetails.height}
                 layout="responsive"
                 src={heroV2.svgLayer.sourceUrl}
-                loading="eager"
+                priority
               />
             )}
           </Fade>

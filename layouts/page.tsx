@@ -37,7 +37,6 @@ const Page = ({
   <GlobalContextProvider
     value={{ header, footer, platformNavigation, insights, insightsCategories, settings }}
   >
-    {console.log(insights)}
     <div>
       <Head>
         <title>{page.seoData.title || page.title}</title>
