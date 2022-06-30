@@ -4,6 +4,7 @@
   position: relative;
   background-color: theme('colors.mediumSky');
   z-index: 11;
+  transition: 200ms ease;
 
   h1 {
     @screen md {
