@@ -118,7 +118,7 @@ const InsightsWithNavigationModule = ({
                     />
                   ) : (
                     <Image
-                      loading="eager"
+                      loading="lazy"
                       src={item.featuredImage.node.sourceUrl}
                       alt={item.featuredImage.node.altText}
                       width={665}

@@ -154,7 +154,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   >
                     <Fade delay={500}>
                       <Image
-                        loading="eager"
+                        loading="lazy"
                         src={item.logo.sourceUrl}
                         alt={item.logo.altText}
                         width={item.logo.mediaDetails.width}

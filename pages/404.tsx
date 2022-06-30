@@ -51,7 +51,7 @@ const Custom404 = ({
                 layout="fill"
                 src={mobileImage.sourceUrl}
                 quality={100}
-                loading="eager"
+                loading="lazy"
                 objectFit="cover"
                 objectPosition="bottom"
               />
@@ -61,7 +61,7 @@ const Custom404 = ({
                   layout="fill"
                   src={desktopImage.sourceUrl}
                   quality={100}
-                  loading="eager"
+                  loading="lazy"
                   objectFit="cover"
                   objectPosition="center"
                 />
