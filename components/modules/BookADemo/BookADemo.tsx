@@ -124,7 +124,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
                 }`}
               >
                 <Button variant="dark" onClick={() => submit()}>
-                  {success ? 'Success!' : 'Book a demo'}
+                  {success ? 'Success!' : 'Book a Demo'}
                 </Button>
               </div>
             </div>
