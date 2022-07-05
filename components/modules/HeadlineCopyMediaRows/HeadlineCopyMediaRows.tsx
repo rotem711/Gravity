@@ -21,17 +21,16 @@ const HeadlineCopyMediaRowsModule:FunctionComponent<IHeadlineCopyMediaRows> = (p
           >
             <h3 className="col-span-6 md:col-span-4 lg:col-span-3 typo-headlines mb-55 md:mb-0">{item.headline}</h3>
             <p className="col-span-6 md:col-span-5 lg:col-span-3 typo-body mt-5 mb-50 md:md-0">{item.copy}</p>
-            <div className="col-span-6 md:col-start-10 md:col-end-13 mt-10">
+            <div className={`col-span-6 md:col-start-10 md:col-end-13 mt-10 md:mt-0 relative ${styles.mediaContainer}`}>
               {
               item.vimeoVideoUrl
                 ? <video preload="none" src={item.vimeoVideoUrl} playsInline muted loop autoPlay />
                 : (
                   item.image && (
                     <Image
-                      layout="responsive"
+                      className={styles.gatsbyImage}
+                      layout="fill"
                       src={item.image.sourceUrl}
-                      width={item.image.mediaDetails.width}
-                      height={item.image.mediaDetails.height}
                     />
                   )
                 )
