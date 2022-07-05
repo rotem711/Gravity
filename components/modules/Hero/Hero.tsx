@@ -21,7 +21,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
     videoSrc = hero.vimeoVideoIdMobile
   }
   return (
-    <div id="main_hero" className={`${styles.root} pt-130 pb-100 md:pt-100`}>
+    <div id="main_hero" className={`${styles.root} ${videoLoaded ? 'opacity-100' : 'opacity-0'} pt-130 pb-100 md:pt-100`}>
       <div className="container flex flex-wrap h-full">
         <video
           className={`${styles.video}`}
