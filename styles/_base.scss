@@ -112,7 +112,6 @@ input {
   padding-bottom: 0.3rem;
   transform-origin: bottom left;
   position: relative;
-
   &::after {
     content: '';
     position: absolute;
@@ -124,5 +123,19 @@ input {
     animation: ANIMATE_OUT 400ms ease forwards;
     background-color: currentcolor;
     transform-origin: left center;
+  }
+}
+
+.custom-underline {
+  padding-bottom: 0.3rem;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentcolor;
   }
 }

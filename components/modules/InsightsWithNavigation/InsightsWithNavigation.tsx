@@ -99,11 +99,11 @@ const InsightsWithNavigationModule = ({
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul className="default-grid pt-80 lg:pt-200 container">
+        <ul className="default-grid pt-80 lg:pt-200 gap-y-180 sm:gap-y-180 md:gap-y-275 container">
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
-              className={`col-span-6 xl:col-span-6 mb-180 sm:mb-180 md:mb-275 last:mb-0 ${
+              className={`col-span-6 xl:col-span-6 ${
                 category === 'all' ? styles.active : ''
               } `}
             >
@@ -146,9 +146,9 @@ const InsightsWithNavigationModule = ({
             <button
               onClick={fetchMore}
               type="button"
-              className="typo-body underlinedItem"
+              className="typo-body custom-underline"
             >
-              Learn More
+              Load More
             </button>
           )}
         </div>
