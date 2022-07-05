@@ -41,6 +41,10 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
         y: '-35%',
         delay: -4,
         duration: 2,
+      }).to('.line:not(.last)', {
+        opacity: 0,
+        y: '-100%',
+        duration: 4,
       })
     })
   }, [refs])
@@ -55,7 +59,7 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
           {heroWithAnimatedText.animatingText.map((item) => (
             <div className={`${styles.line} line`} ref={(r) => refs.current.push(r)}>{item.text}</div>
           ))}
-          <div className={`${styles.line} line mt-150 lg:mt-230`} ref={(r) => refs.current.push(r)}>{heroWithAnimatedText.subline}</div>
+          <div className={`${styles.line} line last mt-150 lg:mt-230`} ref={(r) => refs.current.push(r)}>{heroWithAnimatedText.subline}</div>
         </div>
       </div>
       <video className={`${styles.video}`} src={heroWithAnimatedText.vimeoVideoUrl} playsInline muted loop autoPlay />
