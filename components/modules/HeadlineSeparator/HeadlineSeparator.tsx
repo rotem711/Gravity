@@ -29,7 +29,7 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
     <div className={styles.enableSubscribe}>
       <Button disableHover variant="dark" onClick={handleClick}>
         <span className={`${activate && !submitted ? styles.hide : ''}`}>
-          {submitted ? 'Success!' : 'Enter Email'}
+          {submitted ? 'Success!' : 'Subscribe'}
         </span>
 
         <div
@@ -42,7 +42,7 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
               onChange={(e) => setEmail(e.target.value)}
               autoFocus
               type="email"
-              placeholder="Subscribe"
+              placeholder="Enter Email"
             />
           )}
           <button
