@@ -239,12 +239,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late col-span-6 lg:w-[85%] block"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block lg:pb-50"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
-                                }}
-                                style={{
-                                  height: titleHeight !== 0 ? titleHeight : '',
                                 }}
                                 ref={(element) => {
                                   tabTitleRefs.current[itemIndex] = element

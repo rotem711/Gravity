@@ -3,8 +3,10 @@
 import React from 'react'
 import Head from 'next/head'
 import renderLayout from 'utils/repeater-insights'
+import Post from 'interfaces/Post'
 import SettingsInterface from 'interfaces/Settings'
 import HeadlineSeparatorModule from 'components/modules/HeadlineSeparator/HeadlineSeparator'
+import FeaturedInsightsModule from 'components/modules/FeaturedInsights/FeaturedInsights'
 import FullscreenLinkWithMediaModule from 'components/modules/FullscreenLinkWithMedia/FullscreenLinkWithMedia'
 import { InsightsInterface } from 'wordpress/insights-query'
 import { GlobalContextProvider } from 'pages/_app'
@@ -26,11 +28,14 @@ const Insight = ({
   insight: InsightsInterface
   footer: FooterInterface
   header: Navigation
-  nextPosts: []
+  nextPosts: { nodes: Post[]}
 }) => {
   const {
     insightsDetailPage: { headlineSeparator, fullscreenLinkWithMedia },
   } = settings
+
+  // eslint-disable-next-line max-len
+  const nextPostNodes = nextPosts.nodes.map((e: Post) => { return { insight: e } }) as [{ insight: Post }]
   return (
     <GlobalContextProvider value={{ header, footer, settings }}>
       <div>
@@ -73,6 +78,10 @@ const Insight = ({
           <HeadlineSeparatorModule
             disableContainer={false}
             headlineSeparator={headlineSeparator}
+          />
+          <FeaturedInsightsModule
+            reducedSpacing
+            featuredInsights={{ insights: nextPostNodes, headline: 'News', backgroundColor: '#D97F3E' }}
           />
           <FullscreenLinkWithMediaModule
             fullscreenLinkWithMedia={fullscreenLinkWithMedia}

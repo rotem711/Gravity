@@ -128,7 +128,6 @@ const InsightsWithNavigationModule = ({
                 </div>
                 <time
                   className={`${styles.title} block typo-subhead uppercase sm:mb-30`}
-                  dateTime={item.post.publishedDate.replace('.', '-')}
                 >
                   {item.post.publishedDate}
                 </time>
