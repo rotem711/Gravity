@@ -7,4 +7,5 @@ export default interface IFeaturedInsights {
     backgroundColor: string
     insights: [{ insight: Post }]
   }
+  reducedSpacing?: boolean
 }

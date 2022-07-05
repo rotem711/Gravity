@@ -15,7 +15,7 @@ const FullscreenLinkWithMediaModule:FunctionComponent<IFullscreenLinkWithMedia> 
       <div className={`${styles.itemWrapper}`}>
         <Link href={fullscreenLinkWithMedia.link.url}>
           <a>
-            <div className="py-20 md:py-30 px-30 md:px-40">
+            <div className="py-20 md:py-30 container">
               <p className="typo-headlines mb-30">{fullscreenLinkWithMedia.link.title}</p>
               <div className={`${styles.iconContainer} `}>
 
