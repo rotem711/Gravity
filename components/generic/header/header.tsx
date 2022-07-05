@@ -82,6 +82,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     setDeployed(false)
   }, [uri])
 
+  console.log(router.asPath, newsBanner)
   return (
     <>
       {newsBanner.newsBannerActive && router.asPath === '/' && (
