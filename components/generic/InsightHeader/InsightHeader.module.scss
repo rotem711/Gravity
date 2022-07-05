@@ -1,0 +1,8 @@
+.root {
+  position: relative;
+
+  .video {
+    @apply object-cover;
+    aspect-ratio: 665 / 380;
+  }
+}

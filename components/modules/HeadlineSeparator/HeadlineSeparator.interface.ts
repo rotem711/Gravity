@@ -1,7 +1,7 @@
 import Link from 'interfaces/Link'
 
 export default interface IHeadlineSeparator {
-  fieldGroupName: string
+  fieldGroupName?: string
   disableContainer: boolean
   headlineSeparator: {
     headline: string

@@ -51,8 +51,9 @@
     }
 
     > div:last-child, > div > span, video {
-      width: 101%;
+      width: 102%;
       height: 101%;
+      max-width: 102%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -71,6 +72,10 @@
 }
 
 .iconContainer {
+  svg {
+    width: 4rem;
+    height: auto;
+  }
   @screen xl {
     opacity: 0;
     transform: translate(-15px, 0);

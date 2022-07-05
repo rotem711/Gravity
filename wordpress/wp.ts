@@ -1,12 +1,12 @@
 import {
-  GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
 import fetch from './wp-client'
 import pageQuery from './page-query'
+import { getPosts } from './insights'
 
-export const getAllPagesQuery = /* GraphQL */ `
+export const getAllPagesQuery = `
   query getAllPages {
     pages {
       edges {
@@ -50,6 +50,15 @@ export const getWpStaticProps = async (
       uri: (ctx.params?.slug as string[])?.join('/') || '/',
     },
   })
+
+  const posts = await fetch({
+    query: getPosts,
+  })
+
+  const insightsCategories = res.insightsCategories.nodes.filter(
+    (e) => e.name !== 'Uncategorized',
+  )
+
   if (!res || !res.entry) {
     return {
       notFound: true,
@@ -62,8 +71,8 @@ export const getWpStaticProps = async (
       settings: res.settings.globalSettings,
       header: res.header.header,
       platformNavigation: res.platformNavigation.platformNavigation,
-      insights: res.insights.nodes,
-      insightsCategories: res.insightsCategories,
+      insights: posts.insights,
+      insightsCategories,
     },
     revalidate: undefined,
   }

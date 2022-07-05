@@ -1,4 +1,51 @@
 .root {
   position: relative;
   @apply pb-30 md:pb-35 xl:pb-40;
+  overflow: hidden;
+
+  .corners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    i {
+      position: absolute;
+      width: 3.8rem;
+      height: 3.8rem;
+      transform: translate(-50%, -50%) rotate(45deg);
+      pointer-events: none;
+      user-select: none;
+
+      @screen lg {
+        width: 7.5rem;
+        height: 7.5rem;
+      }
+
+      &:nth-child(1) {
+        top: -1px;
+        left: -1px;
+      }
+
+      &:nth-child(2) {
+        top: -1px;
+        left: 100%;
+      }
+
+      &:nth-child(3) {
+        top: 100%;
+        left: -1px;
+      }
+
+      &:nth-child(4) {
+        top: 100%;
+        left: 100%;
+      }
+    }
+  }
 }

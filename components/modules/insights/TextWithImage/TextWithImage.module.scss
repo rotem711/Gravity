@@ -1,0 +1,17 @@
+.root {
+  position: relative;
+
+
+  p {
+    display: inline;
+    & + p {
+      margin-top: 1.5em;
+    }
+  }
+
+  .image {
+    float: right;
+    @apply  ml-30 float-right;
+    max-width: 50%;
+  }
+}

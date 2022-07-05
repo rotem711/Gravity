@@ -19,7 +19,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const isMobile = useIsMobile()
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
-  const [titleHeight, setTitleTabHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
 
@@ -29,7 +28,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 
   const recalculate = () => {
     setTabHeight(0)
-    setTitleTabHeight(0)
     let height = 0
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (!tabContentRefs.current[i]) return
@@ -37,15 +35,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
-    let height_2 = 0
-    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
-      if (!tabTitleRefs.current[i]) return
-      if (tabTitleRefs.current[i].clientHeight > height_2) {
-        height_2 = tabTitleRefs.current[i].getBoundingClientRect().height + 50
-      }
-    }
     setTabHeight(height)
-    setTitleTabHeight(height_2)
   }
 
   useEffect(() => {
@@ -130,10 +120,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                         {item.content.map((subItem) => (
                           <div
                             key={subItem.headline}
-                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-full"
+                            className="mt-100 first:mt-0 sm:w-[70%] lg:w-[85%]"
                           >
                             <h2
-                              className="typo-headlines-late mb-50"
+                              className="typo-headlines-late mb-55 md:mb-0 lg:mb-100"
                               dangerouslySetInnerHTML={{
                                 __html: subItem.headline,
                               }}
@@ -150,6 +140,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               src={item.vimeoVideoUrl}
                               playsInline
                               muted
+                              preload="none"
                               loop
                               autoPlay
                             />
@@ -186,12 +177,12 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     }}
                     className={`${styles.navTopItem} ${
                       itemIndex === 0 ? styles.navTopItemFirst : ''
-                    } flex-1`}
+                    } flex-1 pt-30 pb-30 pl-40`}
                   >
                     <button
                       className={`${styles.navItem} ${
                         index === itemIndex ? styles.isActive : ''
-                      } typo-subhead uppercase block w-full pt-30 pb-30 pl-40`}
+                      } typo-subhead uppercase block ${index !== itemIndex ? 'hover-link' : ''}`}
                       onClick={onClickItem}
                       onKeyPress={onClickItem}
                       data-index={itemIndex}
@@ -235,15 +226,12 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-75 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
+                              className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late mb-50 col-span-6 lg:w-full block"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-100"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
-                                }}
-                                style={{
-                                  height: titleHeight !== 0 ? titleHeight : '',
                                 }}
                                 ref={(element) => {
                                   tabTitleRefs.current[itemIndex] = element
@@ -262,6 +250,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               <video
                                 src={item.vimeoVideoUrl}
                                 playsInline
+                                preload="none"
                                 muted
                                 loop
                                 autoPlay
@@ -286,9 +275,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-55 lg:mt-100f col-span-12 default-grid"
+                              className="mt-55 lg:mt-100 col-span-12 default-grid"
                             >
-                              <h2 className="typo-headlines-late mb-50 col-span-5">
+                              <h2 className="typo-headlines-late col-span-5 mb-55 md:mb-0 lg:mb-100">
                                 {subItem.headline}
                               </h2>
                               <div className="typo-body col-span-4 col-start-8">
@@ -305,6 +294,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 src={item.vimeoVideoUrl}
                                 playsInline
                                 muted
+                                preload="none"
                                 loop
                                 autoPlay
                               />

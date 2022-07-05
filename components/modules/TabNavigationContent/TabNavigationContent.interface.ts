@@ -2,7 +2,7 @@ import Image, { MediaItem } from 'interfaces/Image'
 import Link from 'interfaces/Link'
 
 export default interface ITabNavigationContent {
-  fieldGroupName: string
+  fieldGroupName?: string
   tabNavigationContent: {
     mobileDefaultOpenIndex: number
     headlineSeparator: {

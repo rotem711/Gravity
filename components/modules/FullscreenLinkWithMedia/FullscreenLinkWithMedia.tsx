@@ -15,7 +15,7 @@ const FullscreenLinkWithMediaModule:FunctionComponent<IFullscreenLinkWithMedia> 
       <div className={`${styles.itemWrapper}`}>
         <Link href={fullscreenLinkWithMedia.link.url}>
           <a>
-            <div>
+            <div className="py-20 md:py-30 container">
               <p className="typo-headlines mb-30">{fullscreenLinkWithMedia.link.title}</p>
               <div className={`${styles.iconContainer} `}>
 
@@ -28,6 +28,7 @@ const FullscreenLinkWithMediaModule:FunctionComponent<IFullscreenLinkWithMedia> 
                 <video
                   src={fullscreenLinkWithMedia.vimeoVideoUrl}
                   playsInline
+                  preload="none"
                   muted
                   loop
                   autoPlay

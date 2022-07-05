@@ -14,7 +14,10 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    spacing: generateSpacings(),
+    spacing: {
+      ...generateSpacings(8, 32),
+      ...generateSpacings(),
+    },
     colors: {
       black: '#000',
       white: '#F7F7F2',
@@ -27,6 +30,7 @@ module.exports = {
       darkClay: '#D97F3E',
       mediumClay: '#F3915A',
       lightClay: '#FFC48D',
+      insights: '#C9C8B1',
     },
     screens: {
       sm: '440px',
@@ -78,6 +82,15 @@ module.exports = {
           },
           '@screen xl': {
             maxWidth: '1360px',
+            padding: '0rem',
+          },
+        },
+        '.container-insights': {
+          maxWidth: '100%',
+          padding: '0 3rem',
+          '@screen md': {
+            maxWidth: '66.4rem',
+            margin: '0 auto',
             padding: '0rem',
           },
         },

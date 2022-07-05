@@ -1,5 +1,5 @@
 export default interface ICountingNumbers {
-  fieldGroupName: string
+  fieldGroupName?: string
   countingNumbers: {
     headline: string
     backgroundColor: string

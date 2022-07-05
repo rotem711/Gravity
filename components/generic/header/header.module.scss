@@ -29,7 +29,15 @@
   border-bottom: 1px solid transparent;
   height: 8rem;
 
+  @screen lg {
+    &.offset {
+      padding-top: 5rem;
+      height: 13rem;
+    }
+  }
+
   &[data-scroll-dir='down'] {
+    background: theme('colors.white');
     transform: translateY(-100%);
   }
 
@@ -177,6 +185,7 @@
     font-weight: 400;
   }
 
+
   &::after {
     content: '';
     position: absolute;
@@ -190,7 +199,7 @@
     transform-origin: left center;
   }
 
-  &:hover {
+  &:hover, &.active {
     &::after {
       animation: ANIMATE_IN 0.35s ease-in-out forwards;
     }
@@ -200,8 +209,6 @@
 .navSubItem {
   font-family: 'Modern Gothic';
   font-size: 1.6rem;
-  line-height: 2.08rem;
-  padding-bottom: 0.3rem;
   transform-origin: bottom left;
   position: relative;
 }
@@ -221,13 +228,19 @@
 }
 
 .button {
-  @media screen and (max-width: 833px) {
+  @media screen and (max-width: 440px) {
     position: absolute;
     bottom: 45px;
+    left: 0;
+    right: 0;
+    padding: 0 3rem;
     a {
       display: block;
       width: 100%;
       text-align: center;
     }
+  }
+  @screen sm {
+    margin-top: 8rem;
   }
 }

@@ -1,0 +1,39 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  height: 5rem;
+  width: 100%;
+  z-index: 997;
+  transition: 0ms ease;
+
+  &.hide {
+    transform: translateY(-100%);
+    transition-duration: 400ms;
+  }
+
+  span, a {
+    font-family: 'So:hne Mono';
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  a {
+    position: absolute;
+    right: -5rem;
+    transform: translateX(100%);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2rem;
+    svg {
+      width: 1.1rem;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable operator-linebreak */
 /* eslint-disable object-curly-newline */
 import React from 'react'
 import { PageInterface } from 'wordpress/page-query'
@@ -5,6 +7,7 @@ import Head from 'next/head'
 import renderLayout from 'utils/repeater'
 import { GlobalContextProvider } from 'pages/_app'
 import ScrollNudge from 'components/generic/ScrollNudge/ScrollNudge'
+import SettingsInterface from 'interfaces/Settings'
 import FooterInterface from 'components/generic/footer/footer.interface'
 import { Navigation } from 'components/generic/header/header.interface'
 import InsightsInterface, { InsightsCategory } from 'interfaces/Insights'
@@ -19,16 +22,20 @@ const Page = ({
   platformNavigation,
   insights,
   insightsCategories,
+  settings,
 }: {
   page: PageInterface
   footer: FooterInterface
   header: Navigation
   platformNavigation: PlatformNavigationInterface
-  insights: [InsightsInterface]
+  insights: {
+    nodes: [InsightsInterface]
+  }
   insightsCategories: [InsightsCategory]
+  settings: SettingsInterface
 }) => (
   <GlobalContextProvider
-    value={{ header, footer, platformNavigation, insights, insightsCategories }}
+    value={{ header, footer, platformNavigation, insights, insightsCategories, settings }}
   >
     <div>
       <Head>
@@ -37,7 +44,9 @@ const Page = ({
         <link rel="icon" href="/static/favicon/favicon.ico" />
         <meta
           property="og:image"
-          content={`/_next/image?url=${encodeURIComponent(page.seoData.ogImage?.sourceUrl)}&w=1200&h=630&q=75`}
+          content={`/_next/image?url=${encodeURIComponent(
+            page.seoData.ogImage?.sourceUrl,
+          )}&w=1200&h=630&q=75`}
         />
       </Head>
       <Header
@@ -63,6 +72,7 @@ const Page = ({
         {page && page.uri === '/' && <ScrollNudge />}
         {page &&
           page.template.pageBuilder.pageBuilder.map((layout, index) =>
+            // eslint-disable-next-line implicit-arrow-linebreak
             renderLayout(
               layout,
               'DefaultTemplate_Pagebuilder_PageBuilder_',

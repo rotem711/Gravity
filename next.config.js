@@ -29,7 +29,7 @@ module.exports = {
     ignoreDuringBuilds: !!process.env.IGNORE_LINT_ERRORS,
   },
   images: {
-    domains: [`${process.env.NEXT_PUBLIC_ASSET_DOMAIN}`],
+    domains: [`${process.env.NEXT_PUBLIC_ASSET_DOMAIN}`, 'secure.gravatar.com'],
     formats: ['image/avif', 'image/webp'],
   },
 }

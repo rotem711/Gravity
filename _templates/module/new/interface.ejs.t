@@ -3,5 +3,5 @@ to: components/modules/<%= h.inflection.camelize(name) %>/<%= h.inflection.camel
 ---
 
 export default interface I<%= h.inflection.camelize(name) %> {
-  fieldGroupName: string
+  fieldGroupName?: string
 }

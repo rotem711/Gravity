@@ -9,13 +9,13 @@ import IFeaturedInsights from './FeaturedInsights.interface'
 const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
   props,
 ) => {
-  const { featuredInsights } = props
+  const { featuredInsights, reducedSpacing } = props
   return (
     <div
       className={`${styles.root}`}
       style={{ backgroundColor: featuredInsights.backgroundColor }}
     >
-      <div className="container pt-25 pb-155 xl:pt-35 xl:pb-230">
+      <div className={`container pt-25 xl:pt-35 ${reducedSpacing ? 'pb-100 md:pb-65' : 'pb-155 xl:pb-230'}`}>
         <h2 className={`${styles.title} typo-subhead uppercase sm:mb-60`}>
           <Fade>{featuredInsights.headline}</Fade>
         </h2>
@@ -31,12 +31,13 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                     <video
                       src={item.insight.post.previewVideo}
                       playsInline
+                      preload="none"
                       muted
                       loop
                     />
                   ) : (
                     <Image
-                      loading="eager"
+                      loading="lazy"
                       src={item.insight.featuredImage.node.sourceUrl}
                       alt={item.insight.featuredImage.node.altText}
                       width={item.insight.featuredImage.node.mediaDetails.width}

@@ -4,7 +4,6 @@
   @screen lg {
     padding-bottom: 15rem;
   }
-
 }
 
 .navItem {
@@ -83,31 +82,32 @@
   }
 }
 
-.video {
+.video, .backgroundImage {
   object-fit: cover;
   margin-left: auto;
-  aspect-ratio: 265 / 185;
-  @screen md {
-    aspect-ratio: 575 / 400;
+  aspect-ratio: 475 / 600;
+}
+.backgroundImage {
+  span {
+    aspect-ratio: 475 / 600;
   }
-  @screen lg {
-    aspect-ratio: 500 / 350;
-  }
-
 }
 .video,
-.image {
+.image,
+.backgroundImage {
   display: block;
   width: 80%;
-
 }
 
 .image {
-  margin-top: -20%;
-  @screen lg {
-    position: absolute;
-    top: 50%;
-    right: 13rem;
-    margin-top: 0;
+  position: absolute;
+  top: 7.5rem;
+  right: 13rem;
+  margin-top: 0;
+
+  left: 0;
+  @screen md {
+    right: 12.5rem;
+    left: initial;
   }
 }

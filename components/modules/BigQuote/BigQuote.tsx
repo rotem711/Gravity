@@ -86,7 +86,9 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
             {bigQuote.quotes.map((item) => (
               <blockquote
                 key={item.quote}
-                className={`${styles.quoteElement} typo-big-quotes md:col-span-8 md:col-start-5`}
+                className={`${styles.quoteElement} typo-big-quotes ${
+                  item.quote.length > 75 ? 'typo-big-quotes--long' : ''
+                } md:col-span-8 md:col-start-5`}
               >
                 <Fade delay={150}>
                   <div
@@ -121,13 +123,15 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   key={item.quote}
                   className={`${styles.quote} ${
                     index === itemIndex ? styles.isActive : ''
-                  } typo-big-quotes default-grid xl:col-span-12`}
+                  } typo-big-quotes ${
+                    item.quote.length > 75 ? 'typo-big-quotes--long' : ''
+                  } default-grid xl:col-span-12`}
                   ref={(element) => {
                     quoteRefs.current[itemIndex] = element
                   }}
                 >
                   <div
-                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-10`}
+                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-9`}
                   >
                     <Fade delay={150}>
                       <div
@@ -146,11 +150,11 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                     </cite>
                   </div>
                   <div
-                    className={`${styles.logo} col-span-2 md:col-start-11 mb-50 md:mb-0`}
+                    className={`${styles.logo} ${bigQuote.imageAlignment === 'bottom' ? `${styles.bottom} mt-50 md:mt-0` : 'mb-50 md:mb-0'} col-span-2 md:col-start-11`}
                   >
                     <Fade delay={500}>
                       <Image
-                        loading="eager"
+                        loading="lazy"
                         src={item.logo.sourceUrl}
                         alt={item.logo.altText}
                         width={item.logo.mediaDetails.width}

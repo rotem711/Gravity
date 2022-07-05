@@ -26,6 +26,7 @@ html {
   top: 0;
   bottom: 0;
   pointer-events: none;
+  z-index: 100;
   .col {
     background-color: rebeccapurple;
     opacity: 0.1;
@@ -54,4 +55,74 @@ input {
 
 [hidden] {
   display: block !important;
+}
+
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hover-link {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    height: 1px;
+    animation: ANIMATE_OUT 400ms ease forwards;
+    background-color: currentcolor;
+    transform-origin: left center;
+  }
+
+  &:hover,
+  &.active {
+    &::after {
+      animation: ANIMATE_IN 0.35s ease-in-out forwards;
+    }
+  }
+}
+
+.underlinedItem {
+  &:hover {
+    &::after {
+      transform-origin: left center;
+      transform: scaleX(1);
+    }
+  }
+}
+
+.underlinedItem {
+  padding-bottom: 0.3rem;
+  transform-origin: bottom left;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    height: 1px;
+    animation: ANIMATE_OUT 400ms ease forwards;
+    background-color: currentcolor;
+    transform-origin: left center;
+  }
 }

@@ -3,4 +3,5 @@ export default interface IFade {
   threshold?: number
   delay?: number
   className?: string
+  disable?: boolean
 }

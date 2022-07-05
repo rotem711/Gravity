@@ -38,7 +38,17 @@ const ImageWithCopyColumnsModule: FunctionComponent<IImageWithCopyColumns> = (
               </Fade>
             ))}
         </div>
-        {image && <Image image={image} />}
+        {image && (
+          <div className="relative">
+            <Image image={image} />
+            <span className={`${styles.corners}`} aria-hidden="true">
+              <i style={{ backgroundColor }} />
+              <i style={{ backgroundColor }} />
+              <i style={{ backgroundColor }} />
+              <i style={{ backgroundColor }} />
+            </span>
+          </div>
+        )}
       </div>
     </div>
   )

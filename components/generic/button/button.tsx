@@ -4,12 +4,31 @@ import IButtonInterface from './button.interface'
 import styles from './button.module.scss'
 
 const Button = (props: IButtonInterface) => {
-  const { link, variant } = props
-
+  const {
+    link, variant, onClick, children, disableHover,
+  } = props
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        type="submit"
+        className={`${styles.root} ${styles[variant]} ${
+          disableHover ? styles.disableHover : ''
+        }`}
+      >
+        {children}
+      </button>
+    )
+  }
   if (!link) return null
   return (
     <Link href={link.url}>
-      <a target={link.target} className={`${styles.root} ${styles[variant]}`}>
+      <a
+        target={link.target}
+        className={`${styles.root} ${styles[variant]} ${
+          disableHover ? styles.disableHover : ''
+        }`}
+      >
         {link.title}
       </a>
     </Link>

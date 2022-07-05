@@ -34,8 +34,8 @@
     font-weight: 300;
 
     @screen xl {
-      font-size: 5.2rem;
-      line-height: 5.7rem;
+      font-size: 5rem;
+      line-height: 5.5rem;
     }
   }
 
@@ -87,6 +87,12 @@
       font-size: 7.5rem;
       line-height: 8.6rem;
     }
+    &--long {
+      @screen xl {
+        font-size: 6.5rem;
+        line-height: 7.5rem;
+      }
+    }
   }
 
   .typo-cta-text {
@@ -102,5 +108,13 @@
       font-size: 15rem;
       line-height: 17.3rem;
     }
+  }
+
+  .typo-small-meta {
+    font-family: 'Modern Gothic';
+    font-size: 1.4rem;
+    line-height: 1.39;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 }

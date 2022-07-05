@@ -58,6 +58,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                   <video
                     src={item.vimeoVideoUrl}
                     playsInline
+                    preload="none"
                     muted
                     loop
                     autoPlay
