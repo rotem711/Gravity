@@ -150,7 +150,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                     </cite>
                   </div>
                   <div
-                    className={`${styles.logo} col-span-2 md:col-start-11 mb-50 md:mb-0`}
+                    className={`${styles.logo} ${bigQuote.imageAlignment === 'bottom' ? `${styles.bottom} mt-50 md:mt-0` : 'mb-50 md:mb-0'} col-span-2 md:col-start-11`}
                   >
                     <Fade delay={500}>
                       <Image

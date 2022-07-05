@@ -99,7 +99,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         }`}
         data-scroll-dir={scrollDir}
       >
-        <div className="relative container flex items-center justify-between pt-30 pb-30 md:pt-25 md:pb-25">
+        <div className="relative container flex items-center justify-between h-full">
           <Link href="/">
             <button
               type="button"

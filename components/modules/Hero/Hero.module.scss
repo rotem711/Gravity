@@ -4,7 +4,6 @@
   position: relative;
   background-color: theme('colors.mediumSky');
   z-index: 11;
-  transition: 200ms ease;
 
   h1 {
     @screen md {
@@ -20,6 +19,7 @@
     height: auto;
     mix-blend-mode: multiply;
     flex: 1;
+    min-height: 40vh;
   }
 }
 
