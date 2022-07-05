@@ -42,13 +42,13 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
         <h1
           className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
         >
-          <Fade delay={200} disable={!videoLoaded}>
+          <Fade delay={0} disable={!videoLoaded}>
             {hero.headline}
           </Fade>
         </h1>
 
         <div className={`${styles.button} w-full`}>
-          <Fade disable={!videoLoaded} delay={400}>
+          <Fade disable={!videoLoaded} delay={50}>
             <Button variant="dark" link={hero.link} />
           </Fade>
         </div>
@@ -56,7 +56,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
           className={`${styles.logos} default-grid w-full mt-95 lg:mt-145 items-start`}
         >
           <h2 className="typo-subhead w-full col-span-6 md:col-span-3 lg:col-span-2 uppercase">
-            <Fade disable={!videoLoaded} delay={600}>
+            <Fade disable={!videoLoaded} delay={75}>
               {parse(hero.logoRowHeadline)}
             </Fade>
           </h2>
@@ -66,7 +66,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
                 key={item.logo.sourceUrl}
                 className={`${styles.iconContainer} md:flex-shrink-0`}
               >
-                <Fade disable={!videoLoaded} delay={index * 150 + 800}>
+                <Fade disable={!videoLoaded} delay={index * 50 + 75}>
                   <Image
                     layout="intrinsic"
                     objectFit="contain"

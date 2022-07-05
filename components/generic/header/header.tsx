@@ -22,7 +22,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     settings: { newsBanner },
   } = ctx
   const [newsBannerActive, setNewsBannerActive] = useState(
-    newsBanner.newsBannerActive && router.asPath === '/',
+    !!newsBanner.newsBannerActive && router.asPath === '/',
   )
 
   const isFooterNotVisible = () => {
@@ -73,7 +73,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }, [deployed])
 
   useEffect(() => {
-    setNewsBannerActive(router.asPath === '/')
+    setNewsBannerActive(newsBanner.newsBannerActive && router.asPath === '/')
   }, [router.asPath])
 
   useEffect(() => {
@@ -82,7 +82,6 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     setDeployed(false)
   }, [uri])
 
-  console.log(router.asPath, newsBanner)
   return (
     <>
       {newsBanner.newsBannerActive && router.asPath === '/' && (
