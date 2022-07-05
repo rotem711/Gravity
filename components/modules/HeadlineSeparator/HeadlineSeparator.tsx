@@ -42,7 +42,7 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
               onChange={(e) => setEmail(e.target.value)}
               autoFocus
               type="email"
-              placeholder="Enter Email"
+              placeholder="Subscribe"
             />
           )}
           <button
