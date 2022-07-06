@@ -147,7 +147,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                   <Image image={item.backgroundImage} />
                 </div>
               ) : (
-                item.vimeoVideoUrl && (
+                (item.vimeoVideoUrl && inView) && (
                   <video
                     preload="none"
                     className={`${styles.video}`}
