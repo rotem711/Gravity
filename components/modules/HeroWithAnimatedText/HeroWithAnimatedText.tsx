@@ -34,12 +34,12 @@ const HeroWithAnimatedTextModule:FunctionComponent<IHeroWithAnimatedText> = (pro
         },
       }).to('.line', {
         opacity: 1,
-        duration: 4,
+        duration: 6,
         stagger: 6,
         delay: -40,
       }).to('.list', {
         y: '-35%',
-        delay: -4,
+        delay: -6,
         duration: 8,
       }).to('.items', {
         opacity: 0,
