@@ -5,21 +5,28 @@
   background-color: theme('colors.mediumSky');
   z-index: 11;
 
-  h1 {
-    @screen md {
-      max-width: 97.5rem;
+  .upperArea {
+    @apply pt-130 md:pt-100 pb-40 xl:pb-70;
+    height: 100vh;
+    max-height: 90rem;
+    h1 {
+      @screen md {
+        max-width: 97.5rem;
+      }
+      @screen xl {
+        font-size: 4.5rem;
+        line-height: 5rem;
+      }
     }
-    @screen xl {
-      font-size: 4.5rem;
-      line-height: 5rem;
+    video {
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+      flex: 1;
+      @screen md {
+        min-height: 40vh;
+      }
     }
-  }
-  video {
-    width: 100%;
-    height: auto;
-    mix-blend-mode: multiply;
-    flex: 1;
-    min-height: 40vh;
   }
 }
 

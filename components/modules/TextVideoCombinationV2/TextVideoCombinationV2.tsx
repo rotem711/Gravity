@@ -10,9 +10,9 @@ const TextVideoCombinationV2Module: FunctionComponent<
   ITextVideoCombinationV2
 > = (props) => {
   const { textVideoCombinationV2, extendedOnMobile = false } = props
-  const isMobile = useIsMobile('lg')
+  const isMobile = useIsMobile('md')
   return (
-    <div className={`${styles.root} py-100 lg:py-150`}>
+    <div className={`${styles.root} py-100 md:py-150`}>
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally, headlineBreakpoint } = item
@@ -55,7 +55,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
             </>
           )
           const mediaC = (
-            <div className={`relative ${extendedOnMobile ? '-mx-30 md:-mx-35 lg:mx-0' : ''}`}>
+            <div className={`relative ${extendedOnMobile ? '-mx-30 md:mx-0' : ''}`}>
               <Fade delay={400}>
                 <div
                   className={`${item.vimeoVideoUrl ? styles.absoluteImage : ''}`}
@@ -72,11 +72,11 @@ const TextVideoCombinationV2Module: FunctionComponent<
               id={item.anchor}
               className={`default-grid ${
                 flipHorizontally ? '' : styles.flipped
-              } ${index > 0 ? 'mt-170 sm:mt-60 lg:mt-270' : ''}`}
+              } ${index > 0 ? 'mt-170 sm:mt-60 md:mt-270' : ''}`}
             >
               {flipHorizontally || isMobile ? (
                 <>
-                  <div className={`col-span-12 lg:col-span-6 ${extendedOnMobile ? 'order-2' : 'order-2 md:order-1'} mb-auto`}>
+                  <div className={`col-span-12 md:col-span-6 ${extendedOnMobile ? 'order-2' : 'order-2 md:order-1'} mb-auto`}>
                     {mediaC}
                     {item.link && (
                       <div className={`${extendedOnMobile ? 'hidden' : 'md:hidden mt-50'}`}>
@@ -84,7 +84,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                       </div>
                     )}
                   </div>
-                  <div className={`col-span-12 lg:col-span-4 lg:col-start-8 default-grid lg:block md:mt-60 lg:mt-0 ${extendedOnMobile ? 'mb-50 md:mb-60' : 'order-1 md:order-2 mb-45 md:mb-0'}`}>
+                  <div className={`col-span-12 md:col-span-4 md:col-start-8 default-grid md:block ${extendedOnMobile ? 'mb-50 md:mb-60' : 'order-1 md:order-2 mb-45 md:mb-0'}`}>
                     {contentC}
                   </div>
                 </>

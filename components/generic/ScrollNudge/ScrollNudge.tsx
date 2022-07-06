@@ -26,7 +26,7 @@ const ScrollNudge: FunctionComponent<IScrollNudge> = () => {
     }
   }, [])
   return (
-    <div className={`${styles.root} invisible xl:visible`}>
+    <div className={`${styles.root} invisible md:visible`}>
       <div className={styles.values}>
         <span>{`${val}`}</span>
         <span>PPM</span>

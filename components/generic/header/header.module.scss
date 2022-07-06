@@ -130,7 +130,6 @@
     opacity: 0;
     background: theme('colors.white');
     visibility: hidden;
-    transition: 400ms ease;
     pointer-events: none;
 
     &.is-deployed {
@@ -185,7 +184,6 @@
     font-weight: 400;
   }
 
-
   &::after {
     content: '';
     position: absolute;
@@ -199,7 +197,8 @@
     transform-origin: left center;
   }
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     &::after {
       animation: ANIMATE_IN 0.35s ease-in-out forwards;
     }

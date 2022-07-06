@@ -79,12 +79,12 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
       className={`${styles.root} container pt-35 md:pb-0 md:pt-70 lg:pt-35 lg:pb-150`}
       ref={ref}
     >
-      <h2 className={`${styles.title} typo-subhead uppercase mb-75 md:mb-100`}>
+      <h2 className={`${styles.title} typo-subhead uppercase mb-40 md:mb-100`}>
         <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
       <div className="md:default-grid">
         <header className="md:default-grid md:col-span-12 lg:col-span-4 md:mb-90 lg:mb-0">
-          <ul className="md:col-span-6 mb-45 md:mb-0 lg:col-span-12 lg:mb-95">
+          <ul className="md:col-span-6 mb-25 md:mb-0 lg:col-span-12 lg:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
               <li key={item.title}>
                 <button
@@ -103,7 +103,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
           </ul>
           <div className="md:col-span-6 lg:col-span-12">
             <div
-              className={`${styles.copyContainer} md:col-span-6 mb-55`}
+              className={`${styles.copyContainer} md:col-span-6 mb-25`}
               style={{ height: copyHeight }}
             >
               {sliderWithMedia.slides.map((item, itemIndex) => (

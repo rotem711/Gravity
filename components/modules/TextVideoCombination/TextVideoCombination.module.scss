@@ -11,20 +11,20 @@
     padding: 3.5rem 0 22.5rem 0;
   }
 
-  @screen xl {
+  @screen md {
     padding: 3.5rem 0 26.5rem 0;
   }
 
   &.isFlipped {
     header {
-      @screen md {
+      @screen sm {
         order: 2;
         grid-column-start: 7;
       }
     }
 
     .mediaItem {
-      @screen md {
+      @screen sm {
         order: 1;
         grid-column-start: 1;
       }

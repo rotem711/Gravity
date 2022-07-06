@@ -16,16 +16,17 @@
     letter-spacing: -0.01em;
     font-weight: 300;
 
-    @screen sm {
+    @screen md {
       font-size: 4.5rem;
       line-height: 5rem;
     }
 
-    @screen md {
+    @screen xl {
       font-size: 5.2rem;
       line-height: 5.7rem;
     }
   }
+
   .typo-headlines-late {
     font-family: 'Modern Gothic';
     font-size: 3.7rem;
@@ -79,16 +80,16 @@
     line-height: 4.6rem;
     letter-spacing: -0.01em;
     font-weight: 300;
-    @screen md {
+    @screen sm {
       font-size: 5.5rem;
       line-height: 6.3rem;
     }
-    @screen xl {
+    @screen md {
       font-size: 7.5rem;
       line-height: 8.6rem;
     }
     &--long {
-      @screen xl {
+      @screen md {
         font-size: 6.5rem;
         line-height: 7.5rem;
       }

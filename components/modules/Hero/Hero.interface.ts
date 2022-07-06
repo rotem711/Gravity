@@ -13,6 +13,7 @@ export default interface IHero {
     logos: [
       {
         logo: MediaItem
+        link: string
       },
     ]
   }
