@@ -1,11 +1,9 @@
 const FontFaceObserver = require('fontfaceobserver')
 
-const Fonts = () => {
+const loadFonts = async () => {
   const modernGothic = new FontFaceObserver('Modern Gothic')
 
-  modernGothic.load().then(() => {
-    document.documentElement.classList.add('font-loaded')
-  })
+  return modernGothic.load()
 }
 
-export default Fonts
+export default loadFonts
