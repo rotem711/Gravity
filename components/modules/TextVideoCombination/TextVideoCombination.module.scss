@@ -17,14 +17,14 @@
 
   &.isFlipped {
     header {
-      @screen sm {
+      @screen md {
         order: 2;
         grid-column-start: 7;
       }
     }
 
     .mediaItem {
-      @screen sm {
+      @screen md {
         order: 1;
         grid-column-start: 1;
       }

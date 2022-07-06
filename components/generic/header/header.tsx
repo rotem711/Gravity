@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
+import useIsMobile from 'utils/hooks'
 import { Router, useRouter } from 'next/router'
 import Button from 'components/generic/button/button'
 import Logo from 'public/gravity-logo.svg'
@@ -14,10 +15,12 @@ import NewsBanner from '../NewsBanner/NewsBanner'
 const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
   const [scrollDir, setScrollDir] = useState('')
+  const [height, setHeight] = useState(0)
   const [scrolled, setScrolled] = useState(false)
   const { rightSideNavigation, mobileMenuCta } = data
   const router = useRouter()
   const ctx = useContext(GlobalContext)
+  const isMobile = useIsMobile()
   const {
     settings: { newsBanner },
   } = ctx
@@ -36,8 +39,21 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }
 
   useEffect(() => {
-    Router.events.on('routeChangeComplete', () => setDeployed(false))
+    const appHeight = () => {
+      setHeight(window.innerHeight)
+    }
+    window.addEventListener('resize', appHeight)
+    appHeight()
 
+    Router.events.on('routeChangeComplete', () => {
+      setDeployed(false)
+      setScrolled(false)
+      setScrollDir('')
+    })
+    if (window.scrollY > 0) {
+      setScrolled(true)
+      setScrollDir('up')
+    }
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
@@ -49,7 +65,10 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         }
 
         if (prevPos >= window.scrollY && window.scrollY > 1) {
-          if (prevPos >= window.scrollY + document.documentElement.clientHeight / 3) {
+          if (
+            prevPos >=
+            window.scrollY + document.documentElement.clientHeight / 3
+          ) {
             if (window.innerWidth < 768 && !isFooterNotVisible()) return
             setScrollDir('up')
             prevPos = window.scrollY
@@ -62,6 +81,10 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         prevPos = window.scrollY
       }
     }, 10)
+
+    return () => {
+      window.removeEventListener('resize', appHeight)
+    }
   }, [])
 
   useEffect(() => {
@@ -75,12 +98,6 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   useEffect(() => {
     setNewsBannerActive(newsBanner.newsBannerActive && router.asPath === '/')
   }, [router.asPath])
-
-  useEffect(() => {
-    setScrolled(false)
-    setScrollDir('')
-    setDeployed(false)
-  }, [uri])
 
   return (
     <>
@@ -113,6 +130,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
             className={`${styles.navContainer} ${
               deployed && styles['is-deployed']
             }`}
+            style={{ height: isMobile ? `${height}px` : null}}
           >
             <div className="container">
               <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
