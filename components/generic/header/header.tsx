@@ -57,6 +57,16 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     let prevPos = 0
     setTimeout(() => {
       window.onscroll = () => {
+        if (router.asPath === '/team' && prevPos < window.scrollY) {
+          if (window.scrollY > window.innerHeight * 3) {
+            setScrollDir('down')
+            setScrolled(true)
+          } else {
+            setScrolled(false)
+          }
+          prevPos = window.scrollY
+          return
+        }
         if (window.scrollY === 0) {
           setScrollDir('')
           setScrolled(false)
@@ -76,11 +86,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
           return
         }
         if (window.scrollY > 1 && prevPos > 0) {
-          if (router.asPath === '/team') {
-            if (window.scrollY > window.innerHeight * 3) setScrollDir('down')
-          } else {
-            setScrollDir('down')
-          }
+          setScrollDir('down')
         }
 
         prevPos = window.scrollY

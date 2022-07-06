@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -53,12 +52,14 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
   }
 
   // set copyContainer height
-  useLayoutEffect(() => {
+  useEffect(() => {
     recalculate()
-  })
+  }, [])
 
   useEffect(() => {
-    window.addEventListener('orientationchange', recalculate)
+    // eslint-disable-next-line no-restricted-globals
+    const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
+    window.addEventListener(hook, recalculate)
     if (inView) {
       timer = setTimeout(() => {
         if (indexRef.current + 1 === mediaRefs.current.length) {
@@ -66,11 +67,11 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         } else {
           setIndex(indexRef.current + 1)
         }
-      }, 2000)
+      }, 4000)
       return () => clearTimeout(timer)
     }
     return () => {
-      window.removeEventListener('orientationchange', recalculate)
+      window.removeEventListener(hook, recalculate)
     }
   }, [inView, index])
 
@@ -83,8 +84,8 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
       <div className="md:default-grid">
-        <header className="md:default-grid md:col-span-12 lg:col-span-4 md:mb-90 lg:mb-0">
-          <ul className="md:col-span-6 mb-25 md:mb-0 lg:col-span-12 lg:mb-95">
+        <header className="md:default-grid md:col-span-4 md:mb-90 lg:mb-0">
+          <ul className="mb-25 md:mb-0 md:col-span-12 lg:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
               <li key={item.title}>
                 <button
@@ -101,7 +102,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               </li>
             ))}
           </ul>
-          <div className="md:col-span-6 lg:col-span-12">
+          <div className="md:col-span-12">
             <div
               className={`${styles.copyContainer} md:col-span-6 mb-25`}
               style={{ height: copyHeight }}
@@ -128,7 +129,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
           </div>
         </header>
         <div
-          className={`${styles.mediaContainer} md:col-span-12 lg:col-start-7 lg:col-span-6 default-grid`}
+          className={`${styles.mediaContainer} md:col-start-7 md:col-span-6 default-grid`}
           style={{ height: mediaHeight }}
         >
           {sliderWithMedia.slides.map((item, itemIndex) => (
