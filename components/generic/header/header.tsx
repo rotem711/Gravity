@@ -130,7 +130,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
             className={`${styles.navContainer} ${
               deployed && styles['is-deployed']
             }`}
-            style={{ height: isMobile ? `${height}px` : null}}
+            style={{ height: isMobile ? `${height}px` : null }}
           >
             <div className="container">
               <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
