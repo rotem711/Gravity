@@ -24,7 +24,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
   useLayoutEffect(() => {
     setTimeout(() => {
       setVideoLoaded(true)
-    }, 1000)
+    }, 10)
   }, [])
 
   return (

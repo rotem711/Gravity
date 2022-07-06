@@ -1,9 +1,12 @@
 // boilerplate basics
 
-
-
 html {
   font-size: 10px;
+  opacity: 0;
+
+  &.font-loaded {
+    opacity: 1;
+  }
 
   body {
     background: #f7f7f2;
