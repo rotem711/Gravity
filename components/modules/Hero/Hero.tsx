@@ -36,15 +36,17 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
     >
       <div className="container flex flex-wrap h-full">
         <div className={`flex flex-col ${styles.upperArea}`}>
-          <video
-            className={`${styles.video}`}
-            src={videoSrc}
-            playsInline
-            muted
-            preload="none"
-            loop
-            autoPlay
-          />
+          {videoLoaded && (
+            <video
+              className={`${styles.video}`}
+              src={videoSrc}
+              playsInline
+              muted
+              preload="none"
+              loop
+              autoPlay
+            />
+          )}
           <h1
             className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
           >
@@ -89,7 +91,12 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
                 </span>
               )
               return item.link ? (
-                <a className={`${styles.iconContainer} md:flex-shrink-0`} rel="noreferrer" href={item.link} target="_blank">
+                <a
+                  className={`${styles.iconContainer} md:flex-shrink-0`}
+                  rel="noreferrer"
+                  href={item.link}
+                  target="_blank"
+                >
                   {child}
                 </a>
               ) : (
