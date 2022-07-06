@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useLayoutEffect, useState } from 'react'
+import React, { FunctionComponent, useLayoutEffect, useState } from 'react'
 import Image from 'next/image'
 import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
