@@ -54,7 +54,7 @@
     &:hover {
       .iconContainer {
         opacity: 1;
-        transform: translate(15px, 0);
+        transform: translate(0, 0);
         transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
@@ -67,7 +67,8 @@
     height: auto;
   }
   @screen lg {
-    transform: translate(0, 0);
+    transform: translate(-15px, 0);
+    opacity: 0;
     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
     svg {
       width: 6.4rem;

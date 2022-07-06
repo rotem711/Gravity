@@ -25,7 +25,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
               key={item.insight.id}
               className="col-span-6 xl:col-span-4 sm:mb-180 md:mb-0 last:mb-0 md:last:hidden xl:last:block"
             >
-              <Fade delay={index * 150 + 150}>
+              <Fade className="h-full flex flex-col" delay={index * 150 + 150}>
                 <div className={`${styles.mediaContainer} sm:mb-50`}>
                   {item.insight.post.previewVideo ? (
                     <video
@@ -57,7 +57,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                   {item.insight.title}
                 </h3>
                 <Link href={`/insights/${item.insight.slug}`}>
-                  <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
+                  <a className={`${buttonStyles.root} ${buttonStyles.light} mt-auto mr-auto`}>
                     Read More
                   </a>
                 </Link>
