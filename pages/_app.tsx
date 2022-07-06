@@ -11,7 +11,6 @@ const PXLPWebContainer = ({ Component, pageProps }) => {
   useEffect(() => {
     const load = async () => {
       const x = await loadFonts()
-      console.log(x)
       if (x) {
         setRender(true)
       } else {
