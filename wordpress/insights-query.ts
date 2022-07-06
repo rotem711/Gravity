@@ -76,6 +76,7 @@ export default `
       nodes {
         id
         title
+        slug
         featuredImage {
           node {
             ...Image
