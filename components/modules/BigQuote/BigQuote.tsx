@@ -46,11 +46,13 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
 
   // set quoteContainer height
   useLayoutEffect(() => {
+    let maxQuoteHeight = 0
     for (let i = 0; i < quoteRefs.current.length; i += 1) {
-      if (quoteRefs.current[i].clientHeight > quoteHeight) {
-        setQuoteHeight(quoteRefs.current[i].clientHeight)
+      if (quoteRefs.current[i].clientHeight > maxQuoteHeight) {
+        maxQuoteHeight = quoteRefs.current[i].clientHeight
       }
     }
+    setQuoteHeight(maxQuoteHeight)
   })
 
   useEffect(() => {

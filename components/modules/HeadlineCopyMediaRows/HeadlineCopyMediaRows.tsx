@@ -20,7 +20,7 @@ const HeadlineCopyMediaRowsModule:FunctionComponent<IHeadlineCopyMediaRows> = (p
             className="default-grid col-span-6 md:col-span-12 mb-145 md:mb-115 lg:mb-150 last:mb-0"
           >
             <h3 className="col-span-6 md:col-span-4 lg:col-span-3 typo-headlines mb-55 md:mb-0">{item.headline}</h3>
-            <p className="col-span-6 md:col-span-5 lg:col-span-3 typo-body mt-5 mb-50 md:md-0">{item.copy}</p>
+            <p className="col-span-6 md:col-span-5 lg:col-span-4 typo-body mt-5 mb-50 md:md-0">{item.copy}</p>
             <div className={`col-span-6 md:col-start-10 md:col-end-13 mt-10 md:mt-0 relative ${styles.mediaContainer}`}>
               {
               item.vimeoVideoUrl

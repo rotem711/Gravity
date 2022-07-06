@@ -35,7 +35,6 @@
 .quoteElement {
   position: relative;
   order: 2;
-
 }
 
 .quoteElementChild {
@@ -43,10 +42,9 @@
 
   @screen md {
     transform: translateY(-1.2rem);
-
   }
   &::before {
-    content: "“";
+    content: '“';
     display: inline-block;
   }
 

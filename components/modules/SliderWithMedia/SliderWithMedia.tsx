@@ -66,7 +66,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         } else {
           setIndex(indexRef.current + 1)
         }
-      }, 4000)
+      }, 2000)
       return () => clearTimeout(timer)
     }
     return () => {
