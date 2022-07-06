@@ -53,7 +53,7 @@ module.exports = {
           display: 'grid',
           'grid-template-columns': 'repeat(6, minmax(0, 1fr))',
           'column-gap': '1.5rem',
-          '@screen sm': {
+          '@screen md': {
             'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
             'column-gap': '2rem',
           },
