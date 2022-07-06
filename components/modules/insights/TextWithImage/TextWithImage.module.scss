@@ -1,7 +1,6 @@
 .root {
   position: relative;
 
-
   p {
     display: inline;
     & + p {
@@ -11,7 +10,7 @@
 
   .image {
     float: right;
-    @apply  ml-30 float-right;
+    @apply ml-30 mb-15 float-right;
     max-width: 50%;
   }
 }
