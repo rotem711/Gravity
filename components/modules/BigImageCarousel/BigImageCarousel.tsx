@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Autoplay } from 'swiper'
 // eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useInView } from 'react-intersection-observer'
 import Fade from 'components/generic/fade/fade'
 import Button from 'components/generic/button/button'
 import useIsMobile from 'utils/hooks'
@@ -20,8 +21,13 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
     !isMobile && bigImageCarousel.customHeadline
       ? bigImageCarousel.customHeadline
       : bigImageCarousel.headline
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: false,
+  })
   return (
-    <div className={`${styles.root} pb-175 md:pb-225 lg:pb-100`}>
+    <div ref={ref} className={`${styles.root} pb-175 md:pb-225 lg:pb-100`}>
       <div className="container">
         <div className="default-grid">
           <Fade className="col-span-6 mb-50 md:mb-60">
@@ -55,7 +61,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
                   }
                   className={`${styles.swiperSlide} pointer-events-none`}
                 >
-                  {item.vimeoVideoUrl ? (
+                  {(item.vimeoVideoUrl && inView) ? (
                     <video
                       preload="none"
                       src={item.vimeoVideoUrl}
