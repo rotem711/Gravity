@@ -12,7 +12,9 @@ const PXLPWebContainer = ({ Component, pageProps }) => {
     const load = async () => {
       const x = await loadFonts()
       if (x && x?.family) {
-        setRender(true)
+        setTimeout(() => {
+          setRender(true)
+        }, 250)
       } else {
         throw new Error('E')
       }
