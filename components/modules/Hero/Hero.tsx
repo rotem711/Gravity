@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useLayoutEffect, useState } from 'react'
 import Image from 'next/image'
 import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
@@ -21,10 +21,10 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
     videoSrc = hero.vimeoVideoIdMobile
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTimeout(() => {
       setVideoLoaded(true)
-    }, 200)
+    }, 1000)
   }, [])
 
   return (
@@ -92,6 +92,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
               )
               return item.link ? (
                 <a
+                  key={item.logo.sourceUrl}
                   className={`${styles.iconContainer} md:flex-shrink-0`}
                   rel="noreferrer"
                   href={item.link}

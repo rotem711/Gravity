@@ -20,8 +20,9 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const isInViewport = () => {
     const rect = ref?.current?.getBoundingClientRect()
     if (!rect) return
+    const heightOffset = window.innerWidth < 835 ? 0.3 : 1.5
     setInView(
-      rect.top < document.documentElement.clientHeight / 1.5 &&
+      rect.top < document.documentElement.clientHeight / heightOffset &&
         rect.bottom <= document.documentElement.clientHeight &&
         rect.bottom > -100,
     )
@@ -34,12 +35,21 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     }
   }, [])
 
+  const debounce = (func) => {
+    const timeX = 250 // 100 by default if no param
+    let timer
+    return (event) => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(func, timeX, event)
+    }
+  }
   const calculate = () => {
+    setRender(false)
     setOffsetX(-1)
     setOffsetY(-1)
     setSVGHeight(0)
     setTimeout(() => {
-      const svgParent = document.getElementById(animation).querySelector('svg')
+      const svgParent = ref.current.querySelector('svg')
       const x = svgParent?.childNodes[1] as Element
       if (x) {
         const pRect = svgParent.getBoundingClientRect()
@@ -58,12 +68,12 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         }
         setRender(true)
       }
-    }, 1)
+    }, 250)
   }
   useEffect(() => {
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
-    window.addEventListener(hook, calculate)
+    window.addEventListener(hook, debounce(calculate))
     import(`public/animations/${animation}.json`)
       .then(setAnimationData)
       .then(() => {
@@ -72,7 +82,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         }, 1000)
       })
     return () => {
-      window.removeEventListener(hook, calculate)
+      window.removeEventListener(hook, debounce(calculate))
     }
   }, [])
 
