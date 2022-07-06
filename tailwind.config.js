@@ -81,7 +81,7 @@ module.exports = {
             padding: '0 3.5rem',
           },
           '@screen md': {
-            maxWidth: '1360px',
+            maxWidth: '1200px',
           },
           '@screen xl': {
             padding: '0',
