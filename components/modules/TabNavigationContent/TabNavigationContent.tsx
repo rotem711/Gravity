@@ -93,10 +93,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     type="button"
                     className="typo-subhead uppercase container flex items-center justify-between pt-25 pb-25"
                     onClick={() => {
-                      document.getElementById('accordion').scrollIntoView({ behavior: 'smooth' })
-                      setTimeout(() => {
-                        setIndex(index === itemIndex ? -1 : itemIndex)
-                      }, 1000)
+                      if (index === itemIndex) return
+                      setIndex(itemIndex)
+                      document.getElementById('accordion').scrollIntoView({ behavior: 'smooth', block: 'start' })
                     }}
                   >
                     <p>

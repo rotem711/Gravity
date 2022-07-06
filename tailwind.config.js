@@ -33,7 +33,7 @@ module.exports = {
       insights: '#C9C8B1',
     },
     screens: {
-      sm: '440px',
+      sm: '414px',
       sd: '480px',
       md: '834px',
       lg: '1024px',
@@ -53,7 +53,7 @@ module.exports = {
           display: 'grid',
           'grid-template-columns': 'repeat(6, minmax(0, 1fr))',
           'column-gap': '1.5rem',
-          '@screen md': {
+          '@screen sm': {
             'grid-template-columns': 'repeat(12, minmax(0, 1fr))',
             'column-gap': '2rem',
           },
@@ -76,13 +76,15 @@ module.exports = {
         '.container': {
           maxWidth: '100%',
           padding: '0 3rem',
-          '@screen md': {
+          '@screen sm': {
             margin: '0 auto',
             padding: '0 3.5rem',
           },
-          '@screen xl': {
+          '@screen md': {
             maxWidth: '1360px',
-            padding: '0rem',
+          },
+          '@screen xl': {
+            padding: '0',
           },
         },
         '.container-insights': {

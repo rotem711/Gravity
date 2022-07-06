@@ -15,37 +15,37 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
     <div className={`${styles.root}`}>
       <div className="container">
         {textVideoCombination.items.map((item) => (
-          <div key={item.headline} className={`${styles.item} md:default-grid`}>
+          <div key={item.headline} className={`${styles.item} sm:default-grid`}>
             <span
-              className={`col-span-full typo-subhead uppercase md:mb-100 hidden md:block xl:hidden ${styles.topHeadline}`}
+              className={`col-span-full typo-subhead uppercase sm:mb-100 hidden sm:block xl:hidden ${styles.topHeadline}`}
             >
               <Fade>{item.topHeadline}</Fade>
             </span>
-            <div className="md:col-span-5 md:row-start-2">
+            <div className="sm:col-span-5 flex flex-col sm:row-start-2">
               {item.topHeadline && (
                 <span
-                  className={`typo-subhead uppercase mb-90 xl:mb-135 block md:hidden xl:block ${styles.topHeadline}`}
+                  className={`typo-subhead uppercase mb-90 sm:mb-135 block sm:hidden xl:block ${styles.topHeadline}`}
                 >
                   <Fade>{item.topHeadline}</Fade>
                 </span>
               )}
-              <h2 className="typo-headlines mb-50 xl:mb-180">
+              <h2 className="typo-headlines mb-50 sm:mb-180">
                 <Fade delay={200}>{item.headline}</Fade>
               </h2>
               <Fade delay={300}>
                 <div
-                  className="typo-body mb-45 hidden md:block xl:mb-60"
+                  className="typo-body mb-45 hidden sm:block sm:mb-60"
                   dangerouslySetInnerHTML={{ __html: item.copy }}
                 />
               </Fade>
-              <div className="w-full mt-50 xl:mt-60 hidden md:block">
+              <div className="w-full mt-50 sm:mt-60 hidden sm:block">
                 <Fade delay={400}>
                   <Button variant="light" link={item.link} />
                 </Fade>
               </div>
             </div>
             <div
-              className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
+              className={`${styles.mediaItem} col-span-6 sm:col-span-5 sm:col-start-8 sm:row-start-2`}
             >
               {(item.image.desktopImage || item.image.mobileImage) ? (
                 item.image && <Image image={item.image} />
@@ -69,11 +69,11 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             </div>
             <Fade delay={300}>
               <div
-                className="typo-body mb-45 mt-50 md:hidden"
+                className="typo-body mb-45 mt-50 sm:hidden"
                 dangerouslySetInnerHTML={{ __html: item.copy }}
               />
             </Fade>
-            <div className="w-full md:hidden">
+            <div className="w-full sm:hidden">
               <Button variant="light" link={item.link} />
             </div>
           </div>

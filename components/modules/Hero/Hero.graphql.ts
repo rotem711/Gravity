@@ -11,6 +11,7 @@ const HeroFragment = (t: string) => `
       }
       logoRowHeadline
       logos {
+        link
         logo {
           ...Image
         }
