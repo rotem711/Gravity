@@ -41,7 +41,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
             src={videoSrc}
             playsInline
             muted
-            preload="auto"
+            preload="none"
             loop
             autoPlay
           />

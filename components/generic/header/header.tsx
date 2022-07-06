@@ -78,6 +78,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         if (window.scrollY > 1 && prevPos > 0) {
           setScrollDir('down')
         }
+
         prevPos = window.scrollY
       }
     }, 10)
