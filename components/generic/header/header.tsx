@@ -78,7 +78,8 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         if (window.scrollY > 1 && prevPos > 0) {
           if (router.asPath === '/team') {
             if (window.scrollY > window.innerHeight * 3) setScrollDir('down')
-            else setScrollDir('down')
+          } else {
+            setScrollDir('down')
           }
         }
         prevPos = window.scrollY
