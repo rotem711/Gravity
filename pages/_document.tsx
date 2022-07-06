@@ -7,7 +7,40 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+        @font-face {
+          font-family: 'Modern Gothic';
+          src: url('/fonts/ModernGothic-Regular.woff2') format('woff2'),
+            url('/fonts/ModernGothic-Regular.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'Modern Gothic';
+          src: url('/fonts/ModernGothic-Light.woff2') format('woff2'),
+            url('/fonts/ModernGothic-Light.woff') format('woff');
+          font-weight: 300;
+          font-style: normal;
+          font-display: swap;
+        }
+
+        @font-face {
+          font-family: 'So:hne Mono';
+          src: url('/fonts/SohneMono-Buch.woff2') format('woff2'),
+            url('/fonts/SohneMono-Buch.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }`,
+            }}
+          />
+        </Head>
+
         <body className="loading">
           <Main />
           <NextScript />
