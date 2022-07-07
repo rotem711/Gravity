@@ -12,6 +12,11 @@
     }
   }
 
+  @screen sd {
+    h1 {
+      max-width: 51rem;
+    }
+  }
   @screen md {
     h1 {
       max-width: 66rem;

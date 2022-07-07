@@ -110,7 +110,7 @@ const InsightsWithNavigationModule = ({
               <Link href={`/insights/${item.slug}`}>
                 <a>
                   <Fade threshold={0} delay={index * 50 + 150}>
-                    <div className={`${styles.mediaContainer} sm:mb-50`}>
+                    <div className={`${styles.mediaContainer} mb-30 sm:mb-50`}>
                       {item.post.previewVideo ? (
                         <video
                           src={item.post.previewVideo}
@@ -121,6 +121,7 @@ const InsightsWithNavigationModule = ({
                       ) : (
                         <Image
                           loading="lazy"
+                          layout="responsive"
                           src={item.featuredImage.node.sourceUrl}
                           alt={item.featuredImage.node.altText}
                           width={665}
@@ -129,11 +130,11 @@ const InsightsWithNavigationModule = ({
                       )}
                     </div>
                     <time
-                      className={`${styles.title} block typo-subhead uppercase sm:mb-30`}
+                      className={`${styles.title} block typo-subhead uppercase mb-30`}
                     >
                       {item.post.publishedDate}
                     </time>
-                    <h3 className="typo-headlines mb-60 md:mb-50">
+                    <h3 className="typo-headlines mb-55 md:mb-50">
                       {item.title}
                     </h3>
 

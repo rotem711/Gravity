@@ -38,7 +38,7 @@
   position: relative;
   flex-basis: 50%;
 
-  @screen md {
+  @screen sm {
     flex-basis: initial;
     flex-shrink: 0;
     flex: 1;

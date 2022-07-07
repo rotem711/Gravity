@@ -67,6 +67,7 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
               <div
                 className={`${styles.line} line`}
                 ref={(r) => refs.current.push(r)}
+                key={item.text}
               >
                 {item.text}
               </div>
