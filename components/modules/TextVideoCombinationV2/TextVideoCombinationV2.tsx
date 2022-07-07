@@ -11,17 +11,18 @@ const TextVideoCombinationV2Module: FunctionComponent<
 > = (props) => {
   const { textVideoCombinationV2, extendedOnMobile = false } = props
   const isMobile = useIsMobile('md')
+
   return (
     <div className={`${styles.root} py-100 md:py-150`}>
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally, headlineBreakpoint } = item
-
+          const fullHeight = (item.image && !item.vimeoVideoUrl) || (!item.image && item.vimeoVideoUrl) ? 'h-full' : ''
           // eslint-disable-next-line operator-linebreak
           const headline =
             !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
           const imageC = item.image && (
-            <ImageComponent className="h-full" image={item.image} />
+            <ImageComponent className={fullHeight} image={item.image} />
           )
           const videoC = item.vimeoVideoUrl && (
             <video
@@ -80,12 +81,12 @@ const TextVideoCombinationV2Module: FunctionComponent<
           const mediaC = (
             <div
               className={`relative ${
-                extendedOnMobile ? '-mx-35 md:mx-0 h-full' : ''
+                extendedOnMobile ? `-mx-35 md:mx-0 ${fullHeight}` : ''
               }`}
             >
-              <Fade className="h-full" delay={400}>
+              <Fade className={fullHeight} delay={400}>
                 <div
-                  className={`h-full ${styles.img} ${
+                  className={`${fullHeight} ${styles.img} ${
                     item.vimeoVideoUrl ? styles.absoluteImage : ''
                   }`}
                 >

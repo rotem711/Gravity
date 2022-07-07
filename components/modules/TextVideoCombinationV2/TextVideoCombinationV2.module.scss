@@ -1,13 +1,8 @@
 .root {
   position: relative;
 
-  .img {
-    span {
-      height: 100% !important;
-    }
-  }
   video {
-    width: 66.6%;
+    width: 75%;
     height: auto;
     object-fit: cover;
     aspect-ratio: 240 / 300;
@@ -33,13 +28,16 @@
       left: 10rem;
       bottom: 8rem;
     }
-
-
   }
 
   .flipped {
     video {
       margin-left: auto;
+    }
+    .img {
+      span {
+        height: 100% !important;
+      }
     }
     .absoluteImage {
       left: 0;
