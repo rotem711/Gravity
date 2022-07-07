@@ -40,6 +40,9 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
       .fromTo(lines, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
       .add(() => {
         document.getElementById('header').classList.add('fadeOut')
+        setTimeout(() => {
+          window.scrollBy(0, 1)
+        }, 10)
       })
   }, [refs])
 
