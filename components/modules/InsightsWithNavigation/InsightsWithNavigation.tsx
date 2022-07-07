@@ -107,37 +107,42 @@ const InsightsWithNavigationModule = ({
                 category === 'all' ? styles.active : ''
               } `}
             >
-              <Fade delay={index * 50 + 150}>
-                <div className={`${styles.mediaContainer} sm:mb-50`}>
-                  {item.post.previewVideo ? (
-                    <video
-                      src={item.post.previewVideo}
-                      playsInline
-                      muted
-                      loop
-                    />
-                  ) : (
-                    <Image
-                      loading="lazy"
-                      src={item.featuredImage.node.sourceUrl}
-                      alt={item.featuredImage.node.altText}
-                      width={665}
-                      height={500}
-                    />
-                  )}
-                </div>
-                <time
-                  className={`${styles.title} block typo-subhead uppercase sm:mb-30`}
-                >
-                  {item.post.publishedDate}
-                </time>
-                <h3 className="typo-headlines mb-60 md:mb-50">{item.title}</h3>
-                <Link href={`/insights/${item.slug}`}>
-                  <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
-                    Read More
-                  </a>
-                </Link>
-              </Fade>
+              <Link href={`/insights/${item.slug}`}>
+                <a>
+                  <Fade delay={index * 50 + 150}>
+                    <div className={`${styles.mediaContainer} sm:mb-50`}>
+                      {item.post.previewVideo ? (
+                        <video
+                          src={item.post.previewVideo}
+                          playsInline
+                          muted
+                          loop
+                        />
+                      ) : (
+                        <Image
+                          loading="lazy"
+                          src={item.featuredImage.node.sourceUrl}
+                          alt={item.featuredImage.node.altText}
+                          width={665}
+                          height={500}
+                        />
+                      )}
+                    </div>
+                    <time
+                      className={`${styles.title} block typo-subhead uppercase sm:mb-30`}
+                    >
+                      {item.post.publishedDate}
+                    </time>
+                    <h3 className="typo-headlines mb-60 md:mb-50">
+                      {item.title}
+                    </h3>
+
+                    <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
+                      Read More
+                    </a>
+                  </Fade>
+                </a>
+              </Link>
             </li>
           ))}
         </ul>

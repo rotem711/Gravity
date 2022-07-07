@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -52,7 +53,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
   }
 
   // set copyContainer height
-  useEffect(() => {
+  useLayoutEffect(() => {
     recalculate()
   }, [])
 
@@ -60,6 +61,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, recalculate)
+    recalculate()
     if (inView) {
       timer = setTimeout(() => {
         if (indexRef.current + 1 === mediaRefs.current.length) {

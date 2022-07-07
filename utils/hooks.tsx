@@ -36,8 +36,7 @@ export default function useIsMobile(
 }
 
 export const validateEmail = (email: string) => {
-  const regexp =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return regexp.test(email)
 }
 
@@ -46,9 +45,8 @@ export const validateEmail = (email: string) => {
  * @param _date expects Ymd date (YYYYMMDD)
  * @returns formatted string
  */
-export const formatDate = (_date: number | string) =>
-  new Date(_date).toLocaleString('en-us', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
+export const formatDate = (_date: number | string) => new Date(_date).toLocaleString('en-us', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+})

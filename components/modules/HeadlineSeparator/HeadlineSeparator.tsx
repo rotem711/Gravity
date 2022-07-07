@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unstable-nested-components */
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import Arrow from 'public/icons/icon-arrow.svg'
@@ -24,6 +24,17 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
       setSubmitted(true)
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('keypress', (event) => {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === 'Enter') {
+        // Cancel the default action, if needed
+        event.preventDefault()
+        submit()
+      }
+    })
+  }, [])
 
   const EnableSubscribe = (
     <div className={styles.enableSubscribe}>
