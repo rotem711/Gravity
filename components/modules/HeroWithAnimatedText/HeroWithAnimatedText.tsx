@@ -23,6 +23,9 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
       end: 'bottom bottom',
     })
 
+    // ignore the first one
+    refs.current.shift()
+
     gsap
       .timeline({
         scrollTrigger: {
@@ -32,7 +35,7 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
           scrub: 1,
         },
       })
-      .fromTo([...refs.current, lastLineRef.current], { opacity: 0 }, { opacity: 1, stagger: 0.2 })
+      .fromTo([...refs.current, lastLineRef.current], { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
   }, [refs])
 
   return (
