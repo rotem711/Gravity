@@ -40,7 +40,7 @@ const ImageWithCopyColumnsModule: FunctionComponent<IImageWithCopyColumns> = (
         </div>
         {image && (
           <div className="relative">
-            <Image image={image} />
+            <Image layout="responsive" className={styles.image} image={image} />
             <span className={`${styles.corners}`} aria-hidden="true">
               <i style={{ backgroundColor }} />
               <i style={{ backgroundColor }} />

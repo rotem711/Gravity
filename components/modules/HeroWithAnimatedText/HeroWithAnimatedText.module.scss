@@ -22,9 +22,14 @@
   color: theme('colors.white');
   font-family: 'Modern Gothic';
   font-weight: 300;
-  font-size: 3.5rem;
-  line-height: 4.55rem;
+  font-size: 2.6rem;
+  line-height: 3rem;
   letter-spacing: -0.01em;
+
+  @screen sm {
+    font-size: 3.5rem;
+  line-height: 4.55rem;
+  }
 
   @screen lg {
     font-size: 5.2rem;

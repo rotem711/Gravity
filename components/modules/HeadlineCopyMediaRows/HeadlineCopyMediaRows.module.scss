@@ -3,11 +3,14 @@
 
   .mediaContainer {
     aspect-ratio: 316 / 200;
+
     video, .gatsbyImage {
       object-fit: cover;
     }
     video {
-      height: 100%;
+      @screen sd {
+        height: 100%;
+      }
     }
   }
 }

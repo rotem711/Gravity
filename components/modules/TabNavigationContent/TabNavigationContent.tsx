@@ -96,7 +96,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
               )
               return (
                 <div
-                  id="accordion"
+                  id={`accordion-${itemIndex}`}
                   key={item.title}
                   style={{ backgroundColor: item.backgroundColor }}
                   className={`${styles.accordion} ${index === itemIndex ? styles.accordionItemActive : ''}`}
@@ -106,15 +106,16 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     className="typo-subhead uppercase container flex items-center justify-between pt-25 pb-25"
                     onClick={() => {
                       if (index === itemIndex) return
+                      document.getElementById('tabNavigationContent').scrollIntoView({ behavior: 'auto' })
                       setIndex(itemIndex)
-                      document.getElementById('accordion').scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      window.scrollBy({ behavior: 'smooth', top: 1 })
                     }}
                   >
                     <p>
                       {item.titleIcon}
                       {item.title}
                     </p>
-                    <DropdownArrow />
+                    {index !== itemIndex && <DropdownArrow />}
                   </button>
 
                   <div

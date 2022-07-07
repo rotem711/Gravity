@@ -26,7 +26,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
               className="col-span-6 md:col-span-4 md:block"
             >
               <Fade className="h-full flex flex-col" delay={index * 150 + 150}>
-                <div className={`${styles.mediaContainer} mb-30 sm:mb-50`}>
+                <div className={`${styles.mediaContainer} mb-40 md:mb-50`}>
                   {item.insight.post.previewVideo ? (
                     <video
                       src={item.insight.post.previewVideo}
@@ -48,12 +48,12 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                   )}
                 </div>
                 <time
-                  className={`${styles.title} block typo-subhead uppercase mb-30`}
+                  className={`${styles.title} block typo-subhead uppercase mb-40 md:mb-30`}
                   dateTime={item.insight.post.publishedDate.replace('.', '-')}
                 >
                   {item.insight.post.publishedDate}
                 </time>
-                <h3 className="typo-headlines mb-60 md:mb-50">
+                <h3 className="typo-headlines mb-55 md:mb-50">
                   {item.insight.title}
                 </h3>
                 <Link href={`/insights/${item.insight.slug}`}>
