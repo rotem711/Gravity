@@ -16,17 +16,17 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
       style={{ backgroundColor: featuredInsights.backgroundColor }}
     >
       <div className={`container pt-25 xl:pt-35 ${reducedSpacing ? 'pb-100 md:pb-65' : 'pb-155 xl:pb-230'}`}>
-        <h2 className={`${styles.title} typo-subhead uppercase sm:mb-60`}>
+        <h2 className={`${styles.title} typo-subhead uppercase mb-50 sm:mb-60`}>
           <Fade>{featuredInsights.headline}</Fade>
         </h2>
-        <ul className="default-grid">
+        <ul className="default-grid gap-y-180">
           {featuredInsights.insights.map((item, index) => (
             <li
               key={item.insight.id}
-              className="col-span-6 xl:col-span-4 sm:mb-180 md:mb-0 last:mb-0 md:last:hidden xl:last:block"
+              className="col-span-6 md:col-span-4 md:block"
             >
               <Fade className="h-full flex flex-col" delay={index * 150 + 150}>
-                <div className={`${styles.mediaContainer} sm:mb-50`}>
+                <div className={`${styles.mediaContainer} mb-30 sm:mb-50`}>
                   {item.insight.post.previewVideo ? (
                     <video
                       src={item.insight.post.previewVideo}
@@ -48,7 +48,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                   )}
                 </div>
                 <time
-                  className={`${styles.title} block typo-subhead uppercase sm:mb-30`}
+                  className={`${styles.title} block typo-subhead uppercase mb-30`}
                   dateTime={item.insight.post.publishedDate.replace('.', '-')}
                 >
                   {item.insight.post.publishedDate}

@@ -19,7 +19,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             <div className="md:col-span-5 flex flex-col md:row-start-2">
               {item.topHeadline && (
                 <span
-                  className={`typo-subhead uppercase mb-90 md:mb-135 block ${styles.topHeadline}`}
+                  className={`typo-subhead uppercase mb-90 md:mb-75 block ${styles.topHeadline}`}
                 >
                   <Fade>{item.topHeadline}</Fade>
                 </span>
@@ -33,7 +33,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                   dangerouslySetInnerHTML={{ __html: item.copy }}
                 />
               </Fade>
-              <div className="w-full mt-50 md:mt-60 hidden md:block">
+              <div className="w-full mt-50 md:mt-0 hidden md:block">
                 <Fade delay={400}>
                   <Button variant="light" link={item.link} />
                 </Fade>
