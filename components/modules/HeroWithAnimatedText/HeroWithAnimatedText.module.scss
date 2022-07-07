@@ -1,9 +1,6 @@
 .root {
   position: relative;
-  height: 100vh;
-
-  @screen lg {
-  }
+  min-height: 100vh;
 }
 
 .video {
@@ -36,11 +33,5 @@
 
   &:first-of-type {
     opacity: 1 !important;
-  }
-
-  @screen lg {
-    // &:last-of-type {
-    //   opacity: 1 !important;
-    // }
   }
 }

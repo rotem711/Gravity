@@ -5,7 +5,7 @@ import IImage from './Image.interface'
 
 const ImageModule:FunctionComponent<IImage> = ({ image }) => (
   <div
-    className={`${styles.root} my-5 md:my-10`}
+    className={`${styles.root} mb-70`}
   >
     <div className="container-insights">
       <ImageComponent image={image} />

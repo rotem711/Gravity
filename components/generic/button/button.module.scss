@@ -8,7 +8,7 @@
   transition: 400ms ease;
   border: 1px solid theme('colors.black');
   @extend .typo-captions-and-buttons;
-  line-height: 1 !important;
+  line-height: 1.1 !important;
 
   @screen sm {
     padding: 1.3rem 3rem;

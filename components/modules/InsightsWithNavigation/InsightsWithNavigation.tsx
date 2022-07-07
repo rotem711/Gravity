@@ -109,7 +109,7 @@ const InsightsWithNavigationModule = ({
             >
               <Link href={`/insights/${item.slug}`}>
                 <a>
-                  <Fade delay={index * 50 + 150}>
+                  <Fade threshold={0} delay={index * 50 + 150}>
                     <div className={`${styles.mediaContainer} sm:mb-50`}>
                       {item.post.previewVideo ? (
                         <video
