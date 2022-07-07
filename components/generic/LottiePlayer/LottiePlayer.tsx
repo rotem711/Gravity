@@ -42,7 +42,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         const offset = (pRect.height - height) / 2 + 5
         const offsetLeft = (pRect.width - width) / 2
         setOffsetY(offset * -1)
-        setOffsetX(offsetLeft * -1)
+        if (animation !== 'careers') setOffsetX(offsetLeft * -1)
         if (animation === 'simplify-carbon-accounting') {
           if (window.innerWidth < 834) {
             setSVGHeight(
@@ -74,7 +74,8 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   return (
     <div
       id={animation}
-      className={`${styles.root} ${styles[animation]} ${(render && inView) ? styles.fadeIn : ''
+      className={`${styles.root} ${styles[animation]} ${
+        render && inView ? styles.fadeIn : ''
       }`}
       style={{
         transform: `translateX(${offsetX}px) translateY(${offsetY}px)`,

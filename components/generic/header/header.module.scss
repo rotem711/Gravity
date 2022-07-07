@@ -179,11 +179,8 @@
     padding-bottom: 0.3rem;
     transform-origin: bottom left;
     position: relative;
-    margin-left: 3rem;
-    font-weight: 400;
-  }
-  @screen lg {
     margin-left: 5rem;
+    font-weight: 400;
   }
 
   &::after {

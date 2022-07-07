@@ -8,6 +8,7 @@ const SublineHeadlineMediaFragment = (t: string) => `
       subline
       ${ImageComponent()}
       vimeoVideoUrl
+      lottieSelect
     }
   }
 `

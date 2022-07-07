@@ -43,8 +43,9 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
       }
     }
     let m = 0
+    console.log(mediaRefs)
     for (let i = 0; i < mediaRefs.current.length; i += 1) {
-      if (mediaRefs.current[i].clientHeight > m) {
+      if (mediaRefs.current[i] && mediaRefs.current[i].clientHeight > m) {
         m = mediaRefs.current[i].clientHeight
       }
     }

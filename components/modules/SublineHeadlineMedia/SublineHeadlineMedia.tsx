@@ -1,5 +1,7 @@
+/* eslint-disable no-nested-ternary */
 import React, { FunctionComponent } from 'react'
 import Fade from 'components/generic/fade/fade'
+import LottiePlayer from 'components/generic/LottiePlayer/LottiePlayer'
 import Image from 'components/generic/image/image'
 import styles from './SublineHeadlineMedia.module.scss'
 import ISublineHeadlineMedia from './SublineHeadlineMedia.interface'
@@ -22,7 +24,11 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
         </div>
         <div className={`${styles.mediaContainer} col-span-6 md:col-span-5`}>
           <Fade className="h-full" delay={300}>
-            {sublineHeadlineMedia.vimeoVideoUrl ? (
+            {sublineHeadlineMedia.lottieSelect ? (
+              <LottiePlayer
+                animation={sublineHeadlineMedia.lottieSelect}
+              />
+            ) : sublineHeadlineMedia.vimeoVideoUrl ? (
               <video
                 src={sublineHeadlineMedia.vimeoVideoUrl}
                 playsInline
