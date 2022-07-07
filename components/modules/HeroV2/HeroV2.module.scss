@@ -12,6 +12,12 @@
     }
   }
 
+  @screen md {
+    h1 {
+      max-width: 66rem;
+    }
+  }
+
   .mediaContainer {
     position: absolute;
     top: 0;

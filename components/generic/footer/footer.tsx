@@ -26,14 +26,13 @@ const FooterBlock = ({ data }: { data: FooterInterface }) => (
             <ul className={`${styles.list} `}>
               {item.links.map((subItem) => (
                 <li key={subItem.link.title}>
-                  <Link href={subItem.link.url}>
-                    <a
-                      className={`${styles.navItem} `}
-                      target={subItem.link.target}
-                    >
-                      {subItem.link.title}
-                    </a>
-                  </Link>
+                  <a
+                    className={`${styles.navItem} `}
+                    target={subItem.link.target}
+                    href={subItem.link.url}
+                  >
+                    {subItem.link.title}
+                  </a>
                 </li>
               ))}
             </ul>

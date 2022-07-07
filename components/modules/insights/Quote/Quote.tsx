@@ -5,7 +5,7 @@ import IQuote from './Quote.interface'
 
 const QuoteModule:FunctionComponent<IQuote> = ({ quote, author }) => (
   <div
-    className={`${styles.root} my-30 md:my-50`}
+    className={`${styles.root} mb-70`}
   >
     <blockquote className="container-insights">
       <p className="typo-headlines">

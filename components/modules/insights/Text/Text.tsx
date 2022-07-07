@@ -5,7 +5,7 @@ import IText from './Text.interface'
 
 const TextModule:FunctionComponent<IText> = ({ text }) => (
   <div
-    className={`${styles.root} typo-body my-10 md:my-20`}
+    className={`${styles.root} typo-body mb-70`}
   >
     <div className="container-insights">
       {parse(text)}

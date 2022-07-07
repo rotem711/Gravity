@@ -48,6 +48,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                 item.lottieSelect ? (
                   <LottiePlayer
                     animation={item.lottieSelect}
+                    triggerOnce
                   />
                 ) : (
                   <video

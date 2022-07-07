@@ -10,7 +10,7 @@ const TextWithImageModule:FunctionComponent<ITextWithImage> = ({ image, text }) 
 
   return (
     <div
-      className={`${styles.root} typo-body my-20 md:my-30`}
+      className={`${styles.root} typo-body mb-70`}
     >
       <div className="container-insights">
         {/* insert image into first p tag to make float right work */}

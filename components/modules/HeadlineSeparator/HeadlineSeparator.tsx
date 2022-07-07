@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unstable-nested-components */
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import Arrow from 'public/icons/icon-arrow.svg'
@@ -25,16 +25,14 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
     }
   }
 
-  useEffect(() => {
-    document.addEventListener('keypress', (event) => {
-      // If the user presses the "Enter" key on the keyboard
-      if (event.key === 'Enter') {
-        // Cancel the default action, if needed
-        event.preventDefault()
-        submit()
-      }
-    })
-  }, [])
+  const onKeyDown = (event) => {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === 'Enter') {
+      // Cancel the default action, if needed
+      event.preventDefault()
+      submit()
+    }
+  }
 
   const EnableSubscribe = (
     <div className={styles.enableSubscribe}>
@@ -52,6 +50,7 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
             <input
               onChange={(e) => setEmail(e.target.value)}
               autoFocus
+              onKeyDown={onKeyDown}
               type="email"
               placeholder="Enter Email"
             />

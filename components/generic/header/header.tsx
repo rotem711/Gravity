@@ -107,6 +107,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }, [deployed])
 
   useEffect(() => {
+    setScrollDir('')
+    setScrolled(false)
+    setDeployed(false)
     setNewsBannerActive(newsBanner.newsBannerActive && router.asPath === '/')
   }, [router.asPath])
 

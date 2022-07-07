@@ -3,37 +3,22 @@ import React, {
   FunctionComponent, useEffect, useRef, useState,
 } from 'react'
 import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
+import { useInView } from 'react-intersection-observer'
 import styles from './LottiePlayer.module.scss'
 import ILottiePlayer from './LottiePlayer.interface'
 
 const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
-  const { animation } = props
+  const { animation, triggerOnce = false } = props
   const [animationData, setAnimationData] = useState()
   const [offsetY, setOffsetY] = useState(-1)
   const [offsetX, setOffsetX] = useState(-1)
   const [render, setRender] = useState(false)
-  const [inView, setInView] = useState(false)
   const [svgHeight, setSVGHeight] = useState(0)
   const innerRef = useRef<HTMLDivElement>()
-  const ref = useRef<HTMLDivElement>()
-
-  const isInViewport = () => {
-    const rect = ref?.current?.getBoundingClientRect()
-    if (!rect) return
-    const heightOffset = window.innerWidth < 835 ? 0.3 : 1.5
-    setInView(
-      rect.top < document.documentElement.clientHeight / heightOffset &&
-        rect.bottom <= document.documentElement.clientHeight &&
-        rect.bottom > -100,
-    )
-  }
-
-  useEffect(() => {
-    document.addEventListener('scroll', isInViewport)
-    return () => {
-      document.removeEventListener('scroll', isInViewport)
-    }
-  }, [])
+  const { ref, inView } = useInView({
+    threshold: 0.4,
+    triggerOnce,
+  })
 
   const debounce = (func) => {
     const timeX = 250 // 100 by default if no param
@@ -49,9 +34,9 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     setOffsetY(-1)
     setSVGHeight(0)
     setTimeout(() => {
-      const svgParent = ref.current.querySelector('svg')
+      const svgParent = document.getElementById(animation)?.querySelector('svg')
       const x = svgParent?.childNodes[1] as Element
-      if (x) {
+      if (svgParent && x) {
         const pRect = svgParent.getBoundingClientRect()
         const { height, width } = x.getBoundingClientRect()
         const offset = (pRect.height - height) / 2 + 5
@@ -89,8 +74,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   return (
     <div
       id={animation}
-      className={`${styles.root} ${styles[animation]} ${
-        inView && render ? styles.fadeIn : ''
+      className={`${styles.root} ${styles[animation]} ${(render && inView) ? styles.fadeIn : ''
       }`}
       style={{
         transform: `translateX(${offsetX}px) translateY(${offsetY}px)`,
@@ -102,8 +86,8 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         <Lottie
           loop={false}
           animationData={animationData}
-          goTo={inView && render ? 0 : 100}
-          play={inView && render}
+          goTo={render && inView ? 0 : 100}
+          play={render && inView}
         />
       </div>
     </div>

@@ -1,5 +1,11 @@
 .root {
   position: relative;
+
+  :global(.typo-headlines) {
+    @screen xl {
+      font-size: 7.5rem;
+    }
+  }
 }
 
 .itemWrapper {
@@ -15,7 +21,7 @@
     padding-bottom: percentage(500 / 845);
   }
   @screen xl {
-    padding-bottom: 84.5rem;
+    padding-bottom: 75vh;
   }
 
   a {

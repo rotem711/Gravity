@@ -19,6 +19,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const isMobile = useIsMobile()
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
+  const [titleHeight, setTitleHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
 
@@ -28,6 +29,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 
   const recalculate = () => {
     setTabHeight(0)
+    setTitleHeight(0)
     let height = 0
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (!tabContentRefs.current[i]) return
@@ -35,6 +37,16 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
+
+    let heightTitle = 0
+    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
+      if (!tabTitleRefs.current[i]) return
+      if (tabTitleRefs.current[i].clientHeight > heightTitle) {
+        heightTitle = tabTitleRefs.current[i].getBoundingClientRect().height
+      }
+    }
+
+    setTitleHeight(heightTitle)
     setTabHeight(height)
   }
 
@@ -175,8 +187,8 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                       color: item.backgroundColor,
                     }}
                     className={`${styles.navTopItem} ${
-                      itemIndex === 0 ? styles.navTopItemFirst : ''
-                    } flex-1 pt-30 pb-30 pl-40`}
+                      itemIndex === 0 ? styles.navTopItemFirst : 'pl-40'
+                    } flex-1 pt-30 pb-30`}
                   >
                     <button
                       className={`${styles.navItem} ${
@@ -228,13 +240,14 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-100"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-70"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
                                 }}
                                 ref={(element) => {
                                   tabTitleRefs.current[itemIndex] = element
                                 }}
+                                style={{ minHeight: titleHeight }}
                               />
                               <div className="typo-body col-span-5 col-start-8 lg:w-10/12 block">
                                 {subItem.copy}
