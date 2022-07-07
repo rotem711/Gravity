@@ -1,6 +1,17 @@
 .root {
   position: relative;
-  background-color: #B8B7A4;
+  background-color: #b8b7a4;
+
+  a {
+    &:hover {
+      .mediaContainer {
+        opacity: 0.5;
+      }
+    }
+    .mediaContainer {
+      transition: 400ms ease;
+    }
+  }
 }
 
 @keyframes ANIMATE_IN {
@@ -26,7 +37,7 @@
   position: sticky;
   top: 0;
   z-index: 101;
-  background-color: #B8B7A4;
+  background-color: #b8b7a4;
   border-bottom: 1px solid #000;
   height: 8rem;
   display: flex;
