@@ -1,7 +1,9 @@
 .root {
   position: relative;
-
-  p + p {
+  p {
     margin-bottom: 1.5em;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }

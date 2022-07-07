@@ -38,16 +38,14 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
         },
       })
       .fromTo(lines, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
+      .add(() => {
+        document.getElementById('header').classList.add('fadeOut')
+      })
   }, [refs])
 
   return (
-    <div
-      id="team-header"
-      className={`${styles.root}`}
-    >
-      <div
-        className={`${styles.pin} pt-180 lg:pt-225 pb-150 lg:pb-190`}
-      >
+    <div id="team-header" className={`${styles.root}`}>
+      <div className={`${styles.pin} pt-180 lg:pt-225 pb-150 lg:pb-190`}>
         <div className="container">
           <div className={`${styles.list} list`}>
             <div className={`${styles.items} items`}>
@@ -62,7 +60,10 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
               ))}
             </div>
           </div>
-          <div ref={lastLineRef} className={`relative ${styles.line} line last mt-150 lg:mt-230 z-[1]`}>
+          <div
+            ref={lastLineRef}
+            className={`relative ${styles.line} line last mt-150 lg:mt-230 z-[1]`}
+          >
             {heroWithAnimatedText.subline}
           </div>
         </div>

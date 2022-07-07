@@ -59,13 +59,17 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
     window.addEventListener(hook, debounce(calculate))
-    import(`public/animations/${animation}.json`)
-      .then(setAnimationData)
-      .then(() => {
-        setTimeout(() => {
-          calculate()
-        }, 1000)
-      })
+    try {
+      import(`public/animations/${animation}.json`)
+        .then(setAnimationData)
+        .then(() => {
+          setTimeout(() => {
+            calculate()
+          }, 1000)
+        })
+    } catch (e) {
+      console.log(e)
+    }
     return () => {
       window.removeEventListener(hook, debounce(calculate))
     }

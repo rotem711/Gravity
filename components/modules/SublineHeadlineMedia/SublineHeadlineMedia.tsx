@@ -18,9 +18,9 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
           <h2 className="typo-subhead uppercase mb-75 md:mb-100 xl:mb-140">
             <Fade>{sublineHeadlineMedia.subline}</Fade>
           </h2>
-          <p className="typo-headlines mb-90 md:mb-0">
+          <div className="typo-headlines mb-90 md:mb-0">
             <Fade delay={200}>{sublineHeadlineMedia.headline}</Fade>
-          </p>
+          </div>
         </div>
         <div className={`${styles.mediaContainer} col-span-6 md:col-span-5`}>
           <Fade className="h-full" delay={300}>

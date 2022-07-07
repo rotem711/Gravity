@@ -1,14 +1,14 @@
 .root {
   position: relative;
-  min-height: 100vh;
 
   .pin {
     position: sticky;
     top: 0;
+    height: 100vh;
   }
 
   .spacer {
-    height: 200vh;
+    height: 150vh;
     width: 50%;
     background-color: black;
   }

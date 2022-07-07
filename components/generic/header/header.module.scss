@@ -19,6 +19,12 @@
   }
 }
 
+#header {
+  &.fadeOut {
+    background-color: green;
+  }
+}
+
 .root {
   position: fixed;
   top: 0;
