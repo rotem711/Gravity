@@ -6,35 +6,10 @@
 
 .numbers {
   position: relative;
-
-  @screen md {
-    grid-column-start: 5;
-    grid-column-end: span end;
-  }
 }
 
 .number {
-  @screen md {
-    &:first-child,
-    &:nth-child(2) {
-      margin-top: 65px;
-    }
-  }
-
-  @screen md {
-    &:first-child,
-    &:nth-child(2) {
-      margin-top: 0;
-    }
-  }
-
   dt {
     @apply typo-number;
-  }
-
-  dd {
-    @screen lg {
-      width: 65%;
-    }
   }
 }
