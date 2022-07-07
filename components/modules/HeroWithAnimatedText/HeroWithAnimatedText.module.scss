@@ -1,6 +1,17 @@
 .root {
   position: relative;
   min-height: 100vh;
+
+  .pin {
+    position: sticky;
+    top: 0;
+  }
+
+  .spacer {
+    height: 200vh;
+    width: 50%;
+    background-color: black;
+  }
 }
 
 .video {
@@ -28,7 +39,7 @@
 
   @screen sm {
     font-size: 3.5rem;
-  line-height: 4.55rem;
+    line-height: 4.55rem;
   }
 
   @screen lg {
@@ -37,6 +48,6 @@
   }
 
   &:first-of-type {
-    opacity: 1 !important;
+    opacity: 1;
   }
 }
