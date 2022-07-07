@@ -7,5 +7,6 @@ export default interface ISublineHeadlineMedia {
     subline: string
     image: Image
     vimeoVideoUrl: string
+    lottieSelect?: string
   }
 }

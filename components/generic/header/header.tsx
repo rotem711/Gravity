@@ -1,5 +1,5 @@
 /* eslint-disable operator-linebreak */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
@@ -21,6 +21,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const router = useRouter()
   const ctx = useContext(GlobalContext)
   const isMobile = useIsMobile()
+  const prevPos = useRef(0)
   const {
     settings: { newsBanner },
   } = ctx
@@ -38,63 +39,69 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     )
   }
 
-  useEffect(() => {
-    const appHeight = () => {
-      setHeight(window.innerHeight)
+  const reset = () => {
+    setDeployed(false)
+    setScrolled(false)
+    setScrollDir('')
+    prevPos.current = 0
+  }
+
+  const calculate = () => {
+    if (window.scrollY === 0) {
+      setScrollDir('')
+      setScrolled(false)
+      return
     }
+    if (window.location.pathname === '/team') {
+      if (
+        window.scrollY >
+        document.getElementById('team-header').getBoundingClientRect().height
+      ) {
+        setScrollDir('down')
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+      prevPos.current = window.scrollY
+      return
+    }
+
+    setScrolled(true)
+
+    if (prevPos.current >= window.scrollY && window.scrollY > 1) {
+      if (
+        prevPos.current >=
+        window.scrollY + document.documentElement.clientHeight / 3
+      ) {
+        if (window.innerWidth < 768 && !isFooterNotVisible()) return
+        setScrollDir('up')
+        prevPos.current = window.scrollY
+      }
+      return
+    }
+
+    if (window.scrollY > 1 && prevPos.current > 0) {
+      setScrollDir('down')
+    }
+
+    prevPos.current = window.scrollY
+  }
+
+  useEffect(() => {
+    const appHeight = () => setHeight(window.innerHeight)
     window.addEventListener('resize', appHeight)
     appHeight()
 
-    Router.events.on('routeChangeComplete', () => {
-      setDeployed(false)
-      setScrolled(false)
-      setScrollDir('')
-    })
+    Router.events.on('routeChangeComplete', reset)
+
     if (window.scrollY > 0) {
       setScrolled(true)
       setScrollDir('up')
     }
-    let prevPos = 0
-    setTimeout(() => {
-      window.onscroll = () => {
-        if (router.asPath === '/team' && prevPos < window.scrollY) {
-          if (window.scrollY > window.innerHeight * 3) {
-            setScrollDir('down')
-            setScrolled(true)
-          } else {
-            setScrolled(false)
-          }
-          prevPos = window.scrollY
-          return
-        }
-        if (window.scrollY === 0) {
-          setScrollDir('')
-          setScrolled(false)
-        } else {
-          setScrolled(true)
-        }
-
-        if (prevPos >= window.scrollY && window.scrollY > 1) {
-          if (
-            prevPos >=
-            window.scrollY + document.documentElement.clientHeight / 3
-          ) {
-            if (window.innerWidth < 768 && !isFooterNotVisible()) return
-            setScrollDir('up')
-            prevPos = window.scrollY
-          }
-          return
-        }
-        if (window.scrollY > 1 && prevPos > 0) {
-          setScrollDir('down')
-        }
-
-        prevPos = window.scrollY
-      }
-    }, 10)
-
+    window.addEventListener('scroll', calculate)
     return () => {
       window.removeEventListener('resize', appHeight)
+      window.removeEventListener('scroll', calculate)
     }
   }, [])
 
@@ -107,9 +114,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }, [deployed])
 
   useEffect(() => {
-    setScrollDir('')
-    setScrolled(false)
-    setDeployed(false)
+    reset()
     setNewsBannerActive(newsBanner.newsBannerActive && router.asPath === '/')
   }, [router.asPath])
 
@@ -148,7 +153,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
           >
             <div className="container">
               <nav className={`${rightSideNavigation ? styles.navCenter : ''}`}>
-                <ul className="md:flex">
+                <ul className="md:flex items-center">
                   {data?.mainNavigation?.map((subItem) => {
                     const url = subItem.link.url.replace(/\/+$/, '')
                     const activeItem = router.asPath.includes(url)
@@ -171,7 +176,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
               </nav>
               {rightSideNavigation && (
                 <nav>
-                  <ul className="md:flex">
+                  <ul className="md:flex items-center">
                     {rightSideNavigation.map((subItem) => {
                       const url = subItem.link.url.replace(/\/+$/, '')
                       const activeItem = router.asPath.includes(url)
