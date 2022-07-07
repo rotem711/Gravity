@@ -19,9 +19,11 @@
     color: theme('colors.white');
 
     &:not(.disableHover) {
-      &:hover {
-        background: transparent;
-        color: theme('colors.black');
+      @screen sd {
+        &:hover {
+          background: transparent;
+          color: theme('colors.black');
+        }
       }
     }
   }
@@ -29,9 +31,11 @@
     background: transparent;
     &:not(.disableHover) {
       &:hover {
-        background: theme('colors.black');
-        color: theme('colors.white');
-        border: 1px solid theme('colors.black');
+        @screen sd {
+          background: theme('colors.black');
+          color: theme('colors.white');
+          border: 1px solid theme('colors.black');
+        }
       }
     }
   }

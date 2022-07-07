@@ -3,12 +3,14 @@
 
   &.extended {
     display: flex;
-    height: calc(100vh - env(safe-area-inset-bottom));
+    height: calc(100vh);
+    max-height: 70rem;
     > div {
       margin-top: auto;
     }
     @screen md {
       height: 60rem;
+      max-height: initial;
     }
   }
 

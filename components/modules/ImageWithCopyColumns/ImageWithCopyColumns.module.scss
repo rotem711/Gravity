@@ -3,6 +3,18 @@
   @apply pb-30 md:pb-35 xl:pb-40;
   overflow: hidden;
 
+  .image {
+    aspect-ratio: 354 / 450;
+    span {
+      height: 100% !important;
+      img {
+        object-fit: cover;
+      }
+    }
+    @screen sd {
+      aspect-ratio: auto;
+    }
+  }
   .corners {
     position: absolute;
     top: 0;
