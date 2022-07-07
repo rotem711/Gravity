@@ -24,7 +24,9 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
     })
 
     // ignore the first one
-    refs.current.shift()
+    // add the last one
+    const lines = refs.current.slice(1)
+    lines.push(lastLineRef.current)
 
     gsap
       .timeline({
@@ -35,7 +37,7 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
           scrub: 1,
         },
       })
-      .fromTo([...refs.current, lastLineRef.current], { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
+      .fromTo(lines, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
   }, [refs])
 
   return (
