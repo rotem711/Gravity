@@ -80,7 +80,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
           const mediaC = (
             <div
               className={`relative ${
-                extendedOnMobile ? '-mx-30 md:mx-0 h-full' : ''
+                extendedOnMobile ? '-mx-35 md:mx-0 h-full' : ''
               }`}
             >
               <Fade className="h-full" delay={400}>
@@ -122,7 +122,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                     )}
                   </div>
                   <div
-                    className={`col-span-12 md:col-span-4 md:col-start-8 default-grid md:block ${
+                    className={`col-span-12 sd:col-span-5 md:col-span-4 md:col-start-8 default-grid md:block ${
                       extendedOnMobile
                         ? 'mb-50 md:mb-60'
                         : 'order-1 md:order-2 mb-45 md:mb-0'

@@ -38,7 +38,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
     let l = 0
 
     for (let i = 0; i < copyRefs.current.length; i += 1) {
-      if (copyRefs.current[i].clientHeight * 1 > l) {
+      if (copyRefs.current[i] && copyRefs.current[i].clientHeight * 1 > l) {
         l = copyRefs.current[i].clientHeight * 1
       }
     }
@@ -86,8 +86,8 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
         <Fade>{sliderWithMedia.subline}</Fade>
       </h2>
       <div className="md:default-grid">
-        <header className="md:default-grid md:col-span-4 md:mb-90 lg:mb-0">
-          <ul className="mb-25 md:mb-0 md:col-span-12 lg:mb-95">
+        <header className="sd:default-grid md:col-span-4 md:mb-90 lg:mb-0">
+          <ul className="mb-25 sd:col-span-3 md:col-span-12 md:mb-95">
             {sliderWithMedia.slides.map((item, itemIndex) => (
               <li key={item.title}>
                 <button
@@ -104,9 +104,9 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               </li>
             ))}
           </ul>
-          <div className="md:col-span-12">
+          <div className="sd:col-span-3 md:col-span-12">
             <div
-              className={`${styles.copyContainer} md:col-span-6 mb-25`}
+              className={`${styles.copyContainer} md:col-span-6 mb-25 sd:mb-0`}
               style={{ height: copyHeight }}
             >
               {sliderWithMedia.slides.map((item, itemIndex) => (
@@ -123,7 +123,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
                 </div>
               ))}
             </div>
-            <div className="w-full mt-50 md:mt-45 lg:mt-60 hidden md:block">
+            <div className="w-full mt-50 md:mt-45 lg:mt-60 hidden sd:block">
               <Fade>
                 <Button variant="light" link={sliderWithMedia.link} />
               </Fade>
@@ -170,7 +170,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
             </div>
           ))}
         </div>
-        <div className="w-full mt-50 md:hidden">
+        <div className="w-full mt-50 sd:hidden">
           <Button variant="light" link={sliderWithMedia.link} />
         </div>
       </div>
