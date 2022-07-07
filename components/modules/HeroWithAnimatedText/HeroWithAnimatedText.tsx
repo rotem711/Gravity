@@ -21,6 +21,12 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
       trigger: '#team-header',
       start: 'top top',
       end: 'bottom bottom',
+      onLeave: () => {
+        document.getElementById('header').classList.add('fadeOut')
+        setTimeout(() => {
+          window.scrollBy(0, 1)
+        }, 10)
+      },
     })
 
     // ignore the first one
@@ -38,12 +44,6 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
         },
       })
       .fromTo(lines, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2 })
-      .add(() => {
-        document.getElementById('header').classList.add('fadeOut')
-        setTimeout(() => {
-          window.scrollBy(0, 1)
-        }, 10)
-      })
   }, [refs])
 
   return (
