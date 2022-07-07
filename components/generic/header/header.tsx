@@ -27,6 +27,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const {
     settings: { newsBanner },
   } = ctx
+
   const [newsBannerActive, setNewsBannerActive] = useState(
     !!newsBanner.newsBannerActive && router.asPath === '/',
   )
@@ -50,30 +51,25 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
   const calculate = () => {
     if (window.scrollY === 0) {
-      setScrollDir('')
-      setScrolled(false)
+      document.getElementById('header').classList.remove('fadeOut')
+      reset()
       return
     }
-    if (window.location.pathname === '/team') {
-      if (
-        window.scrollY >
-        document.getElementById('team-header').getBoundingClientRect().height
-      ) {
+    if (window.location.pathname === '/team' && window.scrollY > prevPos.current) {
+      if (document.getElementById('header').classList.contains('fadeOut')) {
         setScrollDir('down')
         setScrolled(true)
-      } else {
-        setScrolled(false)
       }
-      prevPos.current = window.scrollY
+      if (prevPos.current <= window.scrollY) {
+        prevPos.current = window.scrollY
+      }
       return
     }
-
     setScrolled(true)
-
     if (prevPos.current >= window.scrollY && window.scrollY > 1) {
       if (
         prevPos.current >=
-        window.scrollY + document.documentElement.clientHeight / 3
+        window.scrollY + 150
       ) {
         if (window.innerWidth < 768 && !isFooterNotVisible()) return
         setScrollDir('up')
@@ -81,11 +77,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       }
       return
     }
-
     if (window.scrollY > 1 && prevPos.current > 0) {
       setScrollDir('down')
     }
-
     prevPos.current = window.scrollY
   }
 

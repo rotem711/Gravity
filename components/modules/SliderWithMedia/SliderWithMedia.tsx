@@ -26,7 +26,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
 
   const { ref, inView } = useInView({
     threshold: 0,
-    triggerOnce: false,
+    triggerOnce: true,
   })
 
   const onClickItem = (e) => {
@@ -36,14 +36,12 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
 
   const recalculate = () => {
     let l = 0
-
     for (let i = 0; i < copyRefs.current.length; i += 1) {
       if (copyRefs.current[i] && copyRefs.current[i].clientHeight * 1 > l) {
         l = copyRefs.current[i].clientHeight * 1
       }
     }
     let m = 0
-    console.log(mediaRefs)
     for (let i = 0; i < mediaRefs.current.length; i += 1) {
       if (mediaRefs.current[i] && mediaRefs.current[i].clientHeight > m) {
         m = mediaRefs.current[i].clientHeight
@@ -53,7 +51,6 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
     setMediaHeight(m)
   }
 
-  // set copyContainer height
   useLayoutEffect(() => {
     recalculate()
   }, [])

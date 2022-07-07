@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -45,15 +44,17 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
   }, [])
 
   // set quoteContainer height
-  useLayoutEffect(() => {
-    let maxQuoteHeight = 0
-    for (let i = 0; i < quoteRefs.current.length; i += 1) {
-      if (quoteRefs.current[i].clientHeight > maxQuoteHeight) {
-        maxQuoteHeight = quoteRefs.current[i].clientHeight
+  useEffect(() => {
+    setTimeout(() => {
+      let maxQuoteHeight = 0
+      for (let i = 0; i < quoteRefs.current.length; i += 1) {
+        if (quoteRefs.current[i].clientHeight > maxQuoteHeight) {
+          maxQuoteHeight = quoteRefs.current[i].clientHeight
+        }
       }
-    }
-    setQuoteHeight(maxQuoteHeight)
-  })
+      setQuoteHeight(maxQuoteHeight)
+    }, 500)
+  }, [])
 
   useEffect(() => {
     if (inView) {

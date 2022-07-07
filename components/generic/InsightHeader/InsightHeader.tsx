@@ -16,6 +16,7 @@ const InsightHeader: FunctionComponent<IInsightHeader> = (props) => {
             alt={image.altText}
             width="665"
             height="380"
+            objectFit="cover"
           />
         )}
         {videoUrl && (
