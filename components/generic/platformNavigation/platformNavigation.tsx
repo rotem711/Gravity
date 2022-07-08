@@ -23,6 +23,7 @@ const PlatformNavigation = () => {
       top: scrollPos - offset,
       behavior: 'smooth',
     })
+    document.getElementById('header').classList.add('fadeOut')
   }
 
   const isElementInViewport = (el) => {

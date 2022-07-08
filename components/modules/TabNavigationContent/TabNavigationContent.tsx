@@ -27,22 +27,32 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
+  const debounce = (func) => {
+    const timeX = 250 // 100 by default if no param
+    let timer
+    return (event) => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(func, timeX, event)
+    }
+  }
+
   const calculateTitleHeight = () => {
     let heightTitle = 0
     setTitleHeight(0)
-    console.log(tabTitleRefs.current)
-    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
-      if (!tabTitleRefs.current[i]) return
-      if (tabTitleRefs.current[i].clientHeight > heightTitle) {
-        heightTitle = tabTitleRefs.current[i].getBoundingClientRect().height
+    setTimeout(() => {
+      const elementsToIterate = [...tabTitleRefs.current].splice(index * 3, 3)
+      for (let i = 0; i < elementsToIterate.length; i += 1) {
+        if (!elementsToIterate[i]) return
+        if (elementsToIterate[i].clientHeight > heightTitle) {
+          heightTitle = elementsToIterate[i].getBoundingClientRect().height
+        }
       }
-    }
-    setTitleHeight(heightTitle)
+      setTitleHeight(heightTitle)
+    }, 10)
   }
 
   const recalculate = () => {
     setTabHeight(0)
-    setTitleHeight(0)
     let height = 0
     for (let i = 0; i < tabContentRefs.current.length; i += 1) {
       if (!tabContentRefs.current[i]) return
@@ -50,6 +60,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
+    calculateTitleHeight()
     setTabHeight(height)
   }
 
@@ -68,9 +79,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     recalculate()
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
-    window.addEventListener(hook, recalculate)
+    window.addEventListener(hook, debounce(recalculate))
     return () => {
-      window.removeEventListener(hook, recalculate)
+      window.removeEventListener(hook, debounce(recalculate))
     }
   }, [])
 
@@ -243,18 +254,18 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     >
                       {item.content.length === 3 ? (
                         <>
-                          {item.content.map((subItem) => (
+                          {item.content.map((subItem, subItemIndex) => (
                             <div
                               key={subItem.headline}
                               className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-70"
+                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-70 pr-30"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
                                 }}
                                 ref={(element) => {
-                                  tabTitleRefs.current.push(element)
+                                  tabTitleRefs.current[subItemIndex + itemIndex * 3] = element
                                 }}
                                 style={{ height: titleHeight > 0 ? titleHeight : null }}
                               />

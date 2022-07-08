@@ -19,12 +19,6 @@
   }
 }
 
-#header {
-  &.fadeOut {
-    background-color: green;
-  }
-}
-
 .root {
   position: fixed;
   top: 0;
@@ -34,6 +28,7 @@
   transition: 400ms ease;
   border-bottom: 1px solid transparent;
   height: 8rem;
+  opacity: 1;
 
   @screen lg {
     &.offset {
@@ -42,7 +37,11 @@
     }
   }
 
-  &[data-scroll-dir='down'] {
+  &.hide {
+    opacity: 0;
+  }
+
+  &[data-scroll-dir='down'], &:global(.fadeOut) {
     background: theme('colors.white');
     transform: translateY(-100%);
   }
