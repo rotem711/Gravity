@@ -38,7 +38,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
             <>
               <div
                 className={`col-span-6 ${
-                  extendedOnMobile ? 'md:col-span-8' : 'md:col-span-5'
+                  extendedOnMobile ? 'md:col-span-8' : 'sd:col-span-3 md:col-span-5'
                 }`}
               >
                 <h4 className="pb-30 typo-subhead uppercase">
@@ -55,19 +55,20 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 className={`col-span-6 ${
                   extendedOnMobile
                     ? 'md:col-span-7'
-                    : 'md:col-span-5 md:col-start-7'
+                    : 'sd:col-span-3 md:col-span-5 md:col-start-7'
                 }`}
               >
                 <Fade delay={300}>
                   <div
                     className="typo-body"
                     dangerouslySetInnerHTML={{ __html: item.copy }}
+                    style={{ maxWidth: '44rem' }}
                   />
                 </Fade>
                 {item.link && (
                   <div
                     className={`${
-                      !extendedOnMobile ? 'hidden md:block' : ''
+                      !extendedOnMobile ? 'hidden sd:block' : ''
                     } pt-45 md:pt-55`}
                   >
                     <Fade delay={400}>
@@ -108,14 +109,14 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 <>
                   <div
                     className={`col-span-12 md:col-span-6 ${
-                      extendedOnMobile ? 'order-2' : 'order-2 md:order-1'
+                      extendedOnMobile ? 'order-2' : 'order-2 sd:order-1'
                     } mb-auto`}
                   >
                     {mediaC}
                     {item.link && (
                       <div
                         className={`${
-                          extendedOnMobile ? 'hidden' : 'md:hidden mt-50'
+                          extendedOnMobile ? 'hidden' : 'sd:hidden mt-50'
                         }`}
                       >
                         <Button variant="light" link={item.link} />
@@ -123,10 +124,10 @@ const TextVideoCombinationV2Module: FunctionComponent<
                     )}
                   </div>
                   <div
-                    className={`col-span-12 sd:col-span-5 md:col-span-4 md:col-start-8 default-grid md:block ${
+                    className={`col-span-12 md:col-span-4 md:col-start-8 default-grid sd:mt-60 md:mt-0 md:block ${
                       extendedOnMobile
                         ? 'mb-50 md:mb-60'
-                        : 'order-1 md:order-2 mb-45 md:mb-0'
+                        : 'order-1 xl:order-2 mb-45 md:mb-0'
                     }`}
                   >
                     {contentC}
@@ -134,7 +135,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 </>
               ) : (
                 <>
-                  <div className="col-span-4">{contentC}</div>
+                  <div className="col-span-5">{contentC}</div>
                   <div className="col-span-6 col-start-7">{mediaC}</div>
                 </>
               )}
