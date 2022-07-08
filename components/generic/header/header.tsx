@@ -96,8 +96,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
     Router.events.on('routeChangeStart', reset)
     Router.events.on('routeChangeComplete', () => {
-      setHide(false)
-      console.log('X')
+      setTimeout(() => {
+        setHide(false)
+      }, 500)
     })
 
     if (window.scrollY > 0) {
