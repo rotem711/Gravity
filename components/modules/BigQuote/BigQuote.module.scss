@@ -18,17 +18,8 @@
   position: relative;
 
   .quote {
-    position: absolute;
     width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
-    &.isActive {
-      opacity: 1;
-      transition: opacity 250ms cubic-bezier(0.19, 1, 0.22, 1);
-    }
   }
 }
 

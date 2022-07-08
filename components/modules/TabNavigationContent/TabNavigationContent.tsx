@@ -27,6 +27,19 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
+  const calculateTitleHeight = () => {
+    let heightTitle = 0
+    setTitleHeight(0)
+    console.log(tabTitleRefs.current)
+    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
+      if (!tabTitleRefs.current[i]) return
+      if (tabTitleRefs.current[i].clientHeight > heightTitle) {
+        heightTitle = tabTitleRefs.current[i].getBoundingClientRect().height
+      }
+    }
+    setTitleHeight(heightTitle)
+  }
+
   const recalculate = () => {
     setTabHeight(0)
     setTitleHeight(0)
@@ -37,16 +50,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
         height = tabContentRefs.current[i].children[0].getBoundingClientRect().height
       }
     }
-
-    let heightTitle = 0
-    for (let i = 0; i < tabTitleRefs.current.length; i += 1) {
-      if (!tabTitleRefs.current[i]) return
-      if (tabTitleRefs.current[i].clientHeight > heightTitle) {
-        heightTitle = tabTitleRefs.current[i].getBoundingClientRect().height
-      }
-    }
-
-    setTitleHeight(heightTitle)
     setTabHeight(height)
   }
 
@@ -57,6 +60,11 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   }, [isMobile])
 
   useEffect(() => {
+    calculateTitleHeight()
+  }, [index])
+
+  useEffect(() => {
+    calculateTitleHeight()
     recalculate()
     // eslint-disable-next-line no-restricted-globals
     const hook = typeof screen.orientation !== 'undefined' ? 'resize' : 'orientationchange'
@@ -246,9 +254,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                   __html: subItem.headline,
                                 }}
                                 ref={(element) => {
-                                  tabTitleRefs.current[itemIndex] = element
+                                  tabTitleRefs.current.push(element)
                                 }}
-                                style={{ minHeight: titleHeight }}
+                                style={{ height: titleHeight > 0 ? titleHeight : null }}
                               />
                               <div className="typo-body col-span-5 col-start-8 lg:w-10/12 block">
                                 {subItem.copy}

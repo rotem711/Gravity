@@ -16,7 +16,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
       <div className="container">
         {textVideoCombination.items.map((item) => (
           <div key={item.headline} className={`${styles.item} md:default-grid`}>
-            <div className="md:col-span-5 flex flex-col md:row-start-2">
+            <div className="md:col-span-6 xl:col-span-4 flex flex-col md:row-start-2">
               {item.topHeadline && (
                 <span
                   className={`typo-subhead uppercase mb-90 md:mb-75 block ${styles.topHeadline}`}
