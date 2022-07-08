@@ -18,6 +18,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
   const [scrollDir, setScrollDir] = useState('')
   const [height, setHeight] = useState(0)
+  const [hide, setHide] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { rightSideNavigation, mobileMenuCta } = data
   const router = useRouter()
@@ -42,10 +43,14 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     )
   }
 
-  const reset = () => {
+  const reset = (url?: string) => {
     setDeployed(false)
     setScrolled(false)
     setScrollDir('')
+    if (url) {
+      setNewsBannerActive(url === '/')
+      setHide(true)
+    }
     prevPos.current = 0
   }
 
@@ -78,6 +83,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       return
     }
     if (window.scrollY > 1 && prevPos.current > 0) {
+      document.getElementById('header').classList.remove('fadeOut')
       setScrollDir('down')
     }
     prevPos.current = window.scrollY
@@ -88,7 +94,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     window.addEventListener('resize', appHeight)
     appHeight()
 
-    Router.events.on('routeChangeComplete', reset)
+    Router.events.on('routeChangeStart', reset)
+    Router.events.on('routeChangeComplete', () => {
+      setHide(false)
+      console.log('X')
+    })
 
     if (window.scrollY > 0) {
       setScrolled(true)
@@ -109,11 +119,6 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     }
   }, [deployed])
 
-  useEffect(() => {
-    reset()
-    setNewsBannerActive(newsBanner.newsBannerActive && router.asPath === '/')
-  }, [router.asPath])
-
   return (
     <>
       {newsBanner.newsBannerActive && router.asPath === '/' && (
@@ -124,7 +129,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       )}
       <header
         id="header"
-        className={`${styles.root} ${newsBannerActive ? styles.offset : ''} ${
+        className={`${styles.root} ${hide ? styles.hide : ''} ${newsBannerActive ? styles.offset : ''} ${
           scrolled ? styles.scrolled : ''
         } ${deployed && styles['is-deployed']} ${
           inverted ? styles['is-inverted'] : ''

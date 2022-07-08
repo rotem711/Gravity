@@ -27,6 +27,7 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
             {sublineHeadlineMedia.lottieSelect ? (
               <LottiePlayer
                 animation={sublineHeadlineMedia.lottieSelect}
+                triggerOnce
               />
             ) : sublineHeadlineMedia.vimeoVideoUrl ? (
               <video
