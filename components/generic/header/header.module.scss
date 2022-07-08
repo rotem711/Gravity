@@ -38,6 +38,7 @@
   }
 
   &.hide {
+    transition-duration: 50ms;
     opacity: 0;
     transform: translateY(0) !important;
   }
