@@ -43,15 +43,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     )
   }
 
-  const reset = (url?: string) => {
-    if (url) {
-      setNewsBannerActive(url === '/')
-    }
-    setDeployed(false)
-    setScrolled(false)
-    setScrollDir('')
-    setHide(false)
+  const reset = () => {
     prevPos.current = 0
+    setTimeout(() => {
+      setHide(false)
+    }, 500)
   }
 
   const calculate = () => {
@@ -60,7 +56,10 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       reset()
       return
     }
-    if (window.location.pathname === '/team' && window.scrollY > prevPos.current) {
+    if (
+      window.location.pathname === '/team' &&
+      window.scrollY > prevPos.current
+    ) {
       if (document.getElementById('header').classList.contains('fadeOut')) {
         setScrollDir('down')
         setScrolled(true)
@@ -72,10 +71,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     }
     setScrolled(true)
     if (prevPos.current >= window.scrollY && window.scrollY > 1) {
-      if (
-        prevPos.current >=
-        window.scrollY + 150
-      ) {
+      if (prevPos.current >= window.scrollY + 150) {
         if (window.innerWidth < 768 && !isFooterNotVisible()) return
         setScrollDir('up')
         prevPos.current = window.scrollY
@@ -94,7 +90,15 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     window.addEventListener('resize', appHeight)
     appHeight()
 
-    Router.events.on('routeChangeStart', () => setHide(true))
+    Router.events.on('routeChangeStart', (url) => {
+      setHide(true)
+      setDeployed(false)
+      setScrolled(false)
+      setScrollDir('')
+      setTimeout(() => {
+        setNewsBannerActive(url === '/')
+      }, 500)
+    })
     Router.events.on('routeChangeComplete', () => {
       reset()
     })
@@ -128,11 +132,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       )}
       <header
         id="header"
-        className={`${styles.root} ${hide ? styles.hide : ''} ${newsBannerActive ? styles.offset : ''} ${
-          scrolled ? styles.scrolled : ''
-        } ${deployed && styles['is-deployed']} ${
-          inverted ? styles['is-inverted'] : ''
-        }`}
+        className={`${styles.root} ${hide ? styles.hide : ''} ${
+          newsBannerActive ? styles.offset : ''
+        } ${scrolled ? styles.scrolled : ''} ${
+          deployed && styles['is-deployed']
+        } ${inverted ? styles['is-inverted'] : ''}`}
         data-scroll-dir={scrollDir}
       >
         <div className="relative container flex items-center justify-between h-full">

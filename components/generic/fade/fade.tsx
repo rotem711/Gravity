@@ -5,7 +5,7 @@ import IFade from './fade.interface'
 
 const Fade = ({
   children,
-  threshold = 0.3,
+  threshold = 0.2,
   delay = 0,
   className = '',
   disable = false,
