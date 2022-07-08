@@ -93,7 +93,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     Router.events.on('routeChangeStart', (url) => {
       setHide(true)
       reset()
-      setNewsBannerActive(url === '/')
+      if (url === '/') {
+        setTimeout(() => { setNewsBannerActive(true) }, 500)
+      } else {
+        setNewsBannerActive(false)
+      }
       setTimeout(() => {
         setHide(false)
       }, 500)
