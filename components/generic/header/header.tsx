@@ -46,12 +46,11 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const reset = (url?: string) => {
     if (url) {
       setNewsBannerActive(url === '/')
-      setHide(true)
-    } else {
-      setDeployed(false)
-      setScrolled(false)
-      setScrollDir('')
     }
+    setDeployed(false)
+    setScrolled(false)
+    setScrollDir('')
+    setHide(false)
     prevPos.current = 0
   }
 
@@ -95,14 +94,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     window.addEventListener('resize', appHeight)
     appHeight()
 
-    Router.events.on('routeChangeStart', reset)
+    Router.events.on('routeChangeStart', () => setHide(true))
     Router.events.on('routeChangeComplete', () => {
-      setTimeout(() => {
-        setHide(false)
-        setDeployed(false)
-        setScrolled(false)
-        setScrollDir('')
-      }, 500)
+      reset()
     })
 
     if (window.scrollY > 0) {
