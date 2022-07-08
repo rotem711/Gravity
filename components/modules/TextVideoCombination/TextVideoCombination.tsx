@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import Image from 'components/generic/image/image'
+import { useInView } from 'react-intersection-observer'
 import LottiePlayer from 'components/generic/LottiePlayer/LottiePlayer'
 import styles from './TextVideoCombination.module.scss'
 import ITextVideoCombination from './TextVideoCombination.interface'
@@ -11,8 +12,13 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
   props,
 ) => {
   const { textVideoCombination } = props
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  })
   return (
-    <div className={`${styles.root}`}>
+    <div ref={ref} className={`${styles.root}`}>
       <div className="container">
         {textVideoCombination.items.map((item) => (
           <div key={item.headline} className={`${styles.item} md:default-grid`}>
@@ -42,25 +48,20 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
             <div
               className={`${styles.mediaItem} col-span-6 md:col-span-5 md:col-start-8 md:row-start-2`}
             >
-              {(item.image.desktopImage || item.image.mobileImage) ? (
+              {item.image.desktopImage || item.image.mobileImage ? (
                 item.image && <Image image={item.image} />
+              ) : item.lottieSelect ? (
+                <LottiePlayer animation={item.lottieSelect} triggerOnce />
               ) : (
-                item.lottieSelect ? (
-                  <LottiePlayer
-                    animation={item.lottieSelect}
-                    triggerOnce
-                  />
-                ) : (
+                inView && (
                   <video
                     src={item.vimeoVideoUrl}
                     playsInline
-                    preload="none"
                     muted
                     loop
                     autoPlay
                   />
                 )
-
               )}
             </div>
             <Fade delay={300}>

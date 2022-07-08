@@ -150,7 +150,6 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
               ) : (
                 (item.vimeoVideoUrl && inView) && (
                   <video
-                    preload="none"
                     className={`${styles.video}`}
                     src={item.vimeoVideoUrl}
                     playsInline

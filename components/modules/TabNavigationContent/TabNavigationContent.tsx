@@ -171,7 +171,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               src={item.vimeoVideoUrl}
                               playsInline
                               muted
-                              preload="none"
                               loop
                               autoPlay
                             />
@@ -282,7 +281,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                               <video
                                 src={item.vimeoVideoUrl}
                                 playsInline
-                                preload="none"
                                 muted
                                 loop
                                 autoPlay
@@ -326,7 +324,6 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 src={item.vimeoVideoUrl}
                                 playsInline
                                 muted
-                                preload="none"
                                 loop
                                 autoPlay
                               />
