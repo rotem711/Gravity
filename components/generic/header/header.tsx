@@ -1,7 +1,5 @@
 /* eslint-disable operator-linebreak */
-import React, {
-  useContext, useEffect, useRef, useState,
-} from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
@@ -87,26 +85,27 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
   useEffect(() => {
     const appHeight = () => setHeight(window.innerHeight)
-    window.addEventListener('resize', appHeight)
     appHeight()
 
-    Router.events.on('routeChangeStart', (url) => {
+    Router.events.on('routeChangeStart', () => {
       setHide(true)
+    })
+
+    Router.events.on('routeChangeComplete', (url) => {
+      setNewsBannerActive(url === '/')
       reset()
-      if (url === '/') {
-        setTimeout(() => { setNewsBannerActive(true) }, 500)
-      } else {
-        setNewsBannerActive(false)
-      }
       setTimeout(() => {
         setHide(false)
       }, 500)
     })
+
     if (window.scrollY > 0) {
       setScrolled(true)
       setScrollDir('up')
     }
+    window.addEventListener('resize', appHeight)
     window.addEventListener('scroll', calculate)
+
     return () => {
       window.removeEventListener('resize', appHeight)
       window.removeEventListener('scroll', calculate)
