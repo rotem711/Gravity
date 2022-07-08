@@ -93,12 +93,10 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     Router.events.on('routeChangeStart', (url) => {
       setHide(true)
       reset()
-      setTimeout(() => {
-        setNewsBannerActive(url === '/')
-      }, 500)
+      setNewsBannerActive(url === '/')
       setTimeout(() => {
         setHide(false)
-      }, 1000)
+      }, 500)
     })
     if (window.scrollY > 0) {
       setScrolled(true)
