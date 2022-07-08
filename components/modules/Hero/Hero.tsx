@@ -29,11 +29,9 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
             src={videoSrc}
             playsInline
             muted
-            preload="none"
             loop
             autoPlay
           />
-
           <h1
             className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
           >

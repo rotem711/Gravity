@@ -27,7 +27,6 @@ const InsightHeader: FunctionComponent<IInsightHeader> = (props) => {
             muted
             loop
             autoPlay
-            preload="none"
             width="665"
             height="380"
           />

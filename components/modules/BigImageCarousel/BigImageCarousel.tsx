@@ -63,7 +63,6 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
                 >
                   {(item.vimeoVideoUrl && inView) ? (
                     <video
-                      preload="none"
                       src={item.vimeoVideoUrl}
                       playsInline
                       muted

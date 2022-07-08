@@ -4,6 +4,17 @@
   position: relative;
   background-color: theme('colors.mediumSky');
   z-index: 11;
+  animation: FADE_IN 250ms forwards;
+
+  @keyframes FADE_IN {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   .upperArea {
     @apply pt-130 md:pt-100 pb-40 xl:pb-70;
     height: 100vh;

@@ -28,7 +28,6 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
                 </div>
                 {(item.vimeoVideoUrl && inView) ? (
                   <video
-                    preload="none"
                     src={item.vimeoVideoUrl}
                     playsInline
                     muted

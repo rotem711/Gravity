@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import Fade from 'components/generic/fade/fade'
 import LottiePlayer from 'components/generic/LottiePlayer/LottiePlayer'
 import Image from 'components/generic/image/image'
+import { useInView } from 'react-intersection-observer'
 import styles from './SublineHeadlineMedia.module.scss'
 import ISublineHeadlineMedia from './SublineHeadlineMedia.interface'
 
@@ -10,6 +11,11 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
   props,
 ) => {
   const { sublineHeadlineMedia } = props
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  })
 
   return (
     <div className={`${styles.root}`}>
@@ -29,13 +35,13 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
                 animation={sublineHeadlineMedia.lottieSelect}
                 triggerOnce
               />
-            ) : sublineHeadlineMedia.vimeoVideoUrl ? (
+            ) : (sublineHeadlineMedia.vimeoVideoUrl && inView) ? (
               <video
                 src={sublineHeadlineMedia.vimeoVideoUrl}
                 playsInline
+                ref={ref}
                 muted
                 loop
-                preload="none"
                 autoPlay
               />
             ) : (
