@@ -35,7 +35,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
       <div className="container pt-25 pb-95 xl:pt-35 xl:pb-150">
         {quoteLayout === 'simple' ? (
           <div className="sd:default-grid">
-            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 xl:col-span-3">
+            <Fade className="col-span-full mb-85 md:mb-100 md:mb-0 md:col-span-3">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
@@ -47,7 +47,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 key={item.quote}
                 className={`${styles.quoteElement} typo-big-quotes ${
                   item.quote.length > 75 ? 'typo-big-quotes--long' : ''
-                } col-span-full sd:col-span-5 xl:col-span-8 xl:col-start-5`}
+                } col-span-full sd:col-span-5 md:col-span-8 md:col-start-5`}
               >
                 <Fade delay={150}>
                   <div
