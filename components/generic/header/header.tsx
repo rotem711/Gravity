@@ -1,7 +1,6 @@
 /* eslint-disable operator-linebreak */
-import React, {
-  useContext, useEffect, useRef, useState,
-} from 'react'
+// eslint-disable-next-line object-curly-newline
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
@@ -94,11 +93,13 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     })
 
     Router.events.on('routeChangeComplete', (url) => {
-      setNewsBannerActive(url === '/')
-      reset()
+      setTimeout(() => {
+        setNewsBannerActive(url === '/')
+        reset()
+      }, 200)
       setTimeout(() => {
         setHide(false)
-      }, 500)
+      }, 750)
     })
 
     if (window.scrollY > 0) {
