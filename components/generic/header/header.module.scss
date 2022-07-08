@@ -39,6 +39,7 @@
 
   &.hide {
     opacity: 0;
+    transition-duration: 0;
   }
 
   &[data-scroll-dir='down'], &:global(.fadeOut) {
