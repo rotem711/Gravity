@@ -44,12 +44,13 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }
 
   const reset = (url?: string) => {
-    setDeployed(false)
-    setScrolled(false)
-    setScrollDir('')
     if (url) {
       setNewsBannerActive(url === '/')
       setHide(true)
+    } else {
+      setDeployed(false)
+      setScrolled(false)
+      setScrollDir('')
     }
     prevPos.current = 0
   }
@@ -98,6 +99,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     Router.events.on('routeChangeComplete', () => {
       setTimeout(() => {
         setHide(false)
+        setDeployed(false)
+        setScrolled(false)
+        setScrollDir('')
       }, 500)
     })
 
