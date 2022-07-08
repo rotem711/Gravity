@@ -1,5 +1,7 @@
 /* eslint-disable operator-linebreak */
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { GlobalContext } from 'pages/_app'
