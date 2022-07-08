@@ -45,9 +45,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
   const reset = () => {
     prevPos.current = 0
-    setTimeout(() => {
-      setHide(false)
-    }, 500)
+    setDeployed(false)
+    setScrolled(false)
+    setScrollDir('')
   }
 
   const calculate = () => {
@@ -92,17 +92,14 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
 
     Router.events.on('routeChangeStart', (url) => {
       setHide(true)
-      setDeployed(false)
-      setScrolled(false)
-      setScrollDir('')
+      reset()
       setTimeout(() => {
         setNewsBannerActive(url === '/')
       }, 500)
+      setTimeout(() => {
+        setHide(false)
+      }, 1000)
     })
-    Router.events.on('routeChangeComplete', () => {
-      reset()
-    })
-
     if (window.scrollY > 0) {
       setScrolled(true)
       setScrollDir('up')
