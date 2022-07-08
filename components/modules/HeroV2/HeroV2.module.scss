@@ -3,13 +3,17 @@
 
   &.extended {
     display: flex;
-    height: calc(100vh);
-    max-height: 70rem;
+    aspect-ratio: 416 / 700;
+    max-height: 100vh;
     > div {
       margin-top: auto;
     }
+    @screen sd {
+      aspect-ratio: 834 / 600;
+    }
     @screen md {
-      height: 60rem;
+
+      aspect-ratio: 1440 / 600;
       max-height: initial;
     }
   }

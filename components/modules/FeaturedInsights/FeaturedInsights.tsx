@@ -23,7 +23,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
           {featuredInsights.insights.map((item, index) => (
             <li
               key={item.insight.id}
-              className="col-span-6 md:col-span-4 md:block"
+              className="col-span-6 sd:col-span-3 md:col-span-6 xl:col-span-4"
             >
               <Fade className="h-full flex flex-col" delay={index * 150 + 150}>
                 <div className={`${styles.mediaContainer} mb-40 md:mb-50`}>

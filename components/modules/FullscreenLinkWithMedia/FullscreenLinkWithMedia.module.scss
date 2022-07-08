@@ -18,11 +18,10 @@
   overflow: hidden;
 
   @screen sd {
-    padding-bottom: percentage(500 / 845);
+    height: 75vh;
+    padding-bottom: 0;
   }
-  @screen xl {
-    padding-bottom: 75vh;
-  }
+
 
   a {
     position: absolute;

@@ -35,9 +35,9 @@ module.exports = {
     screens: {
       sm: '414px',
       sd: '480px',
-      md: '834px',
+      md: '835px',
       lg: '1024px',
-      xl: '1440px',
+      xl: '1200px',
     },
     extend: {
       gap: {},

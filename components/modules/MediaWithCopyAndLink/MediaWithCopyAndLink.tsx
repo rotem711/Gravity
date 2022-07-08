@@ -19,7 +19,7 @@ const MediaWithCopyAndLinkModule:FunctionComponent<IMediaWithCopyAndLink> = (pro
             animation={mediaWithCopyAndLink.lottieSelect}
           />
         </div>
-        <div className="col-span-6 md:col-span-5 xl:col-span-3 md:col-start-5 -top-40 md:-top-100 relative z-1">
+        <div className="col-span-6 sd:col-span-3 md:col-span-5 xl:col-span-3 md:col-start-5 xl:col-start-5 -top-40 md:-top-100 relative z-1">
           <h2 className="typo-subhead uppercase mb-50"><Fade>{mediaWithCopyAndLink.subline}</Fade></h2>
           <div className="typo-body mb-50"><Fade delay={150}>{mediaWithCopyAndLink.headline}</Fade></div>
           <Fade delay={300}><Button variant="light" link={mediaWithCopyAndLink.link} /></Fade>

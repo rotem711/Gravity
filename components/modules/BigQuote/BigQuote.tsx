@@ -1,22 +1,15 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Image from 'next/image'
+// eslint-disable-next-line import/no-unresolved
+import { Swiper, SwiperSlide } from 'swiper/react'
 import useIsMobile from 'utils/hooks'
 import Fade from 'components/generic/fade/fade'
-import { useInView } from 'react-intersection-observer'
 import styles from './BigQuote.module.scss'
 import IBigQuote from './BigQuote.interface'
 
 const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
   const { bigQuote } = props
-  const [index, setIndex] = useState(0)
   const [quoteLayout, setQuoteLayout] = useState('simple')
-  const [quoteHeight, setQuoteHeight] = useState(0)
-  const quoteRefs = useRef([])
   const isMobile = useIsMobile()
 
   // eslint-disable-next-line operator-linebreak
@@ -24,15 +17,6 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
     isMobile && bigQuote.leftHeadlineMobile
       ? bigQuote.leftHeadlineMobile
       : bigQuote.leftHeadline
-
-  let timer = null
-  const indexRef = useRef(index)
-  indexRef.current = index
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-    triggerOnce: false,
-  })
 
   useEffect(() => {
     for (let i = 0; i < bigQuote.quotes.length; i += 1) {
@@ -43,43 +27,15 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
     }
   }, [])
 
-  // set quoteContainer height
-  useEffect(() => {
-    setTimeout(() => {
-      let maxQuoteHeight = 0
-      for (let i = 0; i < quoteRefs.current.length; i += 1) {
-        if (quoteRefs.current[i].clientHeight > maxQuoteHeight) {
-          maxQuoteHeight = quoteRefs.current[i].clientHeight
-        }
-      }
-      setQuoteHeight(maxQuoteHeight)
-    }, 500)
-  }, [])
-
-  useEffect(() => {
-    if (inView) {
-      timer = setTimeout(() => {
-        if (indexRef.current + 1 === quoteRefs.current.length) {
-          setIndex(0)
-        } else {
-          setIndex(indexRef.current + 1)
-        }
-      }, 4000)
-      return () => clearTimeout(timer)
-    }
-    return null
-  }, [inView, index])
-
   return (
     <div
       className={`${styles.root}`}
       style={{ backgroundColor: bigQuote.backgroundColor }}
-      ref={ref}
     >
       <div className="container pt-25 pb-95 xl:pt-35 xl:pb-150">
         {quoteLayout === 'simple' ? (
           <div className="md:default-grid">
-            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 md:col-span-3">
+            <Fade className="col-span-full mb-85 md:mb-100 xl:mb-0 xl:col-span-3">
               <h2
                 className={`${styles.title} typo-subhead uppercase`}
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
@@ -91,7 +47,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 key={item.quote}
                 className={`${styles.quoteElement} typo-big-quotes ${
                   item.quote.length > 75 ? 'typo-big-quotes--long' : ''
-                } md:col-span-8 md:col-start-5`}
+                } col-span-full xl:col-span-8 xl:col-start-5`}
               >
                 <Fade delay={150}>
                   <div
@@ -117,56 +73,74 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 dangerouslySetInnerHTML={{ __html: topHeadline }}
               />
             </Fade>
-            <div
-              className={`${styles.quoteContainer}`}
-              style={{ height: quoteHeight }}
-            >
-              {bigQuote.quotes.map((item, itemIndex) => (
-                <blockquote
-                  key={item.quote}
-                  className={`${styles.quote} ${
-                    index === itemIndex ? styles.isActive : ''
-                  } typo-big-quotes ${
-                    item.quote.length > 75 ? 'typo-big-quotes--long' : ''
-                  } default-grid xl:col-span-12`}
-                  ref={(element) => {
-                    quoteRefs.current[itemIndex] = element
-                  }}
-                >
-                  <div
-                    className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-9`}
-                  >
-                    <Fade delay={150}>
-                      <div
-                        className={`${styles.quoteElementChild}`}
-                        dangerouslySetInnerHTML={{ __html: `${item.quote}”` }}
-                      />
-                    </Fade>
-                    <cite
-                      className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
-                    >
-                      <Fade delay={300}>
+            <div className={`${styles.quoteContainer}`}>
+              <Swiper
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                effect="fade"
+                loop
+                allowTouchMove={false}
+                touchRatio={0}
+                preventClicks
+                spaceBetween={0}
+                speed={0}
+              >
+                {bigQuote.quotes.map(
+                  (item) => (
+                    <SwiperSlide>
+                      <blockquote
+                        key={item.quote}
+                        className={`${styles.quote} typo-big-quotes ${
+                          item.quote.length > 75 ? 'typo-big-quotes--long' : ''
+                        } default-grid xl:col-span-12`}
+                      >
                         <div
-                          dangerouslySetInnerHTML={{ __html: item.subline }}
-                        />
-                      </Fade>
-                    </cite>
-                  </div>
-                  <div
-                    className={`${styles.logo} ${bigQuote.imageAlignment === 'bottom' ? `${styles.bottom} mt-50 md:mt-0` : 'mb-50 md:mb-0'} col-span-2 md:col-start-11`}
-                  >
-                    <Fade delay={500}>
-                      <Image
-                        loading="lazy"
-                        src={item.logo.sourceUrl}
-                        alt={item.logo.altText}
-                        width={item.logo.mediaDetails.width}
-                        height={item.logo.mediaDetails.height}
-                      />
-                    </Fade>
-                  </div>
-                </blockquote>
-              ))}
+                          className={`${styles.quoteElement} col-span-6 md:col-span-10 xl:col-span-9`}
+                        >
+                          <Fade delay={150}>
+                            <div
+                              className={`${styles.quoteElementChild}`}
+                              dangerouslySetInnerHTML={{
+                                __html: `${item.quote}”`,
+                              }}
+                            />
+                          </Fade>
+                          <cite
+                            className={`${styles.cite} typo-captions-and-buttons mt-35 xl:mt-45`}
+                          >
+                            <Fade delay={300}>
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: item.subline,
+                                }}
+                              />
+                            </Fade>
+                          </cite>
+                        </div>
+                        <div
+                          className={`${styles.logo} ${
+                            bigQuote.imageAlignment === 'bottom'
+                              ? `${styles.bottom} mt-50 md:mt-0`
+                              : 'mb-50 md:mb-0'
+                          } col-span-2 md:col-start-11`}
+                        >
+                          <Fade delay={500}>
+                            <Image
+                              loading="lazy"
+                              src={item.logo.sourceUrl}
+                              alt={item.logo.altText}
+                              width={item.logo.mediaDetails.width}
+                              height={item.logo.mediaDetails.height}
+                            />
+                          </Fade>
+                        </div>
+                      </blockquote>
+                    </SwiperSlide>
+                  ),
+                )}
+              </Swiper>
             </div>
           </div>
         )}

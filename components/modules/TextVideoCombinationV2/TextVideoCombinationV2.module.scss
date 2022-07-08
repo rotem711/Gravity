@@ -1,5 +1,7 @@
 .root {
   position: relative;
+  width: 100%;
+  overflow: hidden;
 
   video {
     width: 75%;
@@ -37,6 +39,9 @@
     .img {
       span {
         height: 100% !important;
+        img {
+          object-fit: cover;
+        }
       }
     }
     .absoluteImage {

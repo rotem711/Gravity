@@ -14,7 +14,9 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
     onClose()
   }
   return (
-    <div className={`${styles.root} ${(closed || isNotDesktop) ? styles.hide : ''}`}>
+    <div
+      className={`${styles.root} ${closed || isNotDesktop ? styles.hide : ''}`}
+    >
       <div className="container flex items-center justify-center h-full">
         <div className="relative">
           <span>{data.newsBannerText}</span>
@@ -28,8 +30,8 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
         </div>
       </div>
       <button type="button" onClick={onCloseAction}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 12">
-          <path stroke="#F7F7F2" d="m1.4.6 11 11M.6 11.6l11-11" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 13">
+          <path stroke="#F7F7F2" d="m1 1 11 11M1 12 12 1" />
         </svg>
       </button>
     </div>
