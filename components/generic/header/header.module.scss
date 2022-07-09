@@ -38,7 +38,7 @@
   }
 
   &.disableAnimate {
-    transition: 0ms ease !important;
+    transition: opacity 500ms ease;
   }
 
   &.hide {
