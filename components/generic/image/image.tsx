@@ -17,7 +17,6 @@ const ImageComponent = ({ image, className }: IImage) => {
           layout="responsive"
           src={mobileImage.sourceUrl}
           quality={85}
-          loading="lazy"
         />
       ) : (
         desktopImage && (
@@ -27,7 +26,6 @@ const ImageComponent = ({ image, className }: IImage) => {
             layout="responsive"
             src={desktopImage.sourceUrl}
             quality={85}
-            loading="lazy"
           />
         )
       )}
