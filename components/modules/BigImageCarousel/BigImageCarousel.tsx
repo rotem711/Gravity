@@ -8,6 +8,7 @@ import Button from 'components/generic/button/button'
 import useIsMobile from 'utils/hooks'
 import Image from 'components/generic/image/image'
 import styles from './BigImageCarousel.module.scss'
+
 import IBigImageCarousel from './BigImageCarousel.interface'
 
 const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
@@ -39,42 +40,44 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
           <div
             className={`${styles.mediaContainer} mb-40 md:mb-0 col-span-6 md:col-span-12`}
           >
-            <Swiper
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              effect="fade"
-              className={`${styles.swiper}`}
-              loop
-              allowTouchMove={false}
-              touchRatio={0}
-              modules={[Autoplay]}
-              preventClicks
-              spaceBetween={0}
-              speed={0}
-            >
-              {bigImageCarousel.images.map((item) => (
-                <SwiperSlide
-                  key={
-                    item?.image?.desktopImage?.sourceUrl || item.vimeoVideoUrl
-                  }
-                  className={`${styles.swiperSlide} pointer-events-none`}
-                >
-                  {(item.vimeoVideoUrl && inView) ? (
-                    <video
-                      src={item.vimeoVideoUrl}
-                      playsInline
-                      muted
-                      loop
-                      autoPlay
-                    />
-                  ) : (
-                    <Image image={item.image} />
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <Fade>
+              <Swiper
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                effect="fade"
+                className={`${styles.swiper}`}
+                loop
+                allowTouchMove={false}
+                touchRatio={0}
+                modules={[Autoplay]}
+                preventClicks
+                spaceBetween={0}
+                speed={0}
+              >
+                {bigImageCarousel.images.map((item) => (
+                  <SwiperSlide
+                    key={
+                      item?.image?.desktopImage?.sourceUrl || item.vimeoVideoUrl
+                    }
+                    className={`${styles.swiperSlide} pointer-events-none`}
+                  >
+                    {(item.vimeoVideoUrl && inView) ? (
+                      <video
+                        src={item.vimeoVideoUrl}
+                        playsInline
+                        muted
+                        loop
+                        autoPlay
+                      />
+                    ) : (
+                      <Image image={item.image} />
+                    )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Fade>
             <span className={`${styles.corners}`} aria-hidden="true">
               <i />
               <i />

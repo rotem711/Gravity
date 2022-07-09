@@ -16,7 +16,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const [svgHeight, setSVGHeight] = useState(0)
   const innerRef = useRef<HTMLDivElement>()
   const { ref, inView } = useInView({
-    threshold: 0.75,
+    threshold: 0.5,
     triggerOnce,
     trackVisibility: true,
     delay: 200,
@@ -77,6 +77,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     }
   }, [])
 
+  console.log(inView, render)
   return (
     <div
       id={animation}
