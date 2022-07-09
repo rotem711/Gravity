@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React, {
+  FunctionComponent, useEffect, useRef, useState,
+} from 'react'
 import Link from 'next/link'
-import { useInView } from 'react-intersection-observer'
 import Image from 'components/generic/image/image'
 import Arrow from 'public/icons/icon-arrow.svg'
 import styles from './SideBySideMedia.module.scss'
@@ -8,16 +9,27 @@ import ISideBySideMedia from './SideBySideMedia.interface'
 
 const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
   const { sideBySideMedia } = props
+  const ref = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-    triggerOnce: true,
-  })
+  const isInView = () => {
+    if (ref.current.getBoundingClientRect().top < window.innerHeight * 2) {
+      setInView(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', isInView)
+    return () => {
+      window.removeEventListener('scroll', isInView)
+    }
+  }, [])
+
   return (
-    <div className={`${styles.root} flex flex-wrap`}>
+    <div ref={ref} className={`${styles.root} flex flex-wrap`}>
       {sideBySideMedia.media.map((item) => (
         <div key={item.headline} className={`${styles.item}`}>
-          <div ref={ref} className={`${styles.itemWrapper}`}>
+          <div className={`${styles.itemWrapper}`}>
             <Link href={item.link.url}>
               <a>
                 <div>
@@ -26,7 +38,7 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
                     <Arrow />
                   </div>
                 </div>
-                {(item.vimeoVideoUrl && inView) ? (
+                {item.vimeoVideoUrl && inView ? (
                   <video
                     src={item.vimeoVideoUrl}
                     playsInline

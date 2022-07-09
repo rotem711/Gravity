@@ -4,4 +4,5 @@ export default interface IFade {
   delay?: number
   className?: string
   disable?: boolean
+  deactivate?: boolean
 }

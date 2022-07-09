@@ -16,7 +16,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
 ) => {
   const { tabNavigationContent } = props
   const { headlineSeparator } = tabNavigationContent
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile('sd')
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
   const [titleHeight, setTitleHeight] = useState(0)
@@ -231,7 +231,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
             >
               {tabNavigationContent.tabs.map((item, itemIndex) => {
                 const headlineSeparatorModule = (
-                  <div className="col-span-full" style={{ order: 10 }}>
+                  <div className="col-span-6 sd:col-span-12" style={{ order: 10 }}>
                     {getHeadlineSeparatorModule(item)}
                   </div>
                 )
@@ -247,7 +247,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     }}
                   >
                     <div
-                      className={`container default-grid lg:col-span-12 pt-50 ${
+                      className={`container default-grid sd:gap-y-105 pt-50 sd:pt-80 ${
                         headlineSeparator.headline ? '' : 'pb-150'
                       }`}
                     >
@@ -256,10 +256,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem, subItemIndex) => (
                             <div
                               key={subItem.headline}
-                              className="mt-45 col-span-12 lg:col-span-4 default-grid lg:flex lg:flex-col"
+                              className="mt-45 sd:mt-0 col-span-12 md:col-span-4 default-grid md:flex md:flex-col"
                             >
                               <h2
-                                className="typo-headlines-late col-span-6 lg:w-[85%] block mb-55 md:mb-0 lg:mb-70 pr-30"
+                                className="typo-headlines-late col-span-6 sd:col-span-3 md:w-[85%] block mb-55 sd:mb-0 md:mb-70"
                                 dangerouslySetInnerHTML={{
                                   __html: subItem.headline,
                                 }}
@@ -268,13 +268,13 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 }}
                                 style={{ height: titleHeight > 0 ? titleHeight : null }}
                               />
-                              <div className="typo-body col-span-5 col-start-8 lg:w-10/12 block">
+                              <div className="typo-body col-span-5 col-start-8 sd:col-span-3 md:w-10/12 block">
                                 {subItem.copy}
                               </div>
                             </div>
                           ))}
                           <div
-                            className={`${styles.mediaContainer} mt-45 md:col-span-12`}
+                            className={`${styles.mediaContainer} mt-45 sd:-mt-45 col-span-12`}
                             style={{ color: item.backgroundColor }}
                           >
                             {item.vimeoVideoUrl ? (
@@ -305,9 +305,9 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                           {item.content.map((subItem) => (
                             <div
                               key={subItem.headline}
-                              className="mt-55 lg:mt-100 col-span-12 default-grid"
+                              className="mt-55 xl:mt-100 col-span-12 default-grid"
                             >
-                              <h2 className="typo-headlines-late col-span-5 mb-55 md:mb-0 lg:mb-100">
+                              <h2 className="typo-headlines-late col-span-5 mb-55 md:mb-0 xl:mb-100">
                                 {subItem.headline}
                               </h2>
                               <div className="typo-body col-span-4 col-start-8">

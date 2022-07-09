@@ -22,7 +22,7 @@ const InsightsWithNavigationModule = ({
   const [filteredInsights, setFilteredInsights] = useState<InsightsInterface[]>(
     insights.nodes,
   )
-  const isMobile = useIsMobile('md')
+  const isMobile = useIsMobile('sd')
   const [hideFilters, setHideFilters] = useState(true)
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
@@ -52,8 +52,14 @@ const InsightsWithNavigationModule = ({
         <div className="container flex items-center">
           <button
             type="button"
-            onClick={() => setHideFilters(false)}
-            className="md:hidden flex gap-10 items-center typo-subhead uppercase"
+            onClick={() => {
+              if (category && !hideFilters) {
+                setCategory(null)
+              } else {
+                setHideFilters(false)
+              }
+            }}
+            className="sd:hidden flex gap-10 items-center typo-subhead uppercase"
           >
             Filters
             <ArrowRight />
@@ -63,31 +69,42 @@ const InsightsWithNavigationModule = ({
               hideFilters === true ? 'opacity-0' : ''
             } flex items-center`}
           >
-            <li key="all">
-              <button
-                className={`typo-subhead uppercase ${
-                  category === null ? styles.active : ''
-                }`}
-                type="button"
-                onClick={() => onClickCategory(null)}
-              >
-                All
-              </button>
-            </li>
+            {((category === null && isMobile) || !isMobile) && (
+              <li key="all">
+                <Fade deactivate={!isMobile} key={`all-${hideFilters}`}>
+                  <button
+                    className={`typo-subhead uppercase ${
+                      category === null ? styles.active : ''
+                    }`}
+                    type="button"
+                    onClick={() => onClickCategory(null)}
+                  >
+                    All
+                  </button>
+                </Fade>
+              </li>
+            )}
             {insightsCategories
               // eslint-disable-next-line max-len
               .filter((x) => insights.nodes.find((c) => c.categories.nodes.find((y) => y.id === x.id)))
-              .map((item) => (
-                <li key={item.id} className="ml-30 md:ml-40 first:ml-0">
-                  <button
-                    className={`typo-subhead uppercase ${
-                      category === item.id ? styles.active : ''
-                    }`}
-                    type="button"
-                    onClick={() => onClickCategory(item.id)}
+              .filter((y) => (category !== null && isMobile ? y.id === category : true))
+              .map((item, index) => (
+                <li key={item.id} className="ml-30 sd:ml-40 first:ml-0">
+                  <Fade
+                    deactivate={!isMobile}
+                    key={`${hideFilters}-${item.name}-${category}`}
+                    delay={index * 250 + 250}
                   >
-                    {item.name}
-                  </button>
+                    <button
+                      className={`typo-subhead uppercase ${
+                        category === item.id ? styles.active : ''
+                      }`}
+                      type="button"
+                      onClick={() => onClickCategory(item.id)}
+                    >
+                      {item.name}
+                    </button>
+                  </Fade>
                 </li>
               ))}
           </ul>
@@ -101,7 +118,7 @@ const InsightsWithNavigationModule = ({
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul className="default-grid pt-80 lg:pt-200 gap-y-180 sm:gap-y-180 md:gap-y-275 container">
+        <ul className="default-grid pt-80 md:pt-200 gap-y-180 sm:gap-y-180 sd:gap-y-275 container">
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
@@ -139,11 +156,15 @@ const InsightsWithNavigationModule = ({
                     >
                       {item.post.publishedDate}
                     </time>
-                    <h3 className="typo-headlines mb-55 md:mb-50">
+                    <h3 className="typo-headlines mb-55 sd:mb-50">
                       {item.title}
                     </h3>
 
-                    <a className={`${buttonStyles.root} ${buttonStyles.light} ${hoveredIndex === index ? buttonStyles.hover : ''}`}>
+                    <a
+                      className={`${buttonStyles.root} ${buttonStyles.light} ${
+                        hoveredIndex === index ? buttonStyles.hover : ''
+                      }`}
+                    >
                       Read More
                     </a>
                   </Fade>
@@ -152,7 +173,7 @@ const InsightsWithNavigationModule = ({
             </li>
           ))}
         </ul>
-        <div className="container mt-95 md:mt-100 lg:mt-150">
+        <div className="container mt-95 sd:mt-100 md:mt-150">
           {filteredInsights.length > spliceIndex * 4 && (
             <button
               onClick={fetchMore}

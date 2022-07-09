@@ -9,12 +9,14 @@ const Fade = ({
   delay = 0,
   className = '',
   disable = false,
+  deactivate = false,
 }: IFade) => {
   const { ref, inView } = useInView({
     threshold,
     triggerOnce: true,
   })
 
+  if (deactivate) return children
   return (
     <div
       ref={ref}

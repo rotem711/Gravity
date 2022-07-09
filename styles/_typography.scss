@@ -3,11 +3,16 @@
 @layer utilities {
   .typo-subhead {
     font-family: 'Modern Gothic';
-    font-size: 1.4rem;
-    line-height: 1.9rem;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
     letter-spacing: 0.03em;
     font-weight: 400;
+    @screen md {
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+    }
   }
+
   .typo-headlines {
     font-family: 'Modern Gothic';
     font-size: 3.7rem;
@@ -19,7 +24,6 @@
       font-size: 4.5rem;
       line-height: 5rem;
     }
-
     @screen xl {
       font-size: 5.2rem;
       line-height: 5.7rem;
@@ -31,7 +35,7 @@
     line-height: 4rem;
     letter-spacing: -0.01em;
     font-weight: 300;
-    @screen md {
+    @screen xl {
       font-size: 5rem;
       line-height: 5.5rem;
     }

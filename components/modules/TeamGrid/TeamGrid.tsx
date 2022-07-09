@@ -26,7 +26,7 @@ const TeamGridModule:FunctionComponent<ITeamGrid> = (props) => {
           {teamGrid.members.map((item, index) => (
             <div
               key={`${item.name}-${item.position}-${index * 2}`}
-              className={`${teamGrid.members.length === 4 ? 'col-span-3' : 'col-span-3 md:col-span-4'} mb-75 sd:mb-100 md:mb-140`}
+              className={`${teamGrid.members.length === 4 ? 'col-span-3' : 'col-span-3 sd:col-span-2'} mb-75 sd:mb-100 md:mb-140`}
             >
               <Fade delay={index * 150 + 200}>
                 <figure>

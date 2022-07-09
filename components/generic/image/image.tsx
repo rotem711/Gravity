@@ -7,7 +7,7 @@ import styles from './image.module.scss'
 const ImageComponent = ({ image, className }: IImage) => {
   const { desktopImage, mobileImage } = image
 
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile('sd')
   return (
     <div className={`${styles.root} ${className} w-full`}>
       {isMobile && mobileImage ? (

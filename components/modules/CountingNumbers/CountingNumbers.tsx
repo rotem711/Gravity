@@ -40,7 +40,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
       className={`${styles.root}`}
       style={{ backgroundColor: countingNumbers.backgroundColor }}
     >
-      <div className="container pt-25 pb-95 md:pb-100 xl:pt-35 xl:pb-145">
+      <div className="container pt-25 pb-95 sd:pb-100 xl:pt-35 xl:pb-145">
         <h2 className={`${styles.title} typo-subhead uppercase col-span-12`}>
           <Fade>{countingNumbers.headline}</Fade>
         </h2>
@@ -48,7 +48,7 @@ const CountingNumbersModule: FunctionComponent<ICountingNumbers> = (props) => {
           {countingNumbers.numbers.map((item, index) => (
             <div
               key={item.copy}
-              className={`${styles.number} col-span-4 mt-75 md:mt-95 xl:mt-110`}
+              className={`${styles.number} col-span-6 sd:col-span-3 md:col-span-4 mt-75 sd:mt-95 xl:mt-110`}
             >
               <Fade delay={index * 150}>
                 <dt className="mb-20">
