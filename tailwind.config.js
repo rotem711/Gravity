@@ -38,6 +38,7 @@ module.exports = {
       md: '835px',
       lg: '1024px',
       xl: '1200px',
+      xxl: '1440px',
     },
     extend: {
       gap: {},
@@ -83,7 +84,7 @@ module.exports = {
           '@screen md': {
             maxWidth: '1200px',
           },
-          '@screen xl': {
+          '@screen xxl': {
             padding: '0',
           },
         },

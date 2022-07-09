@@ -15,6 +15,7 @@ import NewsBanner from '../NewsBanner/NewsBanner'
 
 const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   const [deployed, setDeployed] = useState(false)
+  const [canAnimate, setCanAnimate] = useState(true)
   const [scrollDir, setScrollDir] = useState('')
   const [height, setHeight] = useState(0)
   const [hide, setHide] = useState(false)
@@ -85,6 +86,10 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
   }
 
   useEffect(() => {
+    if (hide && canAnimate) setCanAnimate(false)
+  }, [hide])
+
+  useEffect(() => {
     const appHeight = () => setHeight(window.innerHeight)
     appHeight()
 
@@ -97,8 +102,9 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
         setNewsBannerActive(url === '/')
         reset()
       }, 200)
+      setHide(false)
       setTimeout(() => {
-        setHide(false)
+        setCanAnimate(true)
       }, 750)
     })
 
@@ -133,7 +139,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       )}
       <header
         id="header"
-        className={`${styles.root} ${hide ? styles.hide : ''} ${
+        className={`${styles.root} ${canAnimate ? '' : styles.disableAnimate} ${hide ? styles.hide : ''} ${
           newsBannerActive ? styles.offset : ''
         } ${scrolled ? styles.scrolled : ''} ${
           deployed && styles['is-deployed']

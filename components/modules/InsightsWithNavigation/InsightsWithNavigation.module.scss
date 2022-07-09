@@ -3,13 +3,13 @@
   background-color: #b8b7a4;
 
   a {
+    .mediaContainer {
+      transition: 400ms ease;
+    }
     &:hover {
       .mediaContainer {
         opacity: 0.5;
       }
-    }
-    .mediaContainer {
-      transition: 400ms ease;
     }
   }
 }

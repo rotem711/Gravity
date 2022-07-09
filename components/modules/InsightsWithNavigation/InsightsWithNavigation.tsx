@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { GlobalContext } from 'pages/_app'
 import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -23,6 +24,7 @@ const InsightsWithNavigationModule = ({
   )
   const isMobile = useIsMobile('md')
   const [hideFilters, setHideFilters] = useState(true)
+  const [hoveredIndex, setHoveredIndex] = useState(-1)
 
   const onClickCategory = (catId) => {
     setSpliceIndex(1)
@@ -108,7 +110,10 @@ const InsightsWithNavigationModule = ({
               } `}
             >
               <Link href={`/insights/${item.slug}`}>
-                <a>
+                <a
+                  onMouseOver={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(-1)}
+                >
                   <Fade threshold={0} delay={index * 50 + 150}>
                     <div className={`${styles.mediaContainer} mb-30 sm:mb-50`}>
                       {item.post.previewVideo ? (
@@ -138,7 +143,7 @@ const InsightsWithNavigationModule = ({
                       {item.title}
                     </h3>
 
-                    <a className={`${buttonStyles.root} ${buttonStyles.light}`}>
+                    <a className={`${buttonStyles.root} ${buttonStyles.light} ${hoveredIndex === index ? buttonStyles.hover : ''}`}>
                       Read More
                     </a>
                   </Fade>

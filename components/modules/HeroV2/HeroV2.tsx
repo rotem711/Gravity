@@ -11,7 +11,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
   const extendedHeight = !heroV2.link && !heroV2.subline
   return (
     <div className={`${styles.root} ${extendedHeight ? styles.extended : ''}`}>
-      <div className="container default-grid pt-240 pb-50 md:pt-200 xl:pt-320">
+      <div className="container default-grid pt-240 pb-50 md:pt-200">
         {heroV2.subline && (
           <span className="typo-subhead uppercase col-span-3 md:col-span-12 mb-30 md:mb-45 xl:mb-55 z-10 relative text-white">
             <Fade delay={300}>{heroV2.subline}</Fade>

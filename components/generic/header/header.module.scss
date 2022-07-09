@@ -37,6 +37,11 @@
     }
   }
 
+  &.disableAnimate {
+    transition: none !important;
+    transform: none !important;
+  }
+
   &.hide {
     transition-duration: 50ms;
     opacity: 0;

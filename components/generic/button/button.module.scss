@@ -20,7 +20,7 @@
 
     &:not(.disableHover) {
       @screen sd {
-        &:hover {
+        &:hover, &.hover {
           background: transparent;
           color: theme('colors.black');
         }
@@ -30,7 +30,7 @@
   &.light {
     background: transparent;
     &:not(.disableHover) {
-      &:hover {
+      &:hover, &.hover {
         @screen sd {
           background: theme('colors.black');
           color: theme('colors.white');
