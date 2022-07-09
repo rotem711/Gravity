@@ -2,6 +2,13 @@
   position: relative;
   max-width: 100vw;
   overflow: hidden;
+
+  .copy {
+    max-width: 35rem;
+    @screen md {
+      width: initial;
+    }
+  }
 }
 
 .item {
