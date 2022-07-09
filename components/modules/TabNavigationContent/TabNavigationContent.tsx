@@ -247,9 +247,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     }}
                   >
                     <div
-                      className={`container default-grid sd:gap-y-105 pt-50 sd:pt-80 ${
-                        headlineSeparator.headline ? '' : 'pb-150'
-                      }`}
+                      className="container default-grid sd:gap-y-105 pt-50 sd:pt-80"
                     >
                       {item.content.length === 3 ? (
                         <>
