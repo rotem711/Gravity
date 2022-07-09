@@ -56,7 +56,7 @@
       }
     }
     &:hover {
-      @screen md {
+      @screen ms {
         &::after {
           animation: ANIMATE_IN 0.35s ease-in-out forwards;
         }

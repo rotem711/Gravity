@@ -19,7 +19,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     threshold: 0.5,
     triggerOnce,
     trackVisibility: true,
-    delay: 200,
+    delay: 500,
   })
 
   const debounce = (func) => {
@@ -46,7 +46,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
         setOffsetY(offset * -1)
         if (animation !== 'careers') setOffsetX(offsetLeft * -1)
         if (animation === 'simplify-carbon-accounting') {
-          if (window.innerWidth < 834) {
+          if (window.innerWidth < 835) {
             setSVGHeight(
               pRect.height - innerRef.current.getBoundingClientRect().height,
             )
@@ -77,7 +77,6 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     }
   }, [])
 
-  console.log(inView, render)
   return (
     <div
       id={animation}

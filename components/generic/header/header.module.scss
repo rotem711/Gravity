@@ -38,7 +38,6 @@
   }
 
   &.disableAnimate {
-    transition: none !important;
     transform: none !important;
   }
 
@@ -135,7 +134,7 @@
 }
 
 .navContainer {
-  @media screen and (max-width: 833px) {
+  @media screen and (max-width: 834px) {
     position: absolute;
     top: 0;
     left: 0;

@@ -10,11 +10,11 @@
   position: relative;
   padding-bottom: percentage(450 / 354);
 
-  @screen md {
+  @screen sd {
     order: 3;
   }
 
-  @screen md {
+  @screen sd {
     padding-bottom: percentage(700 / 1460);
   }
 
@@ -66,7 +66,7 @@
   text-align: left;
   color: theme('colors.black');
   &.isActive {
-    cursor:default;
+    cursor: default;
   }
 }
 
@@ -75,14 +75,15 @@
 }
 
 .tabItem {
+  z-index: 0;
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
-  opacity: 0;
-  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 
   &.isActive {
     z-index: 1;

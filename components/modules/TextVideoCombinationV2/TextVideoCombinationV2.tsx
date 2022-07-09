@@ -82,7 +82,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
           const mediaC = (
             <div
               className={`relative ${
-                extendedOnMobile ? `-mx-35 md:mx-0 ${fullHeight}` : ''
+                extendedOnMobile ? `-mx-40 md:mx-0 ${fullHeight}` : ''
               }`}
             >
               <Fade className={fullHeight} delay={400}>

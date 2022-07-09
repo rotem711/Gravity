@@ -62,12 +62,12 @@ const PlatformNavigation = () => {
   return (
     <div className={`${styles.root} ${endTrigger ? styles.hide : ''}`} ref={platformRef}>
       <div className="container flex justify-between my-auto">
-        <h2 role="none" onClick={() => window.scroll({ top: 0, behavior: 'smooth' })} className="typo-subhead uppercase hidden md:block cursor-pointer">
+        <h2 role="none" onClick={() => window.scroll({ top: 0, behavior: 'smooth' })} className="typo-subhead uppercase hidden ms:block cursor-pointer">
           {ctx.platformNavigation.title}
         </h2>
-        <ul className="flex w-full md:w-auto justify-between">
+        <ul className="flex w-full ms:w-auto justify-between">
           {ctx.platformNavigation.platformMainNavigation.map((item, index) => (
-            <li key={item.link.title} className="md:mr-40 last:mr-0">
+            <li key={item.link.title} className="ms:mr-40 last:mr-0">
               <button
                 type="button"
                 className={`typo-subhead uppercase ${index === activeIndex ? styles.active : ''}`}
