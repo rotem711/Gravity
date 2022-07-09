@@ -93,19 +93,18 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     const appHeight = () => setHeight(window.innerHeight)
     appHeight()
 
-    Router.events.on('routeChangeStart', () => {
+    Router.events.on('routeChangeStart', (url) => {
       setHide(true)
-    })
-
-    Router.events.on('routeChangeComplete', (url) => {
       setTimeout(() => {
         setNewsBannerActive(url === '/')
-        reset()
-      }, 200)
-      setHide(false)
+      }, 10)
+    })
+
+    Router.events.on('routeChangeComplete', () => {
       setTimeout(() => {
-        setCanAnimate(true)
-      }, 750)
+        reset()
+        setHide(false)
+      }, 200)
     })
 
     if (window.scrollY > 0) {
@@ -139,11 +138,13 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       )}
       <header
         id="header"
-        className={`${styles.root} ${canAnimate ? '' : styles.disableAnimate} ${hide ? styles.hide : ''} ${
-          newsBannerActive ? styles.offset : ''
-        } ${scrolled ? styles.scrolled : ''} ${
-          deployed && styles['is-deployed']
-        } ${inverted ? styles['is-inverted'] : ''}`}
+        className={`${styles.root} ${canAnimate ? '' : styles.disableAnimate} ${
+          hide ? styles.hide : ''
+        } ${newsBannerActive ? styles.offset : ''} ${
+          scrolled ? styles.scrolled : ''
+        } ${deployed && styles['is-deployed']} ${
+          inverted ? styles['is-inverted'] : ''
+        }`}
         data-scroll-dir={scrollDir}
       >
         <div className="relative container flex items-center justify-between h-full">
