@@ -25,7 +25,7 @@ const HeroModule: FunctionComponent<IHero> = (props) => {
       <div className="container flex flex-wrap h-full">
         <div className={`flex flex-col ${styles.upperArea}`}>
           <h1
-            className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50 xl:-mt-0`}
+            className={`${styles.title} typo-headlines mb-40 col-span-8 xl:col-span-9 md:-mt-50`}
           >
             <Fade delay={0}>{hero.headline}</Fade>
           </h1>

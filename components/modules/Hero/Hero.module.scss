@@ -16,7 +16,7 @@
   }
 
   .upperArea {
-    @apply pt-130 md:pt-100 pb-40 xl:pb-70;
+    @apply pt-130 md:pt-100 pb-40;
     height: calc(100vh - 4rem);
     max-height: 90rem;
     h1 {

@@ -29,7 +29,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
                 <Fade>{item.topHeadline}</Fade>
               </span>
             )}
-            <div className="flex ms:col-span-3 md:col-span-6 xl:col-span-4 flex-col md:row-start-2">
+            <div className="flex ms:col-span-3 md:col-span-6 xl:col-span-5 flex-col md:row-start-2">
               {item.topHeadline && (
                 <span
                   className={`ms:hidden typo-subhead uppercase mb-90 md:mb-75 md:block ${styles.topHeadline}`}
@@ -42,7 +42,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
               </h2>
               <Fade delay={300}>
                 <div
-                  className="typo-body mb-45 hidden ms:block md:mb-60"
+                  className={`typo-body mb-45 hidden ms:block md:mb-60 ${styles.desktopCopy}`}
                   dangerouslySetInnerHTML={{ __html: item.copy }}
                 />
               </Fade>
@@ -58,7 +58,7 @@ const TextVideoCombinationModule: FunctionComponent<ITextVideoCombination> = (
               {item.image.desktopImage || item.image.mobileImage ? (
                 item.image && <Image image={item.image} />
               ) : item.lottieSelect ? (
-                <LottiePlayer animation={item.lottieSelect} triggerOnce />
+                <LottiePlayer animation={item.lottieSelect} />
               ) : (
                 inView && (
                   <video

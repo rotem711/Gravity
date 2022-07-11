@@ -1,24 +1,8 @@
 .root {
   position: relative;
   svg {
+    opacity: 0;
     transition: 250ms ease;
-  }
-  &.careers {
-    svg {
-      transform: translateX(0%) scale(1.5) !important;
-      transform-origin: top !important;
-      opacity: 0;
-      @screen lg {
-        transform: translateX(0%) scale(1.75) !important;
-      }
-    }
-  }
-  &.simplify-carbon-accounting {
-    svg {
-      transform: translateX(1.5%) scale(1.27) !important;
-      transform-origin: top !important;
-      opacity: 0;
-    }
   }
   &.fadeIn {
     svg {

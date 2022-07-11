@@ -197,6 +197,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
                           role="none"
                           onClick={() => setDeployed(false)}
                           key={subItem.link.title}
+                          className="md:flex items-center"
                         >
                           <Link href={subItem.link.url}>
                             <a

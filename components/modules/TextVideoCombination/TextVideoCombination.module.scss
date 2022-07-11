@@ -9,6 +9,14 @@
       width: initial;
     }
   }
+  .desktopCopy {
+    @screen md {
+      max-width: 37.2rem;
+    }
+    @screen xl {
+      max-width: 43.3rem;
+    }
+  }
 }
 
 .item {
