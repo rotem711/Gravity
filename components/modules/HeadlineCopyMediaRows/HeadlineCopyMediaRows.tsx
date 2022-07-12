@@ -1,4 +1,6 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent, useEffect, useRef, useState,
+} from 'react'
 import Image from 'next/image'
 import Fade from 'components/generic/fade/fade'
 import styles from './HeadlineCopyMediaRows.module.scss'

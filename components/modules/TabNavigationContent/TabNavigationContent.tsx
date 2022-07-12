@@ -265,6 +265,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 ref={(element) => {
                                   tabTitleRefs.current[subItemIndex + itemIndex * 3] = element
                                 }}
+                                // eslint-disable-next-line max-len
                                 style={isTablet ? {} : { height: titleHeight > 0 ? titleHeight : null }}
                               />
                               <div className="typo-body col-span-5 col-start-8 sd:col-span-3 md:w-10/12 block">

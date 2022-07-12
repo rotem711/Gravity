@@ -1,7 +1,5 @@
 /* eslint-disable operator-linebreak */
-import React, {
-  FunctionComponent, useEffect, useRef, useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
 import { useInView } from 'react-intersection-observer'
 import styles from './LottiePlayer.module.scss'
@@ -11,6 +9,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const { animation } = props
   const [animationData, setAnimationData] = useState()
   const [play, setPlay] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const { ref, inView } = useInView({
     threshold: 0.25,
   })
@@ -24,20 +23,25 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   }, [])
 
   useEffect(() => {
-    setTimeout(() => {
-      setPlay(inView)
-    }, 300)
+    setPlay(inView)
   }, [inView])
 
   return (
     <div
       id={animation}
       className={`${styles.root} ${styles[animation]} ${
-        inView ? styles.fadeIn : ''
+        inView || isPlaying ? styles.fadeIn : ''
       }`}
       ref={ref}
     >
-      <Lottie onComplete={() => console.log('ENDED')} loop={false} animationData={animationData} goTo={play ? 0 : 100} play={play} />
+      <Lottie
+        onComplete={() => setIsPlaying(false)}
+        loop={false}
+        onEnterFrame={() => setIsPlaying(true)}
+        animationData={animationData}
+        goTo={play ? 0 : 100}
+        play={play && inView}
+      />
     </div>
   )
 }
