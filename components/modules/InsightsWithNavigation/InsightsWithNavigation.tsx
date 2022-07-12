@@ -49,7 +49,7 @@ const InsightsWithNavigationModule = ({
   return (
     <div className={`${styles.root} pb-65 md:pb-100`}>
       <nav className={`${styles.navContainer}`}>
-        <div className="container flex items-center">
+        <div className="container flex items-center px-0 overflow-visible">
           <button
             type="button"
             onClick={() => {
@@ -59,7 +59,7 @@ const InsightsWithNavigationModule = ({
                 setHideFilters(false)
               }
             }}
-            className="sd:hidden flex gap-10 items-center typo-subhead uppercase"
+            className="sd:hidden ml-35 pr-15 flex gap-10 items-center typo-subhead uppercase"
           >
             Filters
             <ArrowRight />
@@ -73,7 +73,7 @@ const InsightsWithNavigationModule = ({
               <li key="all">
                 <Fade deactivate={!isMobile} key={`all-${hideFilters}`}>
                   <button
-                    className={`typo-subhead uppercase ${
+                    className={`typo-subhead ml-30 sd:ml-40 uppercase ${
                       category === null ? styles.active : ''
                     }`}
                     type="button"
@@ -89,11 +89,11 @@ const InsightsWithNavigationModule = ({
               .filter((x) => insights.nodes.find((c) => c.categories.nodes.find((y) => y.id === x.id)))
               .filter((y) => (category !== null && isMobile ? y.id === category : true))
               .map((item, index) => (
-                <li key={item.id} className="ml-30 sd:ml-40 first:ml-0">
+                <li key={item.id} className="ml-30 sd:ml-40">
                   <Fade
                     deactivate={!isMobile}
                     key={isMobile ? `${hideFilters}-${item.name}-${category}` : null}
-                    delay={index * 250 + 250}
+                    delay={index * 250 + 150}
                   >
                     <button
                       className={`typo-subhead uppercase ${
