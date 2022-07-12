@@ -79,7 +79,7 @@ const PlatformNavigation = () => {
                 type="button"
                 className={`typo-subhead uppercase ${index === activeIndex ? styles.active : ''}`}
                 data-section={item.link.url.replace(/[/]/g, '')}
-                onClick={(e) => goToSection(e, index)}
+                onClick={(e) => goToSection(e)}
               >
                 {item.link.title}
               </button>
