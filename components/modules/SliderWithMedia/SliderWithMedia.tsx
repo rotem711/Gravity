@@ -76,7 +76,7 @@ const SliderWithMediaModule: FunctionComponent<ISliderWithMedia> = (props) => {
 
   return (
     <div
-      className={`${styles.root} container pt-35 md:pb-0 md:pt-70 lg:pt-35 lg:pb-150`}
+      className={`${styles.root} ${mediaHeight > 0 ? styles.fadeIn : ''} container pt-35 md:pb-0 md:pt-70 lg:pt-35 lg:pb-150`}
       ref={ref}
     >
       <h2 className={`${styles.title} typo-subhead uppercase mb-40 sd:mb-100`}>

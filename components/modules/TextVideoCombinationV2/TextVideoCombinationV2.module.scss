@@ -3,6 +3,15 @@
   width: 100%;
   overflow: hidden;
 
+  h2 {
+    @screen sd {
+      max-width: 56rem;
+    }
+    @screen md {
+      max-width: initial;
+    }
+  }
+
   video {
     width: 75%;
     height: auto;

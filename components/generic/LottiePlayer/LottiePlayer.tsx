@@ -10,7 +10,6 @@ import ILottiePlayer from './LottiePlayer.interface'
 const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
   const { animation } = props
   const [animationData, setAnimationData] = useState()
-  const innerRef = useRef<HTMLDivElement>()
   const [play, setPlay] = useState(false)
   const { ref, inView } = useInView({
     threshold: 0.25,
@@ -38,9 +37,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
       }`}
       ref={ref}
     >
-      <div ref={innerRef}>
-        <Lottie loop={false} animationData={animationData} goTo={play ? 0 : 100} play={play} />
-      </div>
+      <Lottie onComplete={() => console.log('ENDED')} loop={false} animationData={animationData} goTo={play ? 0 : 100} play={play} />
     </div>
   )
 }

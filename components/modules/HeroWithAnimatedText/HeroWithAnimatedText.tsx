@@ -21,8 +21,11 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
       trigger: '#team-header',
       start: 'top top',
       end: 'bottom bottom',
+      onEnterBack: () => {
+        document.getElementById('header').setAttribute('fade-out', 'false')
+      },
       onLeave: () => {
-        document.getElementById('header').classList.add('fadeOut')
+        document.getElementById('header').setAttribute('fade-out', 'true')
         setTimeout(() => {
           window.scrollBy(0, 1)
         }, 10)

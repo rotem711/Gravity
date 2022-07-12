@@ -13,12 +13,19 @@ const PlatformNavigation = () => {
   const platformRef = useRef(null)
   const offset = 120
 
-  const goToSection = (e, index) => {
+  const debounce = (func) => {
+    let timer
+    return (event) => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(func, 250, event)
+    }
+  }
+
+  const goToSection = (e) => {
+    setActiveIndex(-1)
     const elem = document.getElementById(e.currentTarget.dataset.section)
     const rect = elem.getBoundingClientRect()
     const scrollPos = window.pageYOffset + rect.top
-
-    setActiveIndex(index)
     window.scrollTo({
       top: scrollPos - offset,
       behavior: 'smooth',
@@ -53,9 +60,9 @@ const PlatformNavigation = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', checkActiveElement)
+    window.addEventListener('scroll', debounce(checkActiveElement))
     return () => {
-      window.removeEventListener('scroll', checkActiveElement)
+      window.removeEventListener('scroll', debounce(checkActiveElement))
     }
   }, [])
 

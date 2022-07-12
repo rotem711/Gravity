@@ -1,6 +1,11 @@
 .root {
   position: relative;
   padding-bottom: 10rem;
+  opacity: 0;
+  transition: 400ms ease;
+  &.fadeIn {
+    opacity: 1;
+  }
   @screen xl {
     padding-bottom: 15rem;
   }

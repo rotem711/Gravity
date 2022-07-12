@@ -210,10 +210,11 @@
     transform-origin: left center;
   }
 
-  &:hover,
-  &.active {
-    &::after {
-      animation: ANIMATE_IN 0.35s ease-in-out forwards;
+  &.active, &:hover {
+    @screen md {
+      &::after {
+        animation: ANIMATE_IN 0.35s ease-in-out forwards;
+      }
     }
   }
 }

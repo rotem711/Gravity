@@ -19,8 +19,8 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
 
   return (
     <div className={`${styles.root}`}>
-      <div className="container default-grid pt-35 pb-100 md:pb-115 xl:pb-155">
-        <div className="col-span-full md:col-span-7 xl:col-span-6">
+      <div className="container default-grid ms:grid-cols-12 pt-35 pb-100 md:pb-115 xl:pb-155">
+        <div className="col-span-full ms:col-span-7 md:col-span-7 xl:col-span-6">
           <h2 className="typo-subhead uppercase mb-75 md:mb-100 xl:mb-140">
             <Fade>{sublineHeadlineMedia.subline}</Fade>
           </h2>
@@ -28,7 +28,7 @@ const SublineHeadlineMediaModule: FunctionComponent<ISublineHeadlineMedia> = (
             <Fade delay={200}>{sublineHeadlineMedia.headline}</Fade>
           </div>
         </div>
-        <div className={`${styles.mediaContainer} col-span-6 md:col-span-5`}>
+        <div className={`${styles.mediaContainer} col-span-6 ms:col-span-5 md:col-span-5`}>
           <Fade className="h-full" delay={300}>
             {sublineHeadlineMedia.lottieSelect ? (
               <LottiePlayer

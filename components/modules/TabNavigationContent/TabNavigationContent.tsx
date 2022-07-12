@@ -17,18 +17,15 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
   const { tabNavigationContent } = props
   const { headlineSeparator } = tabNavigationContent
   const isMobile = useIsMobile('sd')
+  const isTablet = useIsMobile('md')
   const [index, setIndex] = useState(0)
   const [tabHeight, setTabHeight] = useState(0)
   const [titleHeight, setTitleHeight] = useState(0)
   const tabContentRefs = useRef([])
   const tabTitleRefs = useRef([])
 
-  const onClickItem = (e) => {
-    setIndex(parseInt(e.currentTarget.dataset.index, 10))
-  }
-
   const debounce = (func) => {
-    const timeX = 250 // 100 by default if no param
+    const timeX = 150 // 100 by default if no param
     let timer
     return (event) => {
       if (timer) clearTimeout(timer)
@@ -62,6 +59,10 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     }
     calculateTitleHeight()
     setTabHeight(height)
+  }
+
+  const onClickItem = (e) => {
+    setIndex(parseInt(e.currentTarget.dataset.index, 10))
   }
 
   useEffect(() => {
@@ -264,7 +265,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                                 ref={(element) => {
                                   tabTitleRefs.current[subItemIndex + itemIndex * 3] = element
                                 }}
-                                style={{ height: titleHeight > 0 ? titleHeight : null }}
+                                style={isTablet ? {} : { height: titleHeight > 0 ? titleHeight : null }}
                               />
                               <div className="typo-body col-span-5 col-start-8 sd:col-span-3 md:w-10/12 block">
                                 {subItem.copy}

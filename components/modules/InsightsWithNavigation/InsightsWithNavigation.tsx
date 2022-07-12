@@ -92,7 +92,7 @@ const InsightsWithNavigationModule = ({
                 <li key={item.id} className="ml-30 sd:ml-40 first:ml-0">
                   <Fade
                     deactivate={!isMobile}
-                    key={`${hideFilters}-${item.name}-${category}`}
+                    key={isMobile ? `${hideFilters}-${item.name}-${category}` : null}
                     delay={index * 250 + 250}
                   >
                     <button
@@ -122,7 +122,7 @@ const InsightsWithNavigationModule = ({
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
-              className={`col-span-6 xl:col-span-6 ${
+              className={`col-span-6 ms:col-span-3 md:col-span-6 xl:col-span-6 ${
                 category === 'all' ? styles.active : ''
               } `}
             >

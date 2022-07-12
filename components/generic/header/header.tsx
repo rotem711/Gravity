@@ -60,7 +60,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
       window.location.pathname === '/team' &&
       window.scrollY > prevPos.current
     ) {
-      if (document.getElementById('header').classList.contains('fadeOut')) {
+      if (document.getElementById('header').getAttribute('fade-out') === 'true') {
         setScrollDir('down')
         setScrolled(true)
       }
@@ -71,7 +71,7 @@ const HeaderBlock = ({ data, inverted, uri }: HeaderInterface) => {
     }
     setScrolled(true)
     if (prevPos.current >= window.scrollY && window.scrollY > 1) {
-      if (prevPos.current >= window.scrollY + 250) {
+      if (prevPos.current >= window.scrollY + 150) {
         if (window.innerWidth < 835 && !isFooterNotVisible()) return
         setScrollDir('up')
         prevPos.current = window.scrollY

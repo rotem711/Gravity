@@ -54,7 +54,10 @@
     order: 2;
   }
 
+  max-width: 15rem;
+
   @screen md {
     order: 2;
+
   }
 }
