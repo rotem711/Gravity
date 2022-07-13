@@ -19,7 +19,6 @@
 
   .quote {
     width: 100%;
-
   }
 }
 
@@ -49,15 +48,11 @@
 
 .logo {
   order: 1;
-
   &.bottom {
     order: 2;
   }
-
   max-width: 15rem;
-
   @screen md {
     order: 2;
-
   }
 }

@@ -7,4 +7,5 @@ export default interface IImage {
   }
   layout?: string
   className?: string
+  loading?: 'eager' | 'lazy'
 }

@@ -1,3 +1,22 @@
+@keyframes ANIMATE_IN {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes ANIMATE_OUT {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .root {
   position: relative;
   overflow: hidden;
@@ -53,6 +72,34 @@
   &:last-of-type::before {
     left: 50%;
   }
+
+  @screen md {
+    position: relative;
+    button {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        opacity: 0;
+        height: 1px;
+        animation: ANIMATE_OUT 400ms ease forwards;
+        background-color: currentcolor;
+        transform-origin: left center;
+      }
+    }
+
+    &:hover {
+      button:not(.isActive) {
+        &::after {
+          animation: ANIMATE_IN 0.35s ease-in-out forwards;
+        }
+      }
+    }
+  }
 }
 
 .navTopItemFirst {
@@ -84,7 +131,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-
 
   &.isActive {
     z-index: 1;

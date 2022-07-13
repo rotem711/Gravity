@@ -13,6 +13,8 @@ query Posts {
       post {
         publishedDate
         previewVideo
+        optionalTitle
+        customAuthor
       }
       featuredImage {
         node {

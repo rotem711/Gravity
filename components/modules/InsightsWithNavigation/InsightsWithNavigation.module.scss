@@ -3,11 +3,11 @@
   background-color: #b8b7a4;
 
   a {
-    .mediaContainer {
+    .mediaContainer, time, h3 {
       transition: 400ms ease;
     }
     &:hover {
-      .mediaContainer {
+      .mediaContainer, time, h3 {
         opacity: 0.5;
       }
     }

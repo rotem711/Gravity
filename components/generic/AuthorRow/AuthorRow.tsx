@@ -8,7 +8,7 @@ import styles from './AuthorRow.module.scss'
 import IAuthorRow from './AuthorRow.interface'
 
 const AuthorRow:FunctionComponent<IAuthorRow> = (props) => {
-  const { author, date } = props
+  const { author, date, customName } = props
   const { avatar: { url: avatarUrl }, name } = author
 
   const [url, setUrl] = useState('')
@@ -28,7 +28,7 @@ const AuthorRow:FunctionComponent<IAuthorRow> = (props) => {
           />
         </div>
         <div className="typo-small-meta mr-auto">
-          <p className={styles.name}>{name}</p>
+          <p className={styles.name}>{customName || name}</p>
           {date && <p className={styles.date}>{formatDate(date)}</p>}
         </div>
 

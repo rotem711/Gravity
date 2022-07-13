@@ -156,8 +156,8 @@ const InsightsWithNavigationModule = ({
                     >
                       {item.post.publishedDate}
                     </time>
-                    <h3 className="typo-headlines mb-55 sd:mb-50">
-                      {item.title}
+                    <h3 className="typo-insights-headline mb-55 sd:mb-50">
+                      {item.post.optionalTitle || item.title}
                     </h3>
 
                     <a

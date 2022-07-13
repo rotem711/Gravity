@@ -70,6 +70,7 @@ const Insight = ({
           <AuthorRow
             author={insight.author.node}
             date={insight.post.publishedDate}
+            customName={insight.post.customAuthor}
           />
 
           {!!insight?.post?.contentBuilder?.length

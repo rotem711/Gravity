@@ -10,6 +10,7 @@ const FeaturedInsightsFragment = (t: string) => `
             id
             slug
             title
+
             featuredImage {
               node {
                 ...Image
@@ -17,6 +18,7 @@ const FeaturedInsightsFragment = (t: string) => `
             }
             post {
               publishedDate
+              optionalTitle
               previewVideo
             }
           }

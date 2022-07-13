@@ -71,10 +71,12 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                       {item.insight.post.publishedDate}
                     </time>
                     <h3 className="typo-headlines mb-55 md:mb-50">
-                      {item.insight.title}
+                      {item.insight.post.optionalTitle || item.insight.title}
                     </h3>
                     <a
-                      className={`${buttonStyles.root} ${buttonStyles.light} ${hoveredIndex === index ? buttonStyles.hover : ''} mt-auto mr-auto`}
+                      className={`${buttonStyles.root} ${buttonStyles.light} ${
+                        hoveredIndex === index ? buttonStyles.hover : ''
+                      } mt-auto mr-auto`}
                     >
                       Read More
                     </a>

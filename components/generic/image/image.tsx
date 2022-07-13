@@ -4,7 +4,7 @@ import useIsMobile from 'utils/hooks'
 import IImage from './image.interface'
 import styles from './image.module.scss'
 
-const ImageComponent = ({ image, className }: IImage) => {
+const ImageComponent = ({ image, className, loading = 'lazy' }: IImage) => {
   const { desktopImage, mobileImage } = image
 
   const isMobile = useIsMobile('sd')
@@ -17,6 +17,7 @@ const ImageComponent = ({ image, className }: IImage) => {
           layout="responsive"
           src={mobileImage.sourceUrl}
           quality={85}
+          loading={loading}
         />
       ) : (
         desktopImage && (
@@ -26,6 +27,7 @@ const ImageComponent = ({ image, className }: IImage) => {
             layout="responsive"
             src={desktopImage.sourceUrl}
             quality={85}
+            loading={loading}
           />
         )
       )}

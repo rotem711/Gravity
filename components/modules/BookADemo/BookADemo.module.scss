@@ -31,7 +31,7 @@
     transition: 400ms ease;
     &::-webkit-input-placeholder {
       opacity: 1;
-      color: #7ba0b6;
+      color: darken($color: #7ba0b6, $amount: 30);
     }
     &:focus {
       border-color: #000;

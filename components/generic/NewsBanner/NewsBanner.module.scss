@@ -3,30 +3,25 @@
   top: 0;
   left: 0;
   background-color: #000;
-  height: 5rem;
+  height: 4rem;
   width: 100%;
   z-index: 997;
   transition: 0ms ease;
+
 
   &.hide {
     transform: translateY(-100%);
     transition-duration: 400ms;
   }
 
-  span, a {
+  span {
     font-family: 'So:hne Mono';
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #fff;
     letter-spacing: -0.01em;
   }
-  a {
-    position: absolute;
-    right: -5rem;
-    transform: translateX(100%);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
+
   button {
     position: absolute;
     top: 50%;

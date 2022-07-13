@@ -84,6 +84,8 @@ export default `
         }
         post {
           publishedDate
+          optionalTitle
+          customAuthor
         }
       }
     }
@@ -108,6 +110,8 @@ export default `
       post {
         previewVideo
         publishedDate
+        optionalTitle
+        customAuthor
         contentBuilder {
            __typename
           ...on Post_Post_ContentBuilder_Text {
@@ -148,6 +152,8 @@ export interface InsightsInterface {
   post: {
     previewVideo: string
     publishedDate: string
+    optionalTitle: string
+    customAuthor: string
     contentBuilder: any[]
   }
 }

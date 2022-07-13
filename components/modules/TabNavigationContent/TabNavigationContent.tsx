@@ -61,8 +61,8 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
     setTabHeight(height)
   }
 
-  const onClickItem = (e) => {
-    setIndex(parseInt(e.currentTarget.dataset.index, 10))
+  const onClickItem = (idx) => {
+    setIndex(idx)
   }
 
   useEffect(() => {
@@ -201,6 +201,7 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
               <ul className="flex container w-full">
                 {tabNavigationContent.tabs.map((item, itemIndex) => (
                   <li
+                    role="none"
                     key={item.title}
                     style={{
                       backgroundColor: item.backgroundColor,
@@ -208,15 +209,14 @@ const TabNavigationContentModule: FunctionComponent<ITabNavigationContent> = (
                     }}
                     className={`${styles.navTopItem} ${
                       itemIndex === 0 ? styles.navTopItemFirst : 'pl-40'
-                    } flex-1 pt-30 pb-30`}
+                    } flex-1 pt-30 pb-30 cursor-pointer`}
+                    onClick={() => onClickItem(itemIndex)}
+                    onKeyPress={() => onClickItem(itemIndex)}
                   >
                     <button
                       className={`${styles.navItem} ${
                         index === itemIndex ? styles.isActive : ''
-                      } typo-subhead uppercase block ${index !== itemIndex ? 'hover-link' : ''}`}
-                      onClick={onClickItem}
-                      onKeyPress={onClickItem}
-                      data-index={itemIndex}
+                      } typo-subhead uppercase block`}
                       type="button"
                     >
                       {item.titleIcon}

@@ -29,6 +29,20 @@
       line-height: 5.7rem;
     }
   }
+
+  .typo-insights-headline {
+    font-family: 'Modern Gothic';
+    font-size: 3.7rem;
+    line-height: 4rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+
+    @screen sd {
+      font-size: 4.5rem;
+      line-height: 5rem;
+    }
+  }
+
   .typo-headlines-late {
     font-family: 'Modern Gothic';
     font-size: 3.7rem;
@@ -65,6 +79,14 @@
 
   .typo-captions-and-buttons {
     font-family: 'So:hne Mono';
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+
+  .typo-footer {
+    font-family: 'Modern Gothic';
     font-size: 1.6rem;
     line-height: 2.2rem;
     letter-spacing: -0.01em;

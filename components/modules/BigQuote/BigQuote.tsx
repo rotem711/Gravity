@@ -79,6 +79,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   delay: 3000,
                   disableOnInteraction: false,
                 }}
+                watchOverflow
                 effect="fade"
                 loop
                 allowTouchMove={false}
@@ -86,12 +87,12 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                 preventClicks
                 spaceBetween={0}
                 speed={0}
+                slidesPerView={1}
               >
                 {bigQuote.quotes.map(
                   (item) => (
-                    <SwiperSlide>
+                    <SwiperSlide key={item.quote}>
                       <blockquote
-                        key={item.quote}
                         className={`${styles.quote} typo-big-quotes ${
                           item.quote.length > 75 ? 'typo-big-quotes--long' : ''
                         } default-grid xl:col-span-12`}

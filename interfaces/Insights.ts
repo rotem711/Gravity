@@ -14,6 +14,8 @@ export default interface InsightsInterface {
   post: {
     publishedDate: string
     previewVideo: string
+    optionalTitle: string
+    customAuthor: string
   }
   categories: {
     nodes: [

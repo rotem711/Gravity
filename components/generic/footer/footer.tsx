@@ -13,10 +13,10 @@ const FooterBlock = ({ data }: { data: FooterInterface }) => (
     </Link>
     <div className="default-grid">
       <div
-        className={`${styles.contact} col-span-6 md:col-span-5 typo-captions-and-buttons`}
+        className={`${styles.contact} col-span-6 md:col-span-5 typo-footer`}
         dangerouslySetInnerHTML={{ __html: data.contact }}
       />
-      <ul className="col-span-6  md:col-span-6 md:col-start-7 mt-150  md:mt-0 default-grid gap-y-75 typo-captions-and-buttons">
+      <ul className="col-span-6  md:col-span-6 md:col-start-7 mt-150  md:mt-0 default-grid gap-y-75 typo-footer">
         {data.navigation.map((item) => (
           <li
             className="col-span-3 md:col-span-4"

@@ -17,7 +17,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally, headlineBreakpoint } = item
-          const fullHeight = (item.image && !item.vimeoVideoUrl) || (!item.image && item.vimeoVideoUrl) ? 'h-full' : ''
+          const fullHeight = ((item.image && !item.vimeoVideoUrl) || (!item.image && item.vimeoVideoUrl)) && !extendedOnMobile ? 'h-full' : ''
           // eslint-disable-next-line operator-linebreak
           const headline =
             !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline

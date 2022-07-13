@@ -17,18 +17,15 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
     <div
       className={`${styles.root} ${closed || isNotDesktop ? styles.hide : ''}`}
     >
-      <div className="container flex items-center justify-center h-full">
-        <div className="relative">
-          <span>{data.newsBannerText}</span>
-          {data.newsBannerLink && (
-            <Link href={data.newsBannerLink.url}>
-              <a target={data.newsBannerLink.target}>
-                {data.newsBannerLink.title}
-              </a>
-            </Link>
-          )}
-        </div>
-      </div>
+      <Link href={data.newsBannerLink.url}>
+        <a target={data.newsBannerLink.target}>
+          <div className="container flex items-center justify-center h-full">
+            <div className="relative">
+              <span>{data.newsBannerText}</span>
+            </div>
+          </div>
+        </a>
+      </Link>
       <button type="button" onClick={onCloseAction}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 13">
           <path stroke="#F7F7F2" d="m1 1 11 11M1 12 12 1" />

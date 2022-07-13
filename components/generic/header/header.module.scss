@@ -177,6 +177,14 @@
   }
 }
 
+@screen lg {
+  ul li:first-of-type {
+    .navItem {
+      margin-left: 0;
+    }
+  }
+}
+
 .navItem {
   font-family: 'Modern Gothic';
   font-size: 5rem;
@@ -194,7 +202,7 @@
     font-weight: 400;
   }
   @screen lg {
-    margin-left: 5rem;
+      margin-left: 5rem;
   }
 
   &::after {

@@ -9,6 +9,9 @@ const SublineHeadlineMediaFragment = (t: string) => `
       ${ImageComponent()}
       vimeoVideoUrl
       lottieSelect
+      link {
+        ...Link
+      }
     }
   }
 `

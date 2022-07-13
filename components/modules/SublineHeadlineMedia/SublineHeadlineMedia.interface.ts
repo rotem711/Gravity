@@ -1,4 +1,5 @@
 import Image from 'interfaces/Image'
+import Link from 'interfaces/Link'
 
 export default interface ISublineHeadlineMedia {
   fieldGroupName?: string
@@ -8,5 +9,6 @@ export default interface ISublineHeadlineMedia {
     image: Image
     vimeoVideoUrl: string
     lottieSelect?: string
+    link: Link
   }
 }

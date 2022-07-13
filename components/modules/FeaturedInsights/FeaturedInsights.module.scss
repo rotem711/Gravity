@@ -24,12 +24,13 @@
   }
 
   a {
-    .mediaContainer {
+
+    .mediaContainer, h3, time {
       transition: 400ms ease;
     }
     &:hover {
-      .mediaContainer {
-        opacity: 0.5;
+      .mediaContainer, h3, time {
+        opacity: 0.85;
       }
     }
   }

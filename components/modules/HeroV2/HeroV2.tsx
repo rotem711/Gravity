@@ -37,7 +37,7 @@ const HeroV2Module: FunctionComponent<IHeroV2> = (props) => {
                 autoPlay
               />
             ) : (
-              heroV2.image && <ImageComponent image={heroV2.image} />
+              heroV2.image && <ImageComponent loading="eager" image={heroV2.image} />
             )}
           </Fade>
         </div>

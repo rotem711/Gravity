@@ -10,5 +10,7 @@ export default interface Post {
   post: {
     publishedDate: string
     previewVideo: string
+    optionalTitle: string
+    customAuthor: string
   }
 }
