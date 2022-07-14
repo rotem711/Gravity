@@ -30,15 +30,9 @@
   height: 8rem;
   opacity: 1;
 
-  @screen lg {
-    &.offset {
-      padding-top: 5rem;
-      height: 13rem;
-    }
-  }
-
-  &.disableAnimate {
-    //transition: opacity 200ms ease;
+  &.offset {
+    padding-top: 4rem;
+    height: 13rem;
   }
 
   &.hide {
@@ -202,7 +196,7 @@
     font-weight: 400;
   }
   @screen lg {
-      margin-left: 5rem;
+    margin-left: 5rem;
   }
 
   &::after {
@@ -218,7 +212,8 @@
     transform-origin: left center;
   }
 
-  &.active, &:hover {
+  &.active,
+  &:hover {
     @screen md {
       &::after {
         animation: ANIMATE_IN 0.35s ease-in-out forwards;

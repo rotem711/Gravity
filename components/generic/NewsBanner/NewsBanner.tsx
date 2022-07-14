@@ -1,12 +1,9 @@
 import React, { FunctionComponent, useState } from 'react'
-import useIsMobile from 'utils/hooks'
 import Link from 'next/link'
 import styles from './NewsBanner.module.scss'
 import INewsBanner from './NewsBanner.interface'
 
 const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
-  const isNotDesktop = useIsMobile('lg', true)
-
   const [closed, setClosed] = useState(false)
 
   const onCloseAction = () => {
@@ -15,12 +12,12 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
   }
   return (
     <div
-      className={`${styles.root} ${closed || isNotDesktop ? styles.hide : ''}`}
+      className={`${styles.root} ${closed ? styles.hide : ''}`}
     >
       <Link href={data.newsBannerLink.url}>
         <a target={data.newsBannerLink.target}>
           <div className="container flex items-center justify-center h-full">
-            <div className="relative">
+            <div className="relative text-center px-20 md:px-0">
               <span>{data.newsBannerText}</span>
             </div>
           </div>
