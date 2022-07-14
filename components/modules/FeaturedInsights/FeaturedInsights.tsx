@@ -70,7 +70,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                     >
                       {item.insight.post.publishedDate}
                     </time>
-                    <h3 className="typo-headlines mb-55 md:mb-50">
+                    <h3 className="typo-featured-insights-headline mb-55 md:mb-50">
                       {item.insight.post.optionalTitle || item.insight.title}
                     </h3>
                     <a

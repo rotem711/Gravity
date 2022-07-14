@@ -46,7 +46,7 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 </h4>
                 <Fade delay={200}>
                   <h2
-                    className="pb-75 md:pb-125 typo-headlines"
+                    className="pb-75 md:pb-125 typo-insights-headline"
                     dangerouslySetInnerHTML={{ __html: headline }}
                   />
                 </Fade>

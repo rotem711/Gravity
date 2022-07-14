@@ -1,4 +1,6 @@
 @import '../../../styles/variables';
+@import './../../../styles/typography';
+
 
 @keyframes ANIMATE_IN {
   0% {
@@ -46,6 +48,12 @@
 
 .root {
   position: relative;
+
+  .copy {
+    a {
+      @apply typo-captions-and-buttons;
+    }
+  }
 }
 
 .logo {

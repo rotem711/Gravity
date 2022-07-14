@@ -15,7 +15,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
   props,
 ) => {
   const { bigImageCarousel } = props
-  const isMobile = useIsMobile('xl')
+  const isMobile = useIsMobile('lg')
 
   // eslint-disable-next-line operator-linebreak
   const headline =
@@ -31,7 +31,7 @@ const BigImageCarouselModule: FunctionComponent<IBigImageCarousel> = (
     <div ref={ref} className={`${styles.root} pb-175 md:pb-225 lg:pb-100`}>
       <div className="container">
         <div className="default-grid">
-          <Fade className="col-span-7 xl:col-span-6 mb-50 md:mb-60">
+          <Fade className="col-span-7  mb-50 md:mb-60">
             <h2
               className="typo-headlines"
               dangerouslySetInnerHTML={{ __html: headline }}
