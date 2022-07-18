@@ -2,7 +2,7 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import { validateEmail } from 'utils/hooks'
@@ -59,6 +59,12 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       }, 3000)
     }
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('/api/hubspot')
+    }, 1000)
+  }, [])
 
   return (
     <div className={`${styles.root} pt-130 pb-45 md:pt-140 md:pb-50 lg:py-200`}>
