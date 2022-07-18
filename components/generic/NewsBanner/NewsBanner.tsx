@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import Link from 'next/link'
+import ArrowRight from 'public/icons/icon-drop-arrow.svg'
 import styles from './NewsBanner.module.scss'
 import INewsBanner from './NewsBanner.interface'
 
@@ -11,14 +12,15 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
     onClose()
   }
   return (
-    <div
-      className={`${styles.root} ${closed ? styles.hide : ''}`}
-    >
+    <div className={`${styles.root} ${closed ? styles.hide : ''}`}>
       <Link href={data.newsBannerLink.url}>
         <a target={data.newsBannerLink.target}>
           <div className="container flex items-center justify-center h-full">
             <div className="relative text-center px-20 md:px-0">
               <span>{data.newsBannerText}</span>
+            </div>
+            <div className={styles.chevron}>
+              <ArrowRight />
             </div>
           </div>
         </a>

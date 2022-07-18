@@ -4,6 +4,7 @@ import Link from 'interfaces/Link'
 export default interface ITextVideoCombinationV2 {
   fieldGroupName?: string
   extendedOnMobile?: boolean
+  clickable?: boolean
   textVideoCombinationV2: {
     items: [
       {

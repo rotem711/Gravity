@@ -31,4 +31,26 @@
       width: 1.1rem;
     }
   }
+
+  .chevron {
+    position: relative;
+    transform: rotate(270deg);
+    margin-left: 1rem;
+    opacity: 0;
+    transition: 600ms ease;
+    svg {
+      width: 1.5rem;
+      height: auto;
+      fill: #fff;
+    }
+  }
+
+  a {
+    &:hover {
+      .chevron {
+        opacity: 1;
+        transform: translateX(.2rem) rotate(270deg);
+      }
+    }
+  }
 }

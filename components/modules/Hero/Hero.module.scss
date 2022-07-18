@@ -33,6 +33,7 @@
       height: auto;
       mix-blend-mode: multiply;
       flex: 1;
+      background-color: rgba(0, 0, 0, 0);
       @screen md {
         min-height: 40vh;
       }

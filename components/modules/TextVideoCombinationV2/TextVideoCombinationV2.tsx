@@ -1,5 +1,8 @@
-import React, { FunctionComponent } from 'react'
+/* eslint-disable operator-linebreak */
+import React, { FunctionComponent, useState } from 'react'
 import Button from 'components/generic/button/button'
+import buttonStyles from 'components/generic/button/button.module.scss'
+import Link from 'next/link'
 import Fade from 'components/generic/fade/fade'
 import useIsMobile from 'utils/hooks'
 import ImageComponent from 'components/generic/image/image'
@@ -9,15 +12,24 @@ import ITextVideoCombinationV2 from './TextVideoCombinationV2.interface'
 const TextVideoCombinationV2Module: FunctionComponent<
   ITextVideoCombinationV2
 > = (props) => {
-  const { textVideoCombinationV2, extendedOnMobile = false } = props
+  const {
+    textVideoCombinationV2,
+    extendedOnMobile = false,
+    clickable = false,
+  } = props
   const isMobile = useIsMobile('md')
-
+  const [hoveredIndex, setHoveredIndex] = useState(-1)
   return (
     <div className={`${styles.root} py-100 md:py-150`}>
       <div className="container">
         {textVideoCombinationV2.items.map((item, index) => {
           const { flipHorizontally, headlineBreakpoint } = item
-          const fullHeight = ((item.image && !item.vimeoVideoUrl) || (!item.image && item.vimeoVideoUrl)) && !extendedOnMobile ? 'h-full' : ''
+          const fullHeight =
+            ((item.image && !item.vimeoVideoUrl) ||
+              (!item.image && item.vimeoVideoUrl)) &&
+            !extendedOnMobile
+              ? 'h-full'
+              : ''
           // eslint-disable-next-line operator-linebreak
           const headline =
             !isMobile && headlineBreakpoint ? headlineBreakpoint : item.headline
@@ -38,7 +50,9 @@ const TextVideoCombinationV2Module: FunctionComponent<
             <>
               <div
                 className={`col-span-6 ${
-                  extendedOnMobile ? 'md:col-span-8' : 'sd:col-span-3 md:col-span-5'
+                  extendedOnMobile
+                    ? 'md:col-span-8'
+                    : 'sd:col-span-3 md:col-span-5'
                 }`}
               >
                 <h4 className="pb-30 typo-subhead uppercase">
@@ -72,7 +86,19 @@ const TextVideoCombinationV2Module: FunctionComponent<
                     } pt-45 md:pt-55`}
                   >
                     <Fade delay={400}>
-                      <Button variant="light" link={item.link} />
+                      {clickable ? (
+                        <a
+                          className={`${buttonStyles.root} ${
+                            buttonStyles.light
+                          } ${
+                            hoveredIndex === index ? buttonStyles.hover : ''
+                          } mt-auto mr-auto`}
+                        >
+                          Read More
+                        </a>
+                      ) : (
+                        <Button variant="light" link={item.link} />
+                      )}
                     </Fade>
                   </div>
                 )}
@@ -97,7 +123,8 @@ const TextVideoCombinationV2Module: FunctionComponent<
               </Fade>
             </div>
           )
-          return (
+
+          const component = (
             <div
               key={`${item.topHeadline}-${item.headline}-${item.copy}`}
               id={item.anchor}
@@ -140,6 +167,20 @@ const TextVideoCombinationV2Module: FunctionComponent<
                 </>
               )}
             </div>
+          )
+
+          return clickable ? (
+            <Link href={item.link.url}>
+              <a
+                onFocus={() => {}}
+                onMouseOver={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(-1)}
+              >
+                {component}
+              </a>
+            </Link>
+          ) : (
+            component
           )
         })}
       </div>

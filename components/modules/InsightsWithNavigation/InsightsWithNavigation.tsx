@@ -114,11 +114,12 @@ const InsightsWithNavigationModule = ({
         {category === null && (
           <TextVideoCombinationV2
             extendedOnMobile
+            clickable
             fieldGroupName="TextVideoCombinationV2"
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul className="default-grid pt-80 md:pt-200 gap-y-180 sm:gap-y-180 sd:gap-y-275 container">
+        <ul className="default-grid gap-y-100 lg:gap-y-150 container">
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
@@ -156,7 +157,7 @@ const InsightsWithNavigationModule = ({
                     >
                       {item.post.publishedDate}
                     </time>
-                    <h3 className="typo-insights-headline mb-55 sd:mb-50">
+                    <h3 className="typo-featured-insights-headline mb-55 sd:mb-50">
                       {item.post.optionalTitle || item.title}
                     </h3>
 

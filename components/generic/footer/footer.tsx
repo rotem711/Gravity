@@ -13,13 +13,13 @@ const FooterBlock = ({ data }: { data: FooterInterface }) => (
     </Link>
     <div className="default-grid">
       <div
-        className={`${styles.contact} col-span-6 md:col-span-5 typo-footer ${styles.copy}`}
+        className={`${styles.contact} col-span-6 md:col-span-5 typo-footer-headline ${styles.copy}`}
         dangerouslySetInnerHTML={{ __html: data.contact }}
       />
       <ul className="col-span-6  md:col-span-6 md:col-start-7 mt-150  md:mt-0 default-grid gap-y-75">
         {data.navigation.map((item) => (
           <li className="col-span-3 md:col-span-4" key={item.label}>
-            <span className="typo-footer">{item.label}</span>
+            <span className="typo-footer-headline">{item.label}</span>
             <ul className={`${styles.list} `}>
               {item.links.map((subItem) => (
                 <li className="typo-captions-and-buttons" key={subItem.link.title}>
