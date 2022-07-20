@@ -2,13 +2,14 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
 import { validateEmail } from 'utils/hooks'
 import ImageComponent from 'components/generic/image/image'
 import styles from './BookADemo.module.scss'
 import IBookADemo from './BookADemo.interface'
+import submitForm from 'utils/hubspot'
 
 const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   const {
@@ -50,9 +51,10 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
     return false
   }
 
-  const submit = () => {
+  const submit = async () => {
     if (validateFields()) {
       setSuccess(true)
+      await submitForm(formData)
       setFormData(emptyFormObject)
       setTimeout(() => {
         setSuccess(false)
