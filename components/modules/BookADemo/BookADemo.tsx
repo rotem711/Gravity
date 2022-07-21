@@ -35,7 +35,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   }
 
   const validateFields = () => {
-    const { firstName, lastName, companyName, email, phoneNumber, checkbox } =
+    const { firstName, lastName, companyName, email, phoneNumber } =
       formData
     if (
       firstName &&
@@ -43,8 +43,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       companyName &&
       email &&
       validateEmail(email) &&
-      phoneNumber &&
-      checkbox
+      phoneNumber
     ) {
       return true
     }
