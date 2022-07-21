@@ -104,7 +104,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                             <div
                               className={`${styles.quoteElementChild}`}
                               dangerouslySetInnerHTML={{
-                                __html: `”${item.quote}”`,
+                                __html: `${item.quote}”`,
                               }}
                             />
                           </Fade>

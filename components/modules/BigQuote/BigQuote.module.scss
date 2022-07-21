@@ -3,9 +3,13 @@
 .root {
   position: relative;
 
-  .duplicateSlide {
-    visibility: hidden;
+  :global(.swiper) {
+    overflow: visible;
   }
+}
+
+.duplicateSlide {
+  visibility: hidden;
 }
 
 .cite {
@@ -40,13 +44,14 @@
   &::before {
     content: '“';
     display: inline-block;
+    font-size: inherit;
   }
 
   &::before {
     position: absolute;
     top: 0;
     right: 100%;
-    @extend .typo-big-quotes;
+
   }
 }
 
