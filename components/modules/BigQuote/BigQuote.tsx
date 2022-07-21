@@ -79,7 +79,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                   delay: 3000,
                   disableOnInteraction: false,
                 }}
-                watchOverflow
+                slideDuplicateClass={styles.duplicateSlide}
                 effect="fade"
                 loop
                 allowTouchMove={false}
@@ -104,7 +104,7 @@ const BigQuoteModule: FunctionComponent<IBigQuote> = (props) => {
                             <div
                               className={`${styles.quoteElementChild}`}
                               dangerouslySetInnerHTML={{
-                                __html: `${item.quote}”`,
+                                __html: `”${item.quote}”`,
                               }}
                             />
                           </Fade>

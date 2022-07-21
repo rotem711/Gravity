@@ -2,6 +2,10 @@
 
 .root {
   position: relative;
+
+  .duplicateSlide {
+    visibility: hidden;
+  }
 }
 
 .cite {
