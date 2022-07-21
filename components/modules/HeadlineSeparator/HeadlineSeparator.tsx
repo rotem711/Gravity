@@ -21,9 +21,9 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
 
   const submit = async () => {
     if (email && validateEmail(email)) {
+      await submitForm({ email }, true)
       setActivateInput(false)
       setSubmitted(true)
-      await submitForm({ email }, true)
     }
   }
 
