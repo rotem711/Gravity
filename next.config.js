@@ -41,7 +41,7 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self' player.vimeo.com;connect-src api.hsforms.com 'self' www.google-analytics.com vimeo.com; www.google-analytics.com 'self' data:; script-src 'unsafe-eval' player.vimeo.com www.googletagmanager.com www.google-analytics.com 'unsafe-inline' 'self'; script-src-attr 'unsafe-inline'; font-src 'self' data:; frame-src player.vimeo.com",
+            value: "script-src 'self'",
           },
           {
             key: 'X-Frame-Options',
