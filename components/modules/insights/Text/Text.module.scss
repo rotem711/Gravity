@@ -1,9 +1,32 @@
 .root {
   position: relative;
-  p {
-    margin-bottom: 1.5em;
-    &:last-of-type {
-      margin-bottom: 0;
+
+  p + p {
+    margin-top: 1.5em;
+  }
+
+  b, strong {
+    font-weight: bold !important;
+  }
+
+  i, em {
+    font-style: italic;
+  }
+
+  ul, ol {
+    margin-top: 1.5em;
+    padding-left: 1em;
+    li {
+      padding-left: .5em;
+      margin-bottom: 1em;
     }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
   }
 }
