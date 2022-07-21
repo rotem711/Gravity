@@ -3,6 +3,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import Button from 'components/generic/button/button'
 import Fade from 'components/generic/fade/fade'
+import submitForm from 'utils/hubspot'
 import Arrow from 'public/icons/icon-arrow.svg'
 import { validateEmail } from 'utils/hooks'
 import styles from './HeadlineSeparator.module.scss'
@@ -18,10 +19,11 @@ const HeadlineSeparatorModule: FunctionComponent<IHeadlineSeparator> = (
 
   const handleClick = () => setActivateInput(true)
 
-  const submit = () => {
+  const submit = async () => {
     if (email && validateEmail(email)) {
       setActivateInput(false)
       setSubmitted(true)
+      await submitForm({ email }, true)
     }
   }
 
