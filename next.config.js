@@ -41,7 +41,7 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "script-src 'self'; script-src self player.vimeo.com www.google-analytics.com vimeo.com; object-src 'none'",
+            value: "default-src 'self'; script-src 'report-sample' 'self' https://www.googletagmanager.com/gtag/js; style-src 'report-sample' 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://region1.analytics.google.com; font-src 'self' data:; frame-src 'self'; img-src 'self' https://www.google.at; manifest-src 'self'; media-src 'self' https://player.vimeo.com; report-uri https://62d9bf1ae7a4e344fdd76859.endpoint.csper.io/?v=0; worker-src 'none';",
           },
           {
             key: 'X-Frame-Options',
