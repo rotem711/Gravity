@@ -49,7 +49,12 @@ const Page = ({
         <title>{page.seoData.title || page.title}</title>
         <meta name="description" content={page.seoData.description} />
         <link rel="icon" href="/static/favicon/favicon.ico" />
-        <meta property="og:image" content={page.seoData.ogImage?.sourceUrl} />
+        <meta
+          property="og:image"
+          content={`${encodeURIComponent(
+            page.seoData.ogImage?.sourceUrl,
+          )}`}
+        />
       </Head>
       <Header
         inverted={page?.pageOption?.invertNavigation}
