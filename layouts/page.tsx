@@ -51,9 +51,7 @@ const Page = ({
         <meta name="description" content={page.seoData.description} />
         <meta
           property="og:image"
-          content={`/_next/image?url=${encodeURIComponent(
-            page.seoData.ogImage?.sourceUrl,
-          )}&w=1200&h=630&q=75`}
+          content={page.seoData.ogImage?.sourceUrl}
         />
         <meta property="og:title" content={page.seoData.title || page.title} />
         <meta property="og:description" content={page.seoData.description} />
@@ -68,9 +66,7 @@ const Page = ({
         <meta name="twitter:description" content={page.seoData.description} />
         <meta
           name="twitter:image"
-          content={`/_next/image?url=${encodeURIComponent(
-            page.seoData.ogImage?.sourceUrl,
-          )}&w=1200&h=630&q=75`}
+          content={page.seoData.ogImage?.sourceUrl}
         />
       </Head>
       <Header
