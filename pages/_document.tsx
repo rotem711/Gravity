@@ -17,7 +17,6 @@ class MyDocument extends Document {
             url('/fonts/ModernGothic-Regular.woff') format('woff');
           font-weight: normal;
           font-style: normal;
-          font-display: swap;
         }
 
         @font-face {
@@ -26,7 +25,6 @@ class MyDocument extends Document {
             url('/fonts/ModernGothic-Light.woff') format('woff');
           font-weight: 300;
           font-style: normal;
-          font-display: swap;
         }
 
         @font-face {
@@ -35,7 +33,6 @@ class MyDocument extends Document {
             url('/fonts/SohneMono-Buch.woff') format('woff');
           font-weight: normal;
           font-style: normal;
-          font-display: swap;
         }`,
             }}
           />
