@@ -47,14 +47,21 @@ const Page = ({
     <div>
       <Head>
         <title>{page.seoData.title || page.title}</title>
+        <meta property="og:type" content="website" />
         <meta name="description" content={page.seoData.description} />
+        <meta property="og:image" content={page.seoData.ogImage?.sourceUrl} />
+        <meta property="og:title" content={page.seoData.title || page.title} />
+        <meta property="og:description" content={page.seoData.description} />
         <link rel="icon" href="/static/favicon/favicon.ico" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="gravityclimate.com" />
         <meta
-          property="og:image"
-          content={`/_next/image?url=${encodeURIComponent(
-            page.seoData.ogImage?.sourceUrl,
-          )}&w=1200&h=630&q=75`}
+          property="twitter:url"
+          content="https://www.gravityclimate.com/"
         />
+        <meta name="twitter:title" content={page.seoData.title || page.title} />
+        <meta name="twitter:description" content={page.seoData.description} />
+        <meta name="twitter:image" content={page.seoData.ogImage?.sourceUrl} />
       </Head>
       <Header
         inverted={page?.pageOption?.invertNavigation}
