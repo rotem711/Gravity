@@ -51,9 +51,9 @@ const Page = ({
         <link rel="icon" href="/static/favicon/favicon.ico" />
         <meta
           property="og:image"
-          content={`${encodeURIComponent(
+          content={`/_next/image?url=${encodeURIComponent(
             page.seoData.ogImage?.sourceUrl,
-          )}`}
+          )}&w=1200&h=630&q=75`}
         />
       </Head>
       <Header
