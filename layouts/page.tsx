@@ -35,7 +35,14 @@ const Page = ({
   settings: SettingsInterface
 }) => (
   <GlobalContextProvider
-    value={{ header, footer, platformNavigation, insights, insightsCategories, settings }}
+    value={{
+      header,
+      footer,
+      platformNavigation,
+      insights,
+      insightsCategories,
+      settings,
+    }}
   >
     <div>
       <Head>

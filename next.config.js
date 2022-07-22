@@ -35,7 +35,7 @@ module.exports = {
     formats: ['image/avif', 'image/webp'],
   },
   async headers() {
-    return [
+    return process.env.NODE_ENV === 'development' ? [] : [
       {
         source: '/(.*)',
         headers: [
