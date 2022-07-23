@@ -63,7 +63,7 @@ const Insight = ({
 
           <InsightHeader
             title={insight.title}
-            image={insight.featuredImage.node}
+            image={insight?.featuredImage?.node}
             videoUrl={insight.post.previewVideo}
           />
 
