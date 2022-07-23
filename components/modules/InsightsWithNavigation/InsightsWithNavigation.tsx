@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-confusing-arrow */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import { GlobalContext } from 'pages/_app'
 import React, { useContext, useEffect, useState } from 'react'
@@ -32,9 +34,7 @@ const InsightsWithNavigationModule = ({
     if (catId === null) {
       setFilteredInsights([...insights.nodes])
     } else {
-      const filtered = insights.nodes.filter((x) =>
-        x.categories.nodes.find((a) => a.id === catId),
-      )
+      const filtered = insights.nodes.filter((x) => x.categories.nodes.find((a) => a.id === catId))
       setFilteredInsights([...filtered])
     }
   }
@@ -87,15 +87,8 @@ const InsightsWithNavigationModule = ({
               </li>
             )}
             {insightsCategories
-              // eslint-disable-next-line max-len
-              .filter((x) =>
-                insights.nodes.find((c) =>
-                  c.categories.nodes.find((y) => y.id === x.id),
-                ),
-              )
-              .filter((y) =>
-                category !== null && isMobile ? y.id === category : true,
-              )
+              .filter((x) => insights.nodes.find((c) => c.categories.nodes.find((y) => y.id === x.id)))
+              .filter((y) => category !== null && isMobile ? y.id === category : true)
               .map((item, index) => (
                 <li key={item.id} className="ml-30 sd:ml-40">
                   <Fade
