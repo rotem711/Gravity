@@ -38,29 +38,34 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
                     className="h-full flex flex-col"
                     delay={index * 150 + 150}
                   >
-                    <div className={`${styles.mediaContainer} mb-40 md:mb-50`}>
-                      {item.insight.post.previewVideo ? (
-                        <video
-                          src={item.insight.post.previewVideo}
-                          playsInline
-                          preload="none"
-                          muted
-                          loop
-                        />
-                      ) : (
-                        <Image
-                          loading="lazy"
-                          src={item.insight.featuredImage.node.sourceUrl}
-                          alt={item.insight.featuredImage.node.altText}
-                          width={
-                            item.insight.featuredImage.node.mediaDetails.width
-                          }
-                          height={
-                            item.insight.featuredImage.node.mediaDetails.height
-                          }
-                        />
-                      )}
-                    </div>
+                    {(item.insight.post.previewVideo || item.insight.featuredImage) && (
+                      <div
+                        className={`${styles.mediaContainer} mb-40 md:mb-50`}
+                      >
+                        {item.insight.post.previewVideo ? (
+                          <video
+                            src={item.insight.post.previewVideo}
+                            playsInline
+                            preload="none"
+                            muted
+                            loop
+                          />
+                        ) : (
+                          <Image
+                            loading="lazy"
+                            src={item.insight.featuredImage.node.sourceUrl}
+                            alt={item.insight.featuredImage.node.altText}
+                            width={
+                              item.insight.featuredImage.node.mediaDetails.width
+                            }
+                            height={
+                              item.insight.featuredImage.node.mediaDetails
+                                .height
+                            }
+                          />
+                        )}
+                      </div>
+                    )}
                     <time
                       className={`${styles.title} block typo-subhead uppercase mb-40 md:mb-30`}
                       dateTime={item.insight.post.publishedDate.replace(
