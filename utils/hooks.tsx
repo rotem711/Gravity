@@ -45,8 +45,4 @@ export const validateEmail = (email: string) => {
  * @param _date expects Ymd date (YYYYMMDD)
  * @returns formatted string
  */
-export const formatDate = (_date: number | string) => new Date(_date).toLocaleString('en-us', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-})
+export const formatDate = (_date: number | string) => _date
