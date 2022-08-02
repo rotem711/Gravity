@@ -8,6 +8,7 @@ export default `
   ${Link}
 
   query post($uri: String, $databaseId: [ID]) {
+
     header: acfOptionsHeader {
       header {
         rightSideNavigation {
@@ -94,6 +95,27 @@ export default `
       title
       slug
       uri
+      seoData {
+        description
+        fieldGroupName
+        ogDescription
+        ogImage {
+          ...Image
+        }
+        ogLocale
+        ogSiteName
+        ogTitle
+        ogType
+        title
+        ogUrl
+        twitterCard
+        twitterDescription
+        twitterSite
+        twitterTitle
+        twitterImage {
+          ...Image
+        }
+      }
       featuredImage {
         node {
           ...Image
@@ -155,5 +177,22 @@ export interface InsightsInterface {
     optionalTitle: string
     customAuthor: string
     contentBuilder: any[]
+  }
+  seoData: {
+    description: string
+    fieldGroupName: string
+    ogDescription: string
+    ogImage: MediaItem
+    ogLocale: string
+    ogSiteName: string
+    ogTitle: string
+    ogType: string
+    title: string
+    ogUrl: string
+    twitterCard: string
+    twitterDescription: string
+    twitterSite: string
+    twitterTitle: string
+    twitterImage: MediaItem
   }
 }

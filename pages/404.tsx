@@ -40,7 +40,6 @@ const Custom404 = ({
       <div className="notFound">
         <Head>
           <title>Gravity</title>
-          <meta name="description" content="TBD" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header inverted data={header} uri="/404" />

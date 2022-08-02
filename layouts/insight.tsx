@@ -28,21 +28,46 @@ const Insight = ({
   insight: InsightsInterface
   footer: FooterInterface
   header: Navigation
-  nextPosts: { nodes: Post[]}
+  nextPosts: { nodes: Post[] }
 }) => {
   const {
     insightsDetailPage: { headlineSeparator, fullscreenLinkWithMedia },
   } = settings
 
   // eslint-disable-next-line max-len
-  const nextPostNodes = nextPosts.nodes.map((e: Post) => { return { insight: e } }) as [{ insight: Post }]
+  const nextPostNodes = nextPosts.nodes.map((e: Post) => {
+    return { insight: e }
+  }) as [{ insight: Post }]
+
   return (
     <GlobalContextProvider value={{ header, footer, settings }}>
       <div>
         <Head>
-          <title>Gravity</title>
-          <meta name="description" content="TBD" />
-          <link rel="icon" href="/favicon.ico" />
+          <title>{insight.seoData.title || insight.title}</title>
+          <meta property="og:type" content="website" />
+          <meta name="description" content={insight.seoData.description} />
+          <meta property="og:image" content={insight.seoData.ogImage?.sourceUrl} />
+          <meta
+            property="og:title"
+            content={insight.seoData.title || insight.title}
+          />
+          <meta property="og:description" content={insight.seoData.description} />
+          <link rel="icon" href="/static/favicon/favicon.ico" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="twitter:domain" content="gravityclimate.com" />
+          <meta
+            property="twitter:url"
+            content="https://www.gravityclimate.com/"
+          />
+          <meta
+            name="twitter:title"
+            content={insight.seoData.title || insight.title}
+          />
+          <meta name="twitter:description" content={insight.seoData.description} />
+          <meta
+            name="twitter:image"
+            content={insight.seoData.ogImage?.sourceUrl}
+          />
         </Head>
         <Header data={header} uri={insight?.uri} />
         <main key={insight?.uri}>
@@ -73,8 +98,10 @@ const Insight = ({
             customName={insight.post.customAuthor}
           />
 
-          {!!insight?.post?.contentBuilder?.length
-            && insight.post.contentBuilder.map((layout, index) => renderLayout(layout, 'Post_Post_ContentBuilder_', index))}
+          {!!insight?.post?.contentBuilder?.length &&
+            insight.post.contentBuilder.map((layout, index) =>
+              renderLayout(layout, 'Post_Post_ContentBuilder_', index),
+            )}
 
           <HeadlineSeparatorModule
             disableContainer={false}
@@ -82,7 +109,11 @@ const Insight = ({
           />
           <FeaturedInsightsModule
             reducedSpacing
-            featuredInsights={{ insights: nextPostNodes, headline: 'News', backgroundColor: '#D97F3E' }}
+            featuredInsights={{
+              insights: nextPostNodes,
+              headline: 'News',
+              backgroundColor: '#D97F3E',
+            }}
           />
           <FullscreenLinkWithMediaModule
             fullscreenLinkWithMedia={fullscreenLinkWithMedia}
