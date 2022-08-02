@@ -1,7 +1,5 @@
 import React from 'react'
-import Document, {
-  Head, Html, Main, NextScript,
-} from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   render() {
@@ -50,6 +48,21 @@ class MyDocument extends Document {
           {process.env.NODE_ENV !== 'development' && (
             <script
               dangerouslySetInnerHTML={{
+                __html: ` (function () {
+              var zi = document.createElement('script');
+              zi.type = 'text/javascript';
+              zi.async = true;
+              zi.referrerPolicy = 'unsafe-url';
+              zi.src = 'https://ws.zoominfo.com/pixel/62e2ce36953f3e008e0c4b33';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(zi, s);
+                  })();`,
+              }}
+            />
+          )}
+          {process.env.NODE_ENV !== 'development' && (
+            <script
+              dangerouslySetInnerHTML={{
                 __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -62,6 +75,17 @@ class MyDocument extends Document {
             />
           )}
         </body>
+        {process.env.NODE_ENV !== 'development' && (
+          <noscript>
+            <img
+              src="https://ws.zoominfo.com/pixel/62e2ce36953f3e008e0c4b33"
+              width="1"
+              height="1"
+              style={{ display: 'none' }}
+              alt="websights"
+            />
+          </noscript>
+        )}
       </Html>
     )
   }
