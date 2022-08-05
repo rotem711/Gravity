@@ -2,7 +2,6 @@
   position: relative;
 
   p {
-    display: inline;
     & + p {
       margin-top: 1.5em;
     }

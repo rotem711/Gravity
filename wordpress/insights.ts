@@ -10,6 +10,7 @@ query Posts {
     nodes {
       slug
       title
+      uri
       post {
         publishedDate
         previewVideo

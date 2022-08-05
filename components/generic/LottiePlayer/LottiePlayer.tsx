@@ -18,7 +18,7 @@ const LottiePlayer: FunctionComponent<ILottiePlayer> = (props) => {
     try {
       import(`public/animations/${animation}.json`).then(setAnimationData)
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }, [])
 

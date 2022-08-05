@@ -47,7 +47,23 @@ const InsightsWithNavigationModule = ({
     setHideFilters(isMobile)
   }, [isMobile])
 
-  const splicedInsights = [...filteredInsights].splice(0, spliceIndex * 4)
+  let splicedInsights = [...filteredInsights].splice(0, spliceIndex * 4)
+
+  //  if a featured article is set, filter this one out IF NO category filtering is active
+  if (textVideoCombinationV2 && textVideoCombinationV2.items.length > 0 && category === null) {
+    const linksToExclude = textVideoCombinationV2.items
+      .filter((e) => e.link.url)
+      .map((e) => e.link.url)
+    splicedInsights = splicedInsights.filter((item) => {
+      const s = item.uri.slice(0, -1)
+
+      if (linksToExclude.find((element) => element.includes(s))) {
+        return false
+      }
+      return true
+    })
+  }
+
   return (
     <div className={`${styles.root} pb-65 md:pb-100`}>
       <nav className={`${styles.navContainer}`}>
@@ -124,7 +140,7 @@ const InsightsWithNavigationModule = ({
             textVideoCombinationV2={textVideoCombinationV2}
           />
         )}
-        <ul className="default-grid gap-y-100 lg:gap-y-150 container">
+        <ul className={`default-grid gap-y-100 lg:gap-y-150 container ${category ? 'pt-100 md:pt-150' : ''}`}>
           {splicedInsights.map((item, index) => (
             <li
               key={`${item.slug} - ${category}`}
