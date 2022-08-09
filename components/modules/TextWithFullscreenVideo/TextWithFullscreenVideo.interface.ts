@@ -7,7 +7,12 @@ export default interface ITextWithFullscreenVideo {
     headline: string
     copy: string
     link: Link
-    logo: MediaItem
     lottieSelect: string
+    logos: [
+      {
+        logo: MediaItem
+        link: string
+      },
+    ]
   }
 }

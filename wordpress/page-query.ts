@@ -12,6 +12,7 @@ import HeroV2Fragment from 'components/modules/HeroV2/HeroV2.graphql'
 import HeroWithAnimatedTextFragment from 'components/modules/HeroWithAnimatedText/HeroWithAnimatedText.graphql'
 import ImageWithCopyColumnsFragment from 'components/modules/ImageWithCopyColumns/ImageWithCopyColumns.graphql'
 import InsightsWithNavigationFragment from 'components/modules/InsightsWithNavigation/InsightsWithNavigation.graphql'
+import LogoRowFragment from 'components/modules/LogoRow/LogoRow.graphql'
 import MediaWithCopyAndLinkFragment from 'components/modules/MediaWithCopyAndLink/MediaWithCopyAndLink.graphql'
 import PlatformNavigationFragment from 'components/modules/PlatformNavigation/PlatformNavigation.graphql'
 import SideBySideMediaFragment from 'components/modules/SideBySideMedia/SideBySideMedia.graphql'
@@ -32,6 +33,7 @@ export default `
   ${Image}
   ${Link}
   ${HeroFragment(TEMPLATE_PREFIX)}
+  ${LogoRowFragment(TEMPLATE_PREFIX)}
   ${SliderWithMediaFragment(TEMPLATE_PREFIX)}
   ${TextVideoCombinationFragment(TEMPLATE_PREFIX)}
   ${TextVideoCombinationV2Fragment(TEMPLATE_PREFIX)}
@@ -158,6 +160,9 @@ export default `
               __typename
               ...on DefaultTemplate_Pagebuilder_PageBuilder_Hero {
                 ...Hero
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_LogoRow {
+                ...LogoRow
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_SliderWithMedia {
                 ...SliderWithMedia
