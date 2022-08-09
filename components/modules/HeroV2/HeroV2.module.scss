@@ -1,5 +1,6 @@
 .root {
   position: relative;
+  background-color: theme('colors.mediumSky');
 
   &.extended {
     display: flex;
