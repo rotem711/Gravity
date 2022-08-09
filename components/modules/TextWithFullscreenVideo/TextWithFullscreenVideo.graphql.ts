@@ -7,10 +7,12 @@ const TextWithFullscreenVideoFragment = (t: string) => `
       link {
         ...Link
       }
-      logo {
-        ...Image
-      }
       lottieSelect
+      logos {
+        logo {
+          ...Image
+        }
+      }
     }
   }
 `
