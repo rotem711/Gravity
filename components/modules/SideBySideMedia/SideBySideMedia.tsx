@@ -10,11 +10,24 @@ import ISideBySideMedia from './SideBySideMedia.interface'
 const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
   const { sideBySideMedia } = props
   const ref = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>()
   const [inView, setInView] = useState(false)
 
   const isInView = () => {
     if (ref.current.getBoundingClientRect().top < window.innerHeight * 2) {
       setInView(true)
+    }
+  }
+
+  const onMouseEnter = (index) => {
+    if (videoRef && videoRef.current[index]) {
+      videoRef.current[index].play()
+    }
+  }
+
+  const onMouseLeave = (index) => {
+    if (videoRef && videoRef.current[index]) {
+      videoRef.current[index].pause()
     }
   }
 
@@ -27,9 +40,13 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
 
   return (
     <div ref={ref} className={`${styles.root} flex flex-wrap`}>
-      {sideBySideMedia.media.map((item) => (
+      {sideBySideMedia.media.map((item, index) => (
         <div key={item.headline} className={`${styles.item}`}>
-          <div className={`${styles.itemWrapper}`}>
+          <div
+            className={`${styles.itemWrapper}`}
+            onMouseEnter={() => onMouseEnter(index)}
+            onMouseLeave={() => onMouseLeave(index)}
+          >
             <Link href={item.link.url}>
               <a>
                 <div>
@@ -44,7 +61,7 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
                     playsInline
                     muted
                     loop
-                    autoPlay
+                    ref={(el) => { videoRef.current[index] = el }}
                   />
                 ) : (
                   item.image && (
