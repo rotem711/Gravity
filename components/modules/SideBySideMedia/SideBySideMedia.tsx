@@ -10,7 +10,7 @@ import ISideBySideMedia from './SideBySideMedia.interface'
 const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
   const { sideBySideMedia } = props
   const ref = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>()
+  let videoRef = useRef<Array<HTMLVideoElement | null>>([])
   const [inView, setInView] = useState(false)
 
   const isInView = () => {
@@ -32,6 +32,9 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
   }
 
   useEffect(() => {
+    if (sideBySideMedia && sideBySideMedia.media) {
+      videoRef.current = videoRef.current.slice(0, sideBySideMedia.media.length);
+    }
     window.addEventListener('scroll', isInView)
     return () => {
       window.removeEventListener('scroll', isInView)
