@@ -40,7 +40,8 @@ const Page = ({
     asPath === '/' ||
     asPath === '/product' ||
     asPath === '/team' ||
-    asPath === '/blog'
+    asPath === '/blog' ||
+    asPath === 'book-a-demo'
   return (
     <GlobalContextProvider
       value={{

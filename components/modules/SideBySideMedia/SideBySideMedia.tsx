@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent, useEffect, useRef, useState,
 } from 'react'
+import useIsMobile from 'utils/hooks'
 import Link from 'next/link'
 import Image from 'components/generic/image/image'
 import Arrow from 'public/icons/icon-arrow.svg'
@@ -12,6 +13,7 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
   const ref = useRef<HTMLDivElement>(null)
   const videoRef = useRef<Array<HTMLVideoElement | null>>([])
   const [inView, setInView] = useState(false)
+  const isMobile = useIsMobile()
 
   const isInView = () => {
     if (ref.current.getBoundingClientRect().top < window.innerHeight * 2) {
@@ -64,6 +66,7 @@ const SideBySideMediaModule: FunctionComponent<ISideBySideMedia> = (props) => {
                     playsInline
                     muted
                     loop
+                    autoPlay={isMobile}
                     ref={(el) => { videoRef.current[index] = el }}
                   />
                 ) : (
