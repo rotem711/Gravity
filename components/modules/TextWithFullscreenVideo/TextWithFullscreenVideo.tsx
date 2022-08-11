@@ -22,10 +22,10 @@ const TextWithFullscreenVideoModule: FunctionComponent<
       </Fade>
       <div className="col-span-6 md:col-span-12 xl:col-span-12 md:mt-75 xl:mt-130 ms:order-3 mb-30 md:mb-0">
         <div className="default-grid">
-          <div className="col-span-6 md:col-span-8 xl:col-span-7 xl:col-start-2 mt-55 sm:mt-0 ms:mt-55 md:mt-0">
+          <div className="col-span-6 md:col-span-6 xl:col-span-7  mt-55 sm:mt-0 ms:mt-55 md:mt-0">
             <LottiePlayer animation={textWithFullscreenVideo.lottieSelect} />
           </div>
-          <div className="col-span-6 md:col-span-4 xl:col-span-4 grid gap-x-30 gap-y-25 md:gap-y-60 lg:gap-y-90 md:grid-cols-2 grid-cols-3 mt-70 md:mt-0">
+          <div className="col-span-6 md:col-start-8 md:col-span-5 xl:col-start-9 xl:col-span-4 grid gap-x-15 md:gap-x-30 gap-y-25 md:gap-y-60 lg:gap-y-90 grid-cols-2 mt-70 md:mt-0">
             {textWithFullscreenVideo.logos.map((item, index) => {
               const child = (
                 <span
