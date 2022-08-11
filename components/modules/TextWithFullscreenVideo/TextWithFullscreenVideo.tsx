@@ -9,7 +9,6 @@ const TextWithFullscreenVideoModule: FunctionComponent<
   ITextWithFullscreenVideo
 > = (props) => {
   const { textWithFullscreenVideo } = props
-  console.log(textWithFullscreenVideo.logos)
   return (
     <div className={`${styles.root} container default-grid mb-170 lg:mb-230 xl:mb-285`}>
       <Fade className="col-span-6 ms:col-span-3 md:col-span-6 typo-headlines mb-80">
