@@ -25,12 +25,15 @@ import InsightsWithNavigationModule from 'components/modules/InsightsWithNavigat
 import DividerModule from 'components/modules/Divider/Divider'
 import TextVideoCombinationV2Module from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
 import BookADemoModule from 'components/modules/BookADemo/BookADemo'
+import LogoRowModule from 'components/modules/LogoRow/LogoRow'
 
 const renderLayout = (layout: any, prefix: string, index: number) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
   switch (extractedLayout) {
     case 'Hero':
       return <HeroModule key="HeroModule" {...layout} />
+    case 'LogoRow':
+      return <LogoRowModule key="LogoRow" {...layout} />
     case 'SliderWithMedia':
       return <SliderWithMediaModule key="SliderWithMediaModule" {...layout} />
     case 'TextVideoCombination':
@@ -117,12 +120,7 @@ const renderLayout = (layout: any, prefix: string, index: number) => {
         />
       )
     case 'BookADemo':
-      return (
-        <BookADemoModule
-          key={`BookADemo-${index}`}
-          {...layout}
-        />
-      )
+      return <BookADemoModule key={`BookADemo-${index}`} {...layout} />
     default:
       return null
   }
