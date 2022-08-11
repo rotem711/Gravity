@@ -41,7 +41,7 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "script-src 'self' 'unsafe-inline' *.googletagmanager.com vimeo.com player.vimeo.com; img-src 'self' data: *.google-analytics.com *.googletagmanager.com; connect-src 'self' *.google-analytics.com api.hsforms.com static.hotjar.com in.hotjar.com script.hotjar.com ws.zoominfo.com *.analytics.google.com *.googletagmanager.com 'script-src-elem' ws.zoominfo.com static.hotjar.com",
+            value: "script-src 'self' 'unsafe-inline' ws.zoominfo.com static.hotjar.com *.googletagmanager.com vimeo.com player.vimeo.com; img-src 'self' data: *.google-analytics.com *.googletagmanager.com; connect-src 'self' *.google-analytics.com api.hsforms.com static.hotjar.com in.hotjar.com script.hotjar.com ws.zoominfo.com *.analytics.google.com *.googletagmanager.com",
           },
           {
             key: 'X-Frame-Options',
