@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent, useEffect, useRef, useState,
 } from 'react'
+import useIsMobile from 'utils/hooks'
 import Link from 'next/link'
 import Image from 'components/generic/image/image'
 import Arrow from 'public/icons/icon-arrow.svg'
@@ -12,11 +13,25 @@ const FullscreenLinkWithMediaModule: FunctionComponent<
 > = (props) => {
   const { fullscreenLinkWithMedia } = props
   const ref = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [inView, setInView] = useState(false)
+  const isMobile = useIsMobile()
 
   const isInView = () => {
     if (ref.current.getBoundingClientRect().top < window.innerHeight * 2) {
       setInView(true)
+    }
+  }
+
+  const onMouseEnter = () => {
+    if (videoRef && videoRef.current) {
+      videoRef.current.play()
+    }
+  }
+
+  const onMouseLeave = () => {
+    if (videoRef && videoRef.current) {
+      videoRef.current.pause()
     }
   }
 
@@ -29,7 +44,11 @@ const FullscreenLinkWithMediaModule: FunctionComponent<
 
   return (
     <div className={`${styles.root}`} ref={ref}>
-      <div className={`${styles.itemWrapper}`}>
+      <div
+        className={`${styles.itemWrapper}`}
+        onMouseEnter={() => onMouseEnter()}
+        onMouseLeave={() => onMouseLeave()}
+      >
         <Link href={fullscreenLinkWithMedia.link.url}>
           <a>
             <div className="py-20 md:py-30 container">
@@ -46,7 +65,8 @@ const FullscreenLinkWithMediaModule: FunctionComponent<
                 playsInline
                 muted
                 loop
-                autoPlay
+                autoPlay={isMobile}
+                ref={videoRef}
               />
             ) : (
               fullscreenLinkWithMedia.image && (
