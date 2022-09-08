@@ -29,4 +29,9 @@
   ul {
     list-style-type: disc;
   }
+
+  a {
+    color: theme('colors.softSky');
+    text-decoration: underline;
+  }
 }

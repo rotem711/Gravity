@@ -8,10 +8,10 @@ const QuoteModule:FunctionComponent<IQuote> = ({ quote, author }) => (
     className={`${styles.root} mb-70`}
   >
     <blockquote className="container-insights">
-      <p className="typo-headlines">
-        “
+      <p className="typo-headlines relative">
+        <span className={styles.quote_mark}>“</span>
         {parse(quote)}
-        ”
+        <span>”</span>
       </p>
 
       {author && (
