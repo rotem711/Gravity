@@ -139,11 +139,13 @@ export default `
           ...on Post_Post_ContentBuilder_Text {
             fieldGroupName
             text
+            subheader
           }
           ...on Post_Post_ContentBuilder_Quote {
             fieldGroupName
             author
             quote
+            anchorLink
           }
           ...on Post_Post_ContentBuilder_Image {
             fieldGroupName
