@@ -35,15 +35,14 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   }
 
   const validateFields = () => {
-    const { firstName, lastName, companyName, email, phoneNumber } =
+    const { firstName, lastName, companyName, email } =
       formData
     if (
       firstName &&
       lastName &&
       companyName &&
       email &&
-      validateEmail(email) &&
-      phoneNumber
+      validateEmail(email)
     ) {
       return true
     }
@@ -72,35 +71,35 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
               className={`${styles.form} mt-35 md:mt-40 grid md:grid-cols-2 gap-y-25 md:gap-y-40 gap-x-15 md:gap-x-20 xl:gap-x-30`}
             >
               <input
-                placeholder="First name"
+                placeholder="First Name*"
                 type="text"
                 value={formData.firstName}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'firstName')}
               />
               <input
-                placeholder="Last name"
+                placeholder="Last Name*"
                 type="text"
                 value={formData.lastName}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'lastName')}
               />
               <input
-                placeholder="Company name"
+                placeholder="Company Name*"
                 type="text"
                 value={formData.companyName}
                 className="col-span-2"
                 onChange={(e) => handleChange(e, 'companyName')}
               />
               <input
-                placeholder="Business email address"
+                placeholder="Business Email Address*"
                 type="email"
                 value={formData.email}
                 className="col-span-2 md:col-span-1"
                 onChange={(e) => handleChange(e, 'email')}
               />
               <input
-                placeholder="Phone number"
+                placeholder="Phone Number"
                 type="text"
                 value={formData.phoneNumber}
                 className="col-span-2 md:col-span-1"
