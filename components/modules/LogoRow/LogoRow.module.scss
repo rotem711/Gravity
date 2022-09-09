@@ -1,6 +1,59 @@
 .root {
   position: relative;
-  margin: 10rem 0rem;
+  background-color: theme('colors.mediumSky');
+  z-index: 11;
+  animation: FADE_IN 250ms forwards;
 
-  border-bottom: 1px solid black;
+  @keyframes FADE_IN {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.logos {
+  align-items: center;
+}
+
+.iconContainer {
+  display: block;
+  position: relative;
+  flex-basis: 50%;
+
+  @screen sm {
+    flex-basis: initial;
+    flex-shrink: 0;
+    flex: 1;
+  }
+
+  span {
+    img {
+      width: auto;
+      height: 2.5rem !important;
+      @screen lg {
+        height: 4.5rem !important;
+      }
+    }
+  }
+}
+
+@screen md {
+  .title {
+    order: 2;
+  }
+
+  .video {
+    order: 1;
+  }
+
+  .logos {
+    order: 4;
+  }
+
+  .button {
+    order: 3;
+  }
 }
