@@ -24,7 +24,7 @@ const QuoteModule: FunctionComponent<IQuote> = ({
       {!anchorLink && (
         <p className="typo-headlines relative">
           <span className={styles.quote_mark}>“</span>
-          {parse(quote)}
+            {parse(quote)}
           <span>”</span>
         </p>
       )}
