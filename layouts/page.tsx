@@ -12,9 +12,9 @@ import FooterInterface from 'components/generic/footer/footer.interface'
 import { Navigation } from 'components/generic/header/header.interface'
 import InsightsInterface, { InsightsCategory } from 'interfaces/Insights'
 import PlatformNavigationInterface from 'components/generic/platformNavigation/platformNavigation.interface'
+import { useRouter } from 'next/router'
 import Header from '../components/generic/header/header'
 import Footer from '../components/generic/footer/footer'
-import { useRouter } from 'next/router'
 
 const Page = ({
   page,
