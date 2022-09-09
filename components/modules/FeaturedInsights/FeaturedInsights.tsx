@@ -27,7 +27,7 @@ const FeaturedInsightsModule: FunctionComponent<IFeaturedInsights> = (
         </h2>
         <ul className="default-grid gap-y-180">
           {featuredInsights.insights.map((item, index) => (
-            <Link href={`/insights/${item.insight.slug}`}>
+            <Link href={`/blog/${item.insight.slug}`}>
               <a
                 onMouseOver={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(-1)}
