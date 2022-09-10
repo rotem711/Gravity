@@ -26,7 +26,7 @@ const TextWithFullscreenVideoModule: FunctionComponent<
             <LottiePlayer animation={textWithFullscreenVideo.lottieSelect} />
           </div>
           <div className="col-span-6 md:col-start-8 md:col-span-5 xl:col-start-9 xl:col-span-4 grid gap-x-15 md:gap-x-30 gap-y-25 md:gap-y-60 lg:gap-y-90 grid-cols-2 mt-70 md:mt-0">
-            {textWithFullscreenVideo.logos.map((item, index) => {
+            {textWithFullscreenVideo.logos && textWithFullscreenVideo.logos.map((item, index) => {
               const child = (
                 <span
                   key={item.logo.sourceUrl}
