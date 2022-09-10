@@ -12,4 +12,9 @@
     @apply ml-30 mb-15 float-right;
     max-width: 50%;
   }
+
+  a {
+    color: theme('colors.softSky');
+    text-decoration: underline;
+  }
 }

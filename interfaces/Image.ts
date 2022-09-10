@@ -6,6 +6,7 @@ export default interface Image {
       width: number
       height: number
     }
+    caption?: string
   }
   mobileImage: {
     sourceUrl: string
@@ -14,6 +15,7 @@ export default interface Image {
       width: number
       height: number
     }
+    caption?: string
   }
 }
 
@@ -24,4 +26,5 @@ export interface MediaItem {
     width: number
     height: number
   }
+  caption?: string
 }
