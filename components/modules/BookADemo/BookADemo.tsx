@@ -40,7 +40,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   ) => {
     setFormData({ ...formData, [key]: e.target.value })
     if (e.target.value && e.target.value.length > 0) {
-      let tmp = Object.assign({}, errors)
+      const tmp = { ...errors }
       tmp[key] = false
       setErrors(tmp)
     }
@@ -52,7 +52,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       setErrors(errorObject)
       return true
     }
-    let tmp = Object.assign({}, errors)
+    const tmp = { ...errors }
     if (!firstName) {
       console.log('firstName is empty')
       tmp.firstName = true
