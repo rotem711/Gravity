@@ -148,7 +148,7 @@ const InsightsWithNavigationModule = ({
                 category === 'all' ? styles.active : ''
               } `}
             >
-              <Link href={`/insights/${item.slug}`}>
+              <Link href={`/blog/${item.slug}`}>
                 <a
                   onMouseOver={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(-1)}
