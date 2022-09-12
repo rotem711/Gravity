@@ -5,10 +5,9 @@ import IWYSIWYGText from './WYSIWYGText.interface'
 
 const WYSIWYGTextModule: FunctionComponent<IWYSIWYGText> = (props) => {
   const { wysiwyg } = props
-  console.log(wysiwyg)
 
   return (
-    <div className={`${styles.root} typo-body mb-70`}>
+    <div className={`${styles.root}`}>
       <div className="container-insights">{parse(wysiwyg)}</div>
     </div>
   )
