@@ -26,6 +26,7 @@ import DividerModule from 'components/modules/Divider/Divider'
 import TextVideoCombinationV2Module from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2'
 import BookADemoModule from 'components/modules/BookADemo/BookADemo'
 import LogoRowModule from 'components/modules/LogoRow/LogoRow'
+import WYSIWYGTextModule from 'components/modules/WYSIWYGText/WYSIWYGText'
 
 const renderLayout = (layout: any, prefix: string, index: number) => {
   const extractedLayout = layout.__typename.split(prefix)[1]
@@ -121,6 +122,8 @@ const renderLayout = (layout: any, prefix: string, index: number) => {
       )
     case 'BookADemo':
       return <BookADemoModule key={`BookADemo-${index}`} {...layout} />
+    case 'Wysiwyg':
+      return <WYSIWYGTextModule key={`WYSIWYGText-${index}`} {...layout} />
     default:
       return null
   }

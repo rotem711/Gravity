@@ -23,6 +23,7 @@ import TeamGridFragment from 'components/modules/TeamGrid/TeamGrid.graphql'
 import TextVideoCombinationFragment from 'components/modules/TextVideoCombination/TextVideoCombination.graphql'
 import TextVideoCombinationV2Fragment from 'components/modules/TextVideoCombinationV2/TextVideoCombinationV2.graphql'
 import TextWithFullscreenVideoFragment from 'components/modules/TextWithFullscreenVideo/TextWithFullscreenVideo.graphql'
+import WYSIWYGTextFragment from 'components/modules/WYSIWYGText/WYSIWYGText.graphql'
 import { MediaItem } from 'interfaces/Image'
 import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
@@ -57,6 +58,7 @@ export default `
   ${SublineHeadlineMediaFragment(TEMPLATE_PREFIX)}
   ${InsightsWithNavigationFragment(TEMPLATE_PREFIX)}
   ${BookADemoFragment(TEMPLATE_PREFIX)}
+  ${WYSIWYGTextFragment(TEMPLATE_PREFIX)}
 
   query page($uri: String) {
     header: acfOptionsHeader {
@@ -232,6 +234,9 @@ export default `
               }
               ...on DefaultTemplate_Pagebuilder_PageBuilder_BookADemo {
                 ...BookADemo
+              }
+              ...on DefaultTemplate_Pagebuilder_PageBuilder_Wysiwyg {
+                ...Wysiwyg
               }
             }
           }
