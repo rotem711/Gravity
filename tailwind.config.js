@@ -24,6 +24,7 @@ module.exports = {
       darkSky: '#4E95BF',
       mediumSky: '#97C8DD',
       lightSky: '#CAEDFC',
+      softSky: '#539DC9',
       darkGrass: '#60A45E',
       mediumGrass: '#8EC475',
       lightGrass: '#CAD782',

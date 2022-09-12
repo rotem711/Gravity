@@ -26,27 +26,47 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
   }
   const [success, setSuccess] = useState(false)
   const [formData, setFormData] = useState(emptyFormObject)
+  const errorObject = {
+    firstName: false,
+    lastName: false,
+    companyName: false,
+    email: false,
+  }
+  const [errors, setErrors] = useState(errorObject)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     key: string,
   ) => {
     setFormData({ ...formData, [key]: e.target.value })
+    if (e.target.value && e.target.value.length > 0) {
+      const tmp = { ...errors }
+      tmp[key] = false
+      setErrors(tmp)
+    }
   }
 
   const validateFields = () => {
-    const { firstName, lastName, companyName, email, phoneNumber } =
-      formData
-    if (
-      firstName &&
-      lastName &&
-      companyName &&
-      email &&
-      validateEmail(email) &&
-      phoneNumber
-    ) {
+    const { firstName, lastName, companyName, email } = formData
+    if (firstName && lastName && companyName && email && validateEmail(email)) {
+      setErrors(errorObject)
       return true
     }
+    const tmp = { ...errors }
+    if (!firstName) {
+      console.log('firstName is empty')
+      tmp.firstName = true
+    }
+    if (!lastName) {
+      tmp.lastName = true
+    }
+    if (!companyName) {
+      tmp.companyName = true
+    }
+    if (!email || !validateEmail(email)) {
+      tmp.email = true
+    }
+    setErrors(tmp)
     return false
   }
 
@@ -72,35 +92,43 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
               className={`${styles.form} mt-35 md:mt-40 grid md:grid-cols-2 gap-y-25 md:gap-y-40 gap-x-15 md:gap-x-20 xl:gap-x-30`}
             >
               <input
-                placeholder="First name"
+                placeholder="First Name*"
                 type="text"
                 value={formData.firstName}
-                className="col-span-2 md:col-span-1"
+                className={`col-span-2 md:col-span-1 ${
+                  errors.firstName ? styles.hasError : ''
+                }`}
                 onChange={(e) => handleChange(e, 'firstName')}
               />
               <input
-                placeholder="Last name"
+                placeholder="Last Name*"
                 type="text"
                 value={formData.lastName}
-                className="col-span-2 md:col-span-1"
+                className={`col-span-2 md:col-span-1 ${
+                  errors.lastName ? styles.hasError : ''
+                }`}
                 onChange={(e) => handleChange(e, 'lastName')}
               />
               <input
-                placeholder="Company name"
+                placeholder="Company Name*"
                 type="text"
                 value={formData.companyName}
-                className="col-span-2"
+                className={`col-span-2 ${
+                  errors.companyName ? styles.hasError : ''
+                }`}
                 onChange={(e) => handleChange(e, 'companyName')}
               />
               <input
-                placeholder="Business email address"
+                placeholder="Business Email Address*"
                 type="email"
                 value={formData.email}
-                className="col-span-2 md:col-span-1"
+                className={`col-span-2 md:col-span-1 ${
+                  errors.email ? styles.hasError : ''
+                }`}
                 onChange={(e) => handleChange(e, 'email')}
               />
               <input
-                placeholder="Phone number"
+                placeholder="Phone Number"
                 type="text"
                 value={formData.phoneNumber}
                 className="col-span-2 md:col-span-1"
@@ -121,7 +149,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
               </div>
               <div
                 className={`col-span-2 mt-15 ${
-                  success || !validateFields() ? 'pointer-events-none' : ''
+                  success ? 'pointer-events-none' : ''
                 }`}
               >
                 <Button variant="dark" onClick={() => submit()}>

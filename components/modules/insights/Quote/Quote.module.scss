@@ -1,3 +1,14 @@
 .root {
   position: relative;
+
+  .quote_mark {
+    @apply absolute;
+    left: -2rem;
+  }
+
+  .author {
+    a {
+      text-decoration: underline;
+    }
+  }
 }

@@ -17,7 +17,7 @@
 
   .upperArea {
     @apply pt-130 md:pt-100 pb-40;
-    height: calc(100vh - 4rem);
+    // height: calc(100vh - 4rem);
     max-height: 90rem;
     h1 {
       @screen md {
@@ -41,32 +41,6 @@
   }
 }
 
-.logos {
-  align-items: center;
-}
-
-.iconContainer {
-  display: block;
-  position: relative;
-  flex-basis: 50%;
-
-  @screen sm {
-    flex-basis: initial;
-    flex-shrink: 0;
-    flex: 1;
-  }
-
-  span {
-    img {
-      width: auto;
-      height: 2.5rem !important;
-      @screen lg {
-        height: 4.5rem !important;
-      }
-    }
-  }
-}
-
 @screen md {
   .title {
     order: 2;
@@ -74,10 +48,6 @@
 
   .video {
     order: 1;
-  }
-
-  .logos {
-    order: 4;
   }
 
   .button {

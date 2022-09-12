@@ -7,7 +7,7 @@
     "build": "TAILWIND_MODE=build next build",
     "start": "next start",
     "export": "next build && next export",
-    "lint": "eslint components/**/*.tsx components/**/*.ts pages/**/*.tsx utils/**/*.tsx",
+    "lint": "eslint components/**/*.tsx components/**/*.ts pages/**/*.tsx pages/*.tsx utils/**/*.tsx",
     "typecheck": "tsc",
     "hygen": "hygen",
     "prepare": "husky install",

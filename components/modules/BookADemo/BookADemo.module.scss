@@ -36,6 +36,9 @@
     &:focus {
       border-color: #000;
     }
+    &.hasError {
+      border-color: red;
+    }
   }
 
   input[type='checkbox'] {

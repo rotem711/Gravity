@@ -1,3 +1,64 @@
 .root {
   position: relative;
 }
+
+.iconContainer {
+  display: block;
+  position: relative;
+  flex-basis: 50%;
+
+  @screen sm {
+    flex-basis: initial;
+    flex-shrink: 0;
+    flex: 1;
+  }
+
+  span {
+    img {
+      width: auto;
+      height: 4.5rem !important;
+
+      @screen md {
+        height: 2.5rem !important;
+      }
+      
+      @screen lg {
+        height: 4.5rem !important;
+      }
+    }
+  }
+}
+
+.circleLogo {
+  span {
+    img {
+      height: 4rem !important;
+
+      @screen md {
+        height: 3.5rem !important;
+      }
+      
+      @screen lg {
+        height: 6.5rem !important;
+      }
+    }
+  }
+}
+
+.longLogo {
+  span {
+    img {
+      height: 2.5rem !important;
+      max-width: 17rem !important;
+
+      @screen md {
+        height: 3.5rem !important;
+      }
+      
+      @screen lg {
+        height: 4.5rem !important;
+        max-width: 20rem !important;
+      }
+    }
+  }
+}

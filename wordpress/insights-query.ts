@@ -139,6 +139,7 @@ export default `
           ...on Post_Post_ContentBuilder_Text {
             fieldGroupName
             text
+            subheader
           }
           ...on Post_Post_ContentBuilder_Quote {
             fieldGroupName
