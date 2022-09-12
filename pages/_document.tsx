@@ -36,7 +36,7 @@ class MyDocument extends Document {
         }`,
             }}
           />
-          <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8e11f12a-867c-4099-8946-57e552bd102d" data-blockingmode="auto" type="text/javascript"></script>
+          <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8e11f12a-867c-4099-8946-57e552bd102d" data-blockingmode="auto" type="text/javascript" />
         </Head>
 
         <body className="loading">
