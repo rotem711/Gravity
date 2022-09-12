@@ -145,7 +145,6 @@ export default `
             fieldGroupName
             author
             quote
-            anchorLink
           }
           ...on Post_Post_ContentBuilder_Image {
             fieldGroupName
