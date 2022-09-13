@@ -33,6 +33,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
     email: false,
   }
   const [errors, setErrors] = useState(errorObject)
+  const [stateText, setStateText] = useState('*Required field')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -53,18 +54,24 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       return true
     }
     const tmp = { ...errors }
+    setStateText('*Required field')
+    if (!email || !validateEmail(email)) {
+      tmp.email = true
+      if (email && !validateEmail(email)) {
+        setStateText('*Incorrect email format')
+      }
+    }
     if (!firstName) {
-      console.log('firstName is empty')
       tmp.firstName = true
+      setStateText('*Required field')
     }
     if (!lastName) {
       tmp.lastName = true
+      setStateText('*Required field')
     }
     if (!companyName) {
       tmp.companyName = true
-    }
-    if (!email || !validateEmail(email)) {
-      tmp.email = true
+      setStateText('*Required field')
     }
     setErrors(tmp)
     return false
@@ -80,6 +87,8 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       }, 3000)
     }
   }
+
+  const hasError = errors.firstName || errors.lastName || errors.email || errors.companyName
 
   return (
     <div className={`${styles.root} pt-130 pb-45 md:pt-140 md:pb-50 lg:py-200`}>
@@ -155,6 +164,11 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
                 <Button variant="dark" onClick={() => submit()}>
                   {success ? 'Success!' : 'Book a Demo'}
                 </Button>
+              </div>
+              <div
+                className="col-span-2 col-start-1"
+              >
+                <span className={hasError ? styles.redState : ''}>{stateText}</span>
               </div>
             </div>
           </Fade>
