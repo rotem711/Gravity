@@ -3,6 +3,14 @@
 
 .root {
   position: relative;
+  padding-bottom: 14.1rem;
+  @screen md {
+    padding-bottom: 9.9rem;
+  }
+
+  @screen lg {
+    padding-bottom: 8.3rem;
+  }
 
   p + p {
     margin-top: 1.5em;
