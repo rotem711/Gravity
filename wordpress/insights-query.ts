@@ -1,5 +1,5 @@
 import Author from 'interfaces/Author'
-import { MediaItem } from 'interfaces/Image'
+import ImageInterface, { MediaItem } from 'interfaces/Image'
 import Image, { ImageComponent } from 'queries/fragments/Image'
 import Link from 'queries/fragments/Link'
 
@@ -130,6 +130,7 @@ export default `
         }
       }
       post {
+        ${ImageComponent()}
         previewVideo
         publishedDate
         optionalTitle
@@ -173,6 +174,7 @@ export interface InsightsInterface {
     node: MediaItem
   }
   post: {
+    image: ImageInterface
     previewVideo: string
     publishedDate: string
     optionalTitle: string

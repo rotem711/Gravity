@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import Image from 'next/image'
+import ImageComponent from 'components/generic/image/image'
 import styles from './InsightHeader.module.scss'
 import IInsightHeader from './InsightHeader.interface'
 
@@ -10,13 +10,9 @@ const InsightHeader: FunctionComponent<IInsightHeader> = (props) => {
     <div className={`${styles.root} bg-insights pt-110`}>
       <div className="container-insights flex flex-col">
         <h1 className="typo-headlines block mb-32 md:mb-24">{title}</h1>
-        {!videoUrl && image?.sourceUrl && (
-          <Image
-            src={image.sourceUrl}
-            alt={image.altText}
-            width="665"
-            height="380"
-            objectFit="cover"
+        {!videoUrl && image && (
+          <ImageComponent
+            image={image}
           />
         )}
         {videoUrl && (
