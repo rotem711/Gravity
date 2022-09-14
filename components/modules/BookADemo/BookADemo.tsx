@@ -33,6 +33,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
     email: false,
   }
   const [errors, setErrors] = useState(errorObject)
+  const [stateText, setStateText] = useState('Please complete all required fields*')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -53,18 +54,24 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       return true
     }
     const tmp = { ...errors }
+    setStateText('Please complete all required fields*')
+    if (!email || !validateEmail(email)) {
+      tmp.email = true
+      if (email && !validateEmail(email)) {
+        setStateText('*Incorrect email format')
+      }
+    }
     if (!firstName) {
-      console.log('firstName is empty')
       tmp.firstName = true
+      setStateText('Please complete all required fields*')
     }
     if (!lastName) {
       tmp.lastName = true
+      setStateText('Please complete all required fields*')
     }
     if (!companyName) {
       tmp.companyName = true
-    }
-    if (!email || !validateEmail(email)) {
-      tmp.email = true
+      setStateText('Please complete all required fields*')
     }
     setErrors(tmp)
     return false
@@ -80,6 +87,8 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
       }, 3000)
     }
   }
+
+  const hasError = errors.firstName || errors.lastName || errors.email || errors.companyName
 
   return (
     <div className={`${styles.root} pt-130 pb-45 md:pt-140 md:pb-50 lg:py-200`}>
@@ -148,13 +157,14 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
                 <span>{checkboxDisclaimer}</span>
               </div>
               <div
-                className={`col-span-2 mt-15 ${
+                className={`col-span-2 mt-15 flex flex-col items-start ${
                   success ? 'pointer-events-none' : ''
                 }`}
               >
                 <Button variant="dark" onClick={() => submit()}>
                   {success ? 'Success!' : 'Book a Demo'}
                 </Button>
+                <span className={`mt-15 ${hasError ? styles.redState : ''}`}>{stateText}</span>
               </div>
             </div>
           </Fade>
