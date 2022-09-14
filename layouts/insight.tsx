@@ -39,6 +39,8 @@ const Insight = ({
     return { insight: e }
   }) as [{ insight: Post }]
 
+  console.log(insight)
+
   return (
     <GlobalContextProvider value={{ header, footer, settings }}>
       <div>
@@ -88,7 +90,7 @@ const Insight = ({
 
           <InsightHeader
             title={insight.title}
-            image={insight?.featuredImage?.node}
+            image={insight.post.image}
             videoUrl={insight.post.previewVideo}
           />
 
