@@ -16,10 +16,10 @@ const NewsBanner: FunctionComponent<INewsBanner> = ({ data, onClose }) => {
       <div className="container flex items-center justify-center h-full">
         <Link href={data.newsBannerLink.url}>
           <a
-            className="flex items-center justify-center"
+            className="flex items-center justify-center px-20 md:px-0"
             target={data.newsBannerLink.target}
           >
-            <div className="relative text-center px-20 md:px-0">
+            <div className="relative text-center">
               <span>{data.newsBannerText}</span>
             </div>
             <div className={styles.chevron}>
