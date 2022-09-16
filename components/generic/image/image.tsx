@@ -32,7 +32,7 @@ const ImageComponent = ({ image, className, loading = 'lazy' }: IImage) => {
           />
         )
       )}
-      <div className={styles.caption}>{caption ? parse(caption) : ''}</div>
+      {caption && <div className={styles.caption}>{parse(caption)}</div>}
     </div>
   )
 }
