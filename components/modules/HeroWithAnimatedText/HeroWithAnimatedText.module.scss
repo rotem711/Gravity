@@ -17,13 +17,15 @@
 
   .iconContainer {
     position: fixed;
-    width: 3.3rem;
-    height: 4rem;
+    width: 1.7rem;
+    height: 2rem;
     bottom: 3.5rem;
     right: 2rem;
     z-index: 10;
 
-    @screen sm {
+    @screen md {
+      width: 3.3rem;
+      height: 4rem;
       bottom: 3rem;
       right: 3rem;
     }
