@@ -154,6 +154,7 @@ export default `
           ...on Post_Post_ContentBuilder_TextWithImage {
             fieldGroupName
             text
+            subheader
             ${ImageComponent()}
           }
         }
