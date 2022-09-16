@@ -21,7 +21,9 @@ const ImageComponent = ({ image, className, loading = 'lazy' }: IImage) => {
             quality={85}
             loading={loading}
           />
-          <div className={styles.caption}>{mobileImage.caption ? parse(mobileImage.caption) : ''}</div>
+          {mobileImage.caption && (
+            <div className={styles.caption}>{parse(mobileImage.caption)}</div>
+          )}
         </>
       ) : (
         desktopImage && (
@@ -34,7 +36,11 @@ const ImageComponent = ({ image, className, loading = 'lazy' }: IImage) => {
               quality={85}
               loading={loading}
             />
-            <div className={styles.caption}>{desktopImage.caption ? parse(desktopImage.caption) : ''}</div>
+            {desktopImage.caption && (
+              <div className={styles.caption}>
+                {parse(desktopImage.caption)}
+              </div>
+            )}
           </>
         )
       )}

@@ -92,6 +92,7 @@ const Insight = ({
             title={insight.title}
             image={insight.post.image}
             videoUrl={insight.post.previewVideo}
+            featuredImage={insight.featuredImage.node}
           />
 
           <AuthorRow
