@@ -5,8 +5,9 @@ ${key} {
   }
   desktopImage {
    ...Image
-   }
- }`
+  }
+  caption
+}`
 
 export default `
   fragment Image on MediaItem {
