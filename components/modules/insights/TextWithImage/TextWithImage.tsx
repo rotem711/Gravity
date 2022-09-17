@@ -4,14 +4,23 @@ import ImageComponent from 'components/generic/image/image'
 import styles from './TextWithImage.module.scss'
 import ITextWithImage from './TextWithImage.interface'
 
-const TextWithImageModule:FunctionComponent<ITextWithImage> = ({ image, text }) => {
+const TextWithImageModule: FunctionComponent<ITextWithImage> = ({
+  image,
+  text,
+  subheader,
+}) => {
   const content = React.Children.toArray(parse(text))
-  const imageEl = (<ImageComponent className={styles.image} image={image} />)
+  const imageEl = <ImageComponent className={styles.image} image={image} />
 
   return (
-    <div
-      className={`${styles.root} typo-body mb-70`}
-    >
+    <div className={`${styles.root} typo-body mb-70`}>
+      <div className="container-insights">
+        {subheader && (
+          <h2 className={`typo-headlines-late ${styles.subheader}`}>
+            {subheader}
+          </h2>
+        )}
+      </div>
       <div className="container-insights">
         {/* insert image into first p tag to make float right work */}
         {content.map((component: ReactElement, index) => {
@@ -22,12 +31,9 @@ const TextWithImageModule:FunctionComponent<ITextWithImage> = ({ image, text }) 
           ]
           return (
             // eslint-disable-next-line react/jsx-props-no-spreading
-            <component.type {...component.props}>
-              {children}
-            </component.type>
+            <component.type {...component.props}>{children}</component.type>
           )
         })}
-
       </div>
     </div>
   )

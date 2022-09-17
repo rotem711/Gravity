@@ -17,6 +17,7 @@ export default interface Image {
     }
     caption?: string
   }
+  caption?: string
 }
 
 export interface MediaItem {

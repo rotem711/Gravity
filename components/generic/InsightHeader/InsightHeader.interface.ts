@@ -1,7 +1,8 @@
-import { MediaItem } from 'interfaces/Image'
+import Image, { MediaItem } from 'interfaces/Image'
 
 export default interface IInsightHeader {
   title: string
-  image: MediaItem
+  image: Image
   videoUrl?: string
+  featuredImage: MediaItem
 }

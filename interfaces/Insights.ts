@@ -12,6 +12,7 @@ export default interface InsightsInterface {
     node: Author
   }
   post: {
+    image: MediaItem
     publishedDate: string
     previewVideo: string
     optionalTitle: string

@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import ArrowDown from 'public/icons/icon-scroll-down.svg'
+import SmallArrowDown from 'public/icons/icon-scroll-down-small.svg'
 import styles from './HeroWithAnimatedText.module.scss'
 import IHeroWithAnimatedText from './HeroWithAnimatedText.interface'
 
@@ -81,6 +83,12 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
           loop
           autoPlay
         />
+        <div className={`${styles.iconContainer} hidden md:block`}>
+          <ArrowDown />
+        </div>
+        <div className={`${styles.iconContainer} block md:hidden`}>
+          <SmallArrowDown />
+        </div>
       </div>
       <div ref={spacerRef} className={styles.spacer} />
     </div>
