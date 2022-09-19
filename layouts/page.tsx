@@ -80,6 +80,7 @@ const Page = ({
             name="twitter:image"
             content={page.seoData.ogImage?.sourceUrl}
           />
+          <link rel="alternate" href="https://www.gravityclimate.com/" hrefLang="en"/>
         </Head>
         {process.env.NODE_ENV !== 'development' && renderHotjar && (
           <script
