@@ -6,7 +6,7 @@ import Document, {
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <style
             dangerouslySetInnerHTML={{
@@ -89,6 +89,7 @@ class MyDocument extends Document {
             />
           </noscript>
         )}
+        <script id="CookieDeclaration" src="https://consent.cookiebot.com/8e11f12a-867c-4099-8946-57e552bd102d/cd.js" type="text/javascript" async />
       </Html>
     )
   }

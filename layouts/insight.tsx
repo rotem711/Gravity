@@ -70,6 +70,7 @@ const Insight = ({
             name="twitter:image"
             content={insight.seoData.ogImage?.sourceUrl}
           />
+          <link rel="alternate" href="https://www.gravityclimate.com/" hrefLang="en"/>
         </Head>
         <Header data={header} uri={insight?.uri} />
         <main key={insight?.uri}>
