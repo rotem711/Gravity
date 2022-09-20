@@ -3,6 +3,7 @@
 
 .root {
   position: relative;
+  padding-top: 16.2rem;
   padding-bottom: 14.1rem;
   @screen md {
     padding-bottom: 9.9rem;
@@ -10,6 +11,7 @@
 
   @screen lg {
     padding-bottom: 8.3rem;
+    padding-top: 15.2rem;
   }
 
   p + p {
@@ -67,16 +69,12 @@
 
   h1 {
     font-family: 'Modern Gothic';
-    padding-top: 16.2rem;
     font-size: 4rem;
     font-weight: 300;
     line-height: 110%;
     letter-spacing: -0.01em;
     @screen md {
       font-size: 5.2rem;
-    }
-    @screen lg {
-      padding-top: 15.2rem;
     }
   }
 
