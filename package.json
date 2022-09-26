@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "TAILWIND_MODE=watch next dev",
     "build": "TAILWIND_MODE=build next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "export": "next build && next export",
     "lint": "eslint components/**/*.tsx components/**/*.ts pages/**/*.tsx pages/*.tsx utils/**/*.tsx",
@@ -24,6 +25,7 @@
     "html-react-parser": "^2.0.0",
     "install": "^0.13.0",
     "next": "12.1.0",
+    "next-sitemap": "^3.1.22",
     "node-fetch": "^3.2.8",
     "normalize.css": "^8.0.1",
     "npm": "^8.5.5",
