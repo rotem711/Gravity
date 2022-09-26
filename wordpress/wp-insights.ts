@@ -33,7 +33,7 @@ export const getWpInsightsStaticPaths = async () => {
       // eslint-disable-next-line arrow-body-style
       ({ node }: { node: { slug: string; uri: string; id: string } }) => ({
         params: {
-          slug: node.uri,
+          slug: node.slug,
         },
       }),
     ),
