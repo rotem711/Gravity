@@ -67,6 +67,7 @@ const Page = ({
           <link rel="icon" href="/static/favicon/favicon.ico" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="twitter:domain" content="gravityclimate.com" />
+          <link rel="alternate" href={`https://www.gravityclimate.com${asPath}`} hrefLang="en" />
           <meta
             property="twitter:url"
             content="https://www.gravityclimate.com/"
