@@ -34,6 +34,10 @@ module.exports = {
     domains: [`${process.env.NEXT_PUBLIC_ASSET_DOMAIN}`, 'secure.gravatar.com'],
     formats: ['image/avif', 'image/webp'],
   },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
   async headers() {
     return process.env.NODE_ENV === 'development' ? [] : [
       {

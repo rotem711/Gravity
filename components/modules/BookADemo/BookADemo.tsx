@@ -96,7 +96,7 @@ const BookADemoModule: FunctionComponent<IBookADemo> = (props) => {
         <div className="default-grid">
           <Fade className=" col-span-12 lg:col-span-6">
             {subline && <h4 className="mb-30 uppercase">{subline}</h4>}
-            {headline && <h2 className="typo-headlines">{headline}</h2>}
+            {headline && <h1 className="typo-headlines typo-h1">{headline}</h1>}
             <div
               className={`${styles.form} mt-35 md:mt-40 grid md:grid-cols-2 gap-y-25 md:gap-y-40 gap-x-15 md:gap-x-20 xl:gap-x-30`}
             >
