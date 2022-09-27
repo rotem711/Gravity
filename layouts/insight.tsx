@@ -16,6 +16,7 @@ import InsightHeader from 'components/generic/InsightHeader/InsightHeader'
 import AuthorRow from 'components/generic/AuthorRow/AuthorRow'
 import Header from '../components/generic/header/header'
 import Footer from '../components/generic/footer/footer'
+import { useRouter } from 'next/router'
 
 const Insight = ({
   insight,
@@ -34,12 +35,11 @@ const Insight = ({
     insightsDetailPage: { headlineSeparator, fullscreenLinkWithMedia },
   } = settings
 
+  const { asPath } = useRouter()
   // eslint-disable-next-line max-len
   const nextPostNodes = nextPosts.nodes.map((e: Post) => {
     return { insight: e }
   }) as [{ insight: Post }]
-
-  console.log(insight)
 
   return (
     <GlobalContextProvider value={{ header, footer, settings }}>
@@ -70,7 +70,8 @@ const Insight = ({
             name="twitter:image"
             content={insight.seoData.ogImage?.sourceUrl}
           />
-          <link rel="alternate" href="https://www.gravityclimate.com/" hrefLang="en"/>
+          <link rel="alternate" href={`https://www.gravityclimate.com${asPath}`} hrefLang="en" />
+          {/* <link rel="alternate" href="https://www.gravityclimate.com/" hrefLang="en"/> */}
         </Head>
         <Header data={header} uri={insight?.uri} />
         <main key={insight?.uri}>
