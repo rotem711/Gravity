@@ -56,17 +56,17 @@ const HeroWithAnimatedTextModule: FunctionComponent<IHeroWithAnimatedText> = (
       <div className={`${styles.pin} pt-180 lg:pt-225 pb-150 lg:pb-190`}>
         <div className="container">
           <div className={`${styles.list} list`}>
-            <h1 className={`${styles.items} items`}>
+            <div className={`${styles.items} items`}>
               {heroWithAnimatedText.animatingText.map((item) => (
-                <span
+                <div
                   className={`${styles.line} line`}
                   ref={(r) => refs.current.push(r)}
                   key={item.text}
                 >
                   {item.text}
-                </span>
+                </div>
               ))}
-            </h1>
+            </div>
           </div>
           <div
             ref={lastLineRef}
