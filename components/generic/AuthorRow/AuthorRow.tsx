@@ -24,6 +24,7 @@ const AuthorRow:FunctionComponent<IAuthorRow> = (props) => {
             src={avatarUrl}
             width="32"
             height="32"
+            layout="fixed"
             className="rounded-full overflow-hidden"
           />
         </div>
