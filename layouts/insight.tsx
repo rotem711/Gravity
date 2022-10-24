@@ -68,7 +68,7 @@ const Insight = ({
           <meta name="twitter:description" content={insight.seoData.description} />
           <meta
             name="twitter:image"
-            content={insight.seoData.ogImage?.sourceUrl}
+            content={insight.seoData.twitterImage?.sourceUrl}
           />
           <link rel="alternate" href={`https://www.gravityclimate.com${asPath}`} hrefLang="en" />
           {/* <link rel="alternate" href="https://www.gravityclimate.com/" hrefLang="en"/> */}
